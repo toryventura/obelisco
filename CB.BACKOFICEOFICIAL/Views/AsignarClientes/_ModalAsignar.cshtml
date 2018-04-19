@@ -1,0 +1,300 @@
+﻿
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Asignacion de Clientes</h4>
+        </div>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Usuarios</h3>
+                            </div>
+                            <div class="box-body">
+                                <div id="gridUsuario" class="ag-theme-balham" style="height:300px;">  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Cliente En Mora</h3>
+                            </div>
+                            <div class="box-body">
+                                <div id="gridEnMora" class="ag-theme-balham" style="height:300px;">  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <input type="submit" value="Guardar" class="btn btn-default" />*@
+
+
+            <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Close</button>
+            <input class="btn btn-primary" type="button" value="Guardar" onclick="SetEnviarPametros();" />
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<script type="text/javascript">
+
+
+    var columnDefsUsuario = [
+        { headerName: '', width: 34, checkboxSelection: true, suppressSorting: true, suppressMenu: true },
+        { headerName: "Nombre Completo", field: "NombreCompleto", width: 150 },
+        { headerName: "User", field: "Login", width: 150 },
+        { headerName: "Telefono", field: "Telefono", width: 100 },
+        { headerName: "Habilitado", field: "Habilitado", width: 100 },
+        { headerName: "ID", field: "ID", width: 100, hide: "true" }
+
+    ];
+    //// cuentas en mora
+    var columnDefsEnMora = [
+        {
+            headerName: "Codigo Cliente", field: "CodCliente", width: 150, filterParams: { newRowsAction: 'keep' },
+            checkboxSelection: function (params) {
+                // we put checkbox on the name if we are not doing grouping
+                return params.columnApi.getRowGroupColumns().length === 0;
+            },
+            headerCheckboxSelection: function (params) {
+                // we put checkbox on the name if we are not doing grouping
+                return params.columnApi.getRowGroupColumns().length === 0;
+            }
+        },
+        //{ headerName: '', width: 34, checkboxSelection: true, suppressSorting: true, suppressMenu: true },
+        //{ headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+            { headerName: "Nombre", field: "NombreP", width: 150 },
+            { headerName: "Apellido", field: "Apellido", width: 100 },
+            { headerName: "sexo", field: "Sexo", width: 100 },
+            { headerName: "Vendedor", field: "EsVendedor", width: 200 }
+
+    ];
+
+    var gridOptionsEnMora = {
+
+        //enableColResize: true,
+        //rowBuffer: 0,
+        //debug: true,
+        //rowSelection: 'multiple',
+        //rowDeselection: true,
+        //columnDefs: columnDefsEnMora,
+        //rowModelType: 'infinite',
+        //maxBlocksInCache: 2,
+        //suppressRowClickSelection: true
+        columnDefs: columnDefsEnMora,
+        rowData: null,
+        groupIncludeFooter: true,
+        rowSelection: 'multiple',
+        enableSorting: true,
+        showToolPanel: true,
+        toolPanelSuppressPivots: true,
+        toolPanelSuppressPivotMode: true
+
+    };
+
+    //var gridOptions = {
+    //    components: {
+    //        loadingRenderer: function (params) {
+    //            if (params.value !== undefined) {
+    //                return params.value;
+    //            } else {
+    //                return '<img src="../images/loading.gif">'
+    //            }
+    //        }
+
+    //    },
+    //    enableColResize: true,
+    //    rowBuffer: 0,
+    //    debug: true,
+    //    rowSelection: 'multiple',
+    //    rowDeselection: true,
+    //    columnDefs: columnDefs,
+    //    // tell grid we want virtual row model type
+    //    rowModelType: 'infinite',
+    //    // how big each page in our page cache will be, default is 100
+    //    paginationPageSize: 100,
+    //    // how many extra blank rows to display to the user at the end of the dataset,
+    //    // which sets the vertical scroll and then allows the grid to request viewing more rows of data.
+    //    // default is 1, ie show 1 row.
+    //    cacheOverflowSize: 2,
+    //    // how many server side requests to send at a time. if user is scrolling lots, then the requests
+    //    // are throttled down
+    //    maxConcurrentDatasourceRequests: 2,
+    //    // how many rows to initially show in the grid. having 1 shows a blank row, so it looks like
+    //    // the grid is loading from the users perspective (as we have a spinner in the first col)
+    //    infiniteInitialRowCount: 1,
+    //    // how many pages to store in cache. default is undefined, which allows an infinite sized cache,
+    //    // pages are never purged. this should be set for large data to stop your browser from getting
+    //    // full of data
+    //    maxBlocksInCache: 2
+    //};
+
+
+    //columnDefs: columnDefs,
+    //rowSelection: 'multiple',  PARR SELECCION MULTIPLE
+    //enableColResize: true,
+    //enableSorting: true,
+    //enableFilter: true,
+    //enableRangeSelection: true,
+    //suppressRowClickSelection: true,
+    //animateRows: true,
+    //onModelUpdated: modelUpdated,
+    //debug: true
+    var gridOptionsUsuario = {
+        
+        //enableSorting: true,
+        //enableFilter: true,
+
+        //enableColResize: true,
+        //columnDefs: columnDefsUsuario,
+        //rowModelType: 'infinite',
+        ////rowSelection: 'multiple',
+        //maxBlocksInCache: 2,
+        //suppressRowClickSelection: true
+        columnDefs: columnDefsUsuario,
+        rowData: null,
+        groupIncludeFooter: true,
+        enableSorting: true,
+        showToolPanel: true,
+        toolPanelSuppressPivots: true,
+        toolPanelSuppressPivotMode: true
+    };
+
+    //get codUsurio, aqui sacamos el usuario seleccionado, la asignacion de los clientes.
+    function getCodUsuario() {
+        var selectedRowsString = '-1';
+        gridOptionsUsuario.api.forEachNode(function (node) {
+            if (node.isSelected()) {
+
+                selectedRowsString = node.data.ID;
+            }
+        });
+        return parseInt(selectedRowsString);
+
+    }
+    function selectAllAmerican() {
+        var selectedRowsString = '-1';
+        gridOptionsUsuario.api.forEachNode(function (node) {
+            if (node.isSelected()) {
+
+                selectedRowsString += node.data.NombreCompleto;
+            }
+        });
+        return selectedRowsString;
+    }
+    /*
+    aqui sacamos la lista de clientes en mora of the table alls selection
+    */
+    function getItemsClienteEnMora() {
+        //var selectedRows = gridOptionsEnMora.api.getSelectedRows();
+        var selectedRowsString = [];
+        gridOptionsEnMora.api.forEachNode(function (node) {
+
+            if (node.isSelected()) {
+                selectedRowsString.push(node.data.CodCliente);
+            }
+
+        });
+        return selectedRowsString;
+    }
+    ///// loanding... of the datos in tha table
+    function SetEnviarPametros() {
+        var codusuario = getCodUsuario();
+        var lista = getItemsClienteEnMora();
+        BloquearPantalla();
+        if (codusuario > 0 && lista.length > 0) {
+            $.ajax({
+                url: "@Url.Action("SetEnviarPametros", "AsignarClientes")",
+                cache: false,
+                data: { codusuario: codusuario, lista: lista },
+                type: "POST"
+            }).done(function (html) {
+                //code
+                var res = html;
+                if (res[0].Key == "OK") {
+
+                    $('#ModalAsignar').modal('hide');
+                    Listar();
+                }
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("complete the ");
+                DesbloquearPantalla();
+            });
+        }
+
+    }
+    
+    var sw = 0;
+    function CargarUsuarioSistemas() {
+        if (sw == 0) {
+            var gridDiv = document.querySelector('#gridUsuario');
+            createGlobal(gridOptionsUsuario, gridDiv);
+            sw = 1;
+        } else {
+            destroyGlobal(gridOptionsUsuario)
+            var gridDiv = document.querySelector('#gridUsuario');
+            createGlobal(gridOptionsUsuario, gridDiv);
+        }
+
+        $.ajax({
+            url: "@Url.Action("UsuariosSistemas", "PersonasCasas")",
+            cache: false,
+            data: {
+
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsUsuario);
+            //$("#infocliente").html(html);
+        }).fail(function (rep) {
+            //DesbloquearPantalla();
+            console.log(rep.responseText);
+        }).always(function () {
+            console.log("competandon la operacion");
+        });
+    }
+    var ssw = 0;
+    function CargarClientesMora() {
+        if (ssw == 0) {
+            var gidDiv = document.querySelector('#gridEnMora');
+            createGlobal(gridOptionsEnMora, gidDiv);
+            ssw = 1;
+        } else {
+            destroyGlobal(gridOptionsEnMora);
+            var gidDiv = document.querySelector('#gridEnMora');
+            createGlobal(gridOptionsEnMora, gidDiv);
+
+        }
+        $.ajax({
+            url: "@Url.Action("GetClienteEnMora", "PersonasMora")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsEnMora);
+        }).fail(function (resp) {
+            //DesbloquearPantalla();
+            console.log(resp.responseText)
+        }).always(function () {
+            console.log("complete the operation ");
+        });
+    }
+
+    function CagarDatos() {
+        CargarClientesMora();
+        CargarUsuarioSistemas();
+    }
+</script>

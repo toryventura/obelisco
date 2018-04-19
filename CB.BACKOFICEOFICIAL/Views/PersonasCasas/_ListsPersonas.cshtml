@@ -1,0 +1,45 @@
+﻿@using CB.ENTIDADES;
+@model  List<Usuario>
+
+
+@if (Model.Count > 0)
+{
+    <table class="zui-table zui-table-rounded" id="ListsPersonas" tyle="width:100%">
+        <thead>
+            <tr>
+                <th> Nombre completo<th>
+                <th>User </th>
+                <th>telefono</th>
+                <th>Hibilitado</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+
+                foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.NombreCompleto</td>
+                        <td>@user.Login </td>
+                        <td>@user.Telefono </td>
+                        <td>@user.Habilitado </td>
+                        
+                    </tr>
+
+                }
+            }
+        </tbody>
+
+    </table>
+   
+     
+}
+else          
+{
+    <span>No existen datos</span>
+}
+
+
+

@@ -1,0 +1,115 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Asignar Cliente
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Cliente asigndos</h3>
+                    <button class="btn btn-default  pull-right" type="button" data-dismiss="modal">Close</button>
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="Nueva Asignacion" onclick="showMadalAsiganar();" />
+                </div>
+                <div class="box-body" id="ListaContenidosContainer">
+                    @Html.Partial("_ListaAsignado", new List<CB.ENTIDADES.AsignacionCliente>())
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="Asignar">
+    <div id="ModalAsignar" class="modal  fade in">
+        @Html.Partial("_ModalAsignar")
+    </div>
+</div>
+@*</div>*@
+<div id="NuevoContainer">
+    <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        @Html.Partial("_ver")
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function (e) {
+        Listar();
+    });
+
+    function showMadalAsiganar() {
+        $('#ModalAsignar').modal('show');
+        CagarDatos();
+    }
+    var ssw = 0;
+    function Listar() {
+
+        $.ajax({
+            url: "@Url.Action("ListaAsignado", "AsignarClientes")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        }).done(function (html) {
+            $("#ListaContenidosContainer").html(html);
+
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log("complete the operation of Listar clients")
+        });
+    }
+
+
+    function VerPersonaDatosBasicosCallback() {
+        $("#PopupVer").modal("show");
+    }
+
+    function CerrarProcesar() {
+        $('#dialogoNuevo').dialog('close');
+    }
+
+    function AsignarClienteDetails(ids) {
+        // $("#Lbl_MensajeError").html('');
+
+
+        $.ajax({
+            url: "@Url.Action("Details", "AsignarClientes")",
+            cache: false,
+            data: { id: ids },
+            type: "POST"
+        }).done(function (html) {
+            $("#myModal").html(html);
+
+            $('#myModal').modal('show');
+
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log("complete Asignar Details ")
+
+        });
+    }
+    function AsignarClienteEditar(ids) {
+        alert(ids);
+    }
+    function AsignarClienteEliminar(ids) {
+        alert(ids);
+    }
+    function cargarDatosCleinte(id) {
+
+    }
+</script>

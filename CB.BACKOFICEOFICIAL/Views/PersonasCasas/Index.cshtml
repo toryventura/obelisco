@@ -1,0 +1,240 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<section class="content-header">
+    <h1>
+        Lista de clientes
+        <small>En Mora</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!--letf column-->
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Usuarios de Bookkeeper</h3>
+                </div>
+                <!--/.box-header-->
+                <div class="box-body">
+                    <div id="griListaPersonasCasas" class="ag-fresh" style="height: 286px;"></div>
+                </div>
+            </div>
+        </div>
+        <!--rigth column-->
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> Usuario de Cobranzas</h3>
+                </div>
+                <!--/.box-header-->
+                <div class="box-body">
+                    <div id="griListaUsuarios" class="ag-fresh" style="height: 286px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<div class="row clearfix">
+    <div id="Idcreate">
+
+        <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            @Html.Partial("_Create")
+        </div>
+
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    ///persona del sistemas de inventario
+    var columnDefsPersonas = [
+            { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+            { headerName: "Nombre", field: "NombreP", width: 150 },
+            { headerName: "Apellido", field: "Apellido", width: 100 },
+            { headerName: "sexo", field: "Sexo", width: 100 },
+            { headerName: "Vendedor", field: "EsVendedor", width: 200 }
+
+    ];
+    //// personas del sitemas de usuario.
+    var columnDefsUsuarios = [
+            { headerName: "Nombre Completo", field: "NombreCompleto", width: 150 },
+            { headerName: "User", field: "Login", width: 150 },
+            { headerName: "Telefono", field: "Telefono", width: 100 },
+            { headerName: "Habilitado", field: "Habilitado", width: 100 }
+    ];
+
+    var gridOptionsPersonas = {
+        // set rowData to null or undefined to show loading panel by default
+        // rowData: rowData,
+        enableSorting: true,
+        enableFilter: true,
+
+        enableColResize: true,
+        
+         rowBuffer:0,   
+        //rowSelection: 'multiple',
+        rowSelection: 'single',
+        columnDefs: columnDefsPersonas,
+        onSelectionChanged: onSelectionChanged,
+        //enableStatusBar: true,
+        //enableRangeSelection: true,
+        rowModelType: 'infinite',
+        suppressRowClickSelection: true
+    };
+    //enableColResize: true,
+    //rowBuffer: 0,
+    //debug: true,
+    //rowSelection: 'multiple',
+    //rowDeselection: true,
+    //columnDefs: columnDefsEnMora,
+    //rowModelType: 'infinite',
+    //maxBlocksInCache: 2,
+    //suppressRowClickSelection: true
+
+    var gridOptionsUsuarios = {
+        // set rowData to null or undefined to show loading panel by default
+        // rowData: rowData,
+        enableSorting: true,
+        enableFilter: true,
+
+        enableColResize: true,
+        columnDefs: columnDefsUsuarios,
+        //rowSelection: 'multiple',
+        rowSelection: 'single',
+
+        //enableStatusBar: true,
+        //enableRangeSelection: true,
+        rowModelType: 'infinite',
+
+        pagination: true
+        
+    };
+
+    //// select for rows of  frist configurations table clientes
+    function onSelectionChanged() {
+        var selectedRows = gridOptionsPersonas.api.getSelectedRows();
+        var selectedRowsString = '';
+        selectedRows.forEach(function (selectedRow, index) {
+            if (index != 0) {
+                selectedRowsString += ', ';
+            }
+            selectedRowsString += selectedRow.CodCliente;
+        });
+
+
+        mostrar(selectedRowsString);
+        //document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+    }
+    ///// loanding... of the datos in tha table
+
+    function ListarPersonas() {
+        //$("#Lbl_MensajeError").html('');
+   
+        var gridDiv = document.querySelector("#griListaPersonasCasas");
+        createGlobal(gridDiv, gridOptionsPersonas);
+        BloquearPantalla();
+        $.ajax({
+            url: "@Url.Action("ListsPersonas", "PersonasCasas")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        })
+            .done(function (html) {
+                setDataSource(html, gridOptionsPersonas);
+            })
+            .fail(function (resp) {
+                console.log(resp.responseText);
+            })
+            .always(function () {
+                DesbloquearPantalla();
+            });
+        DesbloquearPantalla();
+       
+    }
+    var sw = 0;
+    function ListarUsuarios() {
+        var gridDivC = document.querySelector('#griListaUsuarios');
+        new agGrid.Grid(gridDivC, gridOptionsUsuarios);
+        if (sw == 0) {
+            createGlobal(gridDivC, gridOptionsUsuarios )
+            sw = 1;
+        } else {
+            destroyGlobal(gridOptionsUsuarios);
+            createGlobal(gridDivC, gridOptionsUsuarios)
+
+        }
+        
+        //$("#Lbl_MensajeError").html('');
+        BloquearPantalla();
+        $.ajax({
+            url: "@Url.Action("UsuariosSistemas", "PersonasCasas")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        })
+            .done(function (html) {
+                setDataSource(html, gridOptionsUsuarios);
+            })
+            .fail(function (resp) {
+                console.log(resp.responseText);
+            })
+            .always(function () {
+                DesbloquearPantalla();
+            });
+
+    }
+    function mostrar(ids) {
+        BloquearPantalla();
+        $.ajax({
+            url: "@Url.Action("CreateID", "PersonasCasas")",
+            cache: false,
+            data: {
+                id: ids
+            },
+            type: "POST"
+        }).done(function (html) {
+            $('#myModal').html(html);
+            $('#myModal').modal('show');
+
+           
+
+            
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+            //DesbloquearPantalla();
+        }).always(function () {
+            DesbloquearPantalla();
+        });
+
+    }
+    function SuccessMessage(e) {
+        ListarUsuarios();
+        $('#myModal').modal('hide');
+    }
+    function FailMessage(e) {
+        console.log(e.responseText);
+    }
+    function getdatos() {
+        ListarUsuarios();
+        ListarPersonas();
+    }
+    $(document).ready(function (e) {
+        getdatos();
+    });
+    
+</script>

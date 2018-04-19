@@ -1,0 +1,86 @@
+﻿@model CB.ENTIDADES.PersonaCasas
+@{
+
+    Layout = null;
+}
+
+<from class="form-horizontal">
+
+    <div class="box-body">
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">CI</label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.CI, new { htmlAttributes = new { @class = " form-control" } })
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Nombre</label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.NombreP, new { htmlAttributes = new { @class = " form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Apellido</label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = " form-control" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Pais </label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.Ciudad, new { htmlAttributes = new { @class = " form-control" } })
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Domicilio </label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.DireccionDomicilio, new { htmlAttributes = new { @class = " form-control" } })
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Domicilio Trabajo</label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.DireccionTrabajo, new { htmlAttributes = new { @class = " form-control" } })
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Coreo</label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = " form-control" } })
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Telefono</label>
+            <div class="col-sm-9">
+
+                @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = " form-control" } })
+
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+
+    </div>
+</from>

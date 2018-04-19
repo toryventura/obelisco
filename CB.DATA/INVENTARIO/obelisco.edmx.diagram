@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3af98a7e1e414722b4d63108889d6668" Name="Diagram1">
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Almacen" Width="1.5" PointX="10" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmacenMovimiento" Width="1.5" PointX="12.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmMovImportacion" Width="1.5" PointX="8.25" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmTraspaso" Width="1.5" PointX="2.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmTraspasoAlmInterno" Width="1.5" PointX="0.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmTraspasoEnTransito" Width="1.5" PointX="20.75" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmTraspasoZonaFranca" Width="1.5" PointX="28.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Aplicacion" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Area" Width="1.5" PointX="2.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Bloque" Width="1.5" PointX="16.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Caja" Width="1.5" PointX="18" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Caja_Revertir" Width="1.5" PointX="30.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CategoriaVendedor" Width="1.5" PointX="6" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CategoriaVendedorH" Width="1.5" PointX="8.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CentroCosto" Width="1.5" PointX="17.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Chequera" Width="1.5" PointX="19.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Ciudad" Width="1.5" PointX="15.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Clausula" Width="1.5" PointX="24.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Clausula1" Width="1.5" PointX="21.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CodClienteV" Width="1.5" PointX="21.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ConceptoContable" Width="1.5" PointX="6" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Contrato" Width="1.5" PointX="22" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ContratosLegale" Width="1.5" PointX="23.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Cotizacion" Width="1.5" PointX="6" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CotizacionDetalle" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaPorCobrar" Width="1.5" PointX="29" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaPorCobrar_A" Width="1.5" PointX="23.75" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaPorCobrarDet" Width="1.5" PointX="31.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaxPagar" Width="1.5" PointX="19" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaxPagarCC" Width="1.5" PointX="21.25" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaxPagarDet" Width="1.5" PointX="21.25" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CuentaCliente" Width="1.5" PointX="28.75" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CuentaClienteMov" Width="1.5" PointX="31" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Departamento" Width="1.5" PointX="23.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Descuento" Width="1.5" PointX="31.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagInicProforma" Width="1.5" PointX="15.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagInicReserva" Width="1.5" PointX="14" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagInicVenta" Width="1.5" PointX="13" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagInicVenta_A" Width="1.5" PointX="31.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagoCredito" Width="1.5" PointX="32.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetalleProforma" Width="1.5" PointX="32.75" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetalleReserva" Width="1.5" PointX="14" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetalleVenta" Width="1.5" PointX="13" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetalleVenta_A" Width="1.5" PointX="12" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Devolucion" Width="1.5" PointX="33.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Division" Width="1.5" PointX="2.75" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Documento" Width="1.5" PointX="15.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Envase" Width="1.5" PointX="25.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoC" Width="1.5" PointX="30.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoCliente" Width="1.5" PointX="32.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoLote" Width="1.5" PointX="33.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoOC" Width="1.5" PointX="33.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoP" Width="1.5" PointX="33.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoPC" Width="1.5" PointX="33.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.EstadoRendicion" Width="1.5" PointX="33.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FlujoEfectivo" Width="1.5" PointX="26" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FondoFijo" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FondoFijoReposicion" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Grupo" Width="1.5" PointX="25.75" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.InformeDiario" Width="1.5" PointX="34.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.InformeDiarioDet" Width="1.5" PointX="22.75" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.IngresosCab" Width="1.5" PointX="34.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Jerarquia" Width="1.5" PointX="34.75" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.LineaCredito" Width="1.5" PointX="34.75" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ListaGasto" Width="1.5" PointX="35.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.LugarEntrega" Width="1.5" PointX="35.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Manzana" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Marca" Width="1.5" PointX="35.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.MLM" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.NivelMLM" Width="1.5" PointX="19" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Oferta" Width="1.5" PointX="35.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.OrdenCompra" Width="1.5" PointX="12" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.OrdenCompraConf" Width="1.5" PointX="31" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.OrdenCompraDetalle" Width="1.5" PointX="14.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Pedido" Width="1.5" PointX="13" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PedidoDetalle" Width="1.5" PointX="15.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PERIODO" Width="1.5" PointX="35.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Persona" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanCuentaFlujo" Width="1.5" PointX="23.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanillaConfirmacion" Width="1.5" PointX="28.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanPagoCtaPCob" Width="1.5" PointX="27.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanPagoCtaPCob_A" Width="1.5" PointX="26" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanPagoProf" Width="1.5" PointX="35.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanPagoRe" Width="1.5" PointX="14" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PlanPagoVentAnt" Width="1.5" PointX="29.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PreAfiliado" Width="1.5" PointX="31.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.PresupuestoProducto" Width="1.5" PointX="15.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Procedencia" Width="1.5" PointX="2.75" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Producto" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ProductoConceptoContable" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ProductoPrueba" Width="1.5" PointX="36.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Proforma" Width="1.5" PointX="19" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ProveedorProducto" Width="1.5" PointX="8.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Proyecto" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Rendicion" Width="1.5" PointX="5.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.RendicionCliente" Width="1.5" PointX="24.75" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.RendicionDetalle" Width="1.5" PointX="7.5" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.RepAlmacen" Width="1.5" PointX="36.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.RepCtaxPagar" Width="1.5" PointX="36.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.RepTesoreria" Width="1.5" PointX="37.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Reserva" Width="1.5" PointX="11.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SalidasCab" Width="1.5" PointX="37.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SerieIngreso" Width="1.5" PointX="37.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SerieSalida" Width="1.5" PointX="12.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SeriesMovimiento" Width="1.5" PointX="14.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SeriesProducto" Width="1.5" PointX="26.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SeriesProductosBaja" Width="1.5" PointX="16.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SerieTraspaso" Width="1.5" PointX="37.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.SubGrupo" Width="1.5" PointX="37.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Sucursal" Width="1.5" PointX="18.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Table_GlosaCorrectaP" Width="1.5" PointX="38.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.tblMainMenuChoicesUsuario" Width="1.5" PointX="20.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Tecnologia" Width="1.5" PointX="38.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TerminosEntrega" Width="1.5" PointX="38.75" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TerminosPago" Width="1.5" PointX="38.75" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Tesoreria" Width="1.5" PointX="23.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Tesoreria_Trans" Width="1.5" PointX="26" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Tipo" Width="1.5" PointX="38.75" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoAccesorio" Width="1.5" PointX="33.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoAlmacen" Width="1.5" PointX="38.75" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoCambio" Width="1.5" PointX="39.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoCliente" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoContrato" Width="1.5" PointX="19.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoContratosLegale" Width="1.5" PointX="0.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoCtaPorCobrar" Width="1.5" PointX="26.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoCxPagar" Width="1.5" PointX="16.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoDeNota" Width="1.5" PointX="2.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoDoc" Width="1.5" PointX="39.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoDocAux" Width="1.5" PointX="39.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoDocCtaxPagar" Width="1.5" PointX="39.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoDocGarantia" Width="1.5" PointX="39.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoEstado" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoMovimientoTesoreria" Width="1.5" PointX="39.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoPago" Width="1.5" PointX="10.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoPagoAdicional" Width="1.5" PointX="26.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoPagoCxPagar" Width="1.5" PointX="38.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoProducto" Width="1.5" PointX="40.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoPSuper" Width="1.5" PointX="40.75" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoRendicion" Width="1.5" PointX="5.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoRotacion" Width="1.5" PointX="40.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TiposIngreso" Width="1.5" PointX="40.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TiposSalida" Width="1.5" PointX="40.75" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoTransaccion" Width="1.5" PointX="40.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoTransporte" Width="1.5" PointX="35.75" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.TipoVenta" Width="1.5" PointX="40.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Tramo" Width="1.5" PointX="13" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Transporte" Width="1.5" PointX="41.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Transportista" Width="1.5" PointX="41.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.UnidadMedida" Width="1.5" PointX="4.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Usuario" Width="1.5" PointX="5.25" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Venta" Width="1.5" PointX="10.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Venta_A" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.VentaSerie_A" Width="1.5" PointX="6.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.VentaSerieProducto" Width="1.5" PointX="29" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CalculoMora" Width="1.5" PointX="41.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Proyecto1" Width="1.5" PointX="41.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.actualizarMoraDaria" Width="1.5" PointX="41.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.cantCuotasPagada" Width="1.5" PointX="28.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CtaporCobraDeMora" Width="1.5" PointX="30.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ctaxcobrarDet" Width="1.5" PointX="32.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ctaxcobrarDetmora" Width="1.5" PointX="40.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ctaxcobrarUltCuotaPagada" Width="1.5" PointX="0.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CuotaPorPagar" Width="1.5" PointX="42.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.detallePagoCredito2" Width="1.5" PointX="14.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.detalleventa1" Width="1.5" PointX="20.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.difPagado" Width="1.5" PointX="42.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.fechaCuotaPorPagar" Width="1.5" PointX="22.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.moraExcel" Width="1.5" PointX="24.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.moraUltimaFechaDePago" Width="1.5" PointX="42.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.moraVsPrestamo" Width="1.5" PointX="42.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.pagos24Octubre" Width="1.5" PointX="42.75" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.pagosdesc" Width="1.5" PointX="42.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.total_pagado" Width="1.5" PointX="37.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.View_GlosaCorrectaProducto" Width="1.5" PointX="42.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Vista_SumaSaldo" Width="1.5" PointX="42.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.VistaCliente" Width="1.5" PointX="43.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_gridMoraBookk_SAI" Width="1.5" PointX="43.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_gridPrestamosBookk" Width="1.5" PointX="43.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_Recuperado" Width="1.5" PointX="8.75" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_SaldoCapital" Width="1.5" PointX="43.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_SaldosPorCobrar" Width="1.5" PointX="43.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_UltCuotaPorPagar" Width="1.5" PointX="16.75" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.vw_ventaClientes" Width="1.5" PointX="34.75" PointY="50.875" IsExpanded="true" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_AlmacenMovimiento_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_AlmacenMovimiento_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_AlmMovImportacion_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CajaIn_FK00" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Categoria_CategoriaVendedorH" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CategoriaVendedorH_Vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Clausula_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_ConceptoContable_ProductoConceptoContable" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Contrato_Proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Contrato_TipoContrato" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CotizacionDetalle_Cotizacion" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CotizacionDetalle_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CtaPorCobrarDet_CtaPorCobrar" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_TipoCtaPorCobrar_CtaPorCobrar" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_PlanPagoCtaPCob_A_CtaPorCobrar_A" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CtaxPagar_CtaxPagarCC" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CtaxPagar_CtaxPagarDet" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_CtaxPagar_TipoCxPagar" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CuentaClienteMov_FK00" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagInicReserva_FK00" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetallePagInicVenta_FK00" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_DetallePagInicVenta_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.DetalleReserva_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Venta_DetalleVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_DetalleVenta_A_Venta_A" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK__FlujoEfec__CodCu__168449D3" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK__FlujoEfec__NroTe__13A7DD28" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_FondoFijo_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_FondoFijoReposicion_FondoFijo" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Manzana_Manzana" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Persona_Hijo" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Persona_Padre" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_NivelMLM_Proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_OrdenCompraDetalle_OrdenCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_OrdenCompraConf_PlanillaConfirmacion" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_OrdenCompraDetalle_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_PedidoDetalle_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_PedidoDetalle_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Persona_ProveedorProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Persona_TipoEstado1" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Rendicion_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_PlanPagoRes_Reserva" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_PresupuestoProductos_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_PresupuestoProductos_Tramo" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Producto_ProductoConceptoContable" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Producto_ProveedorProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Proforma_Proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Rendicion_RendicionDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_RendicionDetalle_TipoRendicion" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_TipoRendicionDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.VentaSerieProducto_FK00" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Tesoreria_Trans_Tesoreria" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Venta_A_Venta_A" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ClubClientes" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.UsuarioPersona" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

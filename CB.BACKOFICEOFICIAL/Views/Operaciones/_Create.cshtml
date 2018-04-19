@@ -1,0 +1,234 @@
+﻿@model CB.ENTIDADES.OperacionCobranza
+@{
+    var tipogestion = (List<KeyValuePair<int, string>>)ViewBag.tipogestion;
+    var probalidadpago = (List<KeyValuePair<int, string>>)ViewBag.probalidadpago;
+    var compromisopago = (List<KeyValuePair<int, string>>)ViewBag.compromisopago;
+    var casualmora = (List<KeyValuePair<int, string>>)ViewBag.casualmora;
+    var parametro = (List<KeyValuePair<int, string>>)ViewBag.parametro;
+    var asignacionID = 0;
+    if (ViewBag.asignacionID != null)
+    {
+        asignacionID = (int)ViewBag.asignacionID;
+    }
+
+
+}
+@using (Ajax.BeginForm("Create", "Operaciones", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "SuccessMessage1",
+    OnFailure = "FailMessage1",
+    UpdateTargetId = "resultTarget",
+    OnBegin = "Loading"
+}, new { id = "CreateID", @class = "form-horizontal" }))
+{
+
+    if (Model != null)
+    {
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Registrar Operaciones</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="probalidadpago">Probalidad pago</label>
+                                <div class="col-sm-8">
+                                    @if (probalidadpago != null)
+                                    {
+                                        @Html.DropDownList("probalidadpago", new SelectList(probalidadpago.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                    }
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="compromisopago">Compromiso pago</label>
+                                <div class="col-sm-8">
+                                    @Html.DropDownList("compromisopago", new SelectList(compromisopago.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="compromisopago">Casual Mora</label>
+                                <div class="col-sm-8">
+                                    @Html.DropDownList("casualmora", new SelectList(casualmora.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="parametro">Parametro</label>
+                                <div class="col-sm-8">
+                                    @Html.DropDownList("parametro", new SelectList(parametro.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="@Model.TelefonoAlternativo">Telefono Alternativo</label>
+                                <div class="col-sm-8">
+                                    @Html.EditorFor(model => model.TelefonoAlternativo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Telefono ALternativo" } })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="@Model.FechaCompromiso">Fecha Compromiso</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.EditorFor(model => model.FechaCompromiso, new { htmlAttributes = new { @class = "form-control", data_inputmask = "'alias': 'dd/mm/yyyy'", data_mask = "" } })
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control timepicker">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="@Model.CausalMoraAnt">Causal Mora Anterior </label>
+                                <div class="col-sm-8">
+                                    @Html.EditorFor(model => model.CausalMoraAnt, new { htmlAttributes = new { @class = "form-control", @placeholder = "Causal mora anterior" } })
+                                </div>
+
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label class="col-sm-4 control-label" for="@Model.asignacionClienteID">Causal Mora Anterior </label>
+                                <div class="col-sm-8">
+                                    @Html.EditorFor(model => model.asignacionClienteID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Causal mora anterior", @Value = asignacionID } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="nombrecompleto">Nombre Cliente</label>
+                                <div class="col-sm-8">
+                                    @Html.Editor("nombrecompleto", new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre Cliente" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="telefono">Telefono</label>
+                                <div class="col-sm-8">
+                                    @Html.Editor("telefono", new { htmlAttributes = new { @class = "form-control", @placeholder = "Telefono" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="correo">Correo</label>
+                                <div class="col-sm-8">
+                                    @Html.Editor("correo", new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label for="@Model.Comentario">Comentario</label>
+                                    @Html.TextAreaFor(model => model.Comentario, new { @class = "form-control", @placeholder = "Escribir comentario", @rows = "3" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default">Guardar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+
+    }
+
+}
+<script>
+    function FailMessage1(e) {
+        console.log(e.responseText);
+    }
+    function SuccessMessage1(e) {
+        cargarOperaciones(selectedRowsClient);
+        DesbloquearPantalla();
+        $('#myoperacion').modal('hide');
+    }
+    function Loading() {
+        BloquearPantalla();
+
+    }
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        //CKEDITOR.replace('editor1')
+        ////bootstrap WYSIHTML5 - text editor
+        //$('.textarea').wysihtml5()
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+        //Timepicker
+        $('.timepicker').timepicker({
+            showInputs: false
+        })
+
+        //Date range picker
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+          {
+              ranges: {
+                  'Today': [moment(), moment()],
+                  'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                  'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                  'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                  'This Month': [moment().startOf('month'), moment().endOf('month')],
+                  'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+              },
+              startDate: moment().subtract(29, 'days'),
+              endDate: moment()
+          },
+          function (start, end) {
+              $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+          }
+        )
+
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        })
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass: 'iradio_minimal-red'
+        })
+        //Flat red color scheme for iCheck
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green'
+        })
+
+        $('.textarea').wysihtml5()
+        //Colorpicker
+        $('.my-colorpicker1').colorpicker()
+        //color picker with addon
+        $('.my-colorpicker2').colorpicker()
+
+        
+    })
+</script>

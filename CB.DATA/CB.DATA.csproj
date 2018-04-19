@@ -1,0 +1,775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5F3FBE72-0114-45FA-8B10-FB0811612811}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CB.DATA</RootNamespace>
+    <AssemblyName>CB.DATA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="INVENTARIO\actualizarMoraDaria.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Almacen.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\AlmacenMovimiento.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\AlmMovImportacion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\AlmTraspaso.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\AlmTraspasoAlmInterno.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\AlmTraspasoEnTransito.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\AlmTraspasoZonaFranca.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Aplicacion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Area.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Bloque.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Caja.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Caja_Revertir.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CalculoMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\cantCuotasPagada.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CategoriaVendedor.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CategoriaVendedorH.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CentroCosto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Chequera.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Ciudad.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Clausula.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Clausula1.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CodClienteV.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ConceptoContable.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Contrato.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ContratosLegale.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Cotizacion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CotizacionDetalle.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaporCobraDeMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaPorCobrar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaPorCobrarDet.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaPorCobrar_A.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ctaxcobrarDet.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ctaxcobrarDetmora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ctaxcobrarUltCuotaPagada.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaxPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaxPagarCC.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CtaxPagarDet.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CuentaCliente.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CuentaClienteMov.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\CuotaPorPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Departamento.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Descuento.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetallePagInicProforma.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetallePagInicReserva.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetallePagInicVenta.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetallePagInicVenta_A.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetallePagoCredito.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\detallePagoCredito2.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetalleProforma.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetalleReserva.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetalleVenta.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\detalleventa1.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\DetalleVenta_A.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Devolucion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\difPagado.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Division.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Documento.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Envase.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoC.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoCliente.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoLote.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoOC.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoP.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoPC.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\EstadoRendicion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\fechaCuotaPorPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\FlujoEfectivo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\fn_MoviemtoXcliente_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\FondoFijo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\FondoFijoReposicion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Grupo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\InformeDiario.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\InformeDiarioDet.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\IngresosCab.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Jerarquia.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\LineaCredito.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ListaGasto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\LugarEntrega.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Manzana.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Marca.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\MLM.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\moraExcel.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\moraUltimaFechaDePago.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\moraVsPrestamo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\NivelMLM.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\obelisco.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>obelisco.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\obelisco.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\obelisco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>obelisco.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Oferta.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\OrdenCompra.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\OrdenCompraConf.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\OrdenCompraDetalle.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\pagos24Octubre.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\pagosdesc.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Pedido.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PedidoDetalle.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PERIODO.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Persona.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanCuentaFlujo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanillaConfirmacion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanPagoCtaPCob.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanPagoCtaPCob_A.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanPagoProf.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanPagoRe.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PlanPagoVentAnt.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PreAfiliado.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\PresupuestoProducto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Procedencia.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Producto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ProductoConceptoContable.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ProductoPrueba.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Proforma.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\ProveedorProducto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Proyecto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Proyecto1.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Rendicion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\RendicionCliente.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\RendicionDetalle.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\RepAlmacen.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\RepCtaxPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\RepTesoreria.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Reserva.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SalidasCab.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SerieIngreso.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SerieSalida.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SeriesMovimiento.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SeriesProducto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SeriesProductosBaja.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SerieTraspaso.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_MovimientoXcliente_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_RecuperacionCarteraCliente_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_RecuperacionCarteraFecha_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_RecuperacionCarteraProyecto_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Lote_CodProd_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Lote_NroParte_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Lote_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Manzana_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Persona_DocIdent_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Persona_Usuario_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_PreAfiliado_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_Traer_Proyectos_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\SubGrupo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Sucursal.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Table_GlosaCorrectaP.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\tblMainMenuChoicesUsuario.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Tecnologia.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TerminosEntrega.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TerminosPago.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Tesoreria.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Tesoreria_Trans.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Tipo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoAccesorio.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoAlmacen.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoCambio.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoCliente.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoContrato.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoContratosLegale.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoCtaPorCobrar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoCxPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoDeNota.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoDoc.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoDocAux.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoDocCtaxPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoDocGarantia.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoEstado.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoMovimientoTesoreria.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoPago.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoPagoAdicional.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoPagoCxPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoProducto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoPSuper.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoRendicion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoRotacion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TiposIngreso.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TiposSalida.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoTransaccion.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoTransporte.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\TipoVenta.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\total_pagado.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Tramo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Transporte.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Transportista.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\UnidadMedida.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Usuario.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Venta.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\VentaSerieProducto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\VentaSerie_A.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Venta_A.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\View_GlosaCorrectaProducto.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\VistaCliente.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vista_SumaSaldo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_gridMoraBookk_SAI.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_gridPrestamosBookk.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_Recuperado.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_SaldoCapital.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_SaldosPorCobrar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_UltCuotaPorPagar.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_ventaClientes.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="USER\AsignacionCliente.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\CausalMora.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\cobranza.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cobranza.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\cobranza.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\cobranza.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cobranza.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="USER\CompromisoPago.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Cuota.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Fase.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\FaseUsuario.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Menu.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\OperacionCobranza.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Parametro.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Perfil.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Permiso.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\ProbalidadPago.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\sp_helpdiagrams_Result.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\TipoGestion.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Usuario.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\UsuaruoIPRestringido.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="INVENTARIO\obelisco.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>obelisco.edmx</DependentUpon>
+      <LastGenOutput>obelisco.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="INVENTARIO\obelisco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>obelisco.edmx</DependentUpon>
+      <LastGenOutput>obelisco.cs</LastGenOutput>
+    </Content>
+    <Content Include="USER\cobranza.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>cobranza.edmx</DependentUpon>
+      <LastGenOutput>cobranza.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="USER\cobranza.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>cobranza.edmx</DependentUpon>
+      <LastGenOutput>cobranza.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="INVENTARIO\obelisco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>obelisco.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="INVENTARIO\obelisco.edmx.diagram">
+      <DependentUpon>obelisco.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="USER\cobranza.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>cobranza.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="USER\cobranza.edmx.diagram">
+      <DependentUpon>cobranza.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="687bcffd094140d596705102d7e43555" Name="Diagram1">
+        <EntityTypeShape EntityType="COBRANZA_CBModel.AsignacionCliente" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.CausalMora" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.CompromisoPago" Width="1.5" PointX="10.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Cuota" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Fase" Width="1.5" PointX="8.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.FaseUsuario" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Menu" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.OperacionCobranza" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Parametro" Width="1.5" PointX="12.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Perfil" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Permiso" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.ProbalidadPago" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.TipoGestion" Width="1.5" PointX="10.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.Usuario" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.UsuaruoIPRestringido" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_AsignacionCliente_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_Cuotas_AsignacionCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_OperacionCobranza_AsignacionCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_OperacionCobranza_CausalMora" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_OperacionCobranza_CompromisoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_FaseUsuario_Fase" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_FaseUsuario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_Permiso_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_OperacionCobranza_ProbalidadPago" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_OperacionCobranza_TipoGestion" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_Parametros_TipoGestion" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_Permiso_Permiso1" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.FK_UsuaruoIPRestringido_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.JoinPerfilToUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.JoinPermisoToPerfil" ManuallyRouted="false" />
+        <AssociationConnector Association="COBRANZA_CBModel.JoinPermisoToUsuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

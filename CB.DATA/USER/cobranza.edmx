@@ -1,0 +1,1269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsignacionCliente">
+          <Key>
+            <PropertyRef Name="asignacionClienteID" />
+          </Key>
+          <Property Name="asignacionClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="20" />
+          <Property Name="FechaAsignacion" Type="date" />
+          <Property Name="UsrCre" Type="nvarchar" MaxLength="20" />
+          <Property Name="UsrMod" Type="nvarchar" MaxLength="20" />
+          <Property Name="FeCre" Type="date" />
+          <Property Name="FechaMod" Type="date" />
+          <Property Name="CodUsuario" Type="int" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaReasignacion" Type="datetime" />
+          <Property Name="Periodo" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CausalMora">
+          <Key>
+            <PropertyRef Name="causalMoraID" />
+          </Key>
+          <Property Name="Nombre" Type="varchar" MaxLength="250" />
+          <Property Name="causalMoraID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompromisoPago">
+          <Key>
+            <PropertyRef Name="compromisoPagoID" />
+          </Key>
+          <Property Name="compromisoPagoID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Cuotas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NroCoutas" Type="int" />
+          <Property Name="Periodo" Type="nchar" MaxLength="10" />
+          <Property Name="AsignacionClienteID" Type="int" />
+        </EntityType>
+        <EntityType Name="Fase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FaseUsuario">
+          <Key>
+            <PropertyRef Name="IDfaseusuario" />
+          </Key>
+          <Property Name="IDfaseusuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idfase" Type="int" />
+          <Property Name="Idusuario" Type="int" />
+        </EntityType>
+        <EntityType Name="JoinPerfilToUsuario">
+          <Key>
+            <PropertyRef Name="usuarioID" />
+            <PropertyRef Name="perfilID" />
+          </Key>
+          <Property Name="usuarioID" Type="int" Nullable="false" />
+          <Property Name="perfilID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JoinPermisoToPerfil">
+          <Key>
+            <PropertyRef Name="perfilID" />
+            <PropertyRef Name="permisoID" />
+          </Key>
+          <Property Name="perfilID" Type="int" Nullable="false" />
+          <Property Name="permisoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JoinPermisoToUsuario">
+          <Key>
+            <PropertyRef Name="usuarioID" />
+            <PropertyRef Name="permisoID" />
+          </Key>
+          <Property Name="usuarioID" Type="int" Nullable="false" />
+          <Property Name="permisoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="Texto" Type="varchar" MaxLength="100" />
+          <Property Name="Controlador" Type="varchar" MaxLength="100" />
+          <Property Name="Accion" Type="varchar" MaxLength="100" />
+          <Property Name="MenuPadre" Type="int" />
+          <Property Name="Orden" Type="int" />
+          <Property Name="EsGlobal" Type="bit" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperacionCobranza">
+          <Key>
+            <PropertyRef Name="operacionCobranzaID" />
+          </Key>
+          <Property Name="operacionCobranzaID" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TelefonoAlternativo" Type="nvarchar" MaxLength="20" />
+          <Property Name="FechaCompromiso" Type="datetime" />
+          <Property Name="CausalMoraAnt" Type="varchar" MaxLength="250" />
+          <Property Name="FeCre" Type="datetime" />
+          <Property Name="FeMod" Type="datetime" />
+          <Property Name="UsrCre" Type="nvarchar" MaxLength="20" />
+          <Property Name="UsrMod" Type="varchar" MaxLength="20" />
+          <Property Name="asignacionClienteID" Type="int" />
+          <Property Name="causalMoraID" Type="int" />
+          <Property Name="compromisoPagoID" Type="int" />
+          <Property Name="tipoGestionID" Type="int" />
+          <Property Name="presenciaClienteID" Type="int" />
+          <Property Name="probalidadPagoID" Type="int" />
+        </EntityType>
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TipoGestionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="PerfilID" />
+          </Key>
+          <Property Name="PerfilNombre" Type="varchar" MaxLength="100" />
+          <Property Name="PerfilDescripcion" Type="varchar" MaxLength="100" />
+          <Property Name="PerfilHabilitado" Type="bit" />
+          <Property Name="PerfilID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="PermisoID" />
+          </Key>
+          <Property Name="PermisoNombre" Type="varchar" MaxLength="100" />
+          <Property Name="PermisoPadreID" Type="int" />
+          <Property Name="PermisoOrden" Type="int" />
+          <Property Name="PermisoID" Type="int" Nullable="false" />
+          <Property Name="PermisoMenuID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProbalidadPago">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TipoGestion">
+          <Key>
+            <PropertyRef Name="tipoGestionID" />
+          </Key>
+          <Property Name="tipoGestionID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioNombre" Type="varchar" MaxLength="200" />
+          <Property Name="UsuarioApellido1" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioApellido2" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioEmail" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioTelefono" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioLogin" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioContrasena" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioHabilitado" Type="bit" />
+          <Property Name="UsuarioEsSuperAdmin" Type="bit" />
+          <Property Name="UsuarioCambiarContrasena" Type="bit" />
+          <Property Name="UsuarioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuaruoIPRestringido">
+          <Key>
+            <PropertyRef Name="usuaruoIPRestringidoID" />
+          </Key>
+          <Property Name="DireccionIP" Type="varchar" MaxLength="50" />
+          <Property Name="Habilitado" Type="bit" />
+          <Property Name="usuaruoIPRestringidoID" Type="int" Nullable="false" />
+          <Property Name="usuarioID" Type="int" />
+        </EntityType>
+        <Association Name="FK_AsignacionCliente_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="AsignacionCliente" Type="Self.AsignacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="AsignacionCliente">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuotas_AsignacionCliente">
+          <End Role="AsignacionCliente" Type="Self.AsignacionCliente" Multiplicity="0..1" />
+          <End Role="Cuotas" Type="Self.Cuotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsignacionCliente">
+              <PropertyRef Name="asignacionClienteID" />
+            </Principal>
+            <Dependent Role="Cuotas">
+              <PropertyRef Name="AsignacionClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaseUsuario_Fase">
+          <End Role="Fase" Type="Self.Fase" Multiplicity="0..1" />
+          <End Role="FaseUsuario" Type="Self.FaseUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaseUsuario">
+              <PropertyRef Name="Idfase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaseUsuario_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="FaseUsuario" Type="Self.FaseUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="FaseUsuario">
+              <PropertyRef Name="Idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoinPerfilToUsuario_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="JoinPerfilToUsuario" Type="Self.JoinPerfilToUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="PerfilID" />
+            </Principal>
+            <Dependent Role="JoinPerfilToUsuario">
+              <PropertyRef Name="perfilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoinPerfilToUsuario_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="JoinPerfilToUsuario" Type="Self.JoinPerfilToUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="JoinPerfilToUsuario">
+              <PropertyRef Name="usuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoinPermisoToPerfil_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="JoinPermisoToPerfil" Type="Self.JoinPermisoToPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="PerfilID" />
+            </Principal>
+            <Dependent Role="JoinPermisoToPerfil">
+              <PropertyRef Name="perfilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoinPermisoToPerfil_Permiso">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="1" />
+          <End Role="JoinPermisoToPerfil" Type="Self.JoinPermisoToPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="PermisoID" />
+            </Principal>
+            <Dependent Role="JoinPermisoToPerfil">
+              <PropertyRef Name="permisoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoinPermisoToUsuario_Permiso">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="1" />
+          <End Role="JoinPermisoToUsuario" Type="Self.JoinPermisoToUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="PermisoID" />
+            </Principal>
+            <Dependent Role="JoinPermisoToUsuario">
+              <PropertyRef Name="permisoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JoinPermisoToUsuario_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="JoinPermisoToUsuario" Type="Self.JoinPermisoToUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="JoinPermisoToUsuario">
+              <PropertyRef Name="usuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_AsignacionCliente">
+          <End Role="AsignacionCliente" Type="Self.AsignacionCliente" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsignacionCliente">
+              <PropertyRef Name="asignacionClienteID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="asignacionClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_CausalMora">
+          <End Role="CausalMora" Type="Self.CausalMora" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CausalMora">
+              <PropertyRef Name="causalMoraID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="causalMoraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_CompromisoPago">
+          <End Role="CompromisoPago" Type="Self.CompromisoPago" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompromisoPago">
+              <PropertyRef Name="compromisoPagoID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="compromisoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_ProbalidadPago">
+          <End Role="ProbalidadPago" Type="Self.ProbalidadPago" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProbalidadPago">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="probalidadPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_TipoGestion">
+          <End Role="TipoGestion" Type="Self.TipoGestion" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoGestion">
+              <PropertyRef Name="tipoGestionID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="tipoGestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parametros_TipoGestion">
+          <End Role="TipoGestion" Type="Self.TipoGestion" Multiplicity="0..1" />
+          <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoGestion">
+              <PropertyRef Name="tipoGestionID" />
+            </Principal>
+            <Dependent Role="Parametros">
+              <PropertyRef Name="TipoGestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permiso_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="PermisoMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permiso_Permiso1">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="0..1" />
+          <End Role="Permiso1" Type="Self.Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="PermisoID" />
+            </Principal>
+            <Dependent Role="Permiso1">
+              <PropertyRef Name="PermisoPadreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuaruoIPRestringido_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuaruoIPRestringido" Type="Self.UsuaruoIPRestringido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="UsuaruoIPRestringido">
+              <PropertyRef Name="usuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AsignarClienteMora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="periodo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="COBRANZA_CBModelStoreContainer">
+          <EntitySet Name="AsignacionCliente" EntityType="Self.AsignacionCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CausalMora" EntityType="Self.CausalMora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompromisoPago" EntityType="Self.CompromisoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuotas" EntityType="Self.Cuotas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fase" EntityType="Self.Fase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FaseUsuario" EntityType="Self.FaseUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JoinPerfilToUsuario" EntityType="Self.JoinPerfilToUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JoinPermisoToPerfil" EntityType="Self.JoinPermisoToPerfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JoinPermisoToUsuario" EntityType="Self.JoinPermisoToUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperacionCobranza" EntityType="Self.OperacionCobranza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProbalidadPago" EntityType="Self.ProbalidadPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoGestion" EntityType="Self.TipoGestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuaruoIPRestringido" EntityType="Self.UsuaruoIPRestringido" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AsignacionCliente_Usuario" Association="Self.FK_AsignacionCliente_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="AsignacionCliente" EntitySet="AsignacionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuotas_AsignacionCliente" Association="Self.FK_Cuotas_AsignacionCliente">
+            <End Role="AsignacionCliente" EntitySet="AsignacionCliente" />
+            <End Role="Cuotas" EntitySet="Cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaseUsuario_Fase" Association="Self.FK_FaseUsuario_Fase">
+            <End Role="Fase" EntitySet="Fase" />
+            <End Role="FaseUsuario" EntitySet="FaseUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaseUsuario_Usuario" Association="Self.FK_FaseUsuario_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="FaseUsuario" EntitySet="FaseUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoinPerfilToUsuario_Perfil" Association="Self.FK_JoinPerfilToUsuario_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="JoinPerfilToUsuario" EntitySet="JoinPerfilToUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoinPerfilToUsuario_Usuario" Association="Self.FK_JoinPerfilToUsuario_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="JoinPerfilToUsuario" EntitySet="JoinPerfilToUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoinPermisoToPerfil_Perfil" Association="Self.FK_JoinPermisoToPerfil_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="JoinPermisoToPerfil" EntitySet="JoinPermisoToPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoinPermisoToPerfil_Permiso" Association="Self.FK_JoinPermisoToPerfil_Permiso">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="JoinPermisoToPerfil" EntitySet="JoinPermisoToPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoinPermisoToUsuario_Permiso" Association="Self.FK_JoinPermisoToUsuario_Permiso">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="JoinPermisoToUsuario" EntitySet="JoinPermisoToUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JoinPermisoToUsuario_Usuario" Association="Self.FK_JoinPermisoToUsuario_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="JoinPermisoToUsuario" EntitySet="JoinPermisoToUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_AsignacionCliente" Association="Self.FK_OperacionCobranza_AsignacionCliente">
+            <End Role="AsignacionCliente" EntitySet="AsignacionCliente" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_CausalMora" Association="Self.FK_OperacionCobranza_CausalMora">
+            <End Role="CausalMora" EntitySet="CausalMora" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_CompromisoPago" Association="Self.FK_OperacionCobranza_CompromisoPago">
+            <End Role="CompromisoPago" EntitySet="CompromisoPago" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_ProbalidadPago" Association="Self.FK_OperacionCobranza_ProbalidadPago">
+            <End Role="ProbalidadPago" EntitySet="ProbalidadPago" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_TipoGestion" Association="Self.FK_OperacionCobranza_TipoGestion">
+            <End Role="TipoGestion" EntitySet="TipoGestion" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parametros_TipoGestion" Association="Self.FK_Parametros_TipoGestion">
+            <End Role="TipoGestion" EntitySet="TipoGestion" />
+            <End Role="Parametros" EntitySet="Parametros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Permiso" EntitySet="Permiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permiso_Permiso1" Association="Self.FK_Permiso_Permiso1">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="Permiso1" EntitySet="Permiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuaruoIPRestringido_Usuario" Association="Self.FK_UsuaruoIPRestringido_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuaruoIPRestringido" EntitySet="UsuaruoIPRestringido" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COBRANZA_CBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AsignacionCliente">
+          <Key>
+            <PropertyRef Name="asignacionClienteID" />
+          </Key>
+          <Property Name="asignacionClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAsignacion" Type="DateTime" Precision="0" />
+          <Property Name="UsrCre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UsrMod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FeCre" Type="DateTime" Precision="0" />
+          <Property Name="FechaMod" Type="DateTime" Precision="0" />
+          <Property Name="CodUsuario" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaReasignacion" Type="DateTime" Precision="3" />
+          <Property Name="Periodo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_AsignacionCliente_Usuario" FromRole="AsignacionCliente" ToRole="Usuario" />
+          <NavigationProperty Name="Cuotas" Relationship="Self.FK_Cuotas_AsignacionCliente" FromRole="AsignacionCliente" ToRole="Cuotas" />
+          <NavigationProperty Name="OperacionCobranzas" Relationship="Self.FK_OperacionCobranza_AsignacionCliente" FromRole="AsignacionCliente" ToRole="OperacionCobranza" />
+        </EntityType>
+        <EntityType Name="CausalMora">
+          <Key>
+            <PropertyRef Name="causalMoraID" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="causalMoraID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OperacionCobranzas" Relationship="Self.FK_OperacionCobranza_CausalMora" FromRole="CausalMora" ToRole="OperacionCobranza" />
+        </EntityType>
+        <EntityType Name="CompromisoPago">
+          <Key>
+            <PropertyRef Name="compromisoPagoID" />
+          </Key>
+          <Property Name="compromisoPagoID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OperacionCobranzas" Relationship="Self.FK_OperacionCobranza_CompromisoPago" FromRole="CompromisoPago" ToRole="OperacionCobranza" />
+        </EntityType>
+        <EntityType Name="Cuota">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NroCoutas" Type="Int32" />
+          <Property Name="Periodo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AsignacionClienteID" Type="Int32" />
+          <NavigationProperty Name="AsignacionCliente" Relationship="Self.FK_Cuotas_AsignacionCliente" FromRole="Cuotas" ToRole="AsignacionCliente" />
+        </EntityType>
+        <EntityType Name="Fase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FaseUsuarios" Relationship="Self.FK_FaseUsuario_Fase" FromRole="Fase" ToRole="FaseUsuario" />
+        </EntityType>
+        <EntityType Name="FaseUsuario">
+          <Key>
+            <PropertyRef Name="IDfaseusuario" />
+          </Key>
+          <Property Name="IDfaseusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idfase" Type="Int32" />
+          <Property Name="Idusuario" Type="Int32" />
+          <NavigationProperty Name="Fase" Relationship="Self.FK_FaseUsuario_Fase" FromRole="FaseUsuario" ToRole="Fase" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_FaseUsuario_Usuario" FromRole="FaseUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="Texto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Controlador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Accion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MenuPadre" Type="Int32" />
+          <Property Name="Orden" Type="Int32" />
+          <Property Name="EsGlobal" Type="Boolean" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Permisoes" Relationship="Self.FK_Permiso_Menu" FromRole="Menu" ToRole="Permiso" />
+        </EntityType>
+        <EntityType Name="OperacionCobranza">
+          <Key>
+            <PropertyRef Name="operacionCobranzaID" />
+          </Key>
+          <Property Name="operacionCobranzaID" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonoAlternativo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCompromiso" Type="DateTime" Precision="3" />
+          <Property Name="CausalMoraAnt" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FeCre" Type="DateTime" Precision="3" />
+          <Property Name="FeMod" Type="DateTime" Precision="3" />
+          <Property Name="UsrCre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UsrMod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="asignacionClienteID" Type="Int32" />
+          <Property Name="causalMoraID" Type="Int32" />
+          <Property Name="compromisoPagoID" Type="Int32" />
+          <Property Name="tipoGestionID" Type="Int32" />
+          <Property Name="presenciaClienteID" Type="Int32" />
+          <Property Name="probalidadPagoID" Type="Int32" />
+          <NavigationProperty Name="AsignacionCliente" Relationship="Self.FK_OperacionCobranza_AsignacionCliente" FromRole="OperacionCobranza" ToRole="AsignacionCliente" />
+          <NavigationProperty Name="CausalMora" Relationship="Self.FK_OperacionCobranza_CausalMora" FromRole="OperacionCobranza" ToRole="CausalMora" />
+          <NavigationProperty Name="CompromisoPago" Relationship="Self.FK_OperacionCobranza_CompromisoPago" FromRole="OperacionCobranza" ToRole="CompromisoPago" />
+          <NavigationProperty Name="ProbalidadPago" Relationship="Self.FK_OperacionCobranza_ProbalidadPago" FromRole="OperacionCobranza" ToRole="ProbalidadPago" />
+          <NavigationProperty Name="TipoGestion" Relationship="Self.FK_OperacionCobranza_TipoGestion" FromRole="OperacionCobranza" ToRole="TipoGestion" />
+        </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoGestionId" Type="Int32" />
+          <NavigationProperty Name="TipoGestion" Relationship="Self.FK_Parametros_TipoGestion" FromRole="Parametros" ToRole="TipoGestion" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="PerfilID" />
+          </Key>
+          <Property Name="PerfilNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PerfilDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PerfilHabilitado" Type="Boolean" />
+          <Property Name="PerfilID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.JoinPerfilToUsuario" FromRole="Perfil" ToRole="Usuario" />
+          <NavigationProperty Name="Permisoes" Relationship="Self.JoinPermisoToPerfil" FromRole="Perfil" ToRole="Permiso" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="PermisoID" />
+          </Key>
+          <Property Name="PermisoNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PermisoPadreID" Type="Int32" />
+          <Property Name="PermisoOrden" Type="Int32" />
+          <Property Name="PermisoID" Type="Int32" Nullable="false" />
+          <Property Name="PermisoMenuID" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_Permiso_Menu" FromRole="Permiso" ToRole="Menu" />
+          <NavigationProperty Name="Permiso1" Relationship="Self.FK_Permiso_Permiso1" FromRole="Permiso" ToRole="Permiso1" />
+          <NavigationProperty Name="Permiso2" Relationship="Self.FK_Permiso_Permiso1" FromRole="Permiso1" ToRole="Permiso" />
+          <NavigationProperty Name="Perfils" Relationship="Self.JoinPermisoToPerfil" FromRole="Permiso" ToRole="Perfil" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.JoinPermisoToUsuario" FromRole="Permiso" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="ProbalidadPago">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperacionCobranzas" Relationship="Self.FK_OperacionCobranza_ProbalidadPago" FromRole="ProbalidadPago" ToRole="OperacionCobranza" />
+        </EntityType>
+        <EntityType Name="TipoGestion">
+          <Key>
+            <PropertyRef Name="tipoGestionID" />
+          </Key>
+          <Property Name="tipoGestionID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OperacionCobranzas" Relationship="Self.FK_OperacionCobranza_TipoGestion" FromRole="TipoGestion" ToRole="OperacionCobranza" />
+          <NavigationProperty Name="Parametros" Relationship="Self.FK_Parametros_TipoGestion" FromRole="TipoGestion" ToRole="Parametros" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioNombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioApellido1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioApellido2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioTelefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioLogin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioContrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioHabilitado" Type="Boolean" />
+          <Property Name="UsuarioEsSuperAdmin" Type="Boolean" />
+          <Property Name="UsuarioCambiarContrasena" Type="Boolean" />
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AsignacionClientes" Relationship="Self.FK_AsignacionCliente_Usuario" FromRole="Usuario" ToRole="AsignacionCliente" />
+          <NavigationProperty Name="FaseUsuarios" Relationship="Self.FK_FaseUsuario_Usuario" FromRole="Usuario" ToRole="FaseUsuario" />
+          <NavigationProperty Name="UsuaruoIPRestringidoes" Relationship="Self.FK_UsuaruoIPRestringido_Usuario" FromRole="Usuario" ToRole="UsuaruoIPRestringido" />
+          <NavigationProperty Name="Perfils" Relationship="Self.JoinPerfilToUsuario" FromRole="Usuario" ToRole="Perfil" />
+          <NavigationProperty Name="Permisoes" Relationship="Self.JoinPermisoToUsuario" FromRole="Usuario" ToRole="Permiso" />
+        </EntityType>
+        <EntityType Name="UsuaruoIPRestringido">
+          <Key>
+            <PropertyRef Name="usuaruoIPRestringidoID" />
+          </Key>
+          <Property Name="DireccionIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Habilitado" Type="Boolean" />
+          <Property Name="usuaruoIPRestringidoID" Type="Int32" Nullable="false" />
+          <Property Name="usuarioID" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_UsuaruoIPRestringido_Usuario" FromRole="UsuaruoIPRestringido" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_AsignacionCliente_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="AsignacionCliente" Type="Self.AsignacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="AsignacionCliente">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuotas_AsignacionCliente">
+          <End Role="AsignacionCliente" Type="Self.AsignacionCliente" Multiplicity="0..1" />
+          <End Role="Cuotas" Type="Self.Cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsignacionCliente">
+              <PropertyRef Name="asignacionClienteID" />
+            </Principal>
+            <Dependent Role="Cuotas">
+              <PropertyRef Name="AsignacionClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_AsignacionCliente">
+          <End Role="AsignacionCliente" Type="Self.AsignacionCliente" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsignacionCliente">
+              <PropertyRef Name="asignacionClienteID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="asignacionClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_CausalMora">
+          <End Role="CausalMora" Type="Self.CausalMora" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CausalMora">
+              <PropertyRef Name="causalMoraID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="causalMoraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_CompromisoPago">
+          <End Role="CompromisoPago" Type="Self.CompromisoPago" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompromisoPago">
+              <PropertyRef Name="compromisoPagoID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="compromisoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaseUsuario_Fase">
+          <End Role="Fase" Type="Self.Fase" Multiplicity="0..1" />
+          <End Role="FaseUsuario" Type="Self.FaseUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaseUsuario">
+              <PropertyRef Name="Idfase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaseUsuario_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="FaseUsuario" Type="Self.FaseUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="FaseUsuario">
+              <PropertyRef Name="Idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permiso_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="PermisoMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_ProbalidadPago">
+          <End Role="ProbalidadPago" Type="Self.ProbalidadPago" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProbalidadPago">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="probalidadPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperacionCobranza_TipoGestion">
+          <End Role="TipoGestion" Type="Self.TipoGestion" Multiplicity="0..1" />
+          <End Role="OperacionCobranza" Type="Self.OperacionCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoGestion">
+              <PropertyRef Name="tipoGestionID" />
+            </Principal>
+            <Dependent Role="OperacionCobranza">
+              <PropertyRef Name="tipoGestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parametros_TipoGestion">
+          <End Role="TipoGestion" Type="Self.TipoGestion" Multiplicity="0..1" />
+          <End Role="Parametros" Type="Self.Parametro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoGestion">
+              <PropertyRef Name="tipoGestionID" />
+            </Principal>
+            <Dependent Role="Parametros">
+              <PropertyRef Name="TipoGestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permiso_Permiso1">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="0..1" />
+          <End Role="Permiso1" Type="Self.Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="PermisoID" />
+            </Principal>
+            <Dependent Role="Permiso1">
+              <PropertyRef Name="PermisoPadreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuaruoIPRestringido_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuaruoIPRestringido" Type="Self.UsuaruoIPRestringido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="UsuaruoIPRestringido">
+              <PropertyRef Name="usuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JoinPerfilToUsuario">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <Association Name="JoinPermisoToPerfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="*" />
+        </Association>
+        <Association Name="JoinPermisoToUsuario">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="COBRANZA_CBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AsignacionClientes" EntityType="Self.AsignacionCliente" />
+          <EntitySet Name="CausalMoras" EntityType="Self.CausalMora" />
+          <EntitySet Name="CompromisoPagoes" EntityType="Self.CompromisoPago" />
+          <EntitySet Name="Cuotas" EntityType="Self.Cuota" />
+          <EntitySet Name="Fases" EntityType="Self.Fase" />
+          <EntitySet Name="FaseUsuarios" EntityType="Self.FaseUsuario" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="OperacionCobranzas" EntityType="Self.OperacionCobranza" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametro" />
+          <EntitySet Name="Perfils" EntityType="Self.Perfil" />
+          <EntitySet Name="Permisoes" EntityType="Self.Permiso" />
+          <EntitySet Name="ProbalidadPagoes" EntityType="Self.ProbalidadPago" />
+          <EntitySet Name="TipoGestions" EntityType="Self.TipoGestion" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="UsuaruoIPRestringidoes" EntityType="Self.UsuaruoIPRestringido" />
+          <AssociationSet Name="FK_AsignacionCliente_Usuario" Association="Self.FK_AsignacionCliente_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="AsignacionCliente" EntitySet="AsignacionClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuotas_AsignacionCliente" Association="Self.FK_Cuotas_AsignacionCliente">
+            <End Role="AsignacionCliente" EntitySet="AsignacionClientes" />
+            <End Role="Cuotas" EntitySet="Cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_AsignacionCliente" Association="Self.FK_OperacionCobranza_AsignacionCliente">
+            <End Role="AsignacionCliente" EntitySet="AsignacionClientes" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_CausalMora" Association="Self.FK_OperacionCobranza_CausalMora">
+            <End Role="CausalMora" EntitySet="CausalMoras" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_CompromisoPago" Association="Self.FK_OperacionCobranza_CompromisoPago">
+            <End Role="CompromisoPago" EntitySet="CompromisoPagoes" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaseUsuario_Fase" Association="Self.FK_FaseUsuario_Fase">
+            <End Role="Fase" EntitySet="Fases" />
+            <End Role="FaseUsuario" EntitySet="FaseUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaseUsuario_Usuario" Association="Self.FK_FaseUsuario_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="FaseUsuario" EntitySet="FaseUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Permiso" EntitySet="Permisoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_ProbalidadPago" Association="Self.FK_OperacionCobranza_ProbalidadPago">
+            <End Role="ProbalidadPago" EntitySet="ProbalidadPagoes" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperacionCobranza_TipoGestion" Association="Self.FK_OperacionCobranza_TipoGestion">
+            <End Role="TipoGestion" EntitySet="TipoGestions" />
+            <End Role="OperacionCobranza" EntitySet="OperacionCobranzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parametros_TipoGestion" Association="Self.FK_Parametros_TipoGestion">
+            <End Role="TipoGestion" EntitySet="TipoGestions" />
+            <End Role="Parametros" EntitySet="Parametros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permiso_Permiso1" Association="Self.FK_Permiso_Permiso1">
+            <End Role="Permiso" EntitySet="Permisoes" />
+            <End Role="Permiso1" EntitySet="Permisoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuaruoIPRestringido_Usuario" Association="Self.FK_UsuaruoIPRestringido_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="UsuaruoIPRestringido" EntitySet="UsuaruoIPRestringidoes" />
+          </AssociationSet>
+          <AssociationSet Name="JoinPerfilToUsuario" Association="Self.JoinPerfilToUsuario">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="JoinPermisoToPerfil" Association="Self.JoinPermisoToPerfil">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="Permiso" EntitySet="Permisoes" />
+          </AssociationSet>
+          <AssociationSet Name="JoinPermisoToUsuario" Association="Self.JoinPermisoToUsuario">
+            <End Role="Permiso" EntitySet="Permisoes" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <FunctionImport Name="AsignarClienteMora">
+            <Parameter Name="periodo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(COBRANZA_CBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(COBRANZA_CBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COBRANZA_CBModelStoreContainer" CdmEntityContainer="COBRANZA_CBEntities">
+          <EntitySetMapping Name="AsignacionClientes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.AsignacionCliente">
+              <MappingFragment StoreEntitySet="AsignacionCliente">
+                <ScalarProperty Name="asignacionClienteID" ColumnName="asignacionClienteID" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="FechaAsignacion" ColumnName="FechaAsignacion" />
+                <ScalarProperty Name="UsrCre" ColumnName="UsrCre" />
+                <ScalarProperty Name="UsrMod" ColumnName="UsrMod" />
+                <ScalarProperty Name="FeCre" ColumnName="FeCre" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaReasignacion" ColumnName="FechaReasignacion" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CausalMoras">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.CausalMora">
+              <MappingFragment StoreEntitySet="CausalMora">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="causalMoraID" ColumnName="causalMoraID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompromisoPagoes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.CompromisoPago">
+              <MappingFragment StoreEntitySet="CompromisoPago">
+                <ScalarProperty Name="compromisoPagoID" ColumnName="compromisoPagoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuotas">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Cuota">
+              <MappingFragment StoreEntitySet="Cuotas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NroCoutas" ColumnName="NroCoutas" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="AsignacionClienteID" ColumnName="AsignacionClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fases">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Fase">
+              <MappingFragment StoreEntitySet="Fase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaseUsuarios">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.FaseUsuario">
+              <MappingFragment StoreEntitySet="FaseUsuario">
+                <ScalarProperty Name="IDfaseusuario" ColumnName="IDfaseusuario" />
+                <ScalarProperty Name="Idfase" ColumnName="Idfase" />
+                <ScalarProperty Name="Idusuario" ColumnName="Idusuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="Controlador" ColumnName="Controlador" />
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="MenuPadre" ColumnName="MenuPadre" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="EsGlobal" ColumnName="EsGlobal" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperacionCobranzas">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.OperacionCobranza">
+              <MappingFragment StoreEntitySet="OperacionCobranza">
+                <ScalarProperty Name="operacionCobranzaID" ColumnName="operacionCobranzaID" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="TelefonoAlternativo" ColumnName="TelefonoAlternativo" />
+                <ScalarProperty Name="FechaCompromiso" ColumnName="FechaCompromiso" />
+                <ScalarProperty Name="CausalMoraAnt" ColumnName="CausalMoraAnt" />
+                <ScalarProperty Name="FeCre" ColumnName="FeCre" />
+                <ScalarProperty Name="FeMod" ColumnName="FeMod" />
+                <ScalarProperty Name="UsrCre" ColumnName="UsrCre" />
+                <ScalarProperty Name="UsrMod" ColumnName="UsrMod" />
+                <ScalarProperty Name="asignacionClienteID" ColumnName="asignacionClienteID" />
+                <ScalarProperty Name="causalMoraID" ColumnName="causalMoraID" />
+                <ScalarProperty Name="compromisoPagoID" ColumnName="compromisoPagoID" />
+                <ScalarProperty Name="tipoGestionID" ColumnName="tipoGestionID" />
+                <ScalarProperty Name="presenciaClienteID" ColumnName="presenciaClienteID" />
+                <ScalarProperty Name="probalidadPagoID" ColumnName="probalidadPagoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Parametro">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoGestionId" ColumnName="TipoGestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfils">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="PerfilNombre" ColumnName="PerfilNombre" />
+                <ScalarProperty Name="PerfilDescripcion" ColumnName="PerfilDescripcion" />
+                <ScalarProperty Name="PerfilHabilitado" ColumnName="PerfilHabilitado" />
+                <ScalarProperty Name="PerfilID" ColumnName="PerfilID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisoes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Permiso">
+              <MappingFragment StoreEntitySet="Permiso">
+                <ScalarProperty Name="PermisoNombre" ColumnName="PermisoNombre" />
+                <ScalarProperty Name="PermisoPadreID" ColumnName="PermisoPadreID" />
+                <ScalarProperty Name="PermisoOrden" ColumnName="PermisoOrden" />
+                <ScalarProperty Name="PermisoID" ColumnName="PermisoID" />
+                <ScalarProperty Name="PermisoMenuID" ColumnName="PermisoMenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProbalidadPagoes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.ProbalidadPago">
+              <MappingFragment StoreEntitySet="ProbalidadPago">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoGestions">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.TipoGestion">
+              <MappingFragment StoreEntitySet="TipoGestion">
+                <ScalarProperty Name="tipoGestionID" ColumnName="tipoGestionID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="UsuarioNombre" ColumnName="UsuarioNombre" />
+                <ScalarProperty Name="UsuarioApellido1" ColumnName="UsuarioApellido1" />
+                <ScalarProperty Name="UsuarioApellido2" ColumnName="UsuarioApellido2" />
+                <ScalarProperty Name="UsuarioEmail" ColumnName="UsuarioEmail" />
+                <ScalarProperty Name="UsuarioTelefono" ColumnName="UsuarioTelefono" />
+                <ScalarProperty Name="UsuarioLogin" ColumnName="UsuarioLogin" />
+                <ScalarProperty Name="UsuarioContrasena" ColumnName="UsuarioContrasena" />
+                <ScalarProperty Name="UsuarioHabilitado" ColumnName="UsuarioHabilitado" />
+                <ScalarProperty Name="UsuarioEsSuperAdmin" ColumnName="UsuarioEsSuperAdmin" />
+                <ScalarProperty Name="UsuarioCambiarContrasena" ColumnName="UsuarioCambiarContrasena" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuaruoIPRestringidoes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.UsuaruoIPRestringido">
+              <MappingFragment StoreEntitySet="UsuaruoIPRestringido">
+                <ScalarProperty Name="DireccionIP" ColumnName="DireccionIP" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+                <ScalarProperty Name="usuaruoIPRestringidoID" ColumnName="usuaruoIPRestringidoID" />
+                <ScalarProperty Name="usuarioID" ColumnName="usuarioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="JoinPerfilToUsuario" TypeName="COBRANZA_CBModel.JoinPerfilToUsuario" StoreEntitySet="JoinPerfilToUsuario">
+            <EndProperty Name="Perfil">
+              <ScalarProperty Name="PerfilID" ColumnName="perfilID" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="UsuarioID" ColumnName="usuarioID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="JoinPermisoToPerfil" TypeName="COBRANZA_CBModel.JoinPermisoToPerfil" StoreEntitySet="JoinPermisoToPerfil">
+            <EndProperty Name="Perfil">
+              <ScalarProperty Name="PerfilID" ColumnName="perfilID" />
+            </EndProperty>
+            <EndProperty Name="Permiso">
+              <ScalarProperty Name="PermisoID" ColumnName="permisoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="JoinPermisoToUsuario" TypeName="COBRANZA_CBModel.JoinPermisoToUsuario" StoreEntitySet="JoinPermisoToUsuario">
+            <EndProperty Name="Permiso">
+              <ScalarProperty Name="PermisoID" ColumnName="permisoID" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="UsuarioID" ColumnName="usuarioID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AsignarClienteMora" FunctionName="COBRANZA_CBModel.Store.AsignarClienteMora" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="COBRANZA_CBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="COBRANZA_CBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="COBRANZA_CBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="COBRANZA_CBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COBRANZA_CBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="COBRANZA_CBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COBRANZA_CBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="COBRANZA_CBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COBRANZA_CBModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

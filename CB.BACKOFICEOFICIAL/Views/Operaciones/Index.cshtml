@@ -1,0 +1,463 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listass = (List<KeyValuePair<int, string>>)ViewBag.tipogestion;
+}
+<section class="content-header">
+    <h1>
+        Atencion de cobranzas
+        <small>En Mora</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Clientes</h3>
+                </div>
+                <div class="box-body">
+                    <div id="gridCliente" class="ag-theme-balham" style="height:300px;">  </div>
+                </div>
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos cliente</h3>
+                </div>
+                <div class="box-body" id="infocliente">
+                    @Html.Partial("_VerDatosPersonales")
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-info">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Couta en mora</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Couta en moara pagadas</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div id="gridCuotaPagadas" class="ag-theme-balham" style="height:300px;">  </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+
+                            <div id="gridCuotaNoPagadas" class="ag-theme-balham" style="height:300px;">  </div>
+                        </div>
+                        <!-- /.tab-pane -->
+
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- nav-tabs-custom -->
+            </div>
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Operaciones realizadas</h3>
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="Operacion" onclick="Operacion();" />
+
+                    @Html.DropDownList("dll", new SelectList(listass.ToList(), "Key", "Value"), "--Select ----", new { @class = "form-control select2 pull-right   margin-r-5", @style = "width: 40%;" })
+
+                    @*<select id="seltipogestion" class="form-control select2 pull-right   margin-r-5" style="width: 40%;">*@
+
+                    @* </select>*@
+
+
+                </div>
+                <div class="box-body">
+                    <div id="gridOperaciones" class="ag-theme-balham" style="height:286px;"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<div class="row clearfix">
+    <div id="Idcreate">
+
+        <div id="myoperacion" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            @Html.Partial("_Create")
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var sw = 0;
+    $(document).ready(function (e) {
+        Listar();
+        @*var list=$.parse(JSON( @listass));
+        $('#seltipogestion').append('<option value=0 >Seleccionar... </option>');
+        $.each(list,function(index,data){
+            $('#seltipogestion').append('<option value='+data.Key+'>'+data.Value+'</option>');
+        });
+        $('#seltipogestion').focus();*@
+
+    });
+    var columnDefsAsignadas = [
+            { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+            { headerName: "Nombre", field: "NombreP", width: 150 },
+            { headerName: "Apellido", field: "Apellido", width: 100 },
+            { headerName: "sexo", field: "Sexo", width: 100 },
+            { headerName: "Vendedor", field: "EsVendedor", width: 200 }
+
+    ];
+    //// cuentas en mora
+    var columnDefsCuotasNoPagadas = [
+        { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+        { headerName: "Codigo", field: "Codigo", width: 150 },
+        { headerName: "Nro Cuota", field: "NroCuota", width: 90 },
+        { headerName: "Dias Atraso", field: "diasAtraso", width: 100 },
+        { headerName: "Doc", field: "Doc", width: 200 },
+        { headerName: "Interes mora", field: "InteresMora", width: 100 },
+        { headerName: "Total Cuota", valueGetter: 'data.NroCuota + data.diasAtraso', width: 80 }
+
+    ];
+    //// cuentas en mora
+    var columnDefsCuotasPagadas = [
+        { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+        { headerName: "Codigo", field: "Codigo", width: 150 },
+        { headerName: "Nro Cuota", field: "NroCuota", width: 90 },
+        { headerName: "Dias Atraso", field: "diasAtraso", width: 100 },
+        { headerName: "Monto fija", field: "montopagar", width: 200 },
+        { headerName: "Interes mora", field: "InteresMora", width: 100 },
+        { headerName: "Total Cuota", field: "total", valueGetter: 'data.montopagar + data.InteresMora', width: 80 }
+
+    ];
+
+    ////////////////// operaciones
+    var columnDefsOperaciones = [
+        { headerName: "ID", field: "operacionCobranzaID", width: 90 },
+        { headerName: "Fecha Compromiso", field: "FechaCompromiso", width: 150 },
+        { headerName: "Comentario", field: "Comentario", width: 150 },
+        { headerName: "Causal Mora anterior", field: "CausalMoraAnt", width: 100 },
+        { headerName: "Tipo gestion", field: "nombretipogetion", width: 150 },
+        { headerName: "Proabalida pago", field: "nombreprobalidadPago", width: 100 },
+        { headerName: "Compromiso Paga", field: "compromisoPago", width: 100 },
+        { headerName: "Telefono", field: "TelefonoAlternativo", width: 100 },
+        { headerName: "Presencia cliente", field: "nombrepresencia", width: 100 }
+
+    ];
+    var gridOptionsAsignadas = {
+        // set rowData to null or undefined to show loading panel by default
+        // rowData: rowData,
+        enableSorting: true,
+        enableFilter: true,
+
+        enableColResize: true,
+        columnDefs: columnDefsAsignadas,
+        
+        //rowSelection: 'multiple',
+        rowSelection: 'single',
+        onSelectionChanged: onSelectionChanged,
+        //enableRangeSelection: true,
+        pagination: true
+        //onRowSelected: rowSelectedFunc,
+        //onSelectionChanged: onSelectionChanged,
+        //rowClicked: onRowClicked
+
+        // custom loading template. the class ag-overlay-loading-center is part of the grid,
+        // it gives a white background and rounded border
+        //overlayLoadingTemplate: '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>',
+        //overlayNoRowsTemplate: '<span style="padding: 10px; border: 2px solid #444; background: lightgoldenrodyellow;">This is a custom \'no rows\' overlay</span>'
+    };
+    var gridOptionsCoutasNoPagadas = {
+
+        enableSorting: true,
+        enableFilter: true,
+
+        enableColResize: true,
+        columnDefs: columnDefsCuotasNoPagadas,
+        showToolPanel: false,
+
+        rowSelection: 'single',
+
+
+        rowModelType: 'pagination',
+    };
+    var gridOptionsCoutasPagadas = {
+
+        enableSorting: true,
+        enableFilter: true,
+
+        enableColResize: true,
+        columnDefs: columnDefsCuotasPagadas,
+        showToolPanel: false,
+
+        rowSelection: 'single',
+
+
+        pagination: true
+    };
+    var gridOptionsOperaciones = {
+        enableSorting: true,
+        enableFilter: true,
+
+        enableColResize: true,
+        columnDefs: columnDefsOperaciones,
+        showToolPanel: false,
+       
+        rowSelection: 'single',
+
+        pagination: true
+       
+    };
+    
+    function onPinnedRowBottomCount() {
+        var rows = SumRows();
+        gridOptionsCoutasPagadas.api.setPinnedBottomRowData(rows);
+    }
+    function createData(count, prefix) {
+        var result = [];
+        for (var i = 0; i < count; i++) {
+            result.push({
+                CodCliente: prefix + ' Athlete ' + i,
+                Codigo: prefix + ' Age ' + i,
+                NroCuota: prefix + ' Country ' + i,
+                diasAtraso: prefix + ' Year ' + i,
+                montopagar: prefix + ' Date ' + i,
+                InteresMora: prefix + ' Sport ' + i,
+                total: prefix + ' Sport ' + i
+
+            });
+        }
+        return result;
+    }
+    /// sumas de todas las filas rowssss
+    function SumRows() {
+        var montopaga = 0;
+        var interes = 0;
+        var totl = 0;
+        var result = [];
+        gridOptionsCoutasPagadas.api.forEachNode(function (rowNode, index) {
+            montopaga += rowNode.data.montopagar;
+            interes += rowNode.data.InteresMora;
+            
+        });
+        totl = montopaga+interes ;
+        result.push({
+            CodCliente:  'Totales:',
+            Codigo:  ' ' ,
+            NroCuota: ' ',
+            diasAtraso: ' ',
+            montopagar: ''+montopaga,
+            InteresMora:'' + interes,
+            total:'' + totl
+
+        });
+        return result;
+
+    }
+
+    //// select for rows of  frist configurations table clientes
+    function onSelectionChanged() {
+        var selectedRows = gridOptionsAsignadas.api.getSelectedRows();
+        var selectedRowsString = '';
+        selectedRows.forEach(function (selectedRow, index) {
+            if (index != 0) {
+                selectedRowsString += ', ';
+            }
+            selectedRowsString += selectedRow.CodCliente;
+        });
+        cargarDatosCleinteID(selectedRowsString);
+        selectedRowsClient = selectedRowsString;
+        //alert(selectedRowsString);
+        //document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+    }
+    ///// loanding... of the datos in tha table
+    var selectedRowsClient = "0";
+    
+    
+
+   
+
+    function createCuentas() {
+        var gridDivC = document.querySelector('#gridCuotas');
+        new agGrid.Grid(gridDivC, gridOptionsCoutasNoPagadas);
+    }
+
+    function createOperaciones() {
+        var gridDivO = document.querySelector('#gridOperaciones');
+        new agGrid.Grid(gridDivO, gridOptionsOperaciones);
+    }
+ 
+
+
+    function Listar() {
+        //$("#Lbl_MensajeError").html('');
+        //BloquearPantalla();
+        var gridDiv = document.querySelector('#gridCliente');
+        createGlobal(gridOptionsAsignadas, gridDiv);
+        
+        $.ajax({
+            url: "@Url.Action("PersonaAsigndos", "Operaciones")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsAsignadas);
+           // gridOptionsAsignadas.api.setRowData(html);
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log(" se ha completado");
+        });
+    }
+    function cargarDatosCleinteID(ids) {
+        BloquearPantalla();
+        cargarInfoCliente(ids);
+        cargarOperaciones(ids);
+        cargarCuotaMoraPagadas(ids);
+        DesbloquearPantalla();
+
+    }
+
+    function cargarInfoCliente(ids) {
+        $.ajax({
+            url: "@Url.Action("getInfocliente", "Operaciones")",
+            cache: false,
+            data: {
+                id: ids
+            },
+            type: "POST"
+        }).done(function (html) {
+            $("#infocliente").html(html);
+        }).fail(function () {
+            //DesbloquearPantalla();
+        }).always(function () {
+            console.log("complete operation");
+        });
+    }
+    function cargarOperaciones(ids) {
+        if (sw == 0) {
+            var gridDiv = document.querySelector('#gridOperaciones');
+            createGlobal(gridOptionsOperaciones, gridDiv);
+            sw = 1;
+        } else {
+            destroyGlobal(gridOptionsOperaciones)
+            var gridDiv = document.querySelector('#gridOperaciones');
+            createGlobal(gridOptionsOperaciones, gridDiv);
+        }
+
+        $.ajax({
+            url: "@Url.Action("getOperaciones", "Operaciones")",
+            cache: false,
+            data: {
+                id: ids
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsOperaciones);
+
+            //$("#infocliente").html(html);
+        }).fail(function (rep) {
+            //DesbloquearPantalla();
+            console.log(rep.responseText);
+        }).always(function () {
+            console.log("competandon la operacion");
+        });
+    }
+    var ssw = 0;
+    function cargarCuotaMoraNoPagadas(ids) {
+        if (ssw == 0) {
+            var gidDiv = document.querySelector('#gridCuotaNoPagadas');
+            createGlobal(gridOptionsCoutasNoPagadas, gidDiv);
+            ssw = 1;
+        } else {
+            destroyGlobal(gridOptionsCoutasNoPagadas);
+            var gidDiv = document.querySelector('#gridCuotaNoPagadas');
+            createGlobal(gridOptionsCoutasNoPagadas, gidDiv);
+
+        }
+        $.ajax({
+            url: "@Url.Action("getCuotasNoPagadas", "Operaciones")",
+            cache: false,
+            data: {
+                id: ids
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsCoutasNoPagadas);
+        }).fail(function (resp) {
+            //DesbloquearPantalla();
+            console.log(resp.responseText)
+        });
+    }
+    var ssp = 0;
+    function cargarCuotaMoraPagadas(ids) {
+        if (ssp == 0) {
+            var gidDiv = document.querySelector('#gridCuotaPagadas');
+            createGlobal(gridOptionsCoutasPagadas, gidDiv);
+            ssp = 1;
+        } else {
+            destroyGlobal(gridOptionsCoutasPagadas);
+            var gidDiv = document.querySelector('#gridCuotaPagadas');
+            createGlobal(gridOptionsCoutasPagadas, gidDiv);
+
+        }
+        $.ajax({
+            url: "@Url.Action("getCuotasPagadas", "Operaciones")",
+            cache: false,
+            data: {
+                id: ids
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsCoutasPagadas);
+            onPinnedRowBottomCount();
+        }).fail(function (resp) {
+
+            console.log(resp.responseText)
+        }).always(function () {
+            console.log("the process en exit")
+        });
+    }
+    function Operacion() {
+        var id = $("#dll option:selected").text();
+        var vall = $("#dll option:selected").val();
+        if (vall != "") {
+            $.ajax({
+                url: "@Url.Action("getOperacionesrr", "Operaciones")",
+                cache: false,
+                data: { id: vall, idclient: selectedRowsClient },
+                type: "POST"
+            }).done(function (html) {
+                $("#myoperacion").html(html);
+                $('#myoperacion').modal('show');
+                setDatosAdiconales();
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("complete the operacion");
+            });
+        }
+
+    }
+    function setDatosAdiconales() {
+        var nombre = $('#NombreP').val() + " " + $('#Apellido').val();
+        var correo = $('#Correo').val();
+        var telf = $('#Telefono').val();
+        if (nombre.length > 0) {
+            $('#nombrecompleto').val(nombre);
+            $('#nombrecompleto').prop('disabled', true);
+        }
+        if (correo.length > 0) {
+            $('#correo').val(correo);
+            $('#correo').prop('disabled', true);
+
+        }
+        if (telf.length > 0) {
+            $('#telefono').val(telf);
+            $('#telefono').prop('disabled', true);
+        }
+    }
+</script>

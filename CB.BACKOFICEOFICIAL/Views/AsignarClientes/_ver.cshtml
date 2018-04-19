@@ -1,0 +1,86 @@
+﻿@using CB.ENTIDADES
+@model AsignacionCliente
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Registrar Oficiales</h4>
+        </div>
+        <div class="modal-body">
+            <div class="box-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CodCliente)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CodCliente)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaAsignacion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaAsignacion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UsrCre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UsrCre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UsrMod)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UsrMod)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FeCre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FeCre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaMod)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaMod)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Usuario.Login)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Usuario.Login)
+                    </dd>
+
+                </dl>    
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <input type="submit" value="Guardar" class="btn btn-default" />*@
+
+
+            <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Close</button>
+            <input class="btn btn-primary" type="button" value="Guardar" />
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+

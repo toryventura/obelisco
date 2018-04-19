@@ -1,0 +1,73 @@
+﻿
+@model CB.ENTIDADES.ProbalidadPago
+@using (Ajax.BeginForm("Edit", "ProbalidadPago", null, new AjaxOptions()
+{
+    HttpMethod = "POST",
+    OnSuccess = "SuccessEdit",
+    OnFailure = "FailEdit"
+
+
+}, new { id = "ProbalidadPagoID" }))
+{
+    if (Model != null)
+    {
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Registrar Compromiso de Pago</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="form-group" style="display:none">
+                            <label class="col-sm-3 control-label" for="@Model.Nombre">ci</label>
+                            <div class="col-sm-9">
+
+                                @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Documento de Identidad" } })
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="@Model.Nombre">Nombre</label>
+                            <div class="col-sm-9">
+
+                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @placeholder = "Documento de Identidad" } })
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Guardar" class="btn btn-default" />*@
+                    <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Close</button>
+                    <input class="btn btn-primary" type="submit" value="Guardar" />
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    }
+
+}
+
+
+<!-- /.modal-dialog -->
+<script>
+    function SuccessEdit(e) {
+        if (e[0].Key == "OK") {
+            success(e[0].Value);
+            Listar();
+            $('#editmodal').modal('hide');
+        } else {
+            error(e[0].Value);
+        }
+    }
+    function FailEdit(e) {
+
+    }
+</script>
