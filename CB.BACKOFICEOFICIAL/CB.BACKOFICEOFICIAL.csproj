@@ -7748,6 +7748,7 @@
     <Compile Include="Controllers\PersonasMoraController.cs" />
     <Compile Include="Controllers\ProbalidadPagoController.cs" />
     <Compile Include="Controllers\RegistrarUsuarioController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\TipoGestionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -7818,6 +7819,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Report\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
