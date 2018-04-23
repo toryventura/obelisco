@@ -210,6 +210,7 @@ namespace CB.DATA.INVENTARIO
         public virtual DbSet<vw_SaldosPorCobrar> vw_SaldosPorCobrar { get; set; }
         public virtual DbSet<vw_UltCuotaPorPagar> vw_UltCuotaPorPagar { get; set; }
         public virtual DbSet<vw_ventaClientes> vw_ventaClientes { get; set; }
+        public virtual DbSet<CantidadClienteMora> CantidadClienteMoras { get; set; }
     
         [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_MoviemtoXcliente")]
         public virtual IQueryable<fn_MoviemtoXcliente_Result> fn_MoviemtoXcliente(Nullable<int> codcliente)

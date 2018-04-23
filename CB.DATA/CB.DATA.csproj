@@ -95,6 +95,9 @@
     <Compile Include="INVENTARIO\cantCuotasPagada.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\CantidadClienteMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\CategoriaVendedor.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
