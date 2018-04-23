@@ -17,7 +17,7 @@
     &&
     (
 
-        Usuario.Usuario.TodosLosPermisos.Any(y => y.MenuID == y.ID) || Usuario.SuperAdmin || m.EsGlobal || menus.Where(x => x.MenuPadre == m.ID && (Usuario.Usuario.TodosLosPermisos.Any(y => y.MenuID == x.ID) || Usuario.SuperAdmin || x.EsGlobal)).Count() > 0
+        Usuario.Usuario.TodosLosPermisos.Any(y => y.MenuID == m.ID) || Usuario.SuperAdmin || m.EsGlobal || menus.Where(x => x.MenuPadre == m.ID && (Usuario.Usuario.TodosLosPermisos.Any(y => y.MenuID == x.ID) || Usuario.SuperAdmin || x.EsGlobal)).Count() > 0
     )).ToList();
 
     foreach (var m in MenusPadres)

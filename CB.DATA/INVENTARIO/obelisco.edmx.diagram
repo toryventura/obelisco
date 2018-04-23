@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3af98a7e1e414722b4d63108889d6668" Name="Diagram1">
+      <Diagram DiagramId="3af98a7e1e414722b4d63108889d6668" Name="Diagram1" ZoomLevel="42">
         <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Almacen" Width="1.5" PointX="10" PointY="46.75" IsExpanded="true" />
         <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmacenMovimiento" Width="1.5" PointX="12.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.AlmMovImportacion" Width="1.5" PointX="8.25" PointY="37.125" IsExpanded="true" />
@@ -243,6 +243,7 @@
         <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.FK_Venta_A_Venta_A" ManuallyRouted="false" />
         <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.ClubClientes" ManuallyRouted="false" />
         <AssociationConnector Association="INVENTARIO_CONSTRUCTORA_OBELISCOModel.UsuarioPersona" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="INVENTARIO_CONSTRUCTORA_OBELISCOModel.CantidadClienteMora" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
