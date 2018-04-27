@@ -22,15 +22,21 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult ListaAsignado()
 		{
 			var mensajes = new List<KeyValuePair<string, string>>();
-			Perfil ps = Util.perfil;
+			Usuario us = Util.Usuario;
 			try
 			{
-				if (ps.Nombre == "Administrador")
+				if (us.Perfiles.FirstOrDefault().Nombre == "Administrador" || us.EsSuperAdmin)
 				{
 
+					var list = l.GetClientesAsignadosAll();
+					return PartialView("_ListaAsignado", list);
 				}
-				var list = l.GetClientesAsignadosAll();
-				return PartialView("_ListaAsignado", list);
+				else
+				{
+
+					var list = l.GetClientesAsignadosAll(Convert.ToInt32(us.ID));
+					return PartialView("_ListaAsignado", list);
+				}
 
 			}
 			catch (Exception ex)

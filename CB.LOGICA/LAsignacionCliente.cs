@@ -46,10 +46,9 @@ namespace CB.LOGICA
 					}
 					return lista;
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
-					return null;
-					throw;
+					throw new Exception("Logica", ex);
 				}
 			}
 		}
@@ -87,11 +86,10 @@ namespace CB.LOGICA
 						transation.Commit();
 						return true;
 					}
-					catch (Exception)
+					catch (Exception ex)
 					{
 						transation.Rollback();
-						return false;
-						throw;
+						throw new Exception("Logica", ex);
 					}
 				}
 			}
@@ -122,11 +120,10 @@ namespace CB.LOGICA
 						transation.Commit();
 						return true;
 					}
-					catch (Exception)
+					catch (Exception ex)
 					{
 						transation.Rollback();
-						return false;
-						throw;
+						throw new Exception("Logica", ex);
 					}
 				}
 			}
@@ -161,7 +158,7 @@ namespace CB.LOGICA
 			catch (Exception ex)
 			{
 
-				throw ex;
+				throw new Exception("Logica", ex);
 			}
 		}
 
@@ -178,7 +175,7 @@ namespace CB.LOGICA
 			catch (Exception ex)
 			{
 
-				throw ex;
+				throw new Exception("Logica", ex);
 			}
 		}
 		public int CountCleintsAsignados()

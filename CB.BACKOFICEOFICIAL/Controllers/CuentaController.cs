@@ -79,9 +79,11 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 					mensajes.Clear();
 
 					//mensajes.Add(Util.mensaje("JS", string.Format("RedireccionarOcultandoFormulario('{0}');", Url.Action("Index", "Home"))));
-					var urls = "/Home/Index";
-					var re = String.Format("RedireccionarOcultandoFormulario('{0}')", urls);
+					var urls = Url.Action("Index", "Home");// "/Home/Index";
+
+					//var re = String.Format("RedireccionarOcultandoFormulario('{0}')", urls);
 					mensajes.Add(Util.mensaje("JS", urls, false));
+					//mensajes.Add(Util.mensaje("JS", string.Format("RedireccionarOcultandoFormulario('{0}');", Url.Action("Index", "Home"))));
 					return Json(mensajes);
 				}
 			}

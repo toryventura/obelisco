@@ -1,4 +1,5 @@
 ﻿using CB.ENTIDADES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,7 +39,124 @@ namespace CB.LOGICA
 
 			}
 		}
+		public int totalClienteMora()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
 
+				throw new Exception("Logica", ex);
+			}
+		}
+		public int getfase1()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 1).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
+		public int getfase2()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 2).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
+		public int getfase3()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 3).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
+		public int getfase4()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 4).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
+		public int getfase5()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 5).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
+		public int getfase6()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value > 5).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
 		public List<PersonaMora> GetClienteMoraAll()
 		{
 			using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())

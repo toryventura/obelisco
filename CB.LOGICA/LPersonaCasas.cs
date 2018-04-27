@@ -1,5 +1,6 @@
 ﻿
 using CB.ENTIDADES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,18 +10,27 @@ namespace CB.LOGICA
 	{
 		public List<PersonaCasas> GetClienteAll()
 		{
-			using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+			try
 			{
-				List<PersonaCasas> lista = new List<PersonaCasas>();
-				var lis = (from s in db.Personas
-						   where s.EsCajero == -1 || s.EsVendedor == -1 || s.EsAlmacenero == -1
-						   select s).ToList();
-				foreach (var item in lis)
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					lista.Add(toEntides(item));
+					List<PersonaCasas> lista = new List<PersonaCasas>();
+					var lis = (from s in db.Personas
+							   where s.EsCajero == -1 || s.EsVendedor == -1 || s.EsAlmacenero == -1
+							   select s).ToList();
+					foreach (var item in lis)
+					{
+						lista.Add(toEntides(item));
+					}
+					return lista;
 				}
-				return lista;
 			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
 		}
 		public PersonaCasas GetClienteXID(string id = "")
 		{
@@ -41,6 +51,8 @@ namespace CB.LOGICA
 
 
 				var listamoras = db.actualizarMoraDarias.Select(x => x.CodCliente).Distinct().ToList();
+				var moras = db.CantidadClienteMoras.ToList();
+
 				var personas = db.Personas.ToList();
 				var listasfinal = new List<PersonaCasas>();
 				foreach (var item in personas)
@@ -61,9 +73,9 @@ namespace CB.LOGICA
 
 
 			}
-			catch
+			catch (Exception ex)
 			{
-				return null;
+				throw new Exception("Logica", ex);
 			}
 		}
 		public List<PersonaCasas> GetClienteAllMoraXuser(long id = 0)
@@ -89,9 +101,10 @@ namespace CB.LOGICA
 				return null;
 
 			}
-			catch
+			catch (Exception ex)
 			{
-				return null;
+				throw new Exception("Logica", ex);
+
 			}
 
 

@@ -28,8 +28,8 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>150</h3>
-                    <p>Clientes en primera etapa</p>
+                    <h3>@ViewBag.fase1</h3>
+                    <p>Clientes en Primera fase</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -41,8 +41,8 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>150</h3>
-                    <p>Clientes en segunda etapa</p>
+                    <h3>@ViewBag.fase2</h3>
+                    <p>Clientes en Segunda fase</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -54,8 +54,47 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>150</h3>
-                    <p>Clientes en tercera etapa</p>
+                    <h3>@ViewBag.fase3</h3>
+                    <p>Clientes en Tercera fase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@ViewBag.fase4</h3>
+                    <p>Clientes en Cuarta fase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@ViewBag.fase5</h3>
+                    <p>Clientes en Quinta fase</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@ViewBag.fase6</h3>
+                    <p>Clientes en Sexta fase</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -68,7 +107,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>@ViewBag.fase4<sup style="font-size: 20px">%</sup></h3>
                     <p>Casos asignados</p>
                 </div>
                 <div class="icon">
@@ -82,7 +121,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>@ViewBag.fase5<sup style="font-size: 20px">%</sup></h3>
                     <p>Casos sin asignados</p>
                 </div>
                 <div class="icon">
@@ -97,7 +136,7 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
 
-                    <h3 id="iduser">44</h3>
+                    <h3 id="iduser">@ViewBag.fase6</h3>
                     <p>Usuario registrados</p>
                 </div>
                 <div class="icon">
@@ -111,7 +150,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3 id="idclientemora">45</h3>
+                    <h3 id="idclientemora">@ViewBag.total</h3>
                     <p>Clientes en mora</p>
                 </div>
                 <div class="icon">
