@@ -25,7 +25,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			Usuario us = Util.Usuario;
 			try
 			{
-				if (us.Perfiles.FirstOrDefault().Nombre == "Administrador" || us.EsSuperAdmin)
+				if (us.EsSuperAdmin)
 				{
 
 					var list = l.GetClientesAsignadosAll();
@@ -33,11 +33,19 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 				}
 				else
 				{
+					if (us.Perfiles.FirstOrDefault().Nombre == "Administrador" || us.EsSuperAdmin)
+					{
 
-					var list = l.GetClientesAsignadosAll(Convert.ToInt32(us.ID));
-					return PartialView("_ListaAsignado", list);
+						var list = l.GetClientesAsignadosAll();
+						return PartialView("_ListaAsignado", list);
+					}
+					else
+					{
+
+						var list = l.GetClientesAsignadosAll(Convert.ToInt32(us.ID));
+						return PartialView("_ListaAsignado", list);
+					}
 				}
-
 			}
 			catch (Exception ex)
 			{

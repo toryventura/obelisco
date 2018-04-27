@@ -51,7 +51,7 @@ namespace CB.LOGICA
 
 
 				var listamoras = db.actualizarMoraDarias.Select(x => x.CodCliente).Distinct().ToList();
-				var moras = db.CantidadClienteMoras.ToList();
+				var moras = (from x in db.CantidadClienteMoras join s in db.CtaPorCobrars on x.Codigo equals s.Codigo select s.CodCliente).ToList();
 
 				var personas = db.Personas.ToList();
 				var listasfinal = new List<PersonaCasas>();
@@ -59,7 +59,7 @@ namespace CB.LOGICA
 				{
 					listasfinal.Add(toEntides(item));
 				}
-				var personasfinal = listasfinal.Where(x => listamoras.Contains(x.CodCliente)).ToList();
+				var personasfinal = listasfinal.Where(x => moras.Contains(x.CodCliente)).ToList();
 				if (_listAsiganado.Count > 0)
 				{
 					var _listFinal = personasfinal.Where(s => !_listAsiganado.Contains(s.CodCliente)).ToList();
