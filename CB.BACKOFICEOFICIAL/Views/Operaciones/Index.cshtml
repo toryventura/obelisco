@@ -9,7 +9,7 @@
         <small>En Mora</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Forms</a></li>
         <li class="active">General Elements</li>
     </ol>
@@ -118,7 +118,7 @@
         { headerName: "Dias Atraso", field: "diasAtraso", width: 100 },
         { headerName: "Doc", field: "Doc", width: 200 },
         { headerName: "Interes mora", field: "InteresMora", width: 100 },
-        { headerName: "Total Cuota", valueGetter: 'data.NroCuota + data.diasAtraso', width: 80 }
+        { headerName: "Total Cuota", valueGetter: 'data.NroCuota + data.diasAtraso',pinned: 'right', width: 80 }
 
     ];
     //// cuentas en mora
@@ -129,7 +129,7 @@
         { headerName: "Dias Atraso", field: "diasAtraso", width: 100 },
         { headerName: "Monto fija", field: "montopagar", width: 200 },
         { headerName: "Interes mora", field: "InteresMora", width: 100 },
-        { headerName: "Total Cuota", field: "total", valueGetter: 'data.montopagar + data.InteresMora', width: 80 }
+        { headerName: "Total Cuota", field: "total", valueGetter: 'data.montopagar + data.InteresMora',pinned: 'right', width: 80 }
 
     ];
 
@@ -154,7 +154,7 @@
 
         enableColResize: true,
         columnDefs: columnDefsAsignadas,
-        
+
         //rowSelection: 'multiple',
         rowSelection: 'single',
         onSelectionChanged: onSelectionChanged,
@@ -204,13 +204,13 @@
         enableColResize: true,
         columnDefs: columnDefsOperaciones,
         showToolPanel: false,
-       
+
         rowSelection: 'single',
 
         pagination: true
-       
+
     };
-    
+
     function onPinnedRowBottomCount() {
         var rows = SumRows();
         gridOptionsCoutasPagadas.api.setPinnedBottomRowData(rows);
@@ -240,17 +240,17 @@
         gridOptionsCoutasPagadas.api.forEachNode(function (rowNode, index) {
             montopaga += rowNode.data.montopagar;
             interes += rowNode.data.InteresMora;
-            
+         
         });
-        totl = montopaga+interes ;
+         totl = parseFloat(montopaga) + parseFloat(interes);
         result.push({
-            CodCliente:  'Totales:',
-            Codigo:  ' ' ,
+            CodCliente: 'Totales:',
+            Codigo: ' ',
             NroCuota: ' ',
             diasAtraso: ' ',
-            montopagar: ''+montopaga,
-            InteresMora:'' + interes,
-            total:'' + totl
+            montopagar: montopaga,
+            InteresMora: interes,
+            total: totl
 
         });
         return result;
@@ -274,10 +274,10 @@
     }
     ///// loanding... of the datos in tha table
     var selectedRowsClient = "0";
-    
-    
 
-   
+
+
+
 
     function createCuentas() {
         var gridDivC = document.querySelector('#gridCuotas');
@@ -288,7 +288,7 @@
         var gridDivO = document.querySelector('#gridOperaciones');
         new agGrid.Grid(gridDivO, gridOptionsOperaciones);
     }
- 
+
 
 
     function Listar() {
@@ -296,7 +296,7 @@
         //BloquearPantalla();
         var gridDiv = document.querySelector('#gridCliente');
         createGlobal(gridOptionsAsignadas, gridDiv);
-        
+
         $.ajax({
             url: "@Url.Action("PersonaAsigndos", "Operaciones")",
             cache: false,
@@ -305,7 +305,7 @@
             type: "POST"
         }).done(function (html) {
             setDataSource(html, gridOptionsAsignadas);
-           // gridOptionsAsignadas.api.setRowData(html);
+            // gridOptionsAsignadas.api.setRowData(html);
         }).fail(function (resp) {
             console.log(resp.responseText);
         }).always(function () {

@@ -19,6 +19,7 @@ namespace CB.ENTIDADES
 		public bool EsSuperAdmin { get; set; }
 		public bool CambiarContrasena { get; set; }
 		public int IdFase { get; set; }
+		public int IdPerfil { get; set; }
 
 		public virtual List<Perfil> Perfiles { get; set; }
 		public virtual List<Permiso> Permisos { get; set; }

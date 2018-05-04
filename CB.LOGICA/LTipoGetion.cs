@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CB.LOGICA
@@ -19,7 +20,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return false;
+				throw new Exception("Logica add", ex);
 			}
 
 
@@ -45,7 +46,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return false;
+				throw new Exception("Logica update", ex);
 			}
 
 		}
@@ -70,7 +71,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return false;
+				throw new Exception("Logica delete", ex);
 			}
 
 		}
@@ -94,7 +95,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return null;
+				throw new Exception("Logica listAlll", ex);
 			}
 		}
 		public DATA.USER.TipoGestion toTipoGestion(ENTIDADES.TipoGestion o)

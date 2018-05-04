@@ -118,39 +118,52 @@ namespace CB.LOGICA
 		}
 		public static bool add(ENTIDADES.Usuario us, int perfrilid, int faseid)
 		{
-			using (var db = new DATA.USER.COBRANZA_CBEntities())
+			try
 			{
-				try
+				using (var db = new DATA.USER.COBRANZA_CBEntities())
 				{
-
-					var usu = new DATA.USER.Usuario()
+					using (var trx = db.Database.BeginTransaction())
 					{
-						UsuarioApellido1 = us.Apellido1,
-						UsuarioApellido2 = us.Apellido2,
-						UsuarioContrasena = us.Contrasena,
-						UsuarioCambiarContrasena = us.CambiarContrasena,
-						UsuarioEmail = us.Email,
-						UsuarioEsSuperAdmin = us.EsSuperAdmin,
-						UsuarioHabilitado = us.Habilitado,
-						UsuarioLogin = us.Login,
-						UsuarioNombre = us.Nombre,
-						UsuarioTelefono = us.Nombre,
-						UsuarioID = Convert.ToInt32(us.ID),
+						var perfil = db.Perfils.Find(perfrilid);
+						var usu = new DATA.USER.Usuario()
+						{
+							UsuarioApellido1 = us.Apellido1,
+							UsuarioApellido2 = us.Apellido2,
+							UsuarioContrasena = us.Contrasena,
+							UsuarioCambiarContrasena = us.CambiarContrasena,
+							UsuarioEmail = us.Email,
+							UsuarioEsSuperAdmin = us.EsSuperAdmin,
+							UsuarioHabilitado = us.Habilitado,
+							UsuarioLogin = us.Login,
+							UsuarioNombre = us.Nombre,
+							UsuarioTelefono = us.Nombre,
+							UsuarioID = Convert.ToInt32(us.ID),
 
-					};
+						};
+						usu.Perfils.Add(perfil);
+						db.Usuarios.Add(usu);
+						var fu = new DATA.USER.FaseUsuario()
+						{
+							Idfase = us.IdFase,
+							Idusuario = Convert.ToInt32(us.ID)
 
-					db.Usuarios.Add(usu);
-					db.SaveChanges();
+						};
+						db.FaseUsuarios.Add(fu);
+						db.SaveChanges();
+						trx.Commit();
 
-					return true;
-				}
-				catch (Exception)
-				{
-					return false;
-
+						return true;
+					}
 				}
 
 			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica add", ex);
+			}
+
+
 		}
 		public static List<CB.ENTIDADES.Usuario> toListaUsuario()
 		{

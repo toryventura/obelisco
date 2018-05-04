@@ -23,7 +23,31 @@ namespace CB.LOGICA
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception("Logica obtner", ex);
+			}
+		}
+		public static List<Perfil> allPerfils()
+		{
+			try
+			{
+				using (var BD = new DATA.USER.COBRANZA_CBEntities())
+				{
+					var list = new List<Perfil>();
+					var z = BD.Perfils.ToList();
+					if (z != null)
+					{
+						foreach (var item in z)
+						{
+							list.Add(LPerfil.DataToEntidad(item, false));
+						}
+						return list;
+					}
+				}
+				throw new Exception("El perfil no existe");
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Logica obtner", ex);
 			}
 		}
 
@@ -54,7 +78,7 @@ namespace CB.LOGICA
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception("Logica BuscarPerfiles ", ex);
 			}
 		}
 
@@ -139,7 +163,7 @@ namespace CB.LOGICA
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception("Logica guardar", ex);
 			}
 		}
 
@@ -175,7 +199,7 @@ namespace CB.LOGICA
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception("Logica caombiarestado", ex);
 			}
 		}
 

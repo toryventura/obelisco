@@ -34,6 +34,8 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			LOGICA.LFase ob = new LOGICA.LFase();
 			var obj = new ENTIDADES.Usuario();
 			ViewBag.IdFase = new SelectList(ob.getImtesAll(), "ID", "Descripcion");
+			var perfils = LPerfil.allPerfils();
+			ViewBag.IdPerfil = new SelectList(perfils, "ID", "Nombre");
 			return PartialView("_Create", obj);
 		}
 		public ActionResult Edit(int id)
@@ -67,7 +69,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 
 				collection.Habilitado = true;
 				collection.Contrasena = SEGURIDAD.encriptarMD5(collection.Contrasena);
-				var sw = LUsuario.add(collection);
+				var sw = LUsuario.add(collection, collection.IdPerfil, collection.IdFase);
 				if (sw)
 				{
 					mensajes.Add(Util.mensaje(Util.OK, Util.OKMENSAJE));
