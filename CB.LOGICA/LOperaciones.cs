@@ -77,7 +77,7 @@ namespace CB.LOGICA
 				}
 				catch (System.Exception ex)
 				{
-					return false;
+					throw new Exception("Logico add", ex);
 
 				}
 			}

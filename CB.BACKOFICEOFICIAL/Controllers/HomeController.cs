@@ -1,4 +1,5 @@
 ﻿using CB.LOGICA;
+using System;
 using System.Web.Mvc;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
@@ -8,13 +9,19 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		// GET: Home
 		public ActionResult Index()
 		{
+			LPersonaCasas per = new LPersonaCasas();
 			LPersonasMora lg = new LPersonasMora();
+			DateTime re = DateTime.Now;
+			string mes = re.Month < 10 ? "0" + Convert.ToString(re.Month) : Convert.ToString(re.Month);
+			string year = Convert.ToString(re.Year);
+			string periodo = mes + "/" + year;
 			ViewBag.fase1 = lg.getfase1();
 			ViewBag.fase2 = lg.getfase2();
 			ViewBag.fase3 = lg.getfase3();
 			ViewBag.fase4 = lg.getfase4();
 			ViewBag.fase5 = lg.getfase5();
-			ViewBag.fase6 = lg.getfase6();
+			ViewBag.NoAsiginadas = per.CantidadclienteNoasignados(periodo);
+			ViewBag.Asignados = per.CantidadclienteAsignados(periodo);
 			ViewBag.total = lg.totalClienteMora();
 			return View();
 		}

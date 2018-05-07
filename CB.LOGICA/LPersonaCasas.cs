@@ -70,7 +70,41 @@ namespace CB.LOGICA
 					return personasfinal;
 				}
 
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Logica", ex);
+			}
+		}
+		public int CantidadclienteNoasignados(string periodo)
+		{
+			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
+			var db1 = new DATA.USER.COBRANZA_CBEntities();
+			try
+			{
+				var _listAsiganado = db1.AsignacionClientes.Where(x => (x.Periodo == periodo && x.Estado == true)).Count();
+				var _cantidamoras = db.CantidadClienteMoras.Count();
+				var cta = _listAsiganado != 0 && _cantidamoras != 0 ? _cantidamoras - _listAsiganado : 0;
 
+				return cta;
+
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Logica", ex);
+			}
+		}
+		public int CantidadclienteAsignados(string periodo)
+		{
+
+			var db1 = new DATA.USER.COBRANZA_CBEntities();
+			try
+			{
+				var _listAsiganado = db1.AsignacionClientes.Where(x => (x.Periodo == periodo && x.Estado == true)).Count();
+
+				var cta = _listAsiganado != 0 ? _listAsiganado : 0;
+
+				return cta;
 
 			}
 			catch (Exception ex)

@@ -41,7 +41,7 @@
                                 <div class="col-sm-8">
                                     @if (probalidadpago != null)
                                     {
-                                        @Html.DropDownList("probalidadpago", new SelectList(probalidadpago.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                        @Html.DropDownList("probalidadpago", new SelectList(probalidadpago.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
                                     }
 
                                 </div>
@@ -50,21 +50,21 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="compromisopago">Compromiso pago</label>
                                 <div class="col-sm-8">
-                                    @Html.DropDownList("compromisopago", new SelectList(compromisopago.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                    @Html.DropDownList("compromisopago", new SelectList(compromisopago.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = " padding-top: 3px; padding-bottom: 3px;" })
                                 </div>
 
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="compromisopago">Casual Mora</label>
                                 <div class="col-sm-8">
-                                    @Html.DropDownList("casualmora", new SelectList(casualmora.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                    @Html.DropDownList("casualmora", new SelectList(casualmora.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
                                 </div>
 
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="parametro">Parametro</label>
                                 <div class="col-sm-8">
-                                    @Html.DropDownList("parametro", new SelectList(parametro.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control" })
+                                    @Html.DropDownList("parametro", new SelectList(parametro.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
                                 </div>
 
                             </div>
@@ -82,7 +82,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        @Html.EditorFor(model => model.FechaCompromiso, new { htmlAttributes = new { @class = "form-control", data_inputmask = "'alias': 'dd/mm/yyyy'", data_mask = "" } })
+                                        @Html.EditorFor(model => model.FechaCompromiso, new { htmlAttributes = new { @class = "form-control", data_inputmask = "'alias': 'dd/mm/yyyy'", data_mask = "", } })
 
                                     </div>
 

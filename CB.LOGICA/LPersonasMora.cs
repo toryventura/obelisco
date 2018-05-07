@@ -129,7 +129,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 5).Count();
+					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value > 4).Count();
 					return xa;
 				}
 			}
