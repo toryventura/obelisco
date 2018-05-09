@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ListaCliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Listado de Cliente Assignados
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        
+        <li class="active">Listado de Cliente Assignados</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Cliente asignados</h3>
+                </div>
+                <div class="box-body" id="ListaContenidosContainer">
+                    @Html.Partial("_ListaAsignado", new List<CB.ENTIDADES.AsignacionCliente>())
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function (e) {
+        Listar();
+    });
+
+    
+    var ssw = 0;
+    function Listar() {
+
+        $.ajax({
+            url: "@Url.Action("ListaAsignado", "AsignarClientes")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        }).done(function (html) {
+            $("#ListaContenidosContainer").html(html);
+
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log("complete the operation of Listar clients")
+        });
+    }
+
+
+    
+</script>
+
+

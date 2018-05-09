@@ -76,6 +76,44 @@ namespace CB.LOGICA
 				throw new Exception("Logica", ex);
 			}
 		}
+		public List<PersonaCasas> GetClienteAllMoraNoAsignados(int fase)
+		{
+			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
+			var db1 = new DATA.USER.COBRANZA_CBEntities();
+			try
+			{
+				var _listAsiganado = db1.AsignacionClientes.Where(x => x.Estado == true).Select(w => w.CodCliente).ToList();
+
+
+				var listamoras = db.actualizarMoraDarias.Select(x => x.CodCliente).Distinct().ToList();
+				var moras = (from x in db.CantidadClienteMoras
+							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
+							 where x.CantidadCouta == fase
+							 select s.CodCliente).ToList();
+
+				var personas = db.Personas.ToList();
+				var listasfinal = new List<PersonaCasas>();
+				foreach (var item in personas)
+				{
+					listasfinal.Add(toEntides(item));
+				}
+				var personasfinal = listasfinal.Where(x => moras.Contains(x.CodCliente)).ToList();
+				if (_listAsiganado.Count > 0)
+				{
+					var _listFinal = personasfinal.Where(s => !_listAsiganado.Contains(s.CodCliente)).ToList();
+					return _listFinal;
+				}
+				else
+				{
+					return personasfinal;
+				}
+
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Logica", ex);
+			}
+		}
 		public int CantidadclienteNoasignados(string periodo)
 		{
 			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();

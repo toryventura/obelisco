@@ -50,7 +50,8 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						"~/Scripts/blckUI.js",
 						"~/plugins/alertify/alertify.min.js",
 						"~/Scripts/mensajes.js",
-						"~/Scripts/FuncionesGlobalAg-grid.js"
+						"~/Scripts/FuncionesGlobalAg-grid.js",
+						"~/bower_components/chart.js/Chart.js"
 						));
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/bower_components/bootstrap/dist/css/bootstrap.min.css",

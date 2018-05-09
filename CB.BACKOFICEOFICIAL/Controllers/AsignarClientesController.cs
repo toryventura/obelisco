@@ -56,6 +56,10 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 
 
 		}
+		public ActionResult ListaCliente()
+		{
+			return View();
+		}
 		public ActionResult add(AsignacionCliente o)
 		{
 
