@@ -82,10 +82,7 @@ namespace CB.LOGICA
 			var db1 = new DATA.USER.COBRANZA_CBEntities();
 			try
 			{
-				var _listAsiganado = db1.AsignacionClientes.Where(x => x.Estado == true).Select(w => w.CodCliente).ToList();
 
-
-				var listamoras = db.actualizarMoraDarias.Select(x => x.CodCliente).Distinct().ToList();
 				var moras = (from x in db.CantidadClienteMoras
 							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
 							 where x.CantidadCouta == fase
@@ -98,16 +95,8 @@ namespace CB.LOGICA
 					listasfinal.Add(toEntides(item));
 				}
 				var personasfinal = listasfinal.Where(x => moras.Contains(x.CodCliente)).ToList();
-				if (_listAsiganado.Count > 0)
-				{
-					var _listFinal = personasfinal.Where(s => !_listAsiganado.Contains(s.CodCliente)).ToList();
-					return _listFinal;
-				}
-				else
-				{
-					return personasfinal;
-				}
 
+				return personasfinal;
 			}
 			catch (Exception ex)
 			{

@@ -7852,6 +7852,7 @@
     <Content Include="Views\Usuario\_List.cshtml" />
     <Content Include="Views\Usuario\_Edit.cshtml" />
     <Content Include="Views\AsignarClientes\ListaCliente.cshtml" />
+    <Content Include="Views\Home\Fase.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

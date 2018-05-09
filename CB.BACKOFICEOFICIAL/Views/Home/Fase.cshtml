@@ -1,0 +1,72 @@
+﻿@using CB.ENTIDADES
+@model List<PersonaCasas>
+@{
+    ViewBag.Title = "Fase";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Listado de Clientes
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Cliente de Fase @ViewBag.fase</h3>
+                </div>
+                <div class="box-body" id="ListaContenidosContainer">
+
+                    <table id="example1" class="table table-bordered table-hover dataTable">
+                        <thead>
+                            <tr>
+                                <th>Cod Cliente</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+
+                                <th>NIT</th>
+
+                                <th>Sexo</th>
+                                <th>Telefono</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count > 0)
+                            {
+
+                                foreach (var personaAsigandas in Model.OrderBy(s => s.NombreP))
+                                {
+                                    <tr>
+                                        <td>@personaAsigandas.CodCliente</td>
+                                        <td>@personaAsigandas.NombreP </td>
+                                        <td>@personaAsigandas.Apellido  @personaAsigandas.Seg_Apellido </td>
+
+                                        <td>@personaAsigandas.NIT </td>
+
+                                        <td>@personaAsigandas.Sexo </td>
+                                        <td>@personaAsigandas.Telefono</td>
+
+                                    </tr>
+
+                                }
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>
