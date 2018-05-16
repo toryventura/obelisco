@@ -82,12 +82,22 @@ namespace CB.LOGICA
 			var db1 = new DATA.USER.COBRANZA_CBEntities();
 			try
 			{
+				List<string> moras = new List<string>();
+				if (fase == 5)
+				{
 
-				var moras = (from x in db.CantidadClienteMoras
+					moras = (from x in db.CantidadClienteMoras
+							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
+							 where x.CantidadCouta >= fase
+							 select s.CodCliente).ToList();
+				}
+				else
+				{
+					moras = (from x in db.CantidadClienteMoras
 							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
 							 where x.CantidadCouta == fase
 							 select s.CodCliente).ToList();
-
+				}
 				var personas = db.Personas.ToList();
 				var listasfinal = new List<PersonaCasas>();
 				foreach (var item in personas)

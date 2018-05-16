@@ -2,7 +2,10 @@
 using CB.LOGICA;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
@@ -34,6 +37,32 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			LPersonaCasas pl = new LPersonaCasas();
 			list = pl.GetClienteAllMoraNoAsignados(id);
 			return View(list);
+		}
+		public ActionResult ExportToExcel(int fase)
+		{
+
+			var gv = new GridView();
+			List<PersonaCasas> list = new List<PersonaCasas>();
+			LPersonaCasas pl = new LPersonaCasas();
+			list = pl.GetClienteAllMoraNoAsignados(fase);
+			gv.DataSource = list;
+			gv.DataBind();
+			Response.ClearContent();
+			Response.Buffer = true;
+			Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+			Response.ContentType = "application/ms-excel";
+			Response.Charset = "";
+
+			StringWriter objStringWriter = new StringWriter();
+			HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+			gv.RenderControl(objHtmlTextWriter);
+			Response.Output.Write(objStringWriter.ToString());
+			Response.Flush();
+			Response.End();
+
+			return View("Fase", list);
+
+
 		}
 	}
 }
