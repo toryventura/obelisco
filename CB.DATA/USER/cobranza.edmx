@@ -4,18 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsignacionCliente">
           <Key>
             <PropertyRef Name="asignacionClienteID" />
           </Key>
           <Property Name="asignacionClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" />
-          <Property Name="FechaAsignacion" Type="date" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+          <Property Name="FechaAsignacion" Type="datetime" />
           <Property Name="UsrCre" Type="nvarchar" MaxLength="20" />
           <Property Name="UsrMod" Type="nvarchar" MaxLength="20" />
-          <Property Name="FeCre" Type="date" />
-          <Property Name="FechaMod" Type="date" />
+          <Property Name="FeCre" Type="datetime" />
+          <Property Name="FechaMod" Type="datetime" />
           <Property Name="CodUsuario" Type="int" />
           <Property Name="Estado" Type="bit" />
           <Property Name="FechaReasignacion" Type="datetime" />
@@ -539,8 +540,7 @@
             <End Role="UsuaruoIPRestringido" EntitySet="UsuaruoIPRestringido" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="COBRANZA_CBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -550,11 +550,11 @@
           </Key>
           <Property Name="asignacionClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FechaAsignacion" Type="DateTime" Precision="0" />
+          <Property Name="FechaAsignacion" Type="DateTime" Precision="3" />
           <Property Name="UsrCre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="UsrMod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FeCre" Type="DateTime" Precision="0" />
-          <Property Name="FechaMod" Type="DateTime" Precision="0" />
+          <Property Name="FeCre" Type="DateTime" Precision="3" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
           <Property Name="CodUsuario" Type="Int32" />
           <Property Name="Estado" Type="Boolean" />
           <Property Name="FechaReasignacion" Type="DateTime" Precision="3" />
@@ -562,6 +562,7 @@
           <NavigationProperty Name="Usuario" Relationship="Self.FK_AsignacionCliente_Usuario" FromRole="AsignacionCliente" ToRole="Usuario" />
           <NavigationProperty Name="Cuotas" Relationship="Self.FK_Cuotas_AsignacionCliente" FromRole="AsignacionCliente" ToRole="Cuotas" />
           <NavigationProperty Name="OperacionCobranzas" Relationship="Self.FK_OperacionCobranza_AsignacionCliente" FromRole="AsignacionCliente" ToRole="OperacionCobranza" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CausalMora">
           <Key>
@@ -977,7 +978,7 @@
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
           <FunctionImport Name="AsignarClienteMora">
-            <Parameter Name="periodo" Mode="In" Type="String" />
+          <Parameter Name="periodo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1030,6 +1031,7 @@
           <EntitySetMapping Name="AsignacionClientes">
             <EntityTypeMapping TypeName="COBRANZA_CBModel.AsignacionCliente">
               <MappingFragment StoreEntitySet="AsignacionCliente">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="asignacionClienteID" ColumnName="asignacionClienteID" />
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="FechaAsignacion" ColumnName="FechaAsignacion" />

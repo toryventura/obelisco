@@ -6,6 +6,7 @@ namespace CB.ENTIDADES
 	{
 		public int asignacionClienteID { get; set; }
 		public string CodCliente { get; set; }
+		public string codigo { get; set; }
 		public DateTime FechaAsignacion { get; set; }
 		public string NombreCliente { get; set; }
 		public string NombreUsario { get; set; }

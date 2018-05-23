@@ -7794,6 +7794,7 @@
     <Compile Include="Clases\AutorizarAtributo.cs" />
     <Compile Include="Clases\Util.cs" />
     <Compile Include="Controllers\AsignarClientesController.cs" />
+    <Compile Include="Controllers\Codigos.cs" />
     <Compile Include="Controllers\CompromisoPagoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

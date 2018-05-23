@@ -155,25 +155,26 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		}
 		[HttpPost]
 
-		public ActionResult SetEnviarPametros(int codusuario, string[] lista)
+		public ActionResult SetEnviarPametros(int codusuario, List<Codigos> lista)
 		{
 			var mensajes = new List<KeyValuePair<string, string>>();
 			try
 			{
 				Usuario us = Util.Usuario;
-				List<string> list = lista.ToArray<string>().ToList();
+				//List<string> list = lista.ToArray<string>().ToList();
+
 				DateTime an = DateTime.Now;
 				string per = Convert.ToString(an.Month) + "/" + Convert.ToString(an.Year);
-				foreach (var item in list)
+				foreach (var item in lista)
 				{
 					AsignacionCliente o = new AsignacionCliente()
 					{
 						CodUsuario = codusuario,
-						CodCliente = item,
+						CodCliente = item.Value,
 						FechaAsignacion = DateTime.Now,
 						FechaMod = DateTime.Now,
 						FeCre = DateTime.Now,
-
+						codigo = item.Key,
 						UsrCre = us.Login,
 						UsrMod = us.Login,
 						Estado = true,

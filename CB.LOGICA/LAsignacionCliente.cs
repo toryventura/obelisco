@@ -71,6 +71,7 @@ namespace CB.LOGICA
 						{
 							asignacionClienteID = cout + 1,
 							CodCliente = o.CodCliente,
+							Codigo = o.codigo,
 							CodUsuario = o.CodUsuario,
 							FechaAsignacion = o.FechaAsignacion,
 							FechaMod = o.FechaMod,

@@ -48,5 +48,6 @@ namespace CB.ENTIDADES
 		public bool EsVendedorF { get; set; }
 		public bool EmiteFactura { get; set; }
 		public int CodEstado { get; set; }
+		public string Codigo { get; set; }
 	}
 }

@@ -71,8 +71,7 @@
                 return params.columnApi.getRowGroupColumns().length === 0;
             }
         },
-        //{ headerName: '', width: 34, checkboxSelection: true, suppressSorting: true, suppressMenu: true },
-        //{ headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+            { headerName: "Codigo", field: "Codigo", width: 150 },
             { headerName: "Nombre", field: "NombreP", width: 150 },
             { headerName: "Apellido", field: "Apellido", width: 100 },
             { headerName: "sexo", field: "Sexo", width: 100 },
@@ -92,66 +91,15 @@
         //maxBlocksInCache: 2,
         //suppressRowClickSelection: true
         columnDefs: columnDefsEnMora,
-        rowData: null,
-        groupIncludeFooter: true,
         rowSelection: 'multiple',
         enableSorting: true,
-        showToolPanel: true,
-        toolPanelSuppressPivots: true,
-        toolPanelSuppressPivotMode: true
+        showToolPanel: true
 
     };
 
-    //var gridOptions = {
-    //    components: {
-    //        loadingRenderer: function (params) {
-    //            if (params.value !== undefined) {
-    //                return params.value;
-    //            } else {
-    //                return '<img src="../images/loading.gif">'
-    //            }
-    //        }
-
-    //    },
-    //    enableColResize: true,
-    //    rowBuffer: 0,
-    //    debug: true,
-    //    rowSelection: 'multiple',
-    //    rowDeselection: true,
-    //    columnDefs: columnDefs,
-    //    // tell grid we want virtual row model type
-    //    rowModelType: 'infinite',
-    //    // how big each page in our page cache will be, default is 100
-    //    paginationPageSize: 100,
-    //    // how many extra blank rows to display to the user at the end of the dataset,
-    //    // which sets the vertical scroll and then allows the grid to request viewing more rows of data.
-    //    // default is 1, ie show 1 row.
-    //    cacheOverflowSize: 2,
-    //    // how many server side requests to send at a time. if user is scrolling lots, then the requests
-    //    // are throttled down
-    //    maxConcurrentDatasourceRequests: 2,
-    //    // how many rows to initially show in the grid. having 1 shows a blank row, so it looks like
-    //    // the grid is loading from the users perspective (as we have a spinner in the first col)
-    //    infiniteInitialRowCount: 1,
-    //    // how many pages to store in cache. default is undefined, which allows an infinite sized cache,
-    //    // pages are never purged. this should be set for large data to stop your browser from getting
-    //    // full of data
-    //    maxBlocksInCache: 2
-    //};
-
-
-    //columnDefs: columnDefs,
-    //rowSelection: 'multiple',  PARR SELECCION MULTIPLE
-    //enableColResize: true,
-    //enableSorting: true,
-    //enableFilter: true,
-    //enableRangeSelection: true,
-    //suppressRowClickSelection: true,
-    //animateRows: true,
-    //onModelUpdated: modelUpdated,
-    //debug: true
+    
     var gridOptionsUsuario = {
-        
+
         //enableSorting: true,
         //enableFilter: true,
 
@@ -201,7 +149,8 @@
         gridOptionsEnMora.api.forEachNode(function (node) {
 
             if (node.isSelected()) {
-                selectedRowsString.push(node.data.CodCliente);
+                var obj = { Key: node.data.Codigo, Value: node.data.CodCliente };
+                selectedRowsString.push(obj);
             }
 
         });
@@ -235,7 +184,7 @@
         }
 
     }
-    
+
     var sw = 0;
     function CargarUsuarioSistemas() {
         if (sw == 0) {
