@@ -38,6 +38,13 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			list = pl.GetClienteAllMoraNoAsignados(id);
 			return View(list);
 		}
+		public	ActionResult Notificacion()
+		{ 
+			List<NotiPreventiva> list = new List<NotiPreventiva>();
+			LPersonaCasas pl = new LPersonaCasas();
+			list = pl.GetNotiPreventivas(5);
+			return View(list);
+		}
 		public ActionResult ExportToExcel(int fase)
 		{
 

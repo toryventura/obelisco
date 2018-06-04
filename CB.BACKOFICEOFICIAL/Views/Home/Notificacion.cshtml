@@ -1,0 +1,87 @@
+﻿
+@using CB.ENTIDADES
+@model List<NotiPreventiva>
+@{
+    ViewBag.Title = "Notifiacacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var fase = @ViewBag.fase;
+}
+<section class="content-header">
+    <h1>
+        Listado de Clientes
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+@using (Html.BeginForm("ExportToExcel", "Home", FormMethod.Post))
+{
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Notoficacion Preventiva</h3>
+                        <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
+                        <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
+                    </div>
+                    <div class="box-body" id="ListaContenidosContainer">
+
+                        <table id="example1" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Cod Cliente</th>
+                                    <th>Nombre</th>
+                                    <th>
+                                        Codigo
+                                    </th>
+                                    <th>
+                                        Nro Cuota
+                                    </th>
+
+
+                                    <th>Fecha</th>
+
+                                    <th>Cuota</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Count > 0)
+                                {
+
+                                    foreach (var personaAsigandas in Model.OrderBy(s => s.Nombre))
+                                    {
+                                        <tr>
+                                            <td>@personaAsigandas.CodCliente</td>
+                                            <td>@personaAsigandas.Nombre </td>
+                                            <td>@personaAsigandas.Codigo  </td>
+
+                                            <td>@personaAsigandas.NroCuota </td>
+                                            <td>@personaAsigandas.Fecha  </td>
+
+                                            <td>@personaAsigandas.TotalCuota </td>
+
+                                        </tr>
+
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<script>
+    $(function () {
+        $('#example1').DataTable();
+    })
+</script>

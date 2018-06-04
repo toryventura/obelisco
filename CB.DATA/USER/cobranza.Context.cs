@@ -154,5 +154,33 @@ namespace CB.DATA.USER
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        [DbFunction("COBRANZA_CBEntities", "fn_NotificacionPreventiva")]
+        public virtual IQueryable<fn_NotificacionPreventiva_Result> fn_NotificacionPreventiva(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventiva_Result>("[COBRANZA_CBEntities].[fn_NotificacionPreventiva](@DateFrom, @DateTo)", dateFromParameter, dateToParameter);
+        }
+    
+        public virtual int sp_AsignacionClienteMfinal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AsignacionClienteMfinal");
+        }
+    
+        public virtual ObjectResult<sp_NotificacionPreventiva_Result> sp_NotificacionPreventiva(Nullable<int> dias)
+        {
+            var diasParameter = dias.HasValue ?
+                new ObjectParameter("dias", dias) :
+                new ObjectParameter("dias", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_NotificacionPreventiva_Result>("sp_NotificacionPreventiva", diasParameter);
+        }
     }
 }

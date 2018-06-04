@@ -690,6 +690,9 @@
     <Compile Include="USER\FaseUsuario.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
+    <Compile Include="USER\fn_NotificacionPreventiva_Result.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
     <Compile Include="USER\Menu.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
@@ -712,6 +715,9 @@
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
     <Compile Include="USER\sp_helpdiagrams_Result.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\sp_NotificacionPreventiva_Result.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
     <Compile Include="USER\TipoGestion.cs">

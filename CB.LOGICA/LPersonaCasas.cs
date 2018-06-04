@@ -32,6 +32,33 @@ namespace CB.LOGICA
 			}
 
 		}
+		public List<NotiPreventiva> GetNotiPreventivas(int dias)
+		{
+			try
+			{
+				using (var db = new DATA.USER.COBRANZA_CBEntities())
+				{
+					var list = (from x in db.sp_NotificacionPreventiva(dias)
+								select new NotiPreventiva()
+								{
+									Accion = x.Accion.Value,
+									CodCliente = x.CodCliente,
+									Codigo = x.Codigo,
+									Fecha = x.Fecha.Value,
+									Nombre = x.Nombre,
+									NroCuota = x.NroCuota.Value,
+									TotalCuota = x.TotalCuota.Value
+
+								}).ToList();
+					return list;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica:GetNotiPreventivas ", ex);
+			}
+		}
 		public PersonaCasas GetClienteXID(string id = "")
 		{
 			using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
@@ -143,7 +170,7 @@ namespace CB.LOGICA
 					moras = (from x in db.CantidadClienteMoras
 							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
 							 where x.CantidadCouta == fase
-							 select s.Codigo).ToList();
+							 select s.CodCliente).ToList();
 				}
 				var personas = db.Personas.ToList();
 				var listasfinal = new List<PersonaCasas>();
