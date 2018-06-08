@@ -157,6 +157,16 @@
         cargarOperaciones(selectedRowsClient);
         DesbloquearPantalla();
         $('#myoperacion').modal('hide');
+        if (e[0].Key == "OK") {
+            var mensaje = e[0].Value;
+            var resp = mensaje.split("|");
+            var ipoperacion = parseInt(resp[1]);
+            selectedOperacion = ipoperacion;
+            success(e[0].Value);
+            Imprimir(selectedRowsClient, selectedOperacion);
+        } else {
+            error(e[0].Value);
+        }
     }
     function Loading() {
         BloquearPantalla();

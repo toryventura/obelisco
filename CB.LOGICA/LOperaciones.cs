@@ -44,7 +44,7 @@ namespace CB.LOGICA
 				return asig;
 			}
 		}
-		public bool add(ENTIDADES.OperacionCobranza o)
+		public int add(ENTIDADES.OperacionCobranza o)
 		{
 			using (var db = new DATA.USER.COBRANZA_CBEntities())
 			{
@@ -72,7 +72,7 @@ namespace CB.LOGICA
 					};
 					db.OperacionCobranzas.Add(uss);
 					db.SaveChanges();
-					return true;
+					return count;
 
 				}
 				catch (System.Exception ex)

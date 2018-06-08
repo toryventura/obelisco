@@ -78,17 +78,23 @@
         </div>
     </div>
 
-</section>
-
-
-<div class="row clearfix">
     <div id="Idcreate">
 
         <div id="myoperacion" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             @Html.Partial("_Create")
         </div>
     </div>
-</div>
+    <div id="IdImprimir">
+
+        <div id="myimprimir" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            @Html.Partial("_Imprimir")
+        </div>
+    </div>
+
+
+</section>
+
+
 
 <script type="text/javascript">
     var sw = 0;
@@ -240,7 +246,7 @@
         gridOptionsCoutasPagadas.api.forEachNode(function (rowNode, index) {
             montopaga += rowNode.data.montopagar;
             interes += rowNode.data.InteresMora;
-         
+
         });
          totl = parseFloat(montopaga) + parseFloat(interes);
         result.push({
@@ -274,6 +280,7 @@
     }
     ///// loanding... of the datos in tha table
     var selectedRowsClient = "0";
+    var selectedOperacion = 0;
 
 
 
@@ -440,6 +447,25 @@
                 console.log("complete the operacion");
             });
         }
+
+    }
+    function Imprimir(idclient, idopercion) {
+        
+            $.ajax({
+                url: "@Url.Action("Imprimir", "Operaciones")",
+                cache: false,
+                data: { idcliente: idclient, idopercaion: idopercion },
+                type: "POST"
+            }).done(function (html) {
+                $("#myimprimir").html(html);
+                $('#myimprimir').modal('show');
+                setDatosAdiconales();
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("complete the operacion");
+            });
+        
 
     }
     function setDatosAdiconales() {

@@ -27,8 +27,10 @@ namespace CB.BACKOFICEOFICIAL.Clases
 		{
 			if (Util.Usuario != null)
 			{
-				UsuarioSesion newUser = new UsuarioSesion(Util.Usuario.Login);
-				newUser.Usuario = Util.Usuario;
+				UsuarioSesion newUser = new UsuarioSesion(Util.Usuario.Login)
+				{
+					Usuario = Util.Usuario
+				};
 				HttpContext.Current.User = newUser;
 			}
 			base.OnAuthorization(filterContext);

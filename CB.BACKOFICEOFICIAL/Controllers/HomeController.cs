@@ -6,6 +6,9 @@ using System.IO;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Web;
+using System.Net;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
@@ -38,12 +41,68 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			list = pl.GetClienteAllMoraNoAsignados(id);
 			return View(list);
 		}
-		public	ActionResult Notificacion()
-		{ 
+		public ActionResult Notificacion()
+		{
+
+			return View();
+		}
+		public ActionResult ListNPreventiva()
+		{
 			List<NotiPreventiva> list = new List<NotiPreventiva>();
 			LPersonaCasas pl = new LPersonaCasas();
 			list = pl.GetNotiPreventivas(5);
-			return View(list);
+			return PartialView("_ListNPreventiva", list);
+		}
+		public ActionResult Email()
+		{
+			return PartialView("_Coreo");
+		}
+		[HttpPost]
+		public ActionResult EnviarCoreo(string para = "", string asunto = "", string mensaje = "", HttpPostedFileBase httpPostedFileBase = null)
+		{
+			try
+			{
+				MailMessage coreo = new MailMessage();
+				coreo.From = new MailAddress("tory.ven.16@gmail.com", "TORY", System.Text.Encoding.UTF8);
+				coreo.To.Add(para);
+				coreo.Subject = asunto;
+				coreo.Body = mensaje;
+				coreo.SubjectEncoding = System.Text.Encoding.UTF8;
+				coreo.IsBodyHtml = false;
+				coreo.Priority = MailPriority.Normal;
+				coreo.BodyEncoding = System.Text.Encoding.UTF8;
+				string ruta = Server.MapPath("../Temporal");
+				if (!Directory.Exists(ruta))
+				{
+					Directory.CreateDirectory(ruta);
+				}
+				if (httpPostedFileBase != null)
+				{
+					string filename = Path.GetFileName(httpPostedFileBase.FileName);
+					httpPostedFileBase.SaveAs(ruta + filename);
+					Attachment attachment = new Attachment(ruta + filename);
+					coreo.Attachments.Add(attachment);
+				}
+
+				//configuration of the  server smpt
+				SmtpClient smtpClient = new SmtpClient
+				{
+					Host = "smtp.gmail.com",
+					Port = 587,
+					EnableSsl = true,
+					UseDefaultCredentials = true
+				};
+				string scuentacoreo = "tory.ven.16@gmail.com";
+				string spassword = "comoolvidartemivida";
+				smtpClient.Credentials = new NetworkCredential(scuentacoreo, spassword);
+				smtpClient.Send(coreo);
+			}
+			catch (Exception ex)
+			{
+
+				throw;
+			}
+			return View();
 		}
 		public ActionResult ExportToExcel(int fase)
 		{

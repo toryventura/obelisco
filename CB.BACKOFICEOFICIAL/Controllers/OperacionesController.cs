@@ -78,7 +78,17 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			return Json(lista);
 		}
 
+		public ActionResult Imprimir(string idclient, int idoperacion)
+		{
+			ViewBag.fecha = DateTime.Now;
+			return PartialView("_Imprimir", new Imprimir());
+		}
 
+		public ActionResult printf(string idclient, int idoperacion)
+		{
+			ViewBag.fecha = DateTime.Now;
+			return View(new Imprimir());
+		}
 		public ActionResult Create(ENTIDADES.OperacionCobranza collection, string probalidadpago = "", string compromisopago = "", string casualmora = "", string parametro = "")
 		{
 			var mensajes = new List<KeyValuePair<string, string>>();
@@ -94,9 +104,10 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 				collection.compromisoPagoID = Convert.ToInt32(compromisopago);
 				collection.causalMoraID = Convert.ToInt32(casualmora);
 				collection.tipoGestionID = Convert.ToInt32(parametro);
-				if (op.add(collection))
+				int cout = op.add(collection);
+				if (cout != 0)
 				{
-					mensajes.Add(Util.mensaje("OK", "La operacion correctamente"));
+					mensajes.Add(Util.mensaje("OK", "La operacion correctamente" + "|" + cout));
 				}
 				else
 				{
