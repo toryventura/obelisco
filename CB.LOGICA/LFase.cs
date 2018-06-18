@@ -18,7 +18,7 @@ namespace CB.LOGICA
 								ID = x.ID
 							}).ToList();
 
-				return list == null ? null : list;
+				return list ?? null;
 			}
 			catch (System.Exception ex)
 			{

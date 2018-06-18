@@ -449,12 +449,12 @@
         }
 
     }
-    function Imprimir(idclient, idopercion) {
+    function Imprimir() {
         
             $.ajax({
                 url: "@Url.Action("Imprimir", "Operaciones")",
                 cache: false,
-                data: { idcliente: idclient, idopercaion: idopercion },
+                data: { idclient: selectedRowsClient, idoperacion: selectedOperacion },
                 type: "POST"
             }).done(function (html) {
                 $("#myimprimir").html(html);

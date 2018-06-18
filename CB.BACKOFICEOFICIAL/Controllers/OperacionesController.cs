@@ -78,16 +78,33 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			return Json(lista);
 		}
 
-		public ActionResult Imprimir(string idclient, int idoperacion)
+		public ActionResult Imprimir(string idclient, int idoperacion=0)
 		{
 			ViewBag.fecha = DateTime.Now;
-			return PartialView("_Imprimir", new Imprimir());
+			ViewBag.idclient = idclient;
+			ViewBag.idopracion = idoperacion;
+			LPersonaCasas pc = new LPersonaCasas();
+			LOperaciones op = new LOperaciones();
+			Imprimir imp = new Imprimir
+			{
+				cliente = pc.GetClienteXID(idclient),
+				operacion=op.GetOperacion(idoperacion)
+			};
+
+			return PartialView("_Imprimir", imp);
 		}
 
-		public ActionResult printf(string idclient, int idoperacion)
+		public ActionResult Printf(string idclient, int idoperacion=0)
 		{
 			ViewBag.fecha = DateTime.Now;
-			return View(new Imprimir());
+			LPersonaCasas pc = new LPersonaCasas();
+			LOperaciones op = new LOperaciones();
+			Imprimir imp = new Imprimir
+			{
+				cliente = pc.GetClienteXID(idclient),
+				operacion = op.GetOperacion(idoperacion)
+			};
+			return View(imp);
 		}
 		public ActionResult Create(ENTIDADES.OperacionCobranza collection, string probalidadpago = "", string compromisopago = "", string casualmora = "", string parametro = "")
 		{
@@ -101,8 +118,8 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 				collection.UsrCre = us.Login;
 				collection.UsrMod = us.Login;
 				collection.probalidadPagoID = Convert.ToInt32(probalidadpago);
-				collection.compromisoPagoID = Convert.ToInt32(compromisopago);
-				collection.causalMoraID = Convert.ToInt32(casualmora);
+				collection.CompromisoPagoID = Convert.ToInt32(compromisopago);
+				collection.CausalMoraID = Convert.ToInt32(casualmora);
 				collection.tipoGestionID = Convert.ToInt32(parametro);
 				int cout = op.add(collection);
 				if (cout != 0)

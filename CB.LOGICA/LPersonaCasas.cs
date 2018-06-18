@@ -110,7 +110,7 @@ namespace CB.LOGICA
 				Ccosto = s.Ccosto,
 				CI = s.CI,
 				Ciudad = s.Ciudad,
-				clave = s.clave == null ? "" : s.clave,
+				clave = s.clave ?? "",
 				CodCliente = s.CodCliente,
 				CodCuenta = s.CodCuenta,
 				CodEstado = s.CodEstado == null ? -99 : s.CodEstado.Value,
@@ -137,9 +137,9 @@ namespace CB.LOGICA
 				NIT = s.NIT,
 				NombreFactura = s.NombreFactura,
 				NombreP = s.NombreP,
-				NomCorto = s.NomCorto == null ? "" : s.NomCorto,
+				NomCorto = s.NomCorto ?? "",
 				RevisaOCompra = s.RevisaOCompra,
-				Seg_Apellido = s.Seg_Apellido == null ? "" : s.Seg_Apellido,
+				Seg_Apellido = s.Seg_Apellido ?? "",
 				Sexo = s.Sexo,
 				SolicitaOCompra = s.SolicitaOCompra,
 				SolicitaPedido = s.SolicitaPedido,
@@ -163,7 +163,7 @@ namespace CB.LOGICA
 					moras = (from x in db.CantidadClienteMoras
 							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
 							 where x.CantidadCouta >= fase
-							 select s.Codigo).ToList();
+							 select s.CodCliente).ToList();
 				}
 				else
 				{
@@ -267,7 +267,7 @@ namespace CB.LOGICA
 				Ccosto = s.Ccosto,
 				CI = s.CI,
 				Ciudad = s.Ciudad,
-				clave = s.clave == null ? "" : s.clave,
+				clave = s.clave ?? "",
 				CodCliente = s.CodCliente,
 				CodCuenta = s.CodCuenta,
 				CodEstado = s.CodEstado == null ? -99 : s.CodEstado.Value,
@@ -294,9 +294,9 @@ namespace CB.LOGICA
 				NIT = s.NIT,
 				NombreFactura = s.NombreFactura,
 				NombreP = s.NombreP,
-				NomCorto = s.NomCorto == null ? "" : s.NomCorto,
+				NomCorto = s.NomCorto ?? "",
 				RevisaOCompra = s.RevisaOCompra,
-				Seg_Apellido = s.Seg_Apellido == null ? "" : s.Seg_Apellido,
+				Seg_Apellido = s.Seg_Apellido ?? "",
 				Sexo = s.Sexo,
 				SolicitaOCompra = s.SolicitaOCompra,
 				SolicitaPedido = s.SolicitaPedido,

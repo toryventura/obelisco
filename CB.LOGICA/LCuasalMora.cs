@@ -86,7 +86,7 @@ namespace CB.LOGICA
 								   causalMoraID = x.causalMoraID,
 								   Nombre = x.Nombre
 							   }).ToList();
-					return lis != null ? lis : null;
+					return lis ?? null;
 				}
 
 			}

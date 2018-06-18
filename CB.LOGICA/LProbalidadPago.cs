@@ -87,7 +87,7 @@ namespace CB.LOGICA
 								   ID = x.ID,
 								   Nombre = x.Nombre
 							   }).ToList();
-					return lis != null ? lis : null;
+					return lis ?? null;
 				}
 
 			}

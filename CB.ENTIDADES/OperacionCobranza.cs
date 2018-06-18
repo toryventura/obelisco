@@ -14,10 +14,10 @@ namespace CB.ENTIDADES
 		public DateTime FeMod { get; set; }
 		public string UsrCre { get; set; }
 		public string UsrMod { get; set; }
-		public int asignacionClienteID { get; set; }
-		public int causalMoraID { get; set; }
-
-		public int compromisoPagoID { get; set; }
+		public int AsignacionClienteID { get; set; }
+		public int CausalMoraID { get; set; }
+		public string NombreCausal { get; set; }
+		public int CompromisoPagoID { get; set; }
 
 		public string compromisoPago { get; set; }
 		public int tipoGestionID { get; set; }

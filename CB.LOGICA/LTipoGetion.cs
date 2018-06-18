@@ -88,7 +88,7 @@ namespace CB.LOGICA
 								   tipoGestionID = x.tipoGestionID,
 								   Nombre = x.Nombre
 							   }).ToList();
-					return lis != null ? lis : null;
+					return lis ?? null;
 				}
 
 			}

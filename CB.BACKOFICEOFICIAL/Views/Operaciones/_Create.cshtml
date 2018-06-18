@@ -105,9 +105,9 @@
 
                             </div>
                             <div class="form-group" style="display:none">
-                                <label class="col-sm-4 control-label" for="@Model.asignacionClienteID">Causal Mora Anterior </label>
+                                <label class="col-sm-4 control-label" for="@Model.AsignacionClienteID">Causal Mora Anterior </label>
                                 <div class="col-sm-8">
-                                    @Html.EditorFor(model => model.asignacionClienteID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Causal mora anterior", @Value = asignacionID } })
+                                    @Html.EditorFor(model => model.AsignacionClienteID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Causal mora anterior", @Value = asignacionID } })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -160,10 +160,10 @@
         if (e[0].Key == "OK") {
             var mensaje = e[0].Value;
             var resp = mensaje.split("|");
-            var ipoperacion = parseInt(resp[1]);
-            selectedOperacion = ipoperacion;
-            success(e[0].Value);
-            Imprimir(selectedRowsClient, selectedOperacion);
+             
+            selectedOperacion = parseInt(resp[1]);;
+            success(resp[0].Value);
+            Imprimir();
         } else {
             error(e[0].Value);
         }

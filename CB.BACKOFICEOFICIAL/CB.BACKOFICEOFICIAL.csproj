@@ -267,7 +267,6 @@
     <Content Include="bower_components\ag-grid-enterprise\src\styles\balham-icons\tree-closed.svg" />
     <Content Include="bower_components\ag-grid-enterprise\src\styles\balham-icons\tree-indeterminate.svg" />
     <Content Include="bower_components\ag-grid-enterprise\src\styles\balham-icons\tree-open.svg" />
-    <Content Include="bower_components\ag-grid-enterprise\src\styles\entry.js" />
     <Content Include="bower_components\ag-grid-enterprise\src\styles\icons\aggregation.svg" />
     <Content Include="bower_components\ag-grid-enterprise\src\styles\icons\arrows.svg" />
     <Content Include="bower_components\ag-grid-enterprise\src\styles\icons\asc.svg" />
@@ -7191,10 +7190,6 @@
     <Content Include="bower_components\bootstrap-datepicker\.gitignore" />
     <Content Include="bower_components\bootstrap-datepicker\.travis.yml" />
     <Content Include="bower_components\bootstrap-datepicker\bower.json" />
-    <Content Include="bower_components\bootstrap-datepicker\build\build.less" />
-    <Content Include="bower_components\bootstrap-datepicker\build\build3.less" />
-    <Content Include="bower_components\bootstrap-datepicker\build\build_standalone.less" />
-    <Content Include="bower_components\bootstrap-datepicker\build\build_standalone3.less" />
     <Content Include="bower_components\bootstrap-datepicker\CHANGELOG.md" />
     <Content Include="bower_components\bootstrap-datepicker\CODE_OF_CONDUCT.md" />
     <Content Include="bower_components\bootstrap-datepicker\composer.json" />
@@ -7909,6 +7904,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bower_components\bootstrap-datepicker\build\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>

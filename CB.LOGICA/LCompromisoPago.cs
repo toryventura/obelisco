@@ -87,7 +87,7 @@ namespace CB.LOGICA
 								   compromisoPagoID = x.compromisoPagoID,
 								   Nombre = x.Nombre
 							   }).ToList();
-					return lis != null ? lis : null;
+					return lis ?? null;
 				}
 
 			}

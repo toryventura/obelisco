@@ -8,7 +8,7 @@ namespace CB.BACKOFICEOFICIAL.Clases
 {
 	public class Imprimir
 	{
-		public PersonaMora cliente { get; set; }
+		public PersonaCasas cliente { get; set; }
 		public OperacionCobranza operacion { get; set; }
 	}
 }

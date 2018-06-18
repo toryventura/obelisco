@@ -90,7 +90,7 @@ namespace CB.LOGICA
 								   TipoGestionId = x.TipoGestionId.Value,
 								   TipoGestion = new ENTIDADES.TipoGestion() { Nombre = x.TipoGestion.Nombre, tipoGestionID = x.TipoGestion.tipoGestionID }
 							   }).ToList();
-					return lis != null ? lis : null;
+					return lis ?? null;
 				}
 
 			}

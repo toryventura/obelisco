@@ -17,7 +17,7 @@ namespace CB.LOGICA
 				{
 					var idAsigancion = db.AsignacionClientes.Where(x => x.CodCliente == clienteID).Select(x => x.asignacionClienteID).FirstOrDefault();
 					var _lists = new List<ENTIDADES.OperacionCobranza>();
-					if (idAsigancion != null)
+					if (idAsigancion != 0)
 					{
 						var _List = db.OperacionCobranzas.Where(s => s.asignacionClienteID == idAsigancion).ToList();
 						foreach (var item in _List)
@@ -44,6 +44,24 @@ namespace CB.LOGICA
 				return asig;
 			}
 		}
+		public OperacionCobranza GetOperacion(int id)
+		{
+			try
+			{
+				using (var db = new DATA.USER.COBRANZA_CBEntities())
+				{
+					var op = db.OperacionCobranzas.Where(x => x.operacionCobranzaID == id).FirstOrDefault();
+
+					return ToEntidades(op);
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica : GetOperacion", ex);
+			}
+
+		}
 		public int add(ENTIDADES.OperacionCobranza o)
 		{
 			using (var db = new DATA.USER.COBRANZA_CBEntities())
@@ -54,11 +72,11 @@ namespace CB.LOGICA
 					var pres = db.Parametros.Where(x => x.ID == o.tipoGestionID).Select(x => x.TipoGestionId.Value).FirstOrDefault();
 					var uss = new DATA.USER.OperacionCobranza()
 					{
-						asignacionClienteID = o.asignacionClienteID,
-						causalMoraID = o.causalMoraID,
+						asignacionClienteID = o.AsignacionClienteID,
+						causalMoraID = o.CausalMoraID,
 						CausalMoraAnt = o.CausalMoraAnt,
 						Comentario = o.Comentario,
-						compromisoPagoID = o.compromisoPagoID,
+						compromisoPagoID = o.CompromisoPagoID,
 						FechaCompromiso = Convert.ToDateTime(o.FechaCompromiso),
 						FeCre = o.FeCre,
 						FeMod = o.FeMod,
@@ -86,15 +104,16 @@ namespace CB.LOGICA
 		{
 			return new OperacionCobranza()
 			{
-				asignacionClienteID = o.asignacionClienteID.Value,
+				AsignacionClienteID = o.asignacionClienteID.Value,
 				CausalMoraAnt = o.CausalMoraAnt,
-				causalMoraID = o.causalMoraID.Value,
+				CausalMoraID = o.causalMoraID.Value,
 				Comentario = o.Comentario,
-				compromisoPagoID = o.compromisoPagoID.Value,
+				CompromisoPagoID = o.compromisoPagoID.Value,
 				FechaCompromiso = Convert.ToString(o.FechaCompromiso.Value),
 				FeCre = o.FeCre.Value,
 				FeMod = o.FeMod.Value,
 				compromisoPago = "",
+				NombreCausal=getNombreCausual(o.causalMoraID.Value),
 				nombrepresencia = getNombrePresencia(o.presenciaClienteID.Value),
 				nombreprobalidadPago = getNombrPerobalidad(o.probalidadPagoID.Value),
 				nombretipogetion = getTipogestion(o.tipoGestionID.Value),
@@ -110,12 +129,21 @@ namespace CB.LOGICA
 			};
 		}
 
+		private string getNombreCausual(int causalMoraID)
+		{
+			using (var db =new DATA.USER.COBRANZA_CBEntities())
+			{
+				var mon = db.CausalMoras.Where(s => s.causalMoraID == causalMoraID).Select(s => s.Nombre).FirstOrDefault();
+				return mon ?? "";
+			}
+		}
+
 		private string getTipogestion(int p)
 		{
 			using (var db = new DATA.USER.COBRANZA_CBEntities())
 			{
 				var nom = db.TipoGestions.Where(s => s.tipoGestionID == p).Select(s => s.Nombre).FirstOrDefault();
-				return nom != null ? nom : "";
+				return nom ?? "";
 			}
 		}
 
@@ -124,7 +152,7 @@ namespace CB.LOGICA
 			using (var db = new DATA.USER.COBRANZA_CBEntities())
 			{
 				var nom = db.ProbalidadPagoes.Where(s => s.ID == p).Select(s => s.Nombre).FirstOrDefault();
-				return nom != null ? nom : "";
+				return nom ?? "";
 			}
 		}
 
@@ -132,8 +160,8 @@ namespace CB.LOGICA
 		{
 			using (var db = new DATA.USER.COBRANZA_CBEntities())
 			{
-				var nom = db.ProbalidadPagoes.Where(s => s.ID == p).Select(s => s.Nombre).FirstOrDefault();
-				return nom != null ? nom : "";
+				var nom = db.Parametros.Where(s => s.ID == p).Select(s => s.Descripcion).FirstOrDefault();
+				return nom ?? "";
 			}
 		}
 		public List<KeyValuePair<int, string>> getTipeGestion()
