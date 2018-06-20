@@ -16,17 +16,16 @@ namespace CB.LOGICA
 				try
 				{
 					List<AsignacionCliente> lista = new List<AsignacionCliente>();
-					var items = db.AsignacionClientes.ToList();
+					var items = db.AsignacionClientes.Where(s=>s.Estado==true).ToList();
 					foreach (var item in items)
 					{
 						lista.Add(toEntidades(item));
 					}
 					return lista;
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
-					return null;
-					throw;
+					throw new Exception("GetClientesAsignadosAll", ex);
 				}
 			}
 		}

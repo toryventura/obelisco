@@ -149,9 +149,14 @@
         { headerName: "Proabalida pago", field: "nombreprobalidadPago", width: 100 },
         { headerName: "Compromiso Paga", field: "compromisoPago", width: 100 },
         { headerName: "Telefono", field: "TelefonoAlternativo", width: 100 },
-        { headerName: "Presencia cliente", field: "nombrepresencia", width: 100 }
-
+        { headerName: "Presencia cliente", field: "nombrepresencia", width: 100 },
+        { headerName: "Imprimir", field: "button", width: 100, cellRenderer: imprimir },
     ];
+    function imprimir(params) {
+        //var html = '<a title="Remove" href="javascript:;" class="align-center btn-link btn-sm" ng-click="RemoveRecord(' + params.rowIndex + ')">Delete</a>';
+        var html = '<button type="button" id="idbutton" data-action-type="view1" class="btn-link btn-xs" onclick="Imprimir(' + params.data.operacionCobranzaID + ');" >Imprimir</button>'
+        return html;
+    }
     var gridOptionsAsignadas = {
         // set rowData to null or undefined to show loading panel by default
         // rowData: rowData,
@@ -455,6 +460,26 @@
                 url: "@Url.Action("Imprimir", "Operaciones")",
                 cache: false,
                 data: { idclient: selectedRowsClient, idoperacion: selectedOperacion },
+                type: "POST"
+            }).done(function (html) {
+                $("#myimprimir").html(html);
+                $('#myimprimir').modal('show');
+                setDatosAdiconales();
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("complete the operacion");
+            });
+        
+
+    }
+    function Imprimir(opid) {
+        selectedOperacion = opid;
+        
+            $.ajax({
+                url: "@Url.Action("Imprimir", "Operaciones")",
+                cache: false,
+                data: { idclient: selectedRowsClient, idoperacion: opid },
                 type: "POST"
             }).done(function (html) {
                 $("#myimprimir").html(html);

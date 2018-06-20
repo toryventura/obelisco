@@ -15,7 +15,7 @@ namespace CB.LOGICA
 			{
 				try
 				{
-					var idAsigancion = db.AsignacionClientes.Where(x => x.CodCliente == clienteID).Select(x => x.asignacionClienteID).FirstOrDefault();
+					var idAsigancion = db.AsignacionClientes.Where(x => x.CodCliente == clienteID && x.Estado==true).Select(x => x.asignacionClienteID).FirstOrDefault();
 					var _lists = new List<ENTIDADES.OperacionCobranza>();
 					if (idAsigancion != 0)
 					{
