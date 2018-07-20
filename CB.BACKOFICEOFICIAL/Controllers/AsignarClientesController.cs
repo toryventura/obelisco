@@ -164,7 +164,8 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 				//List<string> list = lista.ToArray<string>().ToList();
 
 				DateTime an = DateTime.Now;
-				string per = Convert.ToString(an.Month) + "/" + Convert.ToString(an.Year);
+				string mes = Convert.ToString(an.Month).Length == 1 ? "0" + Convert.ToString(an.Month) : Convert.ToString(an.Month);
+				string per = mes + "/" + Convert.ToString(an.Year);
 				foreach (var item in lista)
 				{
 					AsignacionCliente o = new AsignacionCliente()
