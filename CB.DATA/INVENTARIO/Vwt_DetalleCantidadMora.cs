@@ -12,9 +12,14 @@ namespace CB.DATA.INVENTARIO
     using System;
     using System.Collections.Generic;
     
-    public partial class CantidadClienteMora
+    public partial class Vwt_DetalleCantidadMora
     {
-        public Nullable<int> CantidadCouta { get; set; }
         public string Codigo { get; set; }
+        public string CodCliente { get; set; }
+        public double MontoCuota { get; set; }
+        public int NroCuota { get; set; }
+        public string CodMora { get; set; }
+        public Nullable<double> SaldoCuota { get; set; }
+        public System.DateTime Fecha { get; set; }
     }
 }

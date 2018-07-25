@@ -36,10 +36,15 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult Fase(int id)
 		{
 			ViewBag.fase = id;
-			List<PersonaCasas> list = new List<PersonaCasas>();
+			return View();
+		}
+		public ActionResult FaseDetalle(int id)
+		{
+			
+			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
-			list = pl.GetClienteAllMoraNoAsignados(id);
-			return View(list);
+			list = pl.GetClienteMoraDetalleXFase(id);
+			return Json(list);
 		}
 		public ActionResult Notificacion()
 		{
@@ -48,10 +53,10 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		}
 		public ActionResult ListNPreventiva()
 		{
-			List<NotiPreventiva> list = new List<NotiPreventiva>();
+			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
 			list = pl.GetNotiPreventivas(5);
-			return PartialView("_ListNPreventiva", list);
+			return Json(list);
 		}
 		public ActionResult Email()
 		{
@@ -100,7 +105,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			catch (Exception ex)
 			{
 
-				throw;
+				throw new Exception("vista", ex);
 			}
 			return View();
 		}

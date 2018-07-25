@@ -26,7 +26,7 @@
                     <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
                 </div>
                 <div class="box-body" id="ListaContenidosContainer">
-                    @Html.Partial("_ListNPreventiva", new List<CB.ENTIDADES.NotiPreventiva>())
+                    <div id="gridDetalle" style="height: 450px;" class="ag-theme-balham"></div>
                 </div>
             </div>
         </div>
@@ -39,10 +39,7 @@
 </section>
 
 <script>
-    $(document).ready(function (e) {
-        Listar();
-    });
-
+   
     function email(id) {
         $.ajax({
             url: "@Url.Action("Email","Home")",
@@ -66,8 +63,58 @@
 
     }
 
-    function Listar() {
+    var columnDefsDetalle = [
+        { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
+        { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Total', field: 'total', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Nro Cuota', field: 'NroCuota' },
+        { headerName: 'Telefono', field: 'Telefono' },
+        { headerName: 'Fecha Pago', field: 'Fecha'},
 
+        { field: 'NombreCompleto', rowGroup: true, hide: true }
+    ];
+
+    var gridOptionsDetalle = {
+        columnDefs: columnDefsDetalle,
+        defaultColDef: {
+            width: 150
+        },
+        enableRangeSelection: true,
+        enableSorting: true,
+        enableColResize: true,
+        autoGroupColumnDef: {
+            headerName: 'Cod Cliente',
+            width: 300,
+            field: 'CodCliente'
+        },
+        groupIncludeFooter: true,
+        groupIncludeTotalFooter: true,
+        animateRows: true
+
+    };
+    function currencyFormatter(params) {
+
+        var dt = params.Fecha;
+        if (typeof dt == 'undefined') {
+            return '';
+        } else {
+            return toDateFromAspNet(dt);
+        }
+
+    }
+
+    function toDateFromAspNet (dt) {
+        var dte = eval("new " + dt.replace(/\//g, '') + ";");
+        dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
+        return dte;
+    }
+    $(document).ready(function () {
+        ListarDetalle();
+    });
+    function ListarDetalle() {
+        var gridDiv = document.querySelector('#gridDetalle');
+        createGlobal(gridOptionsDetalle, gridDiv);
+       
         $.ajax({
             url: "@Url.Action("ListNPreventiva", "Home")",
             cache: false,
@@ -75,12 +122,12 @@
             },
             type: "POST"
         }).done(function (html) {
-            $("#ListaContenidosContainer").html(html);
-
+            setDataSource(html, gridOptionsDetalle);
+            // gridOptionsAsignadas.api.setRowData(html);
         }).fail(function (resp) {
             console.log(resp.responseText);
         }).always(function () {
-            console.log("complete the operation of Listar clients")
+            console.log(" se ha completado");
         });
     }
 

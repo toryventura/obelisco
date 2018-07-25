@@ -45,7 +45,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Count();
+					int xa = db.Vwt_CantidadClienteMora.Count();
 					return xa;
 				}
 			}
@@ -61,7 +61,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 1).Count();
+					int xa = db.Vwt_CantidadClienteMora.Where(x => x.CantidadCouta.Value == 1).Count();
 					return xa;
 				}
 			}
@@ -78,7 +78,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 2).Count();
+					int xa = db.Vwt_CantidadClienteMora.Where(x => x.CantidadCouta.Value == 2).Count();
 					return xa;
 				}
 			}
@@ -95,7 +95,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 3).Count();
+					int xa = db.Vwt_CantidadClienteMora.Where(x => x.CantidadCouta.Value == 3).Count();
 					return xa;
 				}
 			}
@@ -112,7 +112,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value == 4).Count();
+					int xa = db.Vwt_CantidadClienteMora.Where(x => x.CantidadCouta.Value == 4).Count();
 					return xa;
 				}
 			}
@@ -129,7 +129,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value > 4).Count();
+					int xa = db.Vwt_CantidadClienteMora.Where(x => x.CantidadCouta.Value > 4).Count();
 					return xa;
 				}
 			}
@@ -146,7 +146,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					int xa = db.CantidadClienteMoras.Where(x => x.CantidadCouta.Value > 5).Count();
+					int xa = db.Vwt_CantidadClienteMora.Where(x => x.CantidadCouta.Value > 5).Count();
 					return xa;
 				}
 			}

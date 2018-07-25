@@ -3,7 +3,6 @@ using CB.ENTIDADES;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace CB.LOGICA
 {
 	public class LPersonaCasas
@@ -32,22 +31,25 @@ namespace CB.LOGICA
 			}
 
 		}
-		public List<NotiPreventiva> GetNotiPreventivas(int dias)
+		public List<DetalleFase> GetNotiPreventivas(int dias)
 		{
 			try
 			{
-				using (var db = new DATA.USER.COBRANZA_CBEntities())
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					var list = (from x in db.sp_NotificacionPreventiva(dias)
-								select new NotiPreventiva()
+					var list = (from x in db.spt_NotificacionPreventiva(dias)
+								select new DetalleFase()
 								{
-									Accion = x.Accion.Value,
+									CantidadCouta = x.CantidadCouta.Value,
 									CodCliente = x.CodCliente,
 									Codigo = x.Codigo,
-									Fecha = x.Fecha.Value,
-									Nombre = x.Nombre,
+									CodMora = x.CodMora,
+									Fecha = x.Fecha.Value.ToString("dd/MM/yyyy"),
+									MontoCuota = x.MontoCuota.Value,
+									NombreCompleto = x.NombreCompleto,
 									NroCuota = x.NroCuota.Value,
-									TotalCuota = x.TotalCuota.Value
+									SaldoCuota = x.SaldoCuota.Value,
+									Telefono = x.Telefono
 
 								}).ToList();
 					return list;
@@ -75,7 +77,7 @@ namespace CB.LOGICA
 			try
 			{
 				var _listAsiganado = db1.AsignacionClientes.Where(x => x.Estado == true).Select(w => w.Codigo).ToList();
-				var moras = (from x in db.CantidadClienteMoras select x).ToList();
+				var moras = (from x in db.Vwt_CantidadClienteMora select x).ToList();
 				var _listmoras = moras.Where(x => !_listAsiganado.Contains(x.Codigo)).Select(w => w.Codigo).ToList();
 				var cta = db.CtaPorCobrars.Where(s => s.TipoCtaPorCobrar == 5).ToList();
 				var lista_cta = cta.Where(j => _listmoras.Contains(j.Codigo)).ToList();
@@ -156,18 +158,19 @@ namespace CB.LOGICA
 			var db1 = new DATA.USER.COBRANZA_CBEntities();
 			try
 			{
+				
 				List<string> moras = new List<string>();
 				if (fase == 5)
 				{
 
-					moras = (from x in db.CantidadClienteMoras
+					moras = (from x in db.Vwt_CantidadClienteMora
 							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
 							 where x.CantidadCouta >= fase
 							 select s.CodCliente).ToList();
 				}
 				else
 				{
-					moras = (from x in db.CantidadClienteMoras
+					moras = (from x in db.Vwt_CantidadClienteMora
 							 join s in db.CtaPorCobrars on x.Codigo equals s.Codigo
 							 where x.CantidadCouta == fase
 							 select s.CodCliente).ToList();
@@ -187,6 +190,37 @@ namespace CB.LOGICA
 				throw new Exception("Logica", ex);
 			}
 		}
+		public List<DetalleFase> GetClienteMoraDetalleXFase(int fase)
+		{
+			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
+			
+			try
+			{
+				List<DetalleFase> detalleFases = new List<DetalleFase>();
+				var listDetalle = db.sp_GetClienteMoraDetalleXFase(fase);
+				foreach (var item in listDetalle)
+				{
+					detalleFases.Add(new DetalleFase() {
+						CantidadCouta=item.CantidadCouta.Value,
+						CodCliente=item.CodCliente,
+						Codigo=item.Codigo,
+						CodMora=item.CodMora,
+						Fecha=item.Fecha.ToString("dd/MM/yyyy"),
+						MontoCuota=item.MontoCuota,
+						NombreCompleto=item.NombreCompleto,
+						NroCuota=item.NroCuota,
+						SaldoCuota=item.SaldoCuota.Value,
+						Telefono=item.Telefono
+					});
+				}
+
+				return detalleFases;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Logica", ex);
+			}
+		}
 		public int CantidadclienteNoasignados(string periodo)
 		{
 			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
@@ -194,7 +228,7 @@ namespace CB.LOGICA
 			try
 			{
 				var _listAsiganado = db1.AsignacionClientes.Where(x => (x.Periodo == periodo && x.Estado == true)).Count();
-				var _cantidamoras = db.CantidadClienteMoras.Count();
+				var _cantidamoras = db.Vwt_CantidadClienteMora.Count();
 				var cta = _listAsiganado != 0 && _cantidamoras != 0 ? _cantidamoras - _listAsiganado : 0;
 
 				return cta;
@@ -251,11 +285,7 @@ namespace CB.LOGICA
 				throw new Exception("Logica", ex);
 
 			}
-
-
-
 		}
-
 		public PersonaCasas toEntides(DATA.INVENTARIO.Persona s)
 		{
 			return new PersonaCasas()

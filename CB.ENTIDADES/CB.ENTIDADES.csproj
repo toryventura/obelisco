@@ -45,6 +45,7 @@
     <Compile Include="Clonadora.cs" />
     <Compile Include="CompromisoPago.cs" />
     <Compile Include="DetailsMoras.cs" />
+    <Compile Include="DetalleFase.cs" />
     <Compile Include="Fase.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="NotiPreventiva.cs" />

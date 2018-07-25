@@ -16,8 +16,9 @@ namespace CB.DATA.INVENTARIO
         public int nro { get; set; }
         public Nullable<System.DateTime> vcto { get; set; }
         public Nullable<double> impt { get; set; }
-        public Nullable<int> nrotram { get; set; }
+        public string nrotram { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
+        public Nullable<double> interes { get; set; }
         public Nullable<double> cuota { get; set; }
         public Nullable<double> cargos { get; set; }
         public Nullable<double> total { get; set; }

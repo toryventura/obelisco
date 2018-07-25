@@ -95,9 +95,6 @@
     <Compile Include="INVENTARIO\cantCuotasPagada.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
-    <Compile Include="INVENTARIO\CantidadClienteMora.cs">
-      <DependentUpon>obelisco.tt</DependentUpon>
-    </Compile>
     <Compile Include="INVENTARIO\CategoriaVendedor.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
@@ -258,6 +255,9 @@
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\fn_MoviemtoXcliente_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\fn_NotificacionPreventiva_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\FondoFijo.cs">
@@ -449,10 +449,22 @@
     <Compile Include="INVENTARIO\SerieTraspaso.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\spt_NotificacionPreventiva_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_GetClienteMoraDetalleXFase_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_getMovCajaIngDia_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\sp_MovimientoXcliente_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\sp_RecuperacionCarteraCliente_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\sp_RecuperacionCarteraFase_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\sp_RecuperacionCarteraFecha_Result.cs">
@@ -635,6 +647,45 @@
     <Compile Include="INVENTARIO\Vista_SumaSaldo.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\Vwt_CantidadClienteMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_ClienteAlDia.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_CoutasFaltaPagarFija.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_CoutasFaltaPagarMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_CuotaPagadaFija.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_CuotaPagadaMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_DetalleCantidadMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_DetalleClienteMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_DetalleFijaMoraFinal.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_DetelleFijaMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_TotalClienteMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_CantCuotaDeuda.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_CantCuotaPagada.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\vw_gridMoraBookk_SAI.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
@@ -645,6 +696,9 @@
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\vw_SaldoCapital.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\vw_saldoIntDevengado.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\vw_SaldosPorCobrar.cs">
@@ -773,6 +827,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

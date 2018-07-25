@@ -203,14 +203,27 @@ namespace CB.DATA.INVENTARIO
         public virtual DbSet<View_GlosaCorrectaProducto> View_GlosaCorrectaProducto { get; set; }
         public virtual DbSet<Vista_SumaSaldo> Vista_SumaSaldo { get; set; }
         public virtual DbSet<VistaCliente> VistaClientes { get; set; }
+        public virtual DbSet<vw_CantCuotaDeuda> vw_CantCuotaDeuda { get; set; }
+        public virtual DbSet<vw_CantCuotaPagada> vw_CantCuotaPagada { get; set; }
         public virtual DbSet<vw_gridMoraBookk_SAI> vw_gridMoraBookk_SAI { get; set; }
         public virtual DbSet<vw_gridPrestamosBookk> vw_gridPrestamosBookk { get; set; }
         public virtual DbSet<vw_Recuperado> vw_Recuperado { get; set; }
         public virtual DbSet<vw_SaldoCapital> vw_SaldoCapital { get; set; }
+        public virtual DbSet<vw_saldoIntDevengado> vw_saldoIntDevengado { get; set; }
         public virtual DbSet<vw_SaldosPorCobrar> vw_SaldosPorCobrar { get; set; }
         public virtual DbSet<vw_UltCuotaPorPagar> vw_UltCuotaPorPagar { get; set; }
         public virtual DbSet<vw_ventaClientes> vw_ventaClientes { get; set; }
-        public virtual DbSet<CantidadClienteMora> CantidadClienteMoras { get; set; }
+        public virtual DbSet<Vwt_CantidadClienteMora> Vwt_CantidadClienteMora { get; set; }
+        public virtual DbSet<Vwt_ClienteAlDia> Vwt_ClienteAlDia { get; set; }
+        public virtual DbSet<Vwt_CoutasFaltaPagarFija> Vwt_CoutasFaltaPagarFija { get; set; }
+        public virtual DbSet<Vwt_CoutasFaltaPagarMora> Vwt_CoutasFaltaPagarMora { get; set; }
+        public virtual DbSet<Vwt_CuotaPagadaFija> Vwt_CuotaPagadaFija { get; set; }
+        public virtual DbSet<Vwt_CuotaPagadaMora> Vwt_CuotaPagadaMora { get; set; }
+        public virtual DbSet<Vwt_DetalleCantidadMora> Vwt_DetalleCantidadMora { get; set; }
+        public virtual DbSet<Vwt_DetalleClienteMora> Vwt_DetalleClienteMora { get; set; }
+        public virtual DbSet<Vwt_DetalleFijaMoraFinal> Vwt_DetalleFijaMoraFinal { get; set; }
+        public virtual DbSet<Vwt_DetelleFijaMora> Vwt_DetelleFijaMora { get; set; }
+        public virtual DbSet<Vwt_TotalClienteMora> Vwt_TotalClienteMora { get; set; }
     
         [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_MoviemtoXcliente")]
         public virtual IQueryable<fn_MoviemtoXcliente_Result> fn_MoviemtoXcliente(Nullable<int> codcliente)
@@ -220,6 +233,20 @@ namespace CB.DATA.INVENTARIO
                 new ObjectParameter("codcliente", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_MoviemtoXcliente_Result>("[INVENTARIO_CONSTRUCTORA_OBELISCOEntities].[fn_MoviemtoXcliente](@codcliente)", codclienteParameter);
+        }
+    
+        [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_NotificacionPreventiva")]
+        public virtual IQueryable<fn_NotificacionPreventiva_Result> fn_NotificacionPreventiva(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventiva_Result>("[INVENTARIO_CONSTRUCTORA_OBELISCOEntities].[fn_NotificacionPreventiva](@DateFrom, @DateTo)", dateFromParameter, dateToParameter);
         }
     
         public virtual int AdministracionReservaAutomatica()
@@ -353,79 +380,6 @@ namespace CB.DATA.INVENTARIO
                 new ObjectParameter("UsuaReg", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ABM_PreAfiliado", accionParameter, cIParameter, nITParameter, nombrePParameter, apellidoParameter, seg_ApellidoParameter, ciudadParameter, direccionDomicilioParameter, direccionTrabajoParameter, telefonoParameter, correoParameter, sexoParameter, usuaRegParameter, respuesta);
-        }
-    
-        public virtual int sp_ABM_Reserva(Nullable<byte> accion, string codProforma, Nullable<int> codProyecto, string codCliente, string nombreCliente, string contacto, Nullable<double> tC, Nullable<System.DateTime> fechaProf, Nullable<System.DateTime> fechaVencProf, string idVendedor, string codLote, string nombreLote, Nullable<double> precioUnitario, Nullable<double> precioBs, string usuaReg, Nullable<double> montoReservaBs, Nullable<double> montoReservaSus, ObjectParameter respuesta)
-        {
-            var accionParameter = accion.HasValue ?
-                new ObjectParameter("Accion", accion) :
-                new ObjectParameter("Accion", typeof(byte));
-    
-            var codProformaParameter = codProforma != null ?
-                new ObjectParameter("CodProforma", codProforma) :
-                new ObjectParameter("CodProforma", typeof(string));
-    
-            var codProyectoParameter = codProyecto.HasValue ?
-                new ObjectParameter("CodProyecto", codProyecto) :
-                new ObjectParameter("CodProyecto", typeof(int));
-    
-            var codClienteParameter = codCliente != null ?
-                new ObjectParameter("CodCliente", codCliente) :
-                new ObjectParameter("CodCliente", typeof(string));
-    
-            var nombreClienteParameter = nombreCliente != null ?
-                new ObjectParameter("NombreCliente", nombreCliente) :
-                new ObjectParameter("NombreCliente", typeof(string));
-    
-            var contactoParameter = contacto != null ?
-                new ObjectParameter("Contacto", contacto) :
-                new ObjectParameter("Contacto", typeof(string));
-    
-            var tCParameter = tC.HasValue ?
-                new ObjectParameter("TC", tC) :
-                new ObjectParameter("TC", typeof(double));
-    
-            var fechaProfParameter = fechaProf.HasValue ?
-                new ObjectParameter("FechaProf", fechaProf) :
-                new ObjectParameter("FechaProf", typeof(System.DateTime));
-    
-            var fechaVencProfParameter = fechaVencProf.HasValue ?
-                new ObjectParameter("FechaVencProf", fechaVencProf) :
-                new ObjectParameter("FechaVencProf", typeof(System.DateTime));
-    
-            var idVendedorParameter = idVendedor != null ?
-                new ObjectParameter("IdVendedor", idVendedor) :
-                new ObjectParameter("IdVendedor", typeof(string));
-    
-            var codLoteParameter = codLote != null ?
-                new ObjectParameter("CodLote", codLote) :
-                new ObjectParameter("CodLote", typeof(string));
-    
-            var nombreLoteParameter = nombreLote != null ?
-                new ObjectParameter("NombreLote", nombreLote) :
-                new ObjectParameter("NombreLote", typeof(string));
-    
-            var precioUnitarioParameter = precioUnitario.HasValue ?
-                new ObjectParameter("PrecioUnitario", precioUnitario) :
-                new ObjectParameter("PrecioUnitario", typeof(double));
-    
-            var precioBsParameter = precioBs.HasValue ?
-                new ObjectParameter("PrecioBs", precioBs) :
-                new ObjectParameter("PrecioBs", typeof(double));
-    
-            var usuaRegParameter = usuaReg != null ?
-                new ObjectParameter("UsuaReg", usuaReg) :
-                new ObjectParameter("UsuaReg", typeof(string));
-    
-            var montoReservaBsParameter = montoReservaBs.HasValue ?
-                new ObjectParameter("MontoReservaBs", montoReservaBs) :
-                new ObjectParameter("MontoReservaBs", typeof(double));
-    
-            var montoReservaSusParameter = montoReservaSus.HasValue ?
-                new ObjectParameter("MontoReservaSus", montoReservaSus) :
-                new ObjectParameter("MontoReservaSus", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ABM_Reserva", accionParameter, codProformaParameter, codProyectoParameter, codClienteParameter, nombreClienteParameter, contactoParameter, tCParameter, fechaProfParameter, fechaVencProfParameter, idVendedorParameter, codLoteParameter, nombreLoteParameter, precioUnitarioParameter, precioBsParameter, usuaRegParameter, montoReservaBsParameter, montoReservaSusParameter, respuesta);
         }
     
         public virtual int sp_ABM_Reserva1(Nullable<byte> accion, string codProforma, Nullable<int> codProyecto, string codCliente, string nombreCliente, string contacto, Nullable<double> tC, Nullable<System.DateTime> fechaProf, Nullable<System.DateTime> fechaVencProf, string glosa, string idVendedor, string codLote, string nombreLote, Nullable<double> precioUnitario, Nullable<double> precioBs, string usuaReg, Nullable<double> montoReservaBs, Nullable<double> montoReservaSus, ObjectParameter respuesta)
@@ -570,6 +524,28 @@ namespace CB.DATA.INVENTARIO
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual ObjectResult<sp_GetClienteMoraDetalleXFase_Result> sp_GetClienteMoraDetalleXFase(Nullable<int> fase)
+        {
+            var faseParameter = fase.HasValue ?
+                new ObjectParameter("fase", fase) :
+                new ObjectParameter("fase", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetClienteMoraDetalleXFase_Result>("sp_GetClienteMoraDetalleXFase", faseParameter);
+        }
+    
+        public virtual ObjectResult<sp_getMovCajaIngDia_Result> sp_getMovCajaIngDia(Nullable<System.DateTime> f1, Nullable<System.DateTime> f2)
+        {
+            var f1Parameter = f1.HasValue ?
+                new ObjectParameter("f1", f1) :
+                new ObjectParameter("f1", typeof(System.DateTime));
+    
+            var f2Parameter = f2.HasValue ?
+                new ObjectParameter("f2", f2) :
+                new ObjectParameter("f2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getMovCajaIngDia_Result>("sp_getMovCajaIngDia", f1Parameter, f2Parameter);
+        }
+    
         public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
@@ -605,13 +581,21 @@ namespace CB.DATA.INVENTARIO
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModEstadoLote", codLoteParameter);
         }
     
-        public virtual ObjectResult<sp_MovimientoXcliente_Result> sp_MovimientoXcliente(Nullable<int> codcliente)
+        public virtual ObjectResult<sp_MovimientoXcliente_Result> sp_MovimientoXcliente(Nullable<int> codcliente, Nullable<System.DateTime> f1, Nullable<System.DateTime> f2)
         {
             var codclienteParameter = codcliente.HasValue ?
                 new ObjectParameter("codcliente", codcliente) :
                 new ObjectParameter("codcliente", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MovimientoXcliente_Result>("sp_MovimientoXcliente", codclienteParameter);
+            var f1Parameter = f1.HasValue ?
+                new ObjectParameter("f1", f1) :
+                new ObjectParameter("f1", typeof(System.DateTime));
+    
+            var f2Parameter = f2.HasValue ?
+                new ObjectParameter("f2", f2) :
+                new ObjectParameter("f2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MovimientoXcliente_Result>("sp_MovimientoXcliente", codclienteParameter, f1Parameter, f2Parameter);
         }
     
         public virtual int sp_print(Nullable<int> ids, string cadena)
@@ -634,6 +618,19 @@ namespace CB.DATA.INVENTARIO
                 new ObjectParameter("codCliente", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RecuperacionCarteraCliente_Result>("sp_RecuperacionCarteraCliente", codClienteParameter);
+        }
+    
+        public virtual ObjectResult<sp_RecuperacionCarteraFase_Result> sp_RecuperacionCarteraFase(string fechaI, string fechaF)
+        {
+            var fechaIParameter = fechaI != null ?
+                new ObjectParameter("fechaI", fechaI) :
+                new ObjectParameter("fechaI", typeof(string));
+    
+            var fechaFParameter = fechaF != null ?
+                new ObjectParameter("fechaF", fechaF) :
+                new ObjectParameter("fechaF", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RecuperacionCarteraFase_Result>("sp_RecuperacionCarteraFase", fechaIParameter, fechaFParameter);
         }
     
         public virtual ObjectResult<sp_RecuperacionCarteraFecha_Result> sp_RecuperacionCarteraFecha(Nullable<System.DateTime> fech1, Nullable<System.DateTime> fech2)
@@ -755,6 +752,15 @@ namespace CB.DATA.INVENTARIO
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<spt_NotificacionPreventiva_Result> spt_NotificacionPreventiva(Nullable<int> dias)
+        {
+            var diasParameter = dias.HasValue ?
+                new ObjectParameter("dias", dias) :
+                new ObjectParameter("dias", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_NotificacionPreventiva_Result>("spt_NotificacionPreventiva", diasParameter);
         }
     }
 }

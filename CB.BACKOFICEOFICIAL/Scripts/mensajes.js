@@ -36,6 +36,7 @@ function confirm(mensaje) {
     return false;
 
 }
+
 //$("#confirm").on('click', function () {
 //    reset();
 //    alertify.confirm("This is a confirm dialog", function (e) {
