@@ -762,5 +762,10 @@ namespace CB.DATA.INVENTARIO
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_NotificacionPreventiva_Result>("spt_NotificacionPreventiva", diasParameter);
         }
+    
+        public virtual ObjectResult<spt_DetalleClienteAlDia_Result> spt_DetalleClienteAlDia()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_DetalleClienteAlDia_Result>("spt_DetalleClienteAlDia");
+        }
     }
 }

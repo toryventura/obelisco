@@ -7822,7 +7822,7 @@
     <Compile Include="Controllers\PersonasMoraController.cs" />
     <Compile Include="Controllers\ProbalidadPagoController.cs" />
     <Compile Include="Controllers\RegistrarUsuarioController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoGestionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -7888,13 +7888,14 @@
     <Content Include="Views\Usuario\_Edit.cshtml" />
     <Content Include="Views\AsignarClientes\ListaCliente.cshtml" />
     <Content Include="Views\Home\Fase.cshtml" />
-    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Home\Notificacion.cshtml" />
     <Content Include="Views\Home\_Coreo.cshtml" />
     <Content Include="Views\Home\_ListNPreventiva.cshtml" />
     <Content Include="Views\Operaciones\_Imprimir.cshtml" />
     <Content Include="Views\Operaciones\printf.cshtml" />
     <Content Include="Views\Shared\_LayoutImprimir.cshtml" />
+    <Content Include="Views\Home\CoutaPagada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

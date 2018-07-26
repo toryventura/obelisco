@@ -31,6 +31,55 @@ namespace CB.LOGICA
 			}
 
 		}
+		public List<DetalleFase> GetClientesAlDia()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					var list = (from x in db.spt_DetalleClienteAlDia()
+								select new DetalleFase()
+								{
+									CantidadCouta = x.CantidadCouta,
+									CodCliente = x.CodCliente,
+									Codigo = x.Codigo,
+									CodMora = x.CodMora,
+									Fecha = x.Fecha.ToString("dd/MM/yyyy"),
+									MontoCuota = x.MontoCuota.Value,
+									NombreCompleto = x.NombreCompleto,
+									NroCuota = x.NroCuota,
+									SaldoCuota = x.SaldoCuota.Value,
+									Telefono = x.Telefono
+
+								}).ToList();
+					return list;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica:GetNotiPreventivas ", ex);
+			}
+		}
+
+		public dynamic CantidadSinMora()
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					var count = db.Vwt_ClienteAlDia.Count();
+					return count;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("",ex);
+			}
+			throw new NotImplementedException();
+		}
+
 		public List<DetalleFase> GetNotiPreventivas(int dias)
 		{
 			try

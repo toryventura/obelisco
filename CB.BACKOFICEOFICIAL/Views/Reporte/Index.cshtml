@@ -1,7 +1,7 @@
 ﻿
 @{
-
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
 }
 
 <section class="content-header">
@@ -16,7 +16,6 @@
 </section>
 @using (Html.BeginForm("ExportToExcel", "Home", FormMethod.Post))
 {
-
     <section class="content">
         <div class="row">
             <div class="col-xs-12">

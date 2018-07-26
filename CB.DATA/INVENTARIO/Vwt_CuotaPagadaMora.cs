@@ -20,5 +20,6 @@ namespace CB.DATA.INVENTARIO
         public int NroCuota { get; set; }
         public Nullable<double> SaldoCuota { get; set; }
         public int Pagado { get; set; }
+        public Nullable<double> MontoCuotaPagado { get; set; }
     }
 }

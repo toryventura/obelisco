@@ -1,9 +1,7 @@
 ﻿
-
 @{
-    ViewBag.Title = "Fase";
+    ViewBag.Title = "CoutaPagada";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var fase = @ViewBag.fase;
 }
 
 <style>
@@ -21,7 +19,7 @@
 </style>
 <section class="content-header">
     <h1>
-        Listado de Clientes
+        Listado de Clientes sin Mora
         <small></small>
     </h1>
     <ol class="breadcrumb">
@@ -37,8 +35,8 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Cliente de Fase @ViewBag.fase</h3>
-                        <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
+                        <h3 class="box-title">Cliente de Fase </h3>
+                        <input type="hidden" id="fase" name="fase" value="" />
                         <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
                     </div>
                     <div class="box-body" id="ListaContenidosContainer">
@@ -115,12 +113,11 @@
     function ListarDetalle() {
         var gridDiv = document.querySelector('#gridDetalle');
         createGlobal(gridOptionsDetalle, gridDiv);
-        var idf=@fase;
+      
         $.ajax({
-            url: "@Url.Action("FaseDetalle", "Home")",
+            url: "@Url.Action("DetalleCoutaPagada", "Home")",
             cache: false,
             data: {
-                id: idf
             },
             type: "POST"
         }).done(function (html) {
@@ -135,3 +132,4 @@
 
 
 </script>
+

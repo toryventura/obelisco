@@ -30,6 +30,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			ViewBag.fase5 = lg.getfase5();
 			ViewBag.NoAsiginadas = per.CantidadclienteNoasignados(periodo);
 			ViewBag.Asignados = per.CantidadclienteAsignados(periodo);
+			ViewBag.SinMora = per.CantidadSinMora();
 			ViewBag.total = lg.totalClienteMora();
 			return View();
 		}
@@ -50,6 +51,19 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		{
 
 			return View();
+		}
+		public ActionResult CoutaPagada()
+		{
+
+			return View();
+		}
+		public ActionResult DetalleCoutaPagada()
+		{
+
+			List<DetalleFase> list = new List<DetalleFase>();
+			LPersonaCasas pl = new LPersonaCasas();
+			list = pl.GetClientesAlDia();
+			return Json(list);
 		}
 		public ActionResult ListNPreventiva()
 		{

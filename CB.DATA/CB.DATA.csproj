@@ -449,6 +449,9 @@
     <Compile Include="INVENTARIO\SerieTraspaso.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\spt_DetalleClienteAlDia_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\spt_NotificacionPreventiva_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>

@@ -6,27 +6,27 @@ using System.Web.Mvc;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
-    public class ReportController : Controller
+    public class ReporteController : Controller
     {
-        // GET: Report
+        // GET: Reporte
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Report/Details/5
+        // GET: Reporte/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Report/Create
+        // GET: Reporte/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Report/Create
+        // POST: Reporte/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace CB.BACKOFICEOFICIAL.Controllers
             }
         }
 
-        // GET: Report/Edit/5
+        // GET: Reporte/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Report/Edit/5
+        // POST: Reporte/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace CB.BACKOFICEOFICIAL.Controllers
             }
         }
 
-        // GET: Report/Delete/5
+        // GET: Reporte/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Report/Delete/5
+        // POST: Reporte/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
