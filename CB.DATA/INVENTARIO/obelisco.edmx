@@ -4001,6 +4001,25 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="fn_NotificacionPreventivaXFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="CodCliente" Type="varchar" MaxLength="20" />
+                <Property Name="NombreCompleto" Type="varchar" MaxLength="350" />
+                <Property Name="MontoCuota" Type="float" />
+                <Property Name="SaldoCuota" Type="float" />
+                <Property Name="NroCuota" Type="int" />
+                <Property Name="Fecha" Type="datetime" />
+                <Property Name="CantidadCouta" Type="int" />
+                <Property Name="Telefono" Type="varchar" MaxLength="50" />
+                <Property Name="Codigo" Type="varchar" MaxLength="20" />
+                <Property Name="CodMora" Type="varchar" MaxLength="20" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="insertar_persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="codcliente" Type="varchar" Mode="In" />
           <Parameter Name="nit" Type="varchar" Mode="In" />
@@ -4145,6 +4164,9 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
         <Function Name="spt_DetalleClienteAlDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spt_NotificacionPreventiva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dias" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spt_NotificacionPreventivaXFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="datetime" Mode="In" />
         </Function>
         <Function Name="ULT_COD_MORA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
           <Parameter Name="Param1" Type="bit" Mode="In" />
@@ -9476,6 +9498,12 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Parameter Name="dias" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spt_DetalleClienteAlDia" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_DetalleClienteAlDia_Result)" />
+          <FunctionImport Name="fn_NotificacionPreventivaXFecha" IsComposable="true" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventivaXFecha_Result)">
+            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spt_NotificacionPreventivaXFecha" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventivaXFecha_Result)">
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_GetClienteMoraDetalleXFase_Result">
           <Property Type="String" Name="CodCliente" Nullable="false" MaxLength="20" />
@@ -9751,6 +9779,30 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="CodMora" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="fn_NotificacionPreventivaXFecha_Result">
+          <Property Type="String" Name="CodCliente" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="350" />
+          <Property Type="Double" Name="MontoCuota" Nullable="true" />
+          <Property Type="Double" Name="SaldoCuota" Nullable="true" />
+          <Property Type="Int32" Name="NroCuota" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CantidadCouta" Nullable="true" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodMora" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="spt_NotificacionPreventivaXFecha_Result">
+          <Property Type="String" Name="CodCliente" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="350" />
+          <Property Type="Double" Name="MontoCuota" Nullable="true" />
+          <Property Type="Double" Name="SaldoCuota" Nullable="true" />
+          <Property Type="Int32" Name="NroCuota" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CantidadCouta" Nullable="true" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CodMora" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -13264,6 +13316,38 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <FunctionImportMapping FunctionImportName="spt_DetalleClienteAlDia" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.spt_DetalleClienteAlDia">
             <ResultMapping>
               <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_DetalleClienteAlDia_Result">
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+                <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
+                <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CantidadCouta" ColumnName="CantidadCouta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_NotificacionPreventivaXFecha" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.fn_NotificacionPreventivaXFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventivaXFecha_Result">
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+                <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
+                <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CantidadCouta" ColumnName="CantidadCouta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spt_NotificacionPreventivaXFecha" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.spt_NotificacionPreventivaXFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventivaXFecha_Result">
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
                 <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />

@@ -14,10 +14,18 @@ namespace CB.DATA.USER
     
     public partial class Parametro
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Parametro()
+        {
+            this.OperacionCobranzas = new HashSet<OperacionCobranza>();
+        }
+    
         public int ID { get; set; }
         public string Descripcion { get; set; }
         public Nullable<int> TipoGestionId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OperacionCobranza> OperacionCobranzas { get; set; }
         public virtual TipoGestion TipoGestion { get; set; }
     }
 }

@@ -14,8 +14,6 @@
         <li class="active">General Elements</li>
     </ol>
 </section>
-
-
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
@@ -23,6 +21,17 @@
                 <div class="box-header">
                     <h3 class="box-title">Notoficacion Preventiva</h3>
                     <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
+
+                    <div class="input-group date pull-right   margin-r-5" style="width:15%">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="datepicker">
+                    </div>
+                    <!-- /.input group -->
+
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="Buscar" onclick="filtro();" />
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="All" onclick="ViewAll();" />
                     <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
                 </div>
                 <div class="box-body" id="ListaContenidosContainer">
@@ -37,9 +46,8 @@
     </div>
 
 </section>
-
 <script>
-   
+
     function email(id) {
         $.ajax({
             url: "@Url.Action("Email","Home")",
@@ -62,6 +70,64 @@
     function call(id) {
 
     }
+    var sw = 0;
+    function filtro() {
+        var dt = $('#datepicker').val();
+        var f = new Date(dt);
+        if (typeof dt != 'undefined' || dt != "") {
+            if (sw == 0) {
+                var gridDiv = document.querySelector('#gridDetalle');
+                createGlobal(gridOptionsDetalle, gridDiv);
+                sw = 1;
+            } else {
+                destroyGlobal(gridOptionsDetalle)
+                var gridDiv = document.querySelector('#gridDetalle');
+                createGlobal(gridOptionsDetalle, gridDiv);
+            }
+            var ft = JSON.stringify({ fecha: f.toISOString() });
+            $.ajax({
+                url: "@Url.Action("BuscarFecha", "Home")",
+                cache: false,
+                data: ft,
+                type: "POST"
+            }).done(function (html) {
+                setDataSource(html, gridOptionsDetalle);
+                // gridOptionsAsignadas.api.setRowData(html);
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log(" se ha completado");
+            });
+        } else {
+            $('#datepicker').focus();
+            Error("selecione fecha o campo fecha esta vacio");
+        }
+    } 
+    function ViewAll() {
+        if (sw == 0) {
+            var gridDiv = document.querySelector('#gridDetalle');
+            createGlobal(gridOptionsDetalle, gridDiv);
+            sw = 1;
+        } else {
+            destroyGlobal(gridOptionsDetalle)
+            var gridDiv = document.querySelector('#gridDetalle');
+            createGlobal(gridOptionsDetalle, gridDiv);
+        }
+        $.ajax({
+            url: "@Url.Action("All", "Home")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsDetalle);
+            // gridOptionsAsignadas.api.setRowData(html);
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log(" se ha completado");
+        });
+    }
 
     var columnDefsDetalle = [
         { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
@@ -73,7 +139,6 @@
 
         { field: 'NombreCompleto', rowGroup: true, hide: true }
     ];
-
     var gridOptionsDetalle = {
         columnDefs: columnDefsDetalle,
         defaultColDef: {
@@ -108,12 +173,17 @@
         return dte;
     }
     $(document).ready(function () {
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
         ListarDetalle();
     });
+
     function ListarDetalle() {
         var gridDiv = document.querySelector('#gridDetalle');
         createGlobal(gridOptionsDetalle, gridDiv);
-       
+        sw = 1;
         $.ajax({
             url: "@Url.Action("ListNPreventiva", "Home")",
             cache: false,
@@ -129,6 +199,4 @@
             console.log(" se ha completado");
         });
     }
-
-
 </script>

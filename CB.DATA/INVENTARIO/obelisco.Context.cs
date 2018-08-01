@@ -767,5 +767,24 @@ namespace CB.DATA.INVENTARIO
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_DetalleClienteAlDia_Result>("spt_DetalleClienteAlDia");
         }
+    
+        [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_NotificacionPreventivaXFecha")]
+        public virtual IQueryable<fn_NotificacionPreventivaXFecha_Result> fn_NotificacionPreventivaXFecha(Nullable<System.DateTime> dateFrom)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventivaXFecha_Result>("[INVENTARIO_CONSTRUCTORA_OBELISCOEntities].[fn_NotificacionPreventivaXFecha](@DateFrom)", dateFromParameter);
+        }
+    
+        public virtual ObjectResult<spt_NotificacionPreventivaXFecha_Result> spt_NotificacionPreventivaXFecha(Nullable<System.DateTime> fecha)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_NotificacionPreventivaXFecha_Result>("spt_NotificacionPreventivaXFecha", fechaParameter);
+        }
     }
 }

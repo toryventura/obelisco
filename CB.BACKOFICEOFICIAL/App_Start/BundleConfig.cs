@@ -45,7 +45,7 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						"~/Scripts/jquery-ui.js",
 						"~/Scripts/respond.js",
 						"~/Scripts/respond.min.js",
-						"~/bower_components/ag-grid-enterprise/dist/ag-grid-enterprise.js",
+						"~/bower_components/ag-grid-enterprise-master/dist/ag-grid-enterprise.js",
 						"~/Scripts/jquery.blockUI.js",
 						"~/Scripts/blckUI.js",
 						"~/plugins/alertify/alertify.min.js",
@@ -55,14 +55,14 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						));
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/bower_components/bootstrap/dist/css/bootstrap.min.css",
-				"~/bower_components/ag-grid-enterprise/dist/styles/ag-theme-bootstrap.css",
+				"~/bower_components/ag-grid-enterprise-master/dist/styles/ag-theme-bootstrap.css",
 				"~/bower_components/font-awesome/css/font-awesome.min.css",
 				"~/bower_components/Ionicons/css/ionicons.min.css",
 				"~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css",
 				"~/dist/css/AdminLTE.min.css",
 				"~/dist/css/skins/_all-skins.min.css",
 				"~/plugins/timepicker/bootstrap-timepicker.min.css",
-				"~/bower_components/ag-grid-enterprise/dist/styles/ag-theme-balham.css",
+				"~/bower_components/ag-grid-enterprise-master/dist/styles/ag-theme-balham.css",
 				"~/plugins/alertify/alertify.core.css",
 			"~/plugins/alertify/alertify.default.css"
 				));

@@ -69,7 +69,7 @@ namespace CB.LOGICA
 				try
 				{
 					var count = db.OperacionCobranzas.Count() + 1;
-					var pres = db.Parametros.Where(x => x.ID == o.tipoGestionID).Select(x => x.TipoGestionId.Value).FirstOrDefault();
+					var pres = db.Parametros.Where(x => x.ID == o.parametroID).Select(x => x.TipoGestionId.Value).FirstOrDefault();
 					var uss = new DATA.USER.OperacionCobranza()
 					{
 						asignacionClienteID = o.AsignacionClienteID,
@@ -86,7 +86,7 @@ namespace CB.LOGICA
 						TelefonoAlternativo = o.TelefonoAlternativo,
 						UsrCre = o.UsrCre,
 						UsrMod = o.UsrMod,
-						tipoGestionID = o.tipoGestionID
+						parametroID = o.parametroID
 					};
 					db.OperacionCobranzas.Add(uss);
 					db.SaveChanges();
@@ -116,16 +116,14 @@ namespace CB.LOGICA
 				NombreCausal=getNombreCausual(o.causalMoraID.Value),
 				nombrepresencia = getNombrePresencia(o.presenciaClienteID.Value),
 				nombreprobalidadPago = getNombrPerobalidad(o.probalidadPagoID.Value),
-				nombretipogetion = getTipogestion(o.tipoGestionID.Value),
+				nombreparametro = getTipogestion(o.parametroID.Value),
 				operacionCobranzaID = o.operacionCobranzaID,
 				presenciaClienteID = o.presenciaClienteID.Value,
 				probalidadPagoID = o.probalidadPagoID.Value,
 				TelefonoAlternativo = o.TelefonoAlternativo,
-				tipoGestionID = o.tipoGestionID.Value,
+				parametroID = o.parametroID.Value,
 				UsrCre = o.UsrCre,
-				UsrMod = o.UsrMod,
-
-
+				UsrMod = o.UsrMod
 			};
 		}
 

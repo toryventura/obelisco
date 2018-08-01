@@ -257,6 +257,9 @@
     <Compile Include="INVENTARIO\fn_MoviemtoXcliente_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\fn_NotificacionPreventivaXFecha_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\fn_NotificacionPreventiva_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
@@ -450,6 +453,9 @@
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\spt_DetalleClienteAlDia_Result.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\spt_NotificacionPreventivaXFecha_Result.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\spt_NotificacionPreventiva_Result.cs">
@@ -714,6 +720,9 @@
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="USER\AccionPreventiva.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
     <Compile Include="USER\AsignacionCliente.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
@@ -784,6 +793,21 @@
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
     <Compile Include="USER\UsuaruoIPRestringido.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Vwt_AsigOpercaion.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Vwt_Parametro_TipoGetion.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Vwt_PersonaInv.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Vwt_TipoGetio_Parametro.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\Vwt_vistaoperacion.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
   </ItemGroup>

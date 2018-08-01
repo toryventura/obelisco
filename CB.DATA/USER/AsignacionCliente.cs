@@ -23,6 +23,7 @@ namespace CB.DATA.USER
     
         public int asignacionClienteID { get; set; }
         public string CodCliente { get; set; }
+        public string Codigo { get; set; }
         public Nullable<System.DateTime> FechaAsignacion { get; set; }
         public string UsrCre { get; set; }
         public string UsrMod { get; set; }
@@ -32,7 +33,6 @@ namespace CB.DATA.USER
         public Nullable<bool> Estado { get; set; }
         public Nullable<System.DateTime> FechaReasignacion { get; set; }
         public string Periodo { get; set; }
-        public string Codigo { get; set; }
     
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Web;
 using System.Net;
+using System.Linq;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
@@ -31,6 +32,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			ViewBag.NoAsiginadas = per.CantidadclienteNoasignados(periodo);
 			ViewBag.Asignados = per.CantidadclienteAsignados(periodo);
 			ViewBag.SinMora = per.CantidadSinMora();
+			ViewBag.Preventivo = lg.GetNotificacionCount(5);
 			ViewBag.total = lg.totalClienteMora();
 			return View();
 		}
@@ -70,11 +72,27 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
 			list = pl.GetNotiPreventivas(5);
+			Session["Notificaciones"] = list;
 			return Json(list);
 		}
 		public ActionResult Email()
 		{
 			return PartialView("_Coreo");
+		}
+		[HttpPost]
+		public ActionResult BuscarFecha(DateTime fecha)
+		{
+			List<DetalleFase> list = new List<DetalleFase>();
+			LPersonaCasas pl = new LPersonaCasas();
+			//DateTime dt= Convert.ToDateTime(fecha.Trim());
+			list = pl.GetNotiPreventivasXFecha(fecha);
+			return Json(list);
+		}
+		[HttpPost]
+		public ActionResult All()
+		{
+			List<DetalleFase> list = (List<DetalleFase>)Session["Notificaciones"];
+			return Json(list);
 		}
 		[HttpPost]
 		public ActionResult EnviarCoreo(string para = "", string asunto = "", string mensaje = "", HttpPostedFileBase httpPostedFileBase = null)

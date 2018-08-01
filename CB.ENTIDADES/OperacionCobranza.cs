@@ -20,9 +20,9 @@ namespace CB.ENTIDADES
 		public int CompromisoPagoID { get; set; }
 
 		public string compromisoPago { get; set; }
-		public int tipoGestionID { get; set; }
+		public int parametroID { get; set; }
 
-		public string nombretipogetion { get; set; }
+		public string nombreparametro { get; set; }
 		public int presenciaClienteID { get; set; }
 		public string nombrepresencia { get; set; }
 		public int probalidadPagoID { get; set; }

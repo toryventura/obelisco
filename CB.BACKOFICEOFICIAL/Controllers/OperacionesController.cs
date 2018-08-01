@@ -120,7 +120,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 				collection.probalidadPagoID = Convert.ToInt32(probalidadpago);
 				collection.CompromisoPagoID = Convert.ToInt32(compromisopago);
 				collection.CausalMoraID = Convert.ToInt32(casualmora);
-				collection.tipoGestionID = Convert.ToInt32(parametro);
+				collection.parametroID = Convert.ToInt32(parametro);
 				int cout = op.add(collection);
 				if (cout != 0)
 				{

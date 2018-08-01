@@ -17,15 +17,12 @@ namespace CB.DATA.USER
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipoGestion()
         {
-            this.OperacionCobranzas = new HashSet<OperacionCobranza>();
             this.Parametros = new HashSet<Parametro>();
         }
     
         public int tipoGestionID { get; set; }
         public string Nombre { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OperacionCobranza> OperacionCobranzas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parametro> Parametros { get; set; }
     }

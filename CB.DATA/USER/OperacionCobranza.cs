@@ -26,14 +26,14 @@ namespace CB.DATA.USER
         public Nullable<int> asignacionClienteID { get; set; }
         public Nullable<int> causalMoraID { get; set; }
         public Nullable<int> compromisoPagoID { get; set; }
-        public Nullable<int> tipoGestionID { get; set; }
+        public Nullable<int> parametroID { get; set; }
         public Nullable<int> presenciaClienteID { get; set; }
         public Nullable<int> probalidadPagoID { get; set; }
     
         public virtual AsignacionCliente AsignacionCliente { get; set; }
         public virtual CausalMora CausalMora { get; set; }
         public virtual CompromisoPago CompromisoPago { get; set; }
+        public virtual Parametro Parametro { get; set; }
         public virtual ProbalidadPago ProbalidadPago { get; set; }
-        public virtual TipoGestion TipoGestion { get; set; }
     }
 }

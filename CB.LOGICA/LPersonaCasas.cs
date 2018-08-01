@@ -110,6 +110,38 @@ namespace CB.LOGICA
 				throw new Exception("Logica:GetNotiPreventivas ", ex);
 			}
 		}
+
+		public List<DetalleFase> GetNotiPreventivasXFecha(DateTime dateTime)
+		{
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					var list = (from x in db.spt_NotificacionPreventivaXFecha(dateTime)
+								select new DetalleFase()
+								{
+									CantidadCouta = x.CantidadCouta.Value,
+									CodCliente = x.CodCliente,
+									Codigo = x.Codigo,
+									CodMora = x.CodMora,
+									Fecha = x.Fecha.Value.ToString("dd/MM/yyyy"),
+									MontoCuota = x.MontoCuota.Value,
+									NombreCompleto = x.NombreCompleto,
+									NroCuota = x.NroCuota.Value,
+									SaldoCuota = x.SaldoCuota.Value,
+									Telefono = x.Telefono
+
+								}).ToList();
+					return list;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica:GetNotiPreventivas ", ex);
+			}
+		}
+
 		public PersonaCasas GetClienteXID(string id = "")
 		{
 			using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())

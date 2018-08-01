@@ -27,6 +27,7 @@ namespace CB.DATA.USER
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AccionPreventiva> AccionPreventivas { get; set; }
         public virtual DbSet<AsignacionCliente> AsignacionClientes { get; set; }
         public virtual DbSet<CausalMora> CausalMoras { get; set; }
         public virtual DbSet<CompromisoPago> CompromisoPagoes { get; set; }
@@ -42,6 +43,25 @@ namespace CB.DATA.USER
         public virtual DbSet<TipoGestion> TipoGestions { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<UsuaruoIPRestringido> UsuaruoIPRestringidoes { get; set; }
+        public virtual DbSet<Vwt_AsigOpercaion> Vwt_AsigOpercaion { get; set; }
+        public virtual DbSet<Vwt_Parametro_TipoGetion> Vwt_Parametro_TipoGetion { get; set; }
+        public virtual DbSet<Vwt_PersonaInv> Vwt_PersonaInv { get; set; }
+        public virtual DbSet<Vwt_TipoGetio_Parametro> Vwt_TipoGetio_Parametro { get; set; }
+        public virtual DbSet<Vwt_vistaoperacion> Vwt_vistaoperacion { get; set; }
+    
+        [DbFunction("COBRANZA_CBEntities", "fn_NotificacionPreventiva")]
+        public virtual IQueryable<fn_NotificacionPreventiva_Result> fn_NotificacionPreventiva(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventiva_Result>("[COBRANZA_CBEntities].[fn_NotificacionPreventiva](@DateFrom, @DateTo)", dateFromParameter, dateToParameter);
+        }
     
         public virtual int AsignarClienteMora(string periodo)
         {
@@ -50,6 +70,11 @@ namespace CB.DATA.USER
                 new ObjectParameter("periodo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AsignarClienteMora", periodoParameter);
+        }
+    
+        public virtual int BAJACLIENTESASIGNADOS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BAJACLIENTESASIGNADOS");
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -71,6 +96,11 @@ namespace CB.DATA.USER
                 new ObjectParameter("definition", typeof(byte[]));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_AsignacionClienteMfinal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AsignacionClienteMfinal");
         }
     
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -133,6 +163,15 @@ namespace CB.DATA.USER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual ObjectResult<sp_NotificacionPreventiva_Result> sp_NotificacionPreventiva(Nullable<int> dias)
+        {
+            var diasParameter = dias.HasValue ?
+                new ObjectParameter("dias", dias) :
+                new ObjectParameter("dias", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_NotificacionPreventiva_Result>("sp_NotificacionPreventiva", diasParameter);
+        }
+    
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
@@ -153,34 +192,6 @@ namespace CB.DATA.USER
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        [DbFunction("COBRANZA_CBEntities", "fn_NotificacionPreventiva")]
-        public virtual IQueryable<fn_NotificacionPreventiva_Result> fn_NotificacionPreventiva(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
-        {
-            var dateFromParameter = dateFrom.HasValue ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(System.DateTime));
-    
-            var dateToParameter = dateTo.HasValue ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventiva_Result>("[COBRANZA_CBEntities].[fn_NotificacionPreventiva](@DateFrom, @DateTo)", dateFromParameter, dateToParameter);
-        }
-    
-        public virtual int sp_AsignacionClienteMfinal()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AsignacionClienteMfinal");
-        }
-    
-        public virtual ObjectResult<sp_NotificacionPreventiva_Result> sp_NotificacionPreventiva(Nullable<int> dias)
-        {
-            var diasParameter = dias.HasValue ?
-                new ObjectParameter("dias", dias) :
-                new ObjectParameter("dias", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_NotificacionPreventiva_Result>("sp_NotificacionPreventiva", diasParameter);
         }
     }
 }

@@ -72,6 +72,25 @@ namespace CB.LOGICA
 			}
 
 		}
+		public int GetNotificacionCount(double p)
+		{
+			DateTime dateTime = DateTime.Now.Date;
+			DateTime dateTime2 = dateTime.AddDays(p).Date;
+			try
+			{
+				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					int xa = (from x in db.Vwt_DetalleFijaMoraFinal where x.Fecha >= dateTime && x.Fecha < dateTime2 group x.CodCliente by x.CodCliente into g select g ).Count();
+					return xa;
+				}
+			}
+			catch (System.Exception ex)
+			{
+
+				throw new Exception("Logica", ex);
+			}
+
+		}
 		public int getfase2()
 		{
 			try
