@@ -2,6 +2,7 @@
 using CB.ENTIDADES;
 using CB.LOGICA;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 namespace CB.BACKOFICEOFICIAL.Controllers
@@ -26,7 +27,8 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult UsuariosSistemas()
 		{
 			var lusu = LUsuario.toListUsuariosParaAsignar();
-			return Json(lusu);
+			var list = lusu.Where(s => s.EsSuperAdmin == false).ToList();
+			return Json(list);
 		}
 
 		// GET: PersonasCasas/Create

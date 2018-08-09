@@ -145,6 +145,31 @@ namespace CB.LOGICA
 			};
 		}
 
+		public bool DesAsignarCliente(int pa)
+		{
+			try
+			{
+				using (var db= new DATA.USER.COBRANZA_CBEntities())
+				{
+					var obj = db.AsignacionClientes.Where(s => s.asignacionClienteID == pa && s.Estado==true).FirstOrDefault();
+					if (obj !=null)
+					{
+						obj.Estado = false;
+						db.SaveChanges();
+						return true;
+
+					}
+					return false;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica: DesAsiganar",ex);
+			}
+		}
+
+		
 		private string sacarCod(int? nullable)
 		{
 			try

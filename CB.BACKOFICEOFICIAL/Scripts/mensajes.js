@@ -27,7 +27,8 @@ function confirm(mensaje) {
     reset();
     alertify.confirm("This is a confirm dialog", function (e) {
         if (e) {
-            alertify.success("You've clicked OK");
+            var u=suma()
+            alertify.success("You've clicked OK" +u);
             
         } else {
             alertify.error("You've clicked Cancel");
@@ -35,6 +36,9 @@ function confirm(mensaje) {
     });
     return false;
 
+}
+function suma() {
+    return "gols";
 }
 
 //$("#confirm").on('click', function () {

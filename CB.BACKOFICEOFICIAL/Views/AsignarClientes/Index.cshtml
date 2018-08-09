@@ -82,7 +82,7 @@
         $('#dialogoNuevo').dialog('close');
     }
 
-    function AsignarClienteDetails(ids) {
+    function Details(ids) {
         // $("#Lbl_MensajeError").html('');
 
 
@@ -103,11 +103,42 @@
 
         });
     }
-    function AsignarClienteEditar(ids) {
-        alert(ids);
+    function Edit(ids) {
+
     }
-    function AsignarClienteEliminar(ids) {
-        alert(ids);
+    function Delete(ids) {
+        //confirm("hola");
+       reset();
+        alertify.confirm("Esta Seguro, Desasignar al Cobrador?.... ", function (e) {
+            if (e) {
+               $.ajax({
+                    url: "@Url.Action("DesAsignarCLiente", "AsignarClientes")",
+                    cache: false,
+                    data: { pa: ids },
+                    type: "POST"
+               }).done(function (html) {
+                   var ms =html;
+                   if (ms[0].Key == "OK") {
+                       Listar();
+                       alertify.success(ms[0].Value);
+                   } else {
+                       alertify.error(ms[0].Value);
+                   }
+                   
+                    }).fail(function (resp) {
+                        console.log(resp.responseText);
+                    }).always(function () {
+                        console.log("complete the operacion");
+                    });
+              
+
+            } else {
+                alertify.error('Cancel');
+            }
+        });
+        return false;
+        
+
     }
     function cargarDatosCleinte(id) {
 

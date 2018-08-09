@@ -13,7 +13,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 	{
 		// GET: AsignarClientes
 		LAsignacionCliente l = new LAsignacionCliente();
-
+		List<KeyValuePair<string, string>> mensajes = new List<KeyValuePair<string, string>>();
 
 		public ActionResult Index()
 		{
@@ -21,7 +21,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		}
 		public ActionResult ListaAsignado()
 		{
-			var mensajes = new List<KeyValuePair<string, string>>();
+			
 			Usuario us = Util.Usuario;
 			try
 			{
@@ -63,7 +63,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult add(AsignacionCliente o)
 		{
 
-			var mensajes = new List<KeyValuePair<string, string>>();
+		
 			try
 			{
 				Usuario us = (Usuario)Session["LoginUsuario"];
@@ -84,7 +84,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult Details(int id)
 		{
 
-			var mensajes = new List<KeyValuePair<string, string>>();
+			
 			try
 			{
 				var lista = l.GetClientesAsignadosAll();
@@ -107,7 +107,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult Edit(int id)
 		{
 
-			var mensajes = new List<KeyValuePair<string, string>>();
+			
 			try
 			{
 				var lista = l.GetClientesAsignadosAll();
@@ -131,7 +131,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(AsignacionCliente asignacionCliente)
 		{
-			var mensajes = new List<KeyValuePair<string, string>>();
+		
 			try
 			{
 				if (ModelState.IsValid)
@@ -154,10 +154,34 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 
 		}
 		[HttpPost]
-
+		public ActionResult DesAsignarCLiente(int pa) {
+			try
+			{
+				if (l.DesAsignarCliente(pa))
+				{
+					mensajes.Clear();
+					mensajes.Add(Util.mensaje("OK", "Se realizo correctamenta"));
+				}
+				else{
+					mensajes.Clear();
+					mensajes.Add(Util.mensaje("ERROR", "No se puedo DesAsignar"));
+				}
+				
+				return Json(mensajes);
+				
+			}
+			catch (Exception ex)
+			{
+				mensajes.Clear();
+				mensajes.Add(Util.mensaje("ERROR", ex.Message));
+				return Json(mensajes);
+			}
+			
+		}
+		[HttpPost]
 		public ActionResult SetEnviarPametros(int codusuario, List<Codigos> lista)
 		{
-			var mensajes = new List<KeyValuePair<string, string>>();
+			
 			try
 			{
 				Usuario us = Util.Usuario;
