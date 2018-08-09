@@ -64,14 +64,17 @@
 		//public string Telefono { get; set; }
 		//public string Codigo { get; set; }
 		//public string CodMora { get; set; }
+      //   public int NroCuotas { get; set; }
+		//public double Tc { get; set; }
     var columnDefsDetalle = [
         { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
         { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
-        { headerName: 'Total', field: 'total', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
-        { headerName: 'Nro Cuota', field: 'NroCuota' },
+        { headerName: 'CantidadCouta', field: 'CantidadCouta', aggFunc: 'count', hide: true, sort: 'asc' },
+        { headerName: 'Total Sus', field: 'TotalSus', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Total Bs', field: 'TotalBs', valueGetter: '(data.MontoCuota + data.SaldoCuota)*data.Tc', aggFunc: 'sum' },
+        { headerName: 'Nro Cuota', field: 'NroCuota'},
         { headerName: 'Telefono', field: 'Telefono' },
-        { headerName: 'Fecha Pago', field: 'Fecha'},
-
+        { headerName: 'Fecha Pago', field: 'Fecha' },
         { field: 'NombreCompleto', rowGroup: true, hide: true }
     ];
 
@@ -82,6 +85,7 @@
         },
         enableRangeSelection: true,
         enableSorting: true,
+        enableFilter: true,
         enableColResize: true,
         autoGroupColumnDef: {
             headerName: 'Cod Cliente',
@@ -94,17 +98,19 @@
         paginate: true
 
     };
-    function currencyFormatter(params) {
-
-        var dt = params.Fecha;
-        if (typeof dt == 'undefined') {
-            return '';
-        } else {
-            return toDateFromAspNet(dt);
-        }
+    function currencyNroCuota(params) {
+        var s1 = "" + formatToString(params.data.NroCuota);
+        var s2 = "" + formatToString( params.data.NroCuotas);
+        return s1 + '/' + s2;
 
     }
-
+    function formatToString(number) {
+        return number.ToString();
+    }
+    function currencyTotalBs(params) {
+        var s = params.data.MontoCuota + params.data.SaldoCuota;
+        return s * params.data.Tc;
+    }
     function toDateFromAspNet (dt) {
         var dte = eval("new " + dt.replace(/\//g, '') + ";");
         dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());

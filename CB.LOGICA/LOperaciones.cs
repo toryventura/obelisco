@@ -15,7 +15,7 @@ namespace CB.LOGICA
 			{
 				try
 				{
-					var idAsigancion = db.AsignacionClientes.Where(x => x.CodCliente == clienteID && x.Estado==true).Select(x => x.asignacionClienteID).FirstOrDefault();
+					var idAsigancion = db.AsignacionClientes.Where(x => x.CodCliente == clienteID && x.Estado == true).Select(x => x.asignacionClienteID).FirstOrDefault();
 					var _lists = new List<ENTIDADES.OperacionCobranza>();
 					if (idAsigancion != 0)
 					{
@@ -113,14 +113,14 @@ namespace CB.LOGICA
 				FeCre = o.FeCre.Value,
 				FeMod = o.FeMod.Value,
 				compromisoPago = "",
-				NombreCausal=getNombreCausual(o.causalMoraID.Value),
+				NombreCausal = getNombreCausual(o.causalMoraID.Value),
 				nombrepresencia = getNombrePresencia(o.presenciaClienteID.Value),
 				nombreprobalidadPago = getNombrPerobalidad(o.probalidadPagoID.Value),
 				nombreparametro = getTipogestion(o.parametroID.Value),
 				operacionCobranzaID = o.operacionCobranzaID,
 				presenciaClienteID = o.presenciaClienteID.Value,
 				probalidadPagoID = o.probalidadPagoID.Value,
-				TelefonoAlternativo = o.TelefonoAlternativo,
+				TelefonoAlternativo = o.TelefonoAlternativo == null ? "" : o.TelefonoAlternativo,
 				parametroID = o.parametroID.Value,
 				UsrCre = o.UsrCre,
 				UsrMod = o.UsrMod
@@ -129,7 +129,7 @@ namespace CB.LOGICA
 
 		private string getNombreCausual(int causalMoraID)
 		{
-			using (var db =new DATA.USER.COBRANZA_CBEntities())
+			using (var db = new DATA.USER.COBRANZA_CBEntities())
 			{
 				var mon = db.CausalMoras.Where(s => s.causalMoraID == causalMoraID).Select(s => s.Nombre).FirstOrDefault();
 				return mon ?? "";

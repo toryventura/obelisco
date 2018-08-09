@@ -217,9 +217,11 @@ namespace CB.DATA.INVENTARIO
         public virtual DbSet<Vwt_ClienteAlDia> Vwt_ClienteAlDia { get; set; }
         public virtual DbSet<Vwt_CoutasFaltaPagarFija> Vwt_CoutasFaltaPagarFija { get; set; }
         public virtual DbSet<Vwt_CoutasFaltaPagarMora> Vwt_CoutasFaltaPagarMora { get; set; }
+        public virtual DbSet<Vwt_CuotaClienteActivo> Vwt_CuotaClienteActivo { get; set; }
         public virtual DbSet<Vwt_CuotaPagadaFija> Vwt_CuotaPagadaFija { get; set; }
         public virtual DbSet<Vwt_CuotaPagadaMora> Vwt_CuotaPagadaMora { get; set; }
         public virtual DbSet<Vwt_DetalleCantidadMora> Vwt_DetalleCantidadMora { get; set; }
+        public virtual DbSet<Vwt_DetalleClienteAlDia> Vwt_DetalleClienteAlDia { get; set; }
         public virtual DbSet<Vwt_DetalleClienteMora> Vwt_DetalleClienteMora { get; set; }
         public virtual DbSet<Vwt_DetalleFijaMoraFinal> Vwt_DetalleFijaMoraFinal { get; set; }
         public virtual DbSet<Vwt_DetelleFijaMora> Vwt_DetelleFijaMora { get; set; }
@@ -247,6 +249,16 @@ namespace CB.DATA.INVENTARIO
                 new ObjectParameter("DateTo", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventiva_Result>("[INVENTARIO_CONSTRUCTORA_OBELISCOEntities].[fn_NotificacionPreventiva](@DateFrom, @DateTo)", dateFromParameter, dateToParameter);
+        }
+    
+        [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_NotificacionPreventivaXFecha")]
+        public virtual IQueryable<fn_NotificacionPreventivaXFecha_Result> fn_NotificacionPreventivaXFecha(Nullable<System.DateTime> dateFrom)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventivaXFecha_Result>("[INVENTARIO_CONSTRUCTORA_OBELISCOEntities].[fn_NotificacionPreventivaXFecha](@DateFrom)", dateFromParameter);
         }
     
         public virtual int AdministracionReservaAutomatica()
@@ -754,6 +766,11 @@ namespace CB.DATA.INVENTARIO
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
+        public virtual ObjectResult<spt_DetalleClienteAlDia_Result> spt_DetalleClienteAlDia()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_DetalleClienteAlDia_Result>("spt_DetalleClienteAlDia");
+        }
+    
         public virtual ObjectResult<spt_NotificacionPreventiva_Result> spt_NotificacionPreventiva(Nullable<int> dias)
         {
             var diasParameter = dias.HasValue ?
@@ -761,21 +778,6 @@ namespace CB.DATA.INVENTARIO
                 new ObjectParameter("dias", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_NotificacionPreventiva_Result>("spt_NotificacionPreventiva", diasParameter);
-        }
-    
-        public virtual ObjectResult<spt_DetalleClienteAlDia_Result> spt_DetalleClienteAlDia()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spt_DetalleClienteAlDia_Result>("spt_DetalleClienteAlDia");
-        }
-    
-        [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_NotificacionPreventivaXFecha")]
-        public virtual IQueryable<fn_NotificacionPreventivaXFecha_Result> fn_NotificacionPreventivaXFecha(Nullable<System.DateTime> dateFrom)
-        {
-            var dateFromParameter = dateFrom.HasValue ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_NotificacionPreventivaXFecha_Result>("[INVENTARIO_CONSTRUCTORA_OBELISCOEntities].[fn_NotificacionPreventivaXFecha](@DateFrom)", dateFromParameter);
         }
     
         public virtual ObjectResult<spt_NotificacionPreventivaXFecha_Result> spt_NotificacionPreventivaXFecha(Nullable<System.DateTime> fecha)

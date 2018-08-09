@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Almacen">
           <Key>
             <PropertyRef Name="CodAlmacen" />
@@ -403,6 +403,69 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="InteresMora" Type="float" />
           <Property Name="Porcentaje" Type="float" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.CARTERA$' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="CARTERA$">
+          <Property Name="VARIABLE" Type="float" />
+          <Property Name="ITEM" Type="float" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODIGO_CLIENTE" Type="float" />
+          <Property Name="PRESTAMO" Type="float" />
+          <Property Name="UV" Type="float" />
+          <Property Name="PARCELA" Type="float" />
+          <Property Name="MZ" Type="float" />
+          <Property Name="LOTE_ANTES" Type="float" />
+          <Property Name="LOTE_AHORA" Type="nvarchar" MaxLength="255" />
+          <Property Name="FECHA_PAGO" Type="float" />
+          <Property Name="NRO_CUOTAS_PENDIENTE" Type="float" />
+          <Property Name="ULTIMA_FECHA_DE_PAGO" Type="datetime" />
+          <Property Name="TOTAL_CREDITO" Type="float" />
+          <Property Name="TOTAL_CANCELADO" Type="float" />
+          <Property Name="SALDO_POR_COBRAR" Type="float" />
+          <Property Name="CAPITAL" Type="float" />
+          <Property Name="INTERES_CORRIENTE" Type="float" />
+          <Property Name="INTERES_EN_MORA " Type="float" />
+          <Property Name="ANTICIPOS" Type="float" />
+          <Property Name="OTROS" Type="float" />
+          <Property Name="IMPORTE_TOTAL A_PAGAR_POR_EL_CLIENTE" Type="float" />
+          <Property Name="PAGO_EFECTUADO" Type="float" />
+          <Property Name="RESTO_PAGO_CUOTA" Type="float" />
+          <Property Name="CONTRATO" Type="nvarchar" MaxLength="255" />
+          <Property Name="VENTA         " Type="nvarchar" MaxLength="255" />
+          <Property Name="CARTA_NOTARIADA" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.CARTERA_0108' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="CARTERA_0108">
+          <Property Name="ITEM" Type="float" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODCLI" Type="float" />
+          <Property Name="PRESTAMO" Type="float" />
+          <Property Name="UV" Type="float" />
+          <Property Name="PARCELA" Type="nvarchar" MaxLength="255" />
+          <Property Name="MZ" Type="float" />
+          <Property Name="LOTE_ANTES" Type="float" />
+          <Property Name="LOTE AHORA" Type="nvarchar" MaxLength="255" />
+          <Property Name="UV1" Type="float" />
+          <Property Name="PARCELA1" Type="nvarchar" MaxLength="255" />
+          <Property Name="MZ1" Type="float" />
+          <Property Name="LOTE        ANTES" Type="float" />
+          <Property Name="LOTE_AHORA" Type="nvarchar" MaxLength="255" />
+          <Property Name="FECHA_DE_PAGO" Type="float" />
+          <Property Name="NRO_DE_CUOTAS_PENDIENTE" Type="float" />
+          <Property Name="ULT_FECHA_DE_PAGO" Type="datetime" />
+          <Property Name="TOTAL_CREDITO" Type="float" />
+          <Property Name="TOTAL_CANCELADO" Type="float" />
+          <Property Name="SALDO_POR_COBRAR" Type="float" />
+          <Property Name="CAPITAL" Type="float" />
+          <Property Name="INTERES_CORRIENTE" Type="float" />
+          <Property Name="INTERES_EN_MORA " Type="float" />
+          <Property Name="ANTICIPOS" Type="float" />
+          <Property Name="OTROS" Type="float" />
+          <Property Name="IMPORTE_TOTAL_A_PAGAR" Type="float" />
+          <Property Name="PAGO_EFECTUADO" Type="float" />
+          <Property Name="RESTO_PAGO_CUOTA" Type="float" />
+        </EntityType>-->
         <EntityType Name="CategoriaVendedor">
           <Key>
             <PropertyRef Name="CodCategoria" />
@@ -479,6 +542,15 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="TipoCliente" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.CodCli3' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="CodCli3">
+          <Property Name="CodVenta" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodCliente" Type="float" />
+          <Property Name="Cuota" Type="float" />
+          <Property Name="TotalVenta" Type="float" />
+          <Property Name="TotalBs" Type="float" />
+        </EntityType>-->
         <EntityType Name="CodClienteV">
           <Key>
             <PropertyRef Name="CodVenta" />
@@ -762,6 +834,23 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="MontoMayorA" Type="float" Nullable="false" />
           <Property Name="Descuento" Type="float" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.DETALLE' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="DETALLE">
+          <Property Name="CodCajaIng" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodSucCaja" Type="float" />
+          <Property Name="CodSucursal" Type="float" />
+          <Property Name="CodVenta" Type="nvarchar" MaxLength="255" />
+          <Property Name="TipoPago" Type="float" />
+          <Property Name="NroPago" Type="float" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Dias" Type="float" />
+          <Property Name="MontoSus" Type="float" />
+          <Property Name="MontoBs" Type="float" />
+          <Property Name="Division" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechaEnvio" Type="nvarchar" MaxLength="255" />
+          <Property Name="Consolidado" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="DetallePagInicProforma">
           <Key>
             <PropertyRef Name="CodProforma" />
@@ -1117,6 +1206,36 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="ComprDiario" Type="int" Nullable="false" />
           <Property Name="CodGestion" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.INVENTARIO' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="INVENTARIO">
+          <Property Name="ITEM" Type="float" />
+          <Property Name="CLIENTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CARNET IDENTIDAD" Type="nvarchar" MaxLength="255" />
+          <Property Name="NOMRECFIRMAS" Type="float" />
+          <Property Name="CODCL" Type="float" />
+          <Property Name="CODPR" Type="float" />
+          <Property Name="LOTE_ANTES" Type="float" />
+          <Property Name="LOTE_ACTUAL" Type="nvarchar" MaxLength="255" />
+          <Property Name="MZ" Type="float" />
+          <Property Name="FECHA_DESEMBOLSO" Type="datetime" />
+          <Property Name="FECHA_DE_FINALIZACION" Type="datetime" />
+          <Property Name="TASA_DE_INTERES" Type="float" />
+          <Property Name="CUOTAS_POR_PAGAR" Type="float" />
+          <Property Name="DIA_DE_PAGO" Type="float" />
+          <Property Name="P_CONTADO" Type="float" />
+          <Property Name="ULTIMO_PAGO" Type="datetime" />
+          <Property Name="MES_ATRASADO" Type="datetime" />
+          <Property Name="MONTO_CUOTA" Type="float" />
+          <Property Name="SALDO_CAPITAL" Type="float" />
+          <Property Name="INTERESES" Type="float" />
+          <Property Name="MORA" Type="float" />
+          <Property Name="ANTICIPO" Type="float" />
+          <Property Name="SALDO_C+I+M-A" Type="float" />
+          <Property Name="TELEFONO" Type="nvarchar" MaxLength="255" />
+          <Property Name="Observacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="UV" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="Jerarquia">
           <Key>
             <PropertyRef Name="CodJerarquia" />
@@ -1190,6 +1309,35 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="UsuaModif" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="FechaModif" Type="datetime" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.MORA' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="MORA">
+          <Property Name="CodCliente" Type="float" />
+          <Property Name="NoPtmo" Type="float" />
+          <Property Name="NroCuota" Type="float" />
+          <Property Name="MontoSus" Type="float" />
+          <Property Name="INTERES_POR_MORA" Type="float" />
+          <Property Name="TOTALSus" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="TOTAL_ANTICIPO" Type="float" />
+          <Property Name="PAGO _ANTICIPADO" Type="float" />
+          <Property Name="CAJA" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.moraact$' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="moraact$">
+          <Property Name="codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="NroCuota" Type="float" />
+          <Property Name="diasAtraso" Type="float" />
+          <Property Name="MontoCuota" Type="float" />
+          <Property Name="0#01" Type="float" />
+          <Property Name="InteresMora" Type="float" />
+          <Property Name="VL01010000338" Type="nvarchar" MaxLength="255" />
+          <Property Name="MORA000000131" Type="nvarchar" MaxLength="255" />
+          <Property Name="1124" Type="float" />
+          <Property Name="0" Type="float" />
+          <Property Name="0#0208266666671" Type="float" />
+        </EntityType>-->
         <EntityType Name="NivelMLM">
           <Key>
             <PropertyRef Name="CodProyecto" />
@@ -1200,6 +1348,24 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="Porc" Type="numeric" Precision="5" Scale="4" />
           <Property Name="PorcF" Type="numeric" Precision="5" Scale="4" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.NOMBRES' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="NOMBRES">
+          <Property Name="Codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="255" />
+          <Property Name="Doc" Type="nvarchar" MaxLength="255" />
+          <Property Name="TipoDoc" Type="float" />
+          <Property Name="Glosa" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.NOMBRES_LOTES' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="NOMBRES_LOTES">
+          <Property Name="Codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="255" />
+          <Property Name="Doc" Type="nvarchar" MaxLength="255" />
+          <Property Name="TipoDoc" Type="float" />
+          <Property Name="Glosa" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="Oferta">
           <Key>
             <PropertyRef Name="CodOferta" />
@@ -1281,6 +1447,32 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="Obs" Type="nvarchar" MaxLength="50" />
           <Property Name="CuentaPresupuesto" Type="nvarchar" MaxLength="13" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.PAGOS_NORMAL' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="PAGOS_NORMAL">
+          <Property Name="CodCliente" Type="float" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="255" />
+          <Property Name="NoPtmo" Type="float" />
+          <Property Name="NroCuota" Type="float" />
+          <Property Name="MontoSus" Type="float" />
+          <Property Name="INTERES POR MORA" Type="float" />
+          <Property Name="TOTALSus" Type="float" />
+          <Property Name="FechaPago" Type="datetime" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.PAGOS_ULT$' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="PAGOS_ULT$">
+          <Property Name="CodCliente" Type="float" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="255" />
+          <Property Name="NoPtmo" Type="float" />
+          <Property Name="NroCuota" Type="float" />
+          <Property Name="MontoSus" Type="float" />
+          <Property Name="INTERES_POR_MORA" Type="float" />
+          <Property Name="TOTALSus" Type="float" />
+          <Property Name="FechaPago" Type="datetime" />
+        </EntityType>-->
         <EntityType Name="Pedido">
           <Key>
             <PropertyRef Name="CodPedido" />
@@ -1378,6 +1570,18 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Calculo
           <Property Name="EmiteFactura" Type="bit" Nullable="false" />
           <Property Name="CodEstado" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.PLAN_DESCUENTO' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="PLAN_DESCUENTO">
+          <Property Name="NoPtmo" Type="float" />
+          <Property Name="NoPago" Type="float" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Capital" Type="float" />
+          <Property Name="Interes" Type="float" />
+          <Property Name="Cargo" Type="float" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Saldo" Type="float" />
+        </EntityType>-->
         <EntityType Name="PlanCuentaFlujo">
           <Key>
             <PropertyRef Name="CodCuentaFlujo" />
@@ -1906,6 +2110,78 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Proyect
           <Property Name="Consolidado" Type="int" Nullable="false" />
           <Property Name="Guardado" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.saitClien' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="saitClien">
+          <Property Name="CodCliente" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="FechaNac" Type="varchar" MaxLength="50" />
+          <Property Name="Ci" Type="varchar" MaxLength="50" />
+          <Property Name="Expedido" Type="varchar" MaxLength="50" />
+          <Property Name="Dir1" Type="varchar" MaxLength="50" />
+          <Property Name="Dir2" Type="varchar" MaxLength="50" />
+          <Property Name="TelfDomicilio" Type="varchar" MaxLength="50" />
+          <Property Name="TelfOficina" Type="varchar" MaxLength="50" />
+          <Property Name="Glosa1" Type="varchar" MaxLength="50" />
+          <Property Name="Glosa2" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.saitCobro' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="saitCobro">
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="CodCliente" Type="varchar" MaxLength="50" />
+          <Property Name="TCambio" Type="varchar" MaxLength="50" />
+          <Property Name="FechaDesembolso" Type="varchar" MaxLength="50" />
+          <Property Name="TipoCredito" Type="varchar" MaxLength="50" />
+          <Property Name="FormaPago" Type="varchar" MaxLength="50" />
+          <Property Name="Plazo" Type="varchar" MaxLength="50" />
+          <Property Name="Tasa" Type="varchar" MaxLength="50" />
+          <Property Name="NroCuota" Type="varchar" MaxLength="50" />
+          <Property Name="TipoCuota" Type="varchar" MaxLength="50" />
+          <Property Name="MontoCuota" Type="varchar" MaxLength="50" />
+          <Property Name="MontoDesembolsoS" Type="varchar" MaxLength="50" />
+          <Property Name="MontoDesembolsoB" Type="varchar" MaxLength="50" />
+          <Property Name="PeriodoPago" Type="varchar" MaxLength="50" />
+          <Property Name="ND" Type="varchar" MaxLength="50" />
+          <Property Name="CodVenta" Type="varchar" MaxLength="50" />
+          <Property Name="MORA" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.saitPagos' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="saitPagos">
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="NroPago" Type="varchar" MaxLength="50" />
+          <Property Name="FechaPago" Type="varchar" MaxLength="50" />
+          <Property Name="Capital" Type="varchar" MaxLength="50" />
+          <Property Name="Interes" Type="varchar" MaxLength="50" />
+          <Property Name="Cargos" Type="varchar" MaxLength="50" />
+          <Property Name="ND" Type="varchar" MaxLength="50" />
+          <Property Name="MORA" Type="varchar(max)" />
+          <Property Name="CA" Type="varchar(max)" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.saitPlann' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="saitPlann">
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="NroPago" Type="varchar" MaxLength="50" />
+          <Property Name="FechaV" Type="varchar" MaxLength="50" />
+          <Property Name="Capital" Type="varchar" MaxLength="50" />
+          <Property Name="Interes" Type="varchar" MaxLength="50" />
+          <Property Name="Cargo" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="varchar" MaxLength="50" />
+          <Property Name="Saldo" Type="varchar" MaxLength="50" />
+          <Property Name="ND" Type="varchar" MaxLength="50" />
+          <Property Name="MORA" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.saldoInicial' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="saldoInicial">
+          <Property Name="Id" Type="float" />
+          <Property Name="cuenta" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="debe" Type="float" />
+          <Property Name="haber" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="SalidasCab">
           <Key>
             <PropertyRef Name="CodSalida" />
@@ -2588,6 +2864,25 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.cantCuo
           <Property Name="cantPagada" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.cartera_excel' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="cartera_excel">
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODCLI" Type="float" />
+          <Property Name="PRESTAMO" Type="float" />
+          <Property Name="TOTAL_CANCELADO" Type="float" />
+          <Property Name="SALDO" Type="float" />
+          <Property Name="NRO_DE_CUOTAS_PENDIENTE" Type="float" />
+          <Property Name="ULT_FECHA_DE_PAGO" Type="datetime" />
+          <Property Name="IMPORTE_TOTAL_A_PAGAR" Type="float" />
+          <Property Name="PAGO_EFECTUADO" Type="float" />
+          <Property Name="RESTO_PAGO_CUOTA" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.clientesConMoras' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="clientesConMoras">
+          <Property Name="CodCliente" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.CtaporCobraDeMoras' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="CtaporCobraDeMoras">
           <Key>
@@ -2746,6 +3041,18 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.detalle
           <Property Name="Item" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.difExcelSistema' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="difExcelSistema">
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODCLI" Type="float" />
+          <Property Name="NombreC" Type="nvarchar" MaxLength="302" />
+          <Property Name="PRESTAMO" Type="float" />
+          <Property Name="Totalpagado" Type="float" />
+          <Property Name="TOTAL_CANCELADO" Type="float" />
+          <Property Name="dif" Type="float" />
+          <Property Name="NRO_DE_CUOTAS_PENDIENTE" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.difPagados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="difPagados">
           <Key>
@@ -2774,6 +3081,17 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.fechaCu
           <Property Name="CuotaPorpagar" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.FinalSaldoSait' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="FinalSaldoSait">
+          <Property Name="CodCliente" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Glosa1" Type="varchar" MaxLength="50" />
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="MontoCuota" Type="varchar" MaxLength="50" />
+          <Property Name="CantidadCoutaPagadas" Type="int" />
+          <Property Name="total" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.moraExcel' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="moraExcel">
           <Key>
@@ -2783,6 +3101,14 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.moraExc
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="INTERES_EN_MORA " Type="float" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.moraMonto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="moraMonto">
+          <Property Name="CodCliente" Type="float" />
+          <Property Name="NroCuota" Type="float" />
+          <Property Name="INTERES_POR_MORA" Type="float" />
+          <Property Name="NoPtmo" Type="float" />
+        </EntityType>-->
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.moraUltimaFechaDePago' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="moraUltimaFechaDePago">
@@ -2839,6 +3165,31 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.pagosde
           <Property Name="TotalN" Type="float" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.RecuperacionExcelGary' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="RecuperacionExcelGary">
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODIGO_CLIENTE" Type="float" />
+          <Property Name="PRESTAMO" Type="float" />
+          <Property Name="ULTIMA_FECHA_DE_PAGO" Type="datetime" />
+          <Property Name="NRO_CUOTAS_PENDIENTE" Type="float" />
+          <Property Name="TOTAL_CREDITO" Type="float" />
+          <Property Name="TOTAL_CANCELADO" Type="float" />
+          <Property Name="SALDO_POR_COBRAR" Type="float" />
+          <Property Name="CAPITAL" Type="float" />
+          <Property Name="INTERES_CORRIENTE" Type="float" />
+          <Property Name="INTERES_EN_MORA " Type="float" />
+          <Property Name="IMPORTE_TOTAL A_PAGAR_POR_EL_CLIENTE" Type="float" />
+          <Property Name="PAGO_EFECTUADO" Type="float" />
+          <Property Name="RESTO_PAGO_CUOTA" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.SiatPagosTotales' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="SiatPagosTotales">
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="CantidadCoutaPagadas" Type="int" />
+          <Property Name="total" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.total_pagado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="total_pagado">
           <Key>
@@ -2851,6 +3202,12 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.total_p
           <Property Name="Pagado" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.ultimaCuotaMora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="ultimaCuotaMora">
+          <Property Name="CodCliente" Type="float" />
+          <Property Name="CUOTA" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.View_GlosaCorrectaProducto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="View_GlosaCorrectaProducto">
           <Key>
@@ -2860,6 +3217,13 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.View_Gl
           <Property Name="Glosa" Type="ntext" />
           <Property Name="GlosaCorrecta" Type="char" MaxLength="80" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.view_Prestamos_FaltaCuota' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="view_Prestamos_FaltaCuota">
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="FaltaCuotas" Type="int" />
+          <Property Name="FaltaPagar" Type="float" />
+        </EntityType>-->
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vista_SumaSaldo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vista_SumaSaldo">
@@ -2901,6 +3265,34 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_Cant
           <Property Name="CantCuota" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_ClientesFaltaPagarSait' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="vw_ClientesFaltaPagarSait">
+          <Property Name="CodCliente" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="MontoCuota" Type="varchar" MaxLength="50" />
+          <Property Name="FaltaCuotas" Type="int" />
+          <Property Name="FaltaPagar" Type="float" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_CtaXCobrarClientes' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="vw_CtaXCobrarClientes">
+          <Property Name="Doc" Type="nvarchar" MaxLength="20" />
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="301" />
+          <Property Name="NombreProducto" Type="nvarchar" MaxLength="255" />
+          <Property Name="PrecioVenta" Type="float" />
+          <Property Name="CuotaInicial" Type="float" />
+          <Property Name="SaldoFinanciar" Type="float" />
+          <Property Name="Recuperado" Type="float" />
+          <Property Name="SaldoCapital" Type="float" />
+          <Property Name="SaldoCobrar" Type="float" />
+          <Property Name="InteresDevengado" Type="float" />
+          <Property Name="CantCuoPagadas" Type="int" />
+          <Property Name="CantCuoDeudas" Type="int" />
+          <Property Name="UltCuota" Type="int" />
+        </EntityType>-->
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_gridMoraBookk_SAI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_gridMoraBookk_SAI">
           <Key>
@@ -2922,6 +3314,12 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_grid
           <Property Name="prestamo" Type="int" />
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_gridPrestamosSai' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="vw_gridPrestamosSai">
+          <Property Name="NroPtmo" Type="varchar" MaxLength="50" />
+          <Property Name="CodCliente" Type="varchar" MaxLength="50" />
+        </EntityType>-->
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.vw_Recuperado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_Recuperado">
@@ -3065,12 +3463,14 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Cou
             <PropertyRef Name="MontoCuota" />
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="Fecha" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="MontoCuota" Type="float" Nullable="false" />
           <Property Name="NroCuota" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_CoutasFaltaPagarMora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3088,6 +3488,27 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Cou
           <Property Name="SaldoCuota" Type="float" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_CuotaClienteActivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vwt_CuotaClienteActivo">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="CodCliente" />
+            <PropertyRef Name="MontoCuota" />
+            <PropertyRef Name="NroCuota" />
+            <PropertyRef Name="CodMora" />
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MontoCuota" Type="float" Nullable="false" />
+          <Property Name="NroCuota" Type="int" Nullable="false" />
+          <Property Name="CodMora" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SaldoCuota" Type="float" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="MontoFija" Type="float" />
+          <Property Name="MontoMora" Type="float" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_CuotaPagadaFija' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vwt_CuotaPagadaFija">
           <Key>
@@ -3097,6 +3518,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Cuo
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="Fecha" />
             <PropertyRef Name="Pagado" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -3105,6 +3527,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Cuo
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Pagado" Type="int" Nullable="false" />
           <Property Name="MontoCuotaPagado" Type="float" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_CuotaPagadaMora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3134,6 +3557,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="CodMora" />
             <PropertyRef Name="Fecha" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -3142,6 +3566,32 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
           <Property Name="CodMora" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SaldoCuota" Type="float" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_DetalleClienteAlDia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vwt_DetalleClienteAlDia">
+          <Key>
+            <PropertyRef Name="CodCliente" />
+            <PropertyRef Name="NroCuota" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="CantidadCouta" />
+            <PropertyRef Name="Telefono" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="CodMora" />
+            <PropertyRef Name="NroCuotas" />
+          </Key>
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="352" />
+          <Property Name="MontoCuota" Type="float" />
+          <Property Name="SaldoCuota" Type="float" />
+          <Property Name="NroCuota" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="CantidadCouta" Type="int" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodMora" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_DetalleClienteMora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3154,6 +3604,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
             <PropertyRef Name="Telefono" />
             <PropertyRef Name="Codigo" />
             <PropertyRef Name="CodMora" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="NombreCompleto" Type="nvarchar" MaxLength="352" />
@@ -3165,6 +3616,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
           <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CodMora" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_DetalleFijaMoraFinal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3178,6 +3630,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
             <PropertyRef Name="Telefono" />
             <PropertyRef Name="Codigo" />
             <PropertyRef Name="CodMora" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="NombreCompleto" Type="nvarchar" MaxLength="352" />
@@ -3189,6 +3642,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
           <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CodMora" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_DetelleFijaMora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3200,6 +3654,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="CodMora" />
             <PropertyRef Name="Fecha" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -3208,6 +3663,7 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
           <Property Name="CodMora" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SaldoCuota" Type="float" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_TotalClienteMora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3994,9 +4450,11 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <Property Name="NroCuota" Type="int" />
                 <Property Name="Fecha" Type="datetime" />
                 <Property Name="CantidadCouta" Type="int" />
-                <Property Name="Telefono" Type="varchar" MaxLength="20" />
+                <Property Name="Telefono" Type="varchar" MaxLength="50" />
                 <Property Name="Codigo" Type="varchar" MaxLength="20" />
                 <Property Name="CodMora" Type="varchar" MaxLength="20" />
+                <Property Name="NroCuotas" Type="int" />
+                <Property Name="Tc" Type="float" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4016,6 +4474,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <Property Name="Telefono" Type="varchar" MaxLength="50" />
                 <Property Name="Codigo" Type="varchar" MaxLength="20" />
                 <Property Name="CodMora" Type="varchar" MaxLength="20" />
+                <Property Name="NroCuotas" Type="int" />
+                <Property Name="Tc" Type="float" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4668,7 +5128,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_CoutasFaltaPagarFija].[CodCliente] AS [CodCliente], 
     [Vwt_CoutasFaltaPagarFija].[MontoCuota] AS [MontoCuota], 
     [Vwt_CoutasFaltaPagarFija].[NroCuota] AS [NroCuota], 
-    [Vwt_CoutasFaltaPagarFija].[Fecha] AS [Fecha]
+    [Vwt_CoutasFaltaPagarFija].[Fecha] AS [Fecha], 
+    [Vwt_CoutasFaltaPagarFija].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_CoutasFaltaPagarFija] AS [Vwt_CoutasFaltaPagarFija]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_CoutasFaltaPagarMora" EntityType="Self.Vwt_CoutasFaltaPagarMora" store:Type="Views" store:Schema="dbo">
@@ -4680,6 +5141,19 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_CoutasFaltaPagarMora].[SaldoCuota] AS [SaldoCuota]
     FROM [dbo].[Vwt_CoutasFaltaPagarMora] AS [Vwt_CoutasFaltaPagarMora]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Vwt_CuotaClienteActivo" EntityType="Self.Vwt_CuotaClienteActivo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vwt_CuotaClienteActivo].[Codigo] AS [Codigo], 
+    [Vwt_CuotaClienteActivo].[CodCliente] AS [CodCliente], 
+    [Vwt_CuotaClienteActivo].[MontoCuota] AS [MontoCuota], 
+    [Vwt_CuotaClienteActivo].[NroCuota] AS [NroCuota], 
+    [Vwt_CuotaClienteActivo].[CodMora] AS [CodMora], 
+    [Vwt_CuotaClienteActivo].[SaldoCuota] AS [SaldoCuota], 
+    [Vwt_CuotaClienteActivo].[Fecha] AS [Fecha], 
+    [Vwt_CuotaClienteActivo].[MontoFija] AS [MontoFija], 
+    [Vwt_CuotaClienteActivo].[MontoMora] AS [MontoMora]
+    FROM [dbo].[Vwt_CuotaClienteActivo] AS [Vwt_CuotaClienteActivo]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Vwt_CuotaPagadaFija" EntityType="Self.Vwt_CuotaPagadaFija" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Vwt_CuotaPagadaFija].[Codigo] AS [Codigo], 
@@ -4688,7 +5162,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_CuotaPagadaFija].[NroCuota] AS [NroCuota], 
     [Vwt_CuotaPagadaFija].[Fecha] AS [Fecha], 
     [Vwt_CuotaPagadaFija].[Pagado] AS [Pagado], 
-    [Vwt_CuotaPagadaFija].[MontoCuotaPagado] AS [MontoCuotaPagado]
+    [Vwt_CuotaPagadaFija].[MontoCuotaPagado] AS [MontoCuotaPagado], 
+    [Vwt_CuotaPagadaFija].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_CuotaPagadaFija] AS [Vwt_CuotaPagadaFija]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_CuotaPagadaMora" EntityType="Self.Vwt_CuotaPagadaMora" store:Type="Views" store:Schema="dbo">
@@ -4710,8 +5185,24 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_DetalleCantidadMora].[NroCuota] AS [NroCuota], 
     [Vwt_DetalleCantidadMora].[CodMora] AS [CodMora], 
     [Vwt_DetalleCantidadMora].[SaldoCuota] AS [SaldoCuota], 
-    [Vwt_DetalleCantidadMora].[Fecha] AS [Fecha]
+    [Vwt_DetalleCantidadMora].[Fecha] AS [Fecha], 
+    [Vwt_DetalleCantidadMora].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_DetalleCantidadMora] AS [Vwt_DetalleCantidadMora]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vwt_DetalleClienteAlDia" EntityType="Self.Vwt_DetalleClienteAlDia" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vwt_DetalleClienteAlDia].[CodCliente] AS [CodCliente], 
+    [Vwt_DetalleClienteAlDia].[NombreCompleto] AS [NombreCompleto], 
+    [Vwt_DetalleClienteAlDia].[MontoCuota] AS [MontoCuota], 
+    [Vwt_DetalleClienteAlDia].[SaldoCuota] AS [SaldoCuota], 
+    [Vwt_DetalleClienteAlDia].[NroCuota] AS [NroCuota], 
+    [Vwt_DetalleClienteAlDia].[Fecha] AS [Fecha], 
+    [Vwt_DetalleClienteAlDia].[CantidadCouta] AS [CantidadCouta], 
+    [Vwt_DetalleClienteAlDia].[Telefono] AS [Telefono], 
+    [Vwt_DetalleClienteAlDia].[Codigo] AS [Codigo], 
+    [Vwt_DetalleClienteAlDia].[CodMora] AS [CodMora], 
+    [Vwt_DetalleClienteAlDia].[NroCuotas] AS [NroCuotas]
+    FROM [dbo].[Vwt_DetalleClienteAlDia] AS [Vwt_DetalleClienteAlDia]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_DetalleClienteMora" EntityType="Self.Vwt_DetalleClienteMora" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -4724,7 +5215,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_DetalleClienteMora].[CantidadCouta] AS [CantidadCouta], 
     [Vwt_DetalleClienteMora].[Telefono] AS [Telefono], 
     [Vwt_DetalleClienteMora].[Codigo] AS [Codigo], 
-    [Vwt_DetalleClienteMora].[CodMora] AS [CodMora]
+    [Vwt_DetalleClienteMora].[CodMora] AS [CodMora], 
+    [Vwt_DetalleClienteMora].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_DetalleClienteMora] AS [Vwt_DetalleClienteMora]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_DetalleFijaMoraFinal" EntityType="Self.Vwt_DetalleFijaMoraFinal" store:Type="Views" store:Schema="dbo">
@@ -4738,7 +5230,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_DetalleFijaMoraFinal].[CantidadCouta] AS [CantidadCouta], 
     [Vwt_DetalleFijaMoraFinal].[Telefono] AS [Telefono], 
     [Vwt_DetalleFijaMoraFinal].[Codigo] AS [Codigo], 
-    [Vwt_DetalleFijaMoraFinal].[CodMora] AS [CodMora]
+    [Vwt_DetalleFijaMoraFinal].[CodMora] AS [CodMora], 
+    [Vwt_DetalleFijaMoraFinal].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_DetalleFijaMoraFinal] AS [Vwt_DetalleFijaMoraFinal]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_DetelleFijaMora" EntityType="Self.Vwt_DetelleFijaMora" store:Type="Views" store:Schema="dbo">
@@ -4749,7 +5242,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_DetelleFijaMora].[NroCuota] AS [NroCuota], 
     [Vwt_DetelleFijaMora].[CodMora] AS [CodMora], 
     [Vwt_DetelleFijaMora].[SaldoCuota] AS [SaldoCuota], 
-    [Vwt_DetelleFijaMora].[Fecha] AS [Fecha]
+    [Vwt_DetelleFijaMora].[Fecha] AS [Fecha], 
+    [Vwt_DetelleFijaMora].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_DetelleFijaMora] AS [Vwt_DetelleFijaMora]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_TotalClienteMora" EntityType="Self.Vwt_TotalClienteMora" store:Type="Views" store:Schema="dbo">
@@ -4991,7 +5485,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <End Role="VentaSerieProducto" EntitySet="VentaSerieProducto" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="INVENTARIO_CONSTRUCTORA_OBELISCOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -5016,9 +5511,25 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="NroCuota" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" />
           <Property Name="CantidadCouta" Type="Int32" />
-          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NroCuotas" Type="Int32" />
+          <Property Name="Tc" Type="Double" />
+        </ComplexType>
+        <ComplexType Name="fn_NotificacionPreventivaXFecha_Result">
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="MontoCuota" Type="Double" />
+          <Property Name="SaldoCuota" Type="Double" />
+          <Property Name="NroCuota" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" />
+          <Property Name="CantidadCouta" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NroCuotas" Type="Int32" />
+          <Property Name="Tc" Type="Double" />
         </ComplexType>
         <EntityType Name="Almacen">
           <Key>
@@ -8104,12 +8615,14 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <PropertyRef Name="MontoCuota" />
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="Fecha" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MontoCuota" Type="Double" Nullable="false" />
           <Property Name="NroCuota" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vwt_CoutasFaltaPagarMora">
           <Key>
@@ -8124,6 +8637,25 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="NroCuota" Type="Int32" Nullable="false" />
           <Property Name="SaldoCuota" Type="Double" />
         </EntityType>
+        <EntityType Name="Vwt_CuotaClienteActivo">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="CodCliente" />
+            <PropertyRef Name="MontoCuota" />
+            <PropertyRef Name="NroCuota" />
+            <PropertyRef Name="CodMora" />
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MontoCuota" Type="Double" Nullable="false" />
+          <Property Name="NroCuota" Type="Int32" Nullable="false" />
+          <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SaldoCuota" Type="Double" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MontoFija" Type="Double" />
+          <Property Name="MontoMora" Type="Double" />
+        </EntityType>
         <EntityType Name="Vwt_CuotaPagadaFija">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -8132,6 +8664,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="Fecha" />
             <PropertyRef Name="Pagado" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -8140,6 +8673,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Pagado" Type="Int32" Nullable="false" />
           <Property Name="MontoCuotaPagado" Type="Double" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vwt_CuotaPagadaMora">
           <Key>
@@ -8165,6 +8699,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="CodMora" />
             <PropertyRef Name="Fecha" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -8173,6 +8708,30 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SaldoCuota" Type="Double" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vwt_DetalleClienteAlDia">
+          <Key>
+            <PropertyRef Name="CodCliente" />
+            <PropertyRef Name="NroCuota" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="CantidadCouta" />
+            <PropertyRef Name="Telefono" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="CodMora" />
+            <PropertyRef Name="NroCuotas" />
+          </Key>
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="352" FixedLength="false" Unicode="true" />
+          <Property Name="MontoCuota" Type="Double" />
+          <Property Name="SaldoCuota" Type="Double" />
+          <Property Name="NroCuota" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CantidadCouta" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vwt_DetalleClienteMora">
           <Key>
@@ -8183,6 +8742,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <PropertyRef Name="Telefono" />
             <PropertyRef Name="Codigo" />
             <PropertyRef Name="CodMora" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NombreCompleto" Type="String" MaxLength="352" FixedLength="false" Unicode="true" />
@@ -8194,6 +8754,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vwt_DetalleFijaMoraFinal">
           <Key>
@@ -8205,6 +8766,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <PropertyRef Name="Telefono" />
             <PropertyRef Name="Codigo" />
             <PropertyRef Name="CodMora" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NombreCompleto" Type="String" MaxLength="352" FixedLength="false" Unicode="true" />
@@ -8216,6 +8778,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vwt_DetelleFijaMora">
           <Key>
@@ -8225,6 +8788,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <PropertyRef Name="NroCuota" />
             <PropertyRef Name="CodMora" />
             <PropertyRef Name="Fecha" />
+            <PropertyRef Name="NroCuotas" />
           </Key>
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -8233,6 +8797,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="CodMora" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SaldoCuota" Type="Double" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vwt_TotalClienteMora">
           <Key>
@@ -9116,9 +9681,11 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <EntitySet Name="Vwt_ClienteAlDia" EntityType="Self.Vwt_ClienteAlDia" />
           <EntitySet Name="Vwt_CoutasFaltaPagarFija" EntityType="Self.Vwt_CoutasFaltaPagarFija" />
           <EntitySet Name="Vwt_CoutasFaltaPagarMora" EntityType="Self.Vwt_CoutasFaltaPagarMora" />
+          <EntitySet Name="Vwt_CuotaClienteActivo" EntityType="Self.Vwt_CuotaClienteActivo" />
           <EntitySet Name="Vwt_CuotaPagadaFija" EntityType="Self.Vwt_CuotaPagadaFija" />
           <EntitySet Name="Vwt_CuotaPagadaMora" EntityType="Self.Vwt_CuotaPagadaMora" />
           <EntitySet Name="Vwt_DetalleCantidadMora" EntityType="Self.Vwt_DetalleCantidadMora" />
+          <EntitySet Name="Vwt_DetalleClienteAlDia" EntityType="Self.Vwt_DetalleClienteAlDia" />
           <EntitySet Name="Vwt_DetalleClienteMora" EntityType="Self.Vwt_DetalleClienteMora" />
           <EntitySet Name="Vwt_DetalleFijaMoraFinal" EntityType="Self.Vwt_DetalleFijaMoraFinal" />
           <EntitySet Name="Vwt_DetelleFijaMora" EntityType="Self.Vwt_DetelleFijaMora" />
@@ -9344,11 +9911,14 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
           <FunctionImport Name="fn_MoviemtoXcliente" IsComposable="true" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_MoviemtoXcliente_Result)">
-          <Parameter Name="codcliente" Mode="In" Type="Int32" />
+            <Parameter Name="codcliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fn_NotificacionPreventiva" IsComposable="true" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventiva_Result)">
             <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
             <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="fn_NotificacionPreventivaXFecha" IsComposable="true" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventivaXFecha_Result)">
+            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="AdministracionReservaAutomatica" />
           <FunctionImport Name="crearCuotasDeMorasExistentes" />
@@ -9425,7 +9995,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetClienteMoraDetalleXFase" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_GetClienteMoraDetalleXFase_Result)">
-          <Parameter Name="fase" Mode="In" Type="Int32" />
+            <Parameter Name="fase" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getMovCajaIngDia" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_getMovCajaIngDia_Result)">
             <Parameter Name="f1" Mode="In" Type="DateTime" />
@@ -9440,7 +10010,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_ModEstadoLote">
-          <Parameter Name="CodLote" Mode="In" Type="String" />
+            <Parameter Name="CodLote" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_MovimientoXcliente" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_MovimientoXcliente_Result)">
             <Parameter Name="codcliente" Mode="In" Type="Int32" />
@@ -9452,7 +10022,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <Parameter Name="cadena" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RecuperacionCarteraCliente" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_RecuperacionCarteraCliente_Result)">
-          <Parameter Name="codCliente" Mode="In" Type="Int32" />
+            <Parameter Name="codCliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_RecuperacionCarteraFase" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_RecuperacionCarteraFase_Result)">
             <Parameter Name="fechaI" Mode="In" Type="String" />
@@ -9463,7 +10033,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <Parameter Name="fech2" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_RecuperacionCarteraProyecto" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_RecuperacionCarteraProyecto_Result)">
-          <Parameter Name="codP" Mode="In" Type="String" />
+            <Parameter Name="codP" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -9475,16 +10045,16 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
             <Parameter Name="CodManzana" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Traer_Lote_CodProd" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_Traer_Lote_CodProd_Result)">
-          <Parameter Name="CodProd" Mode="In" Type="String" />
+            <Parameter Name="CodProd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Traer_Lote_NroParte" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_Traer_Lote_NroParte_Result)">
-          <Parameter Name="NroParte" Mode="In" Type="String" />
+            <Parameter Name="NroParte" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Traer_Manzana" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_Traer_Manzana_Result)">
-          <Parameter Name="CodProy" Mode="In" Type="Int32" />
+            <Parameter Name="CodProy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Traer_Persona_DocIdent" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_Traer_Persona_DocIdent_Result)">
-          <Parameter Name="DocIdent" Mode="In" Type="String" />
+            <Parameter Name="DocIdent" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Traer_Persona_Usuario" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_Traer_Persona_Usuario_Result)">
             <Parameter Name="LOGIN" Mode="In" Type="String" />
@@ -9494,12 +10064,9 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <FunctionImport Name="sp_Traer_Proyectos" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.sp_Traer_Proyectos_Result)" />
           <FunctionImport Name="sp_Traer_UltimaProforma" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="spt_NotificacionPreventiva" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventiva_Result)">
-          <Parameter Name="dias" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="spt_DetalleClienteAlDia" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_DetalleClienteAlDia_Result)" />
-          <FunctionImport Name="fn_NotificacionPreventivaXFecha" IsComposable="true" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventivaXFecha_Result)">
-            <Parameter Name="DateFrom" Mode="In" Type="DateTime" />
+          <FunctionImport Name="spt_NotificacionPreventiva" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventiva_Result)">
+            <Parameter Name="dias" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spt_NotificacionPreventivaXFecha" ReturnType="Collection(INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventivaXFecha_Result)">
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
@@ -9516,6 +10083,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="CodMora" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="NroCuotas" Nullable="false" />
+          <Property Type="Double" Name="Tc" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_getMovCajaIngDia_Result">
           <Property Type="String" Name="CodCajaIng" Nullable="true" MaxLength="30" />
@@ -9756,18 +10325,6 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Type="Double" Name="PorcTotalCreditoSocio" Nullable="true" />
           <Property Type="Double" Name="PorcTotalCreditoPyR" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="spt_NotificacionPreventiva_Result">
-          <Property Type="String" Name="CodCliente" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="350" />
-          <Property Type="Double" Name="MontoCuota" Nullable="true" />
-          <Property Type="Double" Name="SaldoCuota" Nullable="true" />
-          <Property Type="Int32" Name="NroCuota" Nullable="true" />
-          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="CantidadCouta" Nullable="true" />
-          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CodMora" Nullable="true" MaxLength="20" />
-        </ComplexType>
         <ComplexType Name="spt_DetalleClienteAlDia_Result">
           <Property Type="String" Name="CodCliente" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="352" />
@@ -9779,8 +10336,10 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="CodMora" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="NroCuotas" Nullable="false" />
+          <Property Type="Double" Name="Tc" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="fn_NotificacionPreventivaXFecha_Result">
+        <ComplexType Name="spt_NotificacionPreventiva_Result">
           <Property Type="String" Name="CodCliente" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="350" />
           <Property Type="Double" Name="MontoCuota" Nullable="true" />
@@ -9791,6 +10350,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="CodMora" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="NroCuotas" Nullable="true" />
+          <Property Type="Double" Name="Tc" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spt_NotificacionPreventivaXFecha_Result">
           <Property Type="String" Name="CodCliente" Nullable="true" MaxLength="20" />
@@ -9803,6 +10364,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="CodMora" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="NroCuotas" Nullable="true" />
+          <Property Type="Double" Name="Tc" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -12809,6 +13372,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
                 <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12823,29 +13387,45 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Vwt_CuotaClienteActivo">
+            <EntityTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Vwt_CuotaClienteActivo">
+              <MappingFragment StoreEntitySet="Vwt_CuotaClienteActivo">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+                <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
+                <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="MontoFija" ColumnName="MontoFija" />
+                <ScalarProperty Name="MontoMora" ColumnName="MontoMora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Vwt_CuotaPagadaFija">
             <EntityTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Vwt_CuotaPagadaFija">
               <MappingFragment StoreEntitySet="Vwt_CuotaPagadaFija">
-                <ScalarProperty Name="MontoCuotaPagado" ColumnName="MontoCuotaPagado" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
                 <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="MontoCuotaPagado" ColumnName="MontoCuotaPagado" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vwt_CuotaPagadaMora">
             <EntityTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Vwt_CuotaPagadaMora">
               <MappingFragment StoreEntitySet="Vwt_CuotaPagadaMora">
-                <ScalarProperty Name="MontoCuotaPagado" ColumnName="MontoCuotaPagado" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
                 <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
                 <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
                 <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="MontoCuotaPagado" ColumnName="MontoCuotaPagado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12859,6 +13439,24 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
                 <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vwt_DetalleClienteAlDia">
+            <EntityTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Vwt_DetalleClienteAlDia">
+              <MappingFragment StoreEntitySet="Vwt_DetalleClienteAlDia">
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+                <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
+                <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CantidadCouta" ColumnName="CantidadCouta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12875,6 +13473,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12891,6 +13490,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12904,6 +13504,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
                 <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12965,6 +13566,26 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.fn_NotificacionPreventivaXFecha" FunctionImportName="fn_NotificacionPreventivaXFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventivaXFecha_Result">
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+                <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
+                <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CantidadCouta" ColumnName="CantidadCouta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -12992,6 +13613,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -13297,22 +13920,6 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_Traer_UltimaProforma" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.sp_Traer_UltimaProforma" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="spt_NotificacionPreventiva" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.spt_NotificacionPreventiva">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventiva_Result">
-                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
-                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-                <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
-                <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
-                <ScalarProperty Name="NroCuota" ColumnName="NroCuota" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="CantidadCouta" ColumnName="CantidadCouta" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="CodMora" ColumnName="CodMora" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spt_DetalleClienteAlDia" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.spt_DetalleClienteAlDia">
             <ResultMapping>
               <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_DetalleClienteAlDia_Result">
@@ -13326,12 +13933,14 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_NotificacionPreventivaXFecha" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.fn_NotificacionPreventivaXFecha">
+          <FunctionImportMapping FunctionImportName="spt_NotificacionPreventiva" FunctionName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Store.spt_NotificacionPreventiva">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.fn_NotificacionPreventivaXFecha_Result">
+              <ComplexTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.spt_NotificacionPreventiva_Result">
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
                 <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
@@ -13342,6 +13951,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -13358,6 +13969,8 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodMora" ColumnName="CodMora" />
+                <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+                <ScalarProperty Name="Tc" ColumnName="Tc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

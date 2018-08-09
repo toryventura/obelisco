@@ -22,7 +22,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Cliente de Fase @ViewBag.fase</h3>
-                        <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
+                        <a href="@Url.Action("Details", "Reporte", null)" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</a>
                         <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
                     </div>
                     <div class="box-body" id="ListaContenidosContainer">
@@ -34,3 +34,100 @@
     </section>
 }
 
+<script>
+    //$(function () {
+    //    $('#example1').DataTable();
+    //})
+        //public int asignacionClienteID { get; set; }
+		//public string CodCliente { get; set; }
+		//public string NombreCompleto { get; set; }
+		//public string Codigo { get; set; }
+		//public Nullable < int > CodUsuario { get; set; }
+		//public string NombreCobrador { get; set; }
+		//public int operacionCobranzaID { get; set; }
+		//public string Comentario { get; set; }
+		//public string TelefonoAlternativo { get; set; }
+		//public Nullable < System.DateTime > FechaCompromiso { get; set; }
+		//public Nullable < System.DateTime > FeCre { get; set; }
+		//public Nullable < System.DateTime > FeMod { get; set; }
+		//public string UsrCre { get; set; }
+		//public string UsrMod { get; set; }
+		//public string NombreCuasalMora { get; set; }
+		//public string NombreCompromisopago { get; set; }
+		//public string NombreProbalidadPago { get; set; }
+		//public string NombreParametro { get; set; }
+		//public string NombreTipoGestion { get; set; }
+		//public string Periodo { get; set; }
+    var columnDefsDetalle = [
+        { headerName: 'asignacionClienteID', field: 'asignacionClienteID',hide:false },
+        { headerName: 'Codigo', field: 'Codigo' },
+        { headerName: 'Nombre Cobrador', field: 'NombreCobrador' },
+        { headerName: 'CobranzaID', field: 'operacionCobranzaID'},
+        { headerName: 'TelefonoAlternativo', field: 'TelefonoAlternativo' },
+        { headerName: 'FechaCompromiso', field: 'FechaCompromiso' },
+        { headerName: 'NombreCuasalMora', field: 'NombreCuasalMora' },
+        { headerName: 'NombreCompromisopago', field: 'NombreCompromisopago' },
+        { headerName: 'NombreProbalidadPago', field: 'NombreProbalidadPago' },
+        { headerName: 'NombreParametro', field: 'NombreParametro' },
+        { headerName: 'NombreTipoGestion', field: 'NombreTipoGestion' },
+        { field: 'NombreCompleto', rowGroup: true, hide: true },
+        { field: 'Periodo', rowGroup: true, hide: true }
+    ];
+
+    var gridOptionsDetalle = {
+        
+        enableColResize: true,
+        columnDefs: columnDefsDetalle,
+        animateRows: true,
+        enableRangeSelection: true,
+        rowData: null,
+        enableSorting: true,
+        enableFilter: true,
+        autoGroupColumnDef: {
+            headerName: 'Cod Cliente',
+            width: 300,
+            field: 'CodCliente'
+        }
+        
+    };
+    function currencyFormatter(params) {
+
+        var dt = params.Fecha;
+        if (typeof dt == 'undefined') {
+            return '';
+        } else {
+            return toDateFromAspNet(dt);
+        }
+
+    }
+
+    function toDateFromAspNet (dt) {
+        var dte = eval("new " + dt.replace(/\//g, '') + ";");
+        dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
+        return dte;
+    }
+    $(document).ready(function () {
+        ListarDetalle();
+    });
+    function ListarDetalle() {
+        var gridDiv = document.querySelector('#gridDetalle');
+        createGlobal(gridOptionsDetalle, gridDiv);
+
+        $.ajax({
+            url: "@Url.Action("GetListaReport", "Reporte")",
+            cache: false,
+            data: {
+            },
+            type: "POST"
+        }).done(function (html) {
+            setDataSource(html, gridOptionsDetalle);
+            // gridOptionsAsignadas.api.setRowData(html);
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log(" se ha completado");
+        });
+    }
+
+
+</script>

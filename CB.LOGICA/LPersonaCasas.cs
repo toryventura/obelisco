@@ -1,4 +1,5 @@
 ﻿
+using CB.DATA.INVENTARIO;
 using CB.ENTIDADES;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace CB.LOGICA
 							   select s).ToList();
 					foreach (var item in lis)
 					{
-						lista.Add(toEntides(item));
+						lista.Add(ToEntides(item));
 					}
 					return lista;
 				}
@@ -47,9 +48,11 @@ namespace CB.LOGICA
 									Fecha = x.Fecha.ToString("dd/MM/yyyy"),
 									MontoCuota = x.MontoCuota.Value,
 									NombreCompleto = x.NombreCompleto,
-									NroCuota = x.NroCuota,
-									SaldoCuota = x.SaldoCuota.Value,
-									Telefono = x.Telefono
+									NroCuota = x.NroCuota + "/" + x.NroCuotas,
+									SaldoCuota = Math.Round(x.SaldoCuota.Value, 2),
+									Telefono = x.Telefono,
+									NroCuotas = x.NroCuotas,
+									Tc = x.Tc.Value
 
 								}).ToList();
 					return list;
@@ -75,7 +78,7 @@ namespace CB.LOGICA
 			catch (Exception ex)
 			{
 
-				throw new Exception("",ex);
+				throw new Exception("", ex);
 			}
 			throw new NotImplementedException();
 		}
@@ -96,9 +99,11 @@ namespace CB.LOGICA
 									Fecha = x.Fecha.Value.ToString("dd/MM/yyyy"),
 									MontoCuota = x.MontoCuota.Value,
 									NombreCompleto = x.NombreCompleto,
-									NroCuota = x.NroCuota.Value,
-									SaldoCuota = x.SaldoCuota.Value,
-									Telefono = x.Telefono
+									NroCuota = x.NroCuota.Value + "/" + x.NroCuotas.Value,
+									SaldoCuota =Math.Round( x.SaldoCuota.Value,2),
+									Telefono = x.Telefono,
+									NroCuotas = x.NroCuotas.Value,
+									Tc = x.Tc.Value
 
 								}).ToList();
 					return list;
@@ -127,9 +132,11 @@ namespace CB.LOGICA
 									Fecha = x.Fecha.Value.ToString("dd/MM/yyyy"),
 									MontoCuota = x.MontoCuota.Value,
 									NombreCompleto = x.NombreCompleto,
-									NroCuota = x.NroCuota.Value,
-									SaldoCuota = x.SaldoCuota.Value,
-									Telefono = x.Telefono
+									NroCuota = x.NroCuota.Value + "/" + x.NroCuotas.Value,
+									SaldoCuota = Math.Round( x.SaldoCuota.Value,2),
+									Telefono = x.Telefono,
+									NroCuotas = x.NroCuotas.Value,
+									Tc = x.Tc.Value
 
 								}).ToList();
 					return list;
@@ -148,7 +155,7 @@ namespace CB.LOGICA
 			{
 				var persona = db.Personas.Where(s => s.CodCliente == id).FirstOrDefault();
 
-				return persona == null ? new PersonaCasas() : toEntides(persona);
+				return persona == null ? new PersonaCasas() : ToEntides(persona);
 			}
 		}
 		public List<PersonaCasas> GetClienteAllMoraNoAsignados()
@@ -168,7 +175,8 @@ namespace CB.LOGICA
 					var per = db.Personas.Where(h => h.CodCliente == item.CodCliente).FirstOrDefault();
 					if (per != null)
 					{
-						listasfinal.Add(toEntides(per, item.Codigo));
+						var cat = moras.Where(s => s.Codigo == item.Codigo).Select(s => s.CantidadCouta).FirstOrDefault();
+						listasfinal.Add(ToEntides(per, item.Codigo, cat));
 					}
 
 				}
@@ -182,7 +190,61 @@ namespace CB.LOGICA
 			}
 		}
 
-		private PersonaCasas toEntides(DATA.INVENTARIO.Persona s, string p)
+		private PersonaCasas ToEntides(Persona s, string codigo, int? cat)
+		{
+			return new PersonaCasas()
+			{
+				Apellido = s.Apellido,
+				AutorizaCotizacion = s.AutorizaCotizacion,
+				AutorizaOCompra = s.AutorizaOCompra,
+				AutorizaPedido = s.AutorizaPedido,
+				Ccosto = s.Ccosto,
+				CI = s.CI,
+				Ciudad = s.Ciudad,
+				clave = s.clave ?? "",
+				CodCliente = s.CodCliente,
+				CodCuenta = s.CodCuenta,
+				CodEstado = s.CodEstado == null ? -99 : s.CodEstado.Value,
+				CodSubcc = s.CodSubcc,
+				Consolidado = s.Consolidado,
+				Contacto = s.Contacto,
+				Correo = s.Correo,
+				DiasCredito = s.DiasCredito,
+				DireccionDomicilio = s.DireccionDomicilio,
+				DireccionTrabajo = s.DireccionTrabajo,
+				EmiteFactura = s.EmiteFactura,
+				EsAlmacenero = s.EsAlmacenero,
+				EsCajero = s.EsCajero,
+				EsCliente = s.EsCliente,
+				EsProveedor = s.EsProveedor,
+				EstadoCivil = s.EstadoCivil,
+				EsUsuario = s.EsUsuario,
+				EsVendedor = s.EsVendedor,
+				EsVendedorF = s.EsVendedorF,
+				Fax = s.Fax,
+				FechaReg = s.FechaReg,
+				IdArea = s.IdArea,
+				LimiteCredito = s.LimiteCredito,
+				NIT = s.NIT,
+				NombreFactura = s.NombreFactura,
+				NombreP = s.NombreP,
+				NomCorto = s.NomCorto ?? "",
+				RevisaOCompra = s.RevisaOCompra,
+				Seg_Apellido = s.Seg_Apellido ?? "",
+				Sexo = s.Sexo,
+				SolicitaOCompra = s.SolicitaOCompra,
+				SolicitaPedido = s.SolicitaPedido,
+				Telefono = s.Telefono,
+				TipoPrecio = s.TipoPrecio,
+				UsuaReg = s.UsuaReg,
+				Vendedor = s.Vendedor,
+				Codigo = codigo,
+				CantidadCouta = cat.Value
+
+			};
+		}
+
+		private PersonaCasas ToEntides(DATA.INVENTARIO.Persona s, string p)
 		{
 			return new PersonaCasas()
 			{
@@ -231,6 +293,7 @@ namespace CB.LOGICA
 				UsuaReg = s.UsuaReg,
 				Vendedor = s.Vendedor,
 				Codigo = p
+
 			};
 		}
 		public List<PersonaCasas> GetClienteAllMoraNoAsignados(int fase)
@@ -239,7 +302,7 @@ namespace CB.LOGICA
 			var db1 = new DATA.USER.COBRANZA_CBEntities();
 			try
 			{
-				
+
 				List<string> moras = new List<string>();
 				if (fase == 5)
 				{
@@ -260,7 +323,7 @@ namespace CB.LOGICA
 				var listasfinal = new List<PersonaCasas>();
 				foreach (var item in personas)
 				{
-					listasfinal.Add(toEntides(item));
+					listasfinal.Add(ToEntides(item));
 				}
 				var personasfinal = listasfinal.Where(x => moras.Contains(x.CodCliente)).ToList();
 
@@ -274,24 +337,27 @@ namespace CB.LOGICA
 		public List<DetalleFase> GetClienteMoraDetalleXFase(int fase)
 		{
 			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
-			
+
 			try
 			{
 				List<DetalleFase> detalleFases = new List<DetalleFase>();
 				var listDetalle = db.sp_GetClienteMoraDetalleXFase(fase);
 				foreach (var item in listDetalle)
 				{
-					detalleFases.Add(new DetalleFase() {
-						CantidadCouta=item.CantidadCouta.Value,
-						CodCliente=item.CodCliente,
-						Codigo=item.Codigo,
-						CodMora=item.CodMora,
-						Fecha=item.Fecha.ToString("dd/MM/yyyy"),
-						MontoCuota=item.MontoCuota,
-						NombreCompleto=item.NombreCompleto,
-						NroCuota=item.NroCuota,
-						SaldoCuota=item.SaldoCuota.Value,
-						Telefono=item.Telefono
+					detalleFases.Add(new DetalleFase()
+					{
+						CantidadCouta = item.CantidadCouta.Value,
+						CodCliente = item.CodCliente,
+						Codigo = item.Codigo,
+						CodMora = item.CodMora,
+						Fecha = item.Fecha.ToString("dd/MM/yyyy"),
+						MontoCuota = item.MontoCuota,
+						NombreCompleto = item.NombreCompleto,
+						NroCuota = item.NroCuota + "/" + item.NroCuotas,
+						SaldoCuota = Math.Round( item.SaldoCuota.Value,2),
+						Telefono = item.Telefono,
+						NroCuotas = item.NroCuotas,
+						Tc = item.Tc.Value
 					});
 				}
 
@@ -351,7 +417,7 @@ namespace CB.LOGICA
 				var listasfinal = new List<PersonaCasas>();
 				foreach (var item in personas)
 				{
-					listasfinal.Add(toEntides(item));
+					listasfinal.Add(ToEntides(item));
 				}
 				var personasfinal = listasfinal.Where(x => _listAsiganado.Contains(x.CodCliente)).ToList();
 				if (personasfinal.Count > 0)
@@ -367,7 +433,7 @@ namespace CB.LOGICA
 
 			}
 		}
-		public PersonaCasas toEntides(DATA.INVENTARIO.Persona s)
+		public PersonaCasas ToEntides(DATA.INVENTARIO.Persona s)
 		{
 			return new PersonaCasas()
 			{

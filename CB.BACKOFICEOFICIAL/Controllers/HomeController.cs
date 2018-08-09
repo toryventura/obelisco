@@ -99,8 +99,10 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		{
 			try
 			{
-				MailMessage coreo = new MailMessage();
-				coreo.From = new MailAddress("tory.ven.16@gmail.com", "TORY", System.Text.Encoding.UTF8);
+				MailMessage coreo = new MailMessage
+				{
+					From = new MailAddress("tory.ven.16@gmail.com", "TORY", System.Text.Encoding.UTF8)
+				};
 				coreo.To.Add(para);
 				coreo.Subject = asunto;
 				coreo.Body = mensaje;

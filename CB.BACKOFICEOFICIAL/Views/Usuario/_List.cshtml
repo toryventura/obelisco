@@ -10,6 +10,7 @@
             <th>User</th>
             <th>Email</th>
             <th>Telefono</th>
+            <th>Fase</th>
             <th>Estado</th>
 
             <th></th>
@@ -21,23 +22,31 @@
 
             foreach (var personaAsigandas in Model.OrderBy(s => s.ID))
             {
-                <tr>
-                    <td>@personaAsigandas.ID</td>
-                    <td>@personaAsigandas.Nombre </td>
-                    <td>@personaAsigandas.Login </td>
-                    <td>@personaAsigandas.Email </td>
-                    <td>@personaAsigandas.Telefono </td>
-                    <td>@personaAsigandas.Habilitado </td>
+        <tr>
+            <td>@personaAsigandas.ID</td>
+            <td>@personaAsigandas.Nombre </td>
+            <td>@personaAsigandas.Login </td>
+            <td>@personaAsigandas.Email </td>
+            <td>@personaAsigandas.Telefono </td>
+            <td>@personaAsigandas.NombreFase </td>
+            @if (personaAsigandas.Habilitado)
+            {
+                <td>Habilitado</td>
+
+            }
+            else
+            {
+                <td>Deshabilitado</td>
+            }
 
 
+            <td>
+                <button type="button" data-id="@personaAsigandas.ID" onclick="details(@personaAsigandas.ID);" class="btn btn-xs btn-default"><samp class="glyphicon glyphicon-eye-open" /> &nbsp;</button>
+                <button type="button" data-id="@personaAsigandas.ID" onclick="edit(@personaAsigandas.ID);" class="btn btn-xs btn-warning"><samp class="glyphicon glyphicon-pencil" />&nbsp;</button>
+                <button type="button" data-id="@personaAsigandas.ID" onclick="delet(@personaAsigandas.ID);" class="btn btn-xs btn-danger"><samp class="glyphicon glyphicon-erase" />&nbsp;</button>
 
-                    <td>
-                        <button type="button" data-id="@personaAsigandas.ID" onclick="details(@personaAsigandas.ID);" class="btn btn-xs btn-default"><samp class="glyphicon glyphicon-eye-open" /> &nbsp;</button>
-                        <button type="button" data-id="@personaAsigandas.ID" onclick="edit(@personaAsigandas.ID);" class="btn btn-xs btn-warning"><samp class="glyphicon glyphicon-pencil" />&nbsp;</button>
-                        <button type="button" data-id="@personaAsigandas.ID" onclick="delet(@personaAsigandas.ID);" class="btn btn-xs btn-danger"><samp class="glyphicon glyphicon-erase" />&nbsp;</button>
-
-                    </td>
-                </tr>
+            </td>
+        </tr>
 
             }
         }

@@ -23,5 +23,7 @@ namespace CB.DATA.INVENTARIO
         public string Telefono { get; set; }
         public string Codigo { get; set; }
         public string CodMora { get; set; }
+        public Nullable<int> NroCuotas { get; set; }
+        public Nullable<double> Tc { get; set; }
     }
 }

@@ -49,5 +49,6 @@ namespace CB.ENTIDADES
 		public bool EmiteFactura { get; set; }
 		public int CodEstado { get; set; }
 		public string Codigo { get; set; }
+		public int CantidadCouta { get; set; }
 	}
 }

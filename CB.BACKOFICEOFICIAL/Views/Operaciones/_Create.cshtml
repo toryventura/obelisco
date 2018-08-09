@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
-                                        <input type="text" class="form-control timepicker">
+                                        <input type="text" id="txtHora" class="form-control timepicker">
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
@@ -172,6 +172,32 @@
         BloquearPantalla();
 
     }
+    function formatDate(date) {
+        var d = date;
+        var hh = d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        var dd = "AM";
+        var h = hh;
+        if (h >= 12) {
+            h = hh - 12;
+            dd = "PM";
+        }
+        if (h == 0) {
+            h = 12;
+        }
+        m = m < 10 ? "0" + m : m;
+
+        s = s < 10 ? "0" + s : s;
+
+        /* if you want 2 digit hours: */
+        h = h < 10 ? "0" + h : h;
+
+        var pattern = new RegExp("0?" + hh + ":" + m + ":" + s);
+        return date.replace(pattern, h + ":" + m + ":" + s + " " + dd)
+    }
+
+
     $(function () {
         // Replace the <textarea id="editor1"> with a CKEditor
         // instance, using default configuration.
@@ -188,7 +214,10 @@
         $('.timepicker').timepicker({
             showInputs: false
         })
-
+        
+        var now = new Date(Date.now());
+        var formatted = formatDate(no);
+        $('#txtHora').val(formatted); 
         //Date range picker
         $('#reservation').daterangepicker()
         //Date range picker with time picker

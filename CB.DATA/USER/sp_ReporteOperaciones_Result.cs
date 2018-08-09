@@ -10,9 +10,8 @@
 namespace CB.DATA.USER
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Vwt_vistaoperacion
+    public partial class sp_ReporteOperaciones_Result
     {
         public int asignacionClienteID { get; set; }
         public string CodCliente { get; set; }

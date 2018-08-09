@@ -34,3 +34,8 @@ function createGlobal(gridOptions, gridDiv) {
 function destroyGlobal(grid) {
     grid.api.destroy();
 }
+
+function round(value, precision) {
+			var aPrecision = Math.pow(10, precision);
+			return Math.round(value*aPrecision)/aPrecision;
+}

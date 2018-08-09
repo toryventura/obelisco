@@ -668,6 +668,9 @@
     <Compile Include="INVENTARIO\Vwt_CoutasFaltaPagarMora.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\Vwt_CuotaClienteActivo.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\Vwt_CuotaPagadaFija.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
@@ -675,6 +678,9 @@
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\Vwt_DetalleCantidadMora.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO\Vwt_DetalleClienteAlDia.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
     <Compile Include="INVENTARIO\Vwt_DetalleClienteMora.cs">
@@ -784,6 +790,9 @@
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
     <Compile Include="USER\sp_NotificacionPreventiva_Result.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER\sp_ReporteOperaciones_Result.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
     <Compile Include="USER\TipoGestion.cs">

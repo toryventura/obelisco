@@ -21,5 +21,6 @@ namespace CB.DATA.INVENTARIO
         public System.DateTime Fecha { get; set; }
         public int Pagado { get; set; }
         public Nullable<double> MontoCuotaPagado { get; set; }
+        public int NroCuotas { get; set; }
     }
 }

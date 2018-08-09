@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccionPreventiva">
           <Key>
             <PropertyRef Name="AccionID" />
@@ -274,6 +274,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Name="NombreProbalidadPago" Type="nvarchar" MaxLength="250" />
           <Property Name="NombreParametro" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="NombreTipoGestion" Type="varchar" MaxLength="250" />
+          <Property Name="Periodo" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_AsignacionCliente_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
@@ -561,6 +562,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_ReporteOperaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="COBRANZA_CBModelStoreContainer">
           <EntitySet Name="AccionPreventiva" EntityType="Self.AccionPreventiva" Schema="dbo" store:Type="Tables" />
@@ -641,7 +643,8 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
     [Vwt_vistaoperacion].[NombreCompromisopago] AS [NombreCompromisopago], 
     [Vwt_vistaoperacion].[NombreProbalidadPago] AS [NombreProbalidadPago], 
     [Vwt_vistaoperacion].[NombreParametro] AS [NombreParametro], 
-    [Vwt_vistaoperacion].[NombreTipoGestion] AS [NombreTipoGestion]
+    [Vwt_vistaoperacion].[NombreTipoGestion] AS [NombreTipoGestion], 
+    [Vwt_vistaoperacion].[Periodo] AS [Periodo]
     FROM [dbo].[Vwt_vistaoperacion] AS [Vwt_vistaoperacion]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_AsignacionCliente_Usuario" Association="Self.FK_AsignacionCliente_Usuario">
@@ -721,8 +724,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <End Role="UsuaruoIPRestringido" EntitySet="UsuaruoIPRestringido" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="COBRANZA_CBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1002,6 +1004,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Name="NombreProbalidadPago" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="NombreParametro" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NombreTipoGestion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_AsignacionCliente_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
@@ -1262,7 +1265,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <Parameter Name="DateTo" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="AsignarClienteMora">
-            <Parameter Name="periodo" Mode="In" Type="String" />
+          <Parameter Name="periodo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BAJACLIENTESASIGNADOS" />
           <FunctionImport Name="sp_alterdiagram">
@@ -1291,7 +1294,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_NotificacionPreventiva" ReturnType="Collection(COBRANZA_CBModel.sp_NotificacionPreventiva_Result)">
-            <Parameter Name="dias" Mode="In" Type="Int32" />
+          <Parameter Name="dias" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1299,6 +1302,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_ReporteOperaciones" ReturnType="Collection(COBRANZA_CBModel.sp_ReporteOperaciones_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1319,6 +1323,28 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
           <Property Type="Double" Name="TotalCuota" Nullable="true" />
           <Property Type="Int32" Name="Accion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ReporteOperaciones_Result">
+          <Property Type="Int32" Name="asignacionClienteID" Nullable="false" />
+          <Property Type="String" Name="CodCliente" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="352" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="CodUsuario" Nullable="true" />
+          <Property Type="String" Name="NombreCobrador" Nullable="true" MaxLength="402" />
+          <Property Type="Int32" Name="operacionCobranzaID" Nullable="false" />
+          <Property Type="String" Name="Comentario" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="TelefonoAlternativo" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaCompromiso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FeCre" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FeMod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UsrCre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UsrMod" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreCuasalMora" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="NombreCompromisopago" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="NombreProbalidadPago" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="NombreParametro" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NombreTipoGestion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1556,6 +1582,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <EntitySetMapping Name="Vwt_vistaoperacion">
             <EntityTypeMapping TypeName="COBRANZA_CBModel.Vwt_vistaoperacion">
               <MappingFragment StoreEntitySet="Vwt_vistaoperacion">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="asignacionClienteID" ColumnName="asignacionClienteID" />
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
@@ -1655,6 +1682,32 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="COBRANZA_CBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COBRANZA_CBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_ReporteOperaciones" FunctionName="COBRANZA_CBModel.Store.sp_ReporteOperaciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COBRANZA_CBModel.sp_ReporteOperaciones_Result">
+                <ScalarProperty Name="asignacionClienteID" ColumnName="asignacionClienteID" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="NombreCobrador" ColumnName="NombreCobrador" />
+                <ScalarProperty Name="operacionCobranzaID" ColumnName="operacionCobranzaID" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="TelefonoAlternativo" ColumnName="TelefonoAlternativo" />
+                <ScalarProperty Name="FechaCompromiso" ColumnName="FechaCompromiso" />
+                <ScalarProperty Name="FeCre" ColumnName="FeCre" />
+                <ScalarProperty Name="FeMod" ColumnName="FeMod" />
+                <ScalarProperty Name="UsrCre" ColumnName="UsrCre" />
+                <ScalarProperty Name="UsrMod" ColumnName="UsrMod" />
+                <ScalarProperty Name="NombreCuasalMora" ColumnName="NombreCuasalMora" />
+                <ScalarProperty Name="NombreCompromisopago" ColumnName="NombreCompromisopago" />
+                <ScalarProperty Name="NombreProbalidadPago" ColumnName="NombreProbalidadPago" />
+                <ScalarProperty Name="NombreParametro" ColumnName="NombreParametro" />
+                <ScalarProperty Name="NombreTipoGestion" ColumnName="NombreTipoGestion" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

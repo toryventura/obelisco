@@ -71,9 +71,11 @@
                 return params.columnApi.getRowGroupColumns().length === 0;
             }
         },
-            { headerName: "Codigo", field: "Codigo", width: 150 },
+
             { headerName: "Nombre", field: "NombreP", width: 150 },
             { headerName: "Apellido", field: "Apellido", width: 100 },
+            { headerName: "Cantidad Cuota", field: "CantidadCouta", width: 150 },
+            { headerName: "Codigo", field: "Codigo", width: 150 },
             { headerName: "sexo", field: "Sexo", width: 100 },
             { headerName: "Vendedor", field: "EsVendedor", width: 200 }
 
@@ -90,32 +92,22 @@
         //rowModelType: 'infinite',
         //maxBlocksInCache: 2,
         //suppressRowClickSelection: true
+        enableFilter: true,
         columnDefs: columnDefsEnMora,
         rowSelection: 'multiple',
-        enableSorting: true,
-        showToolPanel: true
+        enableSorting: true
 
     };
 
-    
+
     var gridOptionsUsuario = {
 
-        //enableSorting: true,
-        //enableFilter: true,
-
-        //enableColResize: true,
-        //columnDefs: columnDefsUsuario,
-        //rowModelType: 'infinite',
-        ////rowSelection: 'multiple',
-        //maxBlocksInCache: 2,
-        //suppressRowClickSelection: true
+       
         columnDefs: columnDefsUsuario,
+        enableFilter: true,
         rowData: null,
         groupIncludeFooter: true,
-        enableSorting: true,
-        showToolPanel: true,
-        toolPanelSuppressPivots: true,
-        toolPanelSuppressPivotMode: true
+        enableSorting: true
     };
 
     //get codUsurio, aqui sacamos el usuario seleccionado, la asignacion de los clientes.
@@ -181,6 +173,15 @@
                 console.log("complete the ");
                 DesbloquearPantalla();
             });
+        } else {
+
+            if (codusuario == -1) {
+                error("Selecciones un Usuario o Cobrador por los menos");
+            }
+            if (lista.length==0) {
+                error("Selecione Clientes en Mora");
+            }
+            DesbloquearPantalla();
         }
 
     }

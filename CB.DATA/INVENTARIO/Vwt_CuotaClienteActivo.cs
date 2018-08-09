@@ -12,13 +12,16 @@ namespace CB.DATA.INVENTARIO
     using System;
     using System.Collections.Generic;
     
-    public partial class Vwt_CoutasFaltaPagarFija
+    public partial class Vwt_CuotaClienteActivo
     {
         public string Codigo { get; set; }
         public string CodCliente { get; set; }
         public double MontoCuota { get; set; }
         public int NroCuota { get; set; }
+        public string CodMora { get; set; }
+        public Nullable<double> SaldoCuota { get; set; }
         public System.DateTime Fecha { get; set; }
-        public int NroCuotas { get; set; }
+        public Nullable<double> MontoFija { get; set; }
+        public Nullable<double> MontoMora { get; set; }
     }
 }

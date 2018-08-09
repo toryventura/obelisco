@@ -63,6 +63,7 @@
     <Compile Include="LPermiso.cs" />
     <Compile Include="LPersonaCasas.cs" />
     <Compile Include="LProbalidadPago.cs" />
+    <Compile Include="LReporte.cs" />
     <Compile Include="LTipoGetion.cs" />
     <Compile Include="LUsuario.cs" />
     <Compile Include="LPersonasMora.cs" />

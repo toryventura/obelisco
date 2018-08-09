@@ -177,6 +177,7 @@ namespace CB.LOGICA
 
 					obj = DataToEntidad(item);
 					obj.IdFase = db.FaseUsuarios.Where(x => x.Idusuario == obj.ID).Select(x => x.Idfase.Value).FirstOrDefault();
+					obj.NombreFase = GetNombreFase(obj.IdFase);
 					_listfinal.Add(obj);
 				}
 				return _listfinal;
@@ -194,11 +195,29 @@ namespace CB.LOGICA
 				{
 					obj = DataToEntidad(item);
 					obj.IdFase = db.FaseUsuarios.Where(x => x.Idusuario == obj.ID).Select(x => x.Idfase.Value).FirstOrDefault();
+					obj.NombreFase = GetNombreFase(obj.IdFase);
 					_listfinal.Add(obj);
 				}
 				return _listfinal;
 			}
 			;
+		}
+
+		private static string GetNombreFase(int idFase)
+		{
+			try
+			{
+				using (var db= new DATA.USER.COBRANZA_CBEntities())
+				{
+					var fase = db.Fases.Where(s => s.ID == idFase).Select(s => s.Descripcion).FirstOrDefault();
+					return fase;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica:GetnombreFase", ex);
+			}
 		}
 
 		public static CB.ENTIDADES.Usuario DataToEntidad(DATA.USER.Usuario d, bool Listado = true)
@@ -230,7 +249,7 @@ namespace CB.LOGICA
 				Apellido1 = d.UsuarioApellido1,
 				Apellido2 = d.UsuarioApellido2,
 				Contrasena = "",
-				Email = d.UsuarioEmail,
+				Email = d.UsuarioEmail, 
 				EsSuperAdmin = d.UsuarioEsSuperAdmin.Value,
 				Habilitado = d.UsuarioHabilitado.Value,
 				ID = d.UsuarioID,
@@ -240,6 +259,7 @@ namespace CB.LOGICA
 				Permisos = permisos,
 				Telefono = d.UsuarioTelefono,
 				CambiarContrasena = d.UsuarioCambiarContrasena.Value
+				
 
 			};
 		}

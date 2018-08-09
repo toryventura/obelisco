@@ -56,7 +56,8 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		public ActionResult Lists()
 		{
 			var list = LUsuario.toListaUsuario();
-			return PartialView("_List", list);
+			var litsfinal= list.Where(x => x.EsSuperAdmin == false).ToList();
+			return PartialView("_List", litsfinal);
 		}
 		// POST: CompromisoPago/Create
 		[HttpPost]

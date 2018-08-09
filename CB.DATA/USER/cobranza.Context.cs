@@ -193,5 +193,10 @@ namespace CB.DATA.USER
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<sp_ReporteOperaciones_Result> sp_ReporteOperaciones()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteOperaciones_Result>("sp_ReporteOperaciones");
+        }
     }
 }

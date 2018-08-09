@@ -132,6 +132,7 @@
     var columnDefsDetalle = [
         { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
         { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'CantidadCouta', field: 'CantidadCouta', aggFunc: 'count', hide: true, sort: 'asc' },
         { headerName: 'Total', field: 'total', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
         { headerName: 'Nro Cuota', field: 'NroCuota' },
         { headerName: 'Telefono', field: 'Telefono' },
@@ -147,6 +148,7 @@
         enableRangeSelection: true,
         enableSorting: true,
         enableColResize: true,
+        enableFilter: true,
         autoGroupColumnDef: {
             headerName: 'Cod Cliente',
             width: 300,

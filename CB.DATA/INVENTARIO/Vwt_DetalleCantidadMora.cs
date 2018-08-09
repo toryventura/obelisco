@@ -21,5 +21,6 @@ namespace CB.DATA.INVENTARIO
         public string CodMora { get; set; }
         public Nullable<double> SaldoCuota { get; set; }
         public System.DateTime Fecha { get; set; }
+        public int NroCuotas { get; set; }
     }
 }
