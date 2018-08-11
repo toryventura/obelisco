@@ -18,7 +18,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return false;
+				throw new System.Exception("Logica:add", ex);
 			}
 
 
@@ -44,7 +44,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return false;
+				throw new System.Exception("Logica:update", ex);
 			}
 
 		}
@@ -69,7 +69,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return false;
+				throw new System.Exception("Logica:delete", ex); 
 			}
 
 		}
@@ -93,7 +93,7 @@ namespace CB.LOGICA
 			catch (System.Exception ex)
 			{
 
-				return null;
+				throw new System.Exception("Logica:ListAll",ex);
 			}
 		}
 		public DATA.USER.CausalMora toCausalMora(ENTIDADES.CausalMora o)

@@ -113,7 +113,7 @@
             { headerName: "Nombre", field: "NombreP", width: 150 },
             { headerName: "Apellido", field: "Apellido", width: 100 },
             { headerName: "sexo", field: "Sexo", width: 100 },
-            { headerName: "Vendedor", field: "EsVendedor", width: 200 }
+            { headerName: "Fase", field: "EsVendedor", width: 200 }
 
     ];
     //// cuentas en mora
@@ -437,6 +437,10 @@
         var id = $("#dll option:selected").text();
         var vall = $("#dll option:selected").val();
         if (vall != "") {
+
+            var now = new Date(Date.now());
+            var formatted = formatDate(now);
+            $('#txtHora').val(formatted);
             $.ajax({
                 url: "@Url.Action("getOperacionesrr", "Operaciones")",
                 cache: false,
@@ -451,11 +455,41 @@
             }).always(function () {
                 console.log("complete the operacion");
             });
+        } else {
+            $('#dll').focus();
+            error("Seleccione el tipo de opreracion a realizar");
         }
 
     }
+    function formatDate(date) {
+        var d = "";
+        d += date.format("d/mm/yyyy HH:MM:ss");
+        var hh = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        var dd = "AM";
+        var h = hh;
+        if (h >= 12) {
+            h = hh - 12;
+            dd = "PM";
+        }
+        if (h == 0) {
+            h = 12;
+        }
+        m = m < 10 ? "0" + m : m;
+
+        s = s < 10 ? "0" + s : s;
+
+        /* if you want 2 digit hours: */
+        h = h < 10 ? "0" + h : h;
+
+        var pattern = new RegExp("0?" + hh + ":" + m + ":" + s);
+        var per = d.replace(pattern, h + ":" + m + ":" + s + " " + dd);
+        return per;
+    }
+
     function Imprimir() {
-        
+
             $.ajax({
                 url: "@Url.Action("Imprimir", "Operaciones")",
                 cache: false,
@@ -470,12 +504,12 @@
             }).always(function () {
                 console.log("complete the operacion");
             });
-        
+
 
     }
     function Imprimir(opid) {
         selectedOperacion = opid;
-        
+
             $.ajax({
                 url: "@Url.Action("Imprimir", "Operaciones")",
                 cache: false,
@@ -490,7 +524,7 @@
             }).always(function () {
                 console.log("complete the operacion");
             });
-        
+
 
     }
     function setDatosAdiconales() {

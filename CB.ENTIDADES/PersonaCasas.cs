@@ -50,5 +50,7 @@ namespace CB.ENTIDADES
 		public int CodEstado { get; set; }
 		public string Codigo { get; set; }
 		public int CantidadCouta { get; set; }
+		public int IdFase { get; set; }
+		public string NombreFase { get; set; }
 	}
 }

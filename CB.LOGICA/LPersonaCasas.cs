@@ -411,21 +411,28 @@ namespace CB.LOGICA
 
 			try
 			{
-				var _listAsiganado = db1.AsignacionClientes.Where(x => x.CodUsuario == id && x.Estado == true).Select(w => w.CodCliente).ToList();
-
-				var personas = db.Personas.ToList();
+				var _listAsiganado = db1.AsignacionClientes.Where(x => x.CodUsuario == id && x.Estado == true).ToList();
+				var moras = (from x in db.Vwt_CantidadClienteMora select x).ToList();
 				var listasfinal = new List<PersonaCasas>();
-				foreach (var item in personas)
+				ENTIDADES.PersonaCasas obj;
+				foreach (var item in _listAsiganado)
 				{
-					listasfinal.Add(ToEntides(item));
+					var p = db.Personas.Where(s => s.CodCliente == item.CodCliente).FirstOrDefault();
+					var cm = moras.Where(x => x.Codigo == item.Codigo).Select(x => x.CantidadCouta).FirstOrDefault();
+					obj = ToEntides(p, item.Codigo, cm);
+					if (cm < 5)
+					{
+						obj.NombreFase = db1.Fases.Where(j => j.ID == cm).Select(j => j.Descripcion).FirstOrDefault();
+					}
+					else {
+						obj.NombreFase = "Fase 5";
+					}
+					//obj.IdFase = db1.FaseUsuarios.Where(x => x.Idusuario == obj.CI).Select(x => x.Idfase.Value).FirstOrDefault();
+					//obj.NombreFase = GetNombreFase(obj.IdFase);
+					listasfinal.Add(obj);
 				}
-				var personasfinal = listasfinal.Where(x => _listAsiganado.Contains(x.CodCliente)).ToList();
-				if (personasfinal.Count > 0)
-				{
-					return personasfinal;
-				}
-				return null;
-
+				return listasfinal;
+				
 			}
 			catch (Exception ex)
 			{

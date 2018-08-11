@@ -51,7 +51,8 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						"~/plugins/alertify/alertify.min.js",
 						"~/Scripts/mensajes.js",
 						"~/Scripts/FuncionesGlobalAg-grid.js",
-						"~/bower_components/chart.js/Chart.js"
+						"~/bower_components/chart.js/Chart.js",
+						"~/Scripts/date.format.js"
 						));
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/bower_components/bootstrap/dist/css/bootstrap.min.css",

@@ -8063,6 +8063,7 @@
     <Content Include="bower_components\ag-grid-enterprise-master\tsconfig-exports.json" />
     <None Include="Properties\PublishProfiles\Obelisco.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\DMOS.js" />
     <Content Include="Scripts\FuncionesGlobalAg-grid.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />

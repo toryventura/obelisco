@@ -58,7 +58,8 @@
         { headerName: "Nombre Completo", field: "NombreCompleto", width: 150 },
         { headerName: "User", field: "Login", width: 150 },
         { headerName: "Telefono", field: "Telefono", width: 100 },
-        { headerName: "Habilitado", field: "Habilitado", width: 100 },
+        { headerName: "Habilitado", field: "Habilitado", width: 100, hide: true },
+        { headerName: "Fase", field: "NombreFase", width: 100 },
         { headerName: "ID", field: "ID", width: 100, hide: "true" }
 
     ];
@@ -79,34 +80,19 @@
             { headerName: "Nombre", field: "NombreP", width: 150 },
             { headerName: "Apellido", field: "Apellido", width: 100 },
             { headerName: "Cantidad Cuota", field: "CantidadCouta", width: 150 },
-            { headerName: "Codigo", field: "Codigo", width: 150 },
-            { headerName: "sexo", field: "Sexo", width: 100 },
-            { headerName: "Vendedor", field: "EsVendedor", width: 200 }
+            { headerName: "Codigo", field: "Codigo", width: 150 }
 
     ];
 
     var gridOptionsEnMora = {
-
-        //enableColResize: true,
-        //rowBuffer: 0,
-        //debug: true,
-        //rowSelection: 'multiple',
-        //rowDeselection: true,
-        //columnDefs: columnDefsEnMora,
-        //rowModelType: 'infinite',
-        //maxBlocksInCache: 2,
-        //suppressRowClickSelection: true
         enableFilter: true,
         columnDefs: columnDefsEnMora,
         rowSelection: 'multiple',
         enableSorting: true
-
     };
 
 
     var gridOptionsUsuario = {
-
-       
         columnDefs: columnDefsUsuario,
         enableFilter: true,
         rowData: null,
