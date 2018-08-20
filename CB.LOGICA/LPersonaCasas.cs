@@ -422,7 +422,7 @@ namespace CB.LOGICA
 					obj = ToEntides(p, item.Codigo, cm);
 					if (cm < 5)
 					{
-						obj.NombreFase = db1.Fases.Where(j => j.ID == cm).Select(j => j.Descripcion).FirstOrDefault();
+						obj.NombreFase = db1.Fases.Where(j => j.ID == cm+1).Select(j => j.Descripcion).FirstOrDefault();
 					}
 					else {
 						obj.NombreFase = "Fase 5";

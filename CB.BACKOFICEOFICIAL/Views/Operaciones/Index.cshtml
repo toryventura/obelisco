@@ -3,6 +3,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var listass = (List<KeyValuePair<int, string>>)ViewBag.tipogestion;
 }
+<style>
+    .ag-theme-balham .sick-days-warning {
+        background-color: sandybrown !important;
+    }
+
+    .ag-theme-balham .sick-days-breach {
+        background-color: lightcoral !important;
+    }
+
+</style>
 <section class="content-header">
     <h1>
         Atencion de cobranzas
@@ -112,10 +122,30 @@
             { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
             { headerName: "Nombre", field: "NombreP", width: 150 },
             { headerName: "Apellido", field: "Apellido", width: 100 },
-            { headerName: "sexo", field: "Sexo", width: 100 },
-            { headerName: "Fase", field: "EsVendedor", width: 200 }
+            { headerName: "Fase", field: "NombreFase", width: 200 }
 
     ];
+    function getRowStyleScheduled (params) {
+        var br;
+        switch (params.data.NombreFase) {
+            case "Fase 1":
+                br = { background: 'green' }
+                break;
+            case "Fase 2":
+                br = { background: 'lightgreen' }
+                break;
+            case "Fase 3":
+                br = { background: 'yellow' }
+                break;
+            case "Fase 4":
+                br = { background: 'gold' }
+                break;
+            case "Fase 5":
+                br = { background: 'red' }
+                break;
+        }
+        return br;
+    }
     //// cuentas en mora
     var columnDefsCuotasNoPagadas = [
         { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
@@ -169,6 +199,7 @@
         //rowSelection: 'multiple',
         rowSelection: 'single',
         onSelectionChanged: onSelectionChanged,
+        getRowStyle: getRowStyleScheduled,
         //enableRangeSelection: true,
         pagination: true
         //onRowSelected: rowSelectedFunc,

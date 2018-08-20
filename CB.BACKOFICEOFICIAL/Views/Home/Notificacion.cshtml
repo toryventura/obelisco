@@ -154,11 +154,33 @@
             width: 300,
             field: 'CodCliente'
         },
+       // getRowStyle: getRowStyleScheduled,
         groupIncludeFooter: true,
         groupIncludeTotalFooter: true,
         animateRows: true
 
     };
+     function getRowStyleScheduled (params) {
+        var br;
+         switch (params.data.CantidadCouta) {
+             case 1:
+                 br = { background: 'lightgreen' }
+                break;
+             case 2:
+                 br = { background: 'green' }
+                break;
+             case 3:
+                br = { background: 'yellow' }
+                break;
+             case 4:
+                br = { background: 'gold' }
+                break;
+             default:
+                br = { background: 'red' }
+                break;
+        }
+        return br;
+    }
     function currencyFormatter(params) {
         var dt = params.Fecha;
         if (typeof dt == 'undefined') {
