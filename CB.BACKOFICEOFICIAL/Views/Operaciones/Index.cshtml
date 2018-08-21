@@ -11,7 +11,6 @@
     .ag-theme-balham .sick-days-breach {
         background-color: lightcoral !important;
     }
-
 </style>
 <section class="content-header">
     <h1>
@@ -122,17 +121,17 @@
             { headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
             { headerName: "Nombre", field: "NombreP", width: 150 },
             { headerName: "Apellido", field: "Apellido", width: 100 },
-            { headerName: "Fase", field: "NombreFase", width: 200 }
+        { headerName: "Fase", field: "NombreFase", width: 200, sort: 'asc' }
 
     ];
     function getRowStyleScheduled (params) {
         var br;
         switch (params.data.NombreFase) {
             case "Fase 1":
-                br = { background: 'green' }
+                br = { background: 'lightgreen' }
                 break;
             case "Fase 2":
-                br = { background: 'lightgreen' }
+                br = { background: 'green' }
                 break;
             case "Fase 3":
                 br = { background: 'yellow' }

@@ -57,7 +57,7 @@
         { headerName: '', width: 34, checkboxSelection: true, suppressSorting: true, suppressMenu: true },
         { headerName: "Nombre Completo", field: "NombreCompleto", width: 150 },
         { headerName: "User", field: "Login", width: 150 },
-        { headerName: "Telefono", field: "Telefono", width: 100 },
+        { headerName: "Telefono", field: "Telefono", width: 100,hide:true },
         { headerName: "Habilitado", field: "Habilitado", width: 100, hide: true },
         { headerName: "Fase", field: "NombreFase", width: 100 },
         { headerName: "ID", field: "ID", width: 100, hide: "true" }
@@ -77,10 +77,10 @@
             }
         },
 
-            { headerName: "Nombre", field: "NombreP", width: 150 },
-            { headerName: "Apellido", field: "Apellido", width: 100 },
-            { headerName: "Cantidad Cuota", field: "CantidadCouta", width: 150 },
-            { headerName: "Codigo", field: "Codigo", width: 150 }
+        { headerName: "Nombre", field: "NombreP", width: 150 },
+        { headerName: "Apellido", field: "Apellido", width: 100 },
+        { headerName: "Cantidad Cuota", field: "CantidadCouta", width: 150, sort:'asc' },
+        { headerName: "Codigo", field: "Codigo", width: 150 }
 
     ];
 
@@ -88,9 +88,30 @@
         enableFilter: true,
         columnDefs: columnDefsEnMora,
         rowSelection: 'multiple',
+        getRowStyle: getRowStyleScheduled,
         enableSorting: true
     };
-
+    function getRowStyleScheduled(params) {
+        var br;
+        switch (params.data.CantidadCouta) {
+            case 1:
+                br = { background: 'lightgreen' }
+                break;
+            case 2:
+                br = { background: 'green' }
+                break;
+            case 3:
+                br = { background: 'yellow' }
+                break;
+            case 4:
+                br = { background: 'gold' }
+                break;
+            default:
+                br = { background: 'red' }
+                break;
+        }
+        return br;
+    }
 
     var gridOptionsUsuario = {
         columnDefs: columnDefsUsuario,
