@@ -49,7 +49,7 @@
     <Compile Include="DetalleReporte.cs" />
     <Compile Include="Fase.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="NotiPreventiva.cs" />
+    <Compile Include="NotiPreventivo.cs" />
     <Compile Include="OperacionCobranza.cs" />
     <Compile Include="Parametro.cs" />
     <Compile Include="Perfil.cs" />

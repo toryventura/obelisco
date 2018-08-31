@@ -48,6 +48,7 @@ namespace CB.DATA.USER
         public virtual DbSet<Vwt_PersonaInv> Vwt_PersonaInv { get; set; }
         public virtual DbSet<Vwt_TipoGetio_Parametro> Vwt_TipoGetio_Parametro { get; set; }
         public virtual DbSet<Vwt_vistaoperacion> Vwt_vistaoperacion { get; set; }
+        public virtual DbSet<NotiPreventivo> NotiPreventivoes { get; set; }
     
         [DbFunction("COBRANZA_CBEntities", "fn_NotificacionPreventiva")]
         public virtual IQueryable<fn_NotificacionPreventiva_Result> fn_NotificacionPreventiva(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)

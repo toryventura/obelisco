@@ -38,6 +38,14 @@ namespace CB.BACKOFICEOFICIAL.Clases
 				HttpContext.Current.Session["UsuarioSesion"] = value;
 			}
 		}
+		public static List<KeyValuePair<int,string>> GetTipos()
+		{
+			List<KeyValuePair<int, string>> lis = new List<KeyValuePair<int, string>>();
+			lis.Add(new KeyValuePair<int, string>(1, "Telefono"));
+			lis.Add(new KeyValuePair<int, string>(2, "Mensaje"));
+			lis.Add(new KeyValuePair<int, string>(3, "Coreo"));
+			return lis;
+		}
 		public static Perfil perfil
 		{
 			get

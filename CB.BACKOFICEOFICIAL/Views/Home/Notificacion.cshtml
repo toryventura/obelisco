@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Notifiacacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var fase = @ViewBag.fase;
+    
+    
 }
 <section class="content-header">
     <h1>
@@ -44,7 +45,6 @@
     <div id="emailmodal" class="modal fade in">
         @Html.Partial("_Coreo")
     </div>
-
 </section>
 <script>
 
@@ -69,6 +69,10 @@
     }
     function call(id) {
 
+    }
+    function showMadalAsiganar() {
+        $('#emailmodal').modal('show');
+       // CagarDatos();
     }
     var sw = 0;
     function filtro() {
@@ -102,7 +106,7 @@
             $('#datepicker').focus();
             Error("selecione fecha o campo fecha esta vacio");
         }
-    } 
+    }
     function ViewAll() {
         if (sw == 0) {
             var gridDiv = document.querySelector('#gridDetalle');
@@ -138,21 +142,34 @@
         { headerName: 'Telefono', field: 'Telefono' },
         { headerName: 'Fecha Pago', field: 'Fecha'},
 
-        { field: 'NombreCompleto', rowGroup: true, hide: true }
+        { field: 'NombreCompleto', cellRenderer: 'stateCellRenderer', rowGroup: true, hide: true }
     ];
     var gridOptionsDetalle = {
+        components: {
+            //cityCellRenderer: cityCellRenderer,
+            //countryCellRenderer: countryCellRenderer,
+            stateCellRenderer: stateCellRenderer
+        },
         columnDefs: columnDefsDetalle,
         defaultColDef: {
             width: 150
         },
+
         enableRangeSelection: true,
         enableSorting: true,
         enableColResize: true,
         enableFilter: true,
+        onRowSelected: onRowSelected,
+        //onSelectionChanged: onSelectionChanged,
+       // suppressRowClickSelection: true,
         autoGroupColumnDef: {
             headerName: 'Cod Cliente',
             width: 300,
-            field: 'CodCliente'
+            field: 'CodCliente',
+            cellRenderer: 'agGroupCellRenderer',
+            cellRendererParams: {
+               checkbox: true
+            }
         },
        // getRowStyle: getRowStyleScheduled,
         groupIncludeFooter: true,
@@ -160,6 +177,45 @@
         animateRows: true
 
     };
+    function stateCellRenderer(params) {
+        if (params.value === undefined || params.value === null) {
+            return '';
+        } else {
+            var flag = '<img border="0" width="15" height="10" src="https://www.ag-grid.com/images/goldStar.png">';
+            return flag + ' ' + params.value;
+        }
+
+    }
+    function onRowSelected(event) {
+        var id = event.node.data.CodCliente;
+      GetCliente(id);
+      //  window.alert("row " + event.node.data.CodCliente + " selected = " + event.node.selected);
+       // showMadalAsiganar();
+    }
+    function GetCliente(id) {
+           $.ajax({
+            url: "@Url.Action("Getdatos", "Home")",
+            cache: false,
+            data: {id: id},
+            type: "POST"
+        }).done(function (html) {
+            $("#emailmodal").html(html);
+            $('#emailmodal').modal('show');
+
+            //setDataSource(html, gridOptionsDetalle);
+            // gridOptionsAsignadas.api.setRowData(html);
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log(" se ha completado");
+        });
+    }
+
+    function onSelectionChanged(event) {
+        var rowCount = event.api.getSelectedNodes().length;
+       // showMadalAsiganar();
+        window.alert('selection changed, ' + rowCount + ' rows selected' + event.node.data.CodCliente+'');
+    }
      function getRowStyleScheduled (params) {
         var br;
          switch (params.data.CantidadCouta) {
@@ -205,9 +261,17 @@
     });
 
     function ListarDetalle() {
-        var gridDiv = document.querySelector('#gridDetalle');
-        createGlobal(gridOptionsDetalle, gridDiv);
-        sw = 1;
+       
+        if (sw == 0) {
+            var gridDiv = document.querySelector('#gridDetalle');
+            createGlobal(gridOptionsDetalle, gridDiv);
+            sw = 1;
+        } else {
+            destroyGlobal(gridOptionsDetalle)
+            var gridDiv = document.querySelector('#gridDetalle');
+            createGlobal(gridOptionsDetalle, gridDiv);
+        }
+
         $.ajax({
             url: "@Url.Action("ListNPreventiva", "Home")",
             cache: false,

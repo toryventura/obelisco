@@ -768,6 +768,9 @@
     <Compile Include="USER\Menu.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>
+    <Compile Include="USER\NotiPreventivo.cs">
+      <DependentUpon>cobranza.tt</DependentUpon>
+    </Compile>
     <Compile Include="USER\OperacionCobranza.cs">
       <DependentUpon>cobranza.tt</DependentUpon>
     </Compile>

@@ -1,4 +1,8 @@
-﻿@using (Ajax.BeginForm("EnviarCoreo", "Home", null, new AjaxOptions()
+﻿@model CB.BACKOFICEOFICIAL.Models.MNotificacion
+@{
+    var tipo = (List<KeyValuePair<int, string>>)ViewBag.Tipo;
+}
+@using (Ajax.BeginForm("AddAcition", "Home", null, new AjaxOptions()
 {
     HttpMethod = "POST",
     OnSuccess = "SuccessEdit",
@@ -6,57 +10,76 @@
     OnBegin = "return Validation();"
 }))
 {
-    <div class="modal-dialog">
-        <div class="modal-content">
+   if (Model != null)
+    {
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Nuevo Email</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Nuevo Email</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
 
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group" style="display:none">
+                            @Html.LabelFor(model => model.CodCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.CodCliente, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Tipo", new SelectList(tipo.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Massage, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Massage, new { htmlAttributes = new { @class = "form-control", @sytle = "height: 200px" } })
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Guardar</button>
+                        </div>
+                        <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Descartar</button>
+                    </div>
+                    <!-- /.box-footer -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        @Html.TextBox("para", null, htmlAttributes: new { @class = "form-control", @placeholder = "To:" })
-                        @*<input id="para" class="form-control" placeholder="To:" type="text" >*@
-                    </div>
-                    <div class="form-group">
-                        @Html.TextBox("asunto", null, htmlAttributes: new { @class = "form-control", @placeholder = "Subject" })
-                        @*<input id="asunto" class="form-control" placeholder="Subject:" type="text" >*@
-                    </div>
-                    <div class="form-group">
-                        @Html.TextArea("mensaje", null, htmlAttributes: new { @class = "form-control", @sytle = "height: 200px" })
-                        @*<textarea id="mensaje" class="form-control" style="height: 200px" >
+                <!-- /. box -->
 
-            </textarea>*@
-                    </div>
-                    <div class="form-group" style="display:none">
-                        @Html.TextBox("httpPostedFileBase", null, htmlAttributes: new { @class = "form-control",@type="file",@value="contenido", @sytle = "height: 200px" })
-                        @*<textarea id="mensaje" class="form-control" style="height: 200px" >
-
-            </textarea>*@
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <div class="pull-right">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Ennviar</button>
-                    </div>
-                    <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Descartar</button>
-                </div>
-                <!-- /.box-footer -->
             </div>
-            <!-- /. box -->
-
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
-    </div>
-
-
-
+    }
 }
 
 <script>
@@ -107,8 +130,9 @@
     function SuccessEdit(e) {
         if (e[0].Key == "OK") {
             success(e[0].Value);
-            Listar();
-            $('#editmodal').modal('hide');
+            ListarDetalle();
+            $('#emailmodal').modal('hide');
+            success(e[0].Value);
         } else {
             error(e[0].Value);
         }

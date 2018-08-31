@@ -173,7 +173,7 @@
             }).done(function (html) {
                 //code
                 var res = html;
-                if (res[0].Key == "OK") {
+                if (res[0].Key === "OK") {
 
                     $('#ModalAsignar').modal('hide');
                     Listar();
@@ -186,10 +186,10 @@
             });
         } else {
 
-            if (codusuario == -1) {
+            if (codusuario === -1) {
                 error("Selecciones un Usuario o Cobrador por los menos");
             }
-            if (lista.length==0) {
+            if (lista.length===0) {
                 error("Selecione Clientes en Mora");
             }
             DesbloquearPantalla();
@@ -199,7 +199,7 @@
 
     var sw = 0;
     function CargarUsuarioSistemas() {
-        if (sw == 0) {
+        if (sw === 0) {
             var gridDiv = document.querySelector('#gridUsuario');
             createGlobal(gridOptionsUsuario, gridDiv);
             sw = 1;
@@ -228,7 +228,7 @@
     }
     var ssw = 0;
     function CargarClientesMora() {
-        if (ssw == 0) {
+        if (ssw === 0) {
             var gidDiv = document.querySelector('#gridEnMora');
             createGlobal(gridOptionsEnMora, gidDiv);
             ssw = 1;

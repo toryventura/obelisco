@@ -57,6 +57,7 @@
     <Compile Include="LCuasalMora.cs" />
     <Compile Include="LFase.cs" />
     <Compile Include="LMenu.cs" />
+    <Compile Include="LNotiPreventiva.cs" />
     <Compile Include="LOperaciones.cs" />
     <Compile Include="LParametro.cs" />
     <Compile Include="LPerfil.cs" />

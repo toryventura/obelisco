@@ -107,6 +107,18 @@
           <Property Name="EsGlobal" Type="bit" />
           <Property Name="MenuID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="NotiPreventivo">
+          <Key>
+            <PropertyRef Name="NotificacionID" />
+          </Key>
+          <Property Name="NotificacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="20" />
+          <Property Name="Periodo" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mensaje" Type="nvarchar" MaxLength="255" />
+          <Property Name="TipoAccion" Type="int" />
+          <Property Name="FechaReg" Type="datetime" />
+          <Property Name="UsrCre" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="OperacionCobranza">
           <Key>
             <PropertyRef Name="operacionCobranzaID" />
@@ -576,6 +588,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <EntitySet Name="JoinPermisoToPerfil" EntityType="Self.JoinPermisoToPerfil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JoinPermisoToUsuario" EntityType="Self.JoinPermisoToUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotiPreventivo" EntityType="Self.NotiPreventivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperacionCobranza" EntityType="Self.OperacionCobranza" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
@@ -1303,6 +1316,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_ReporteOperaciones" ReturnType="Collection(COBRANZA_CBModel.sp_ReporteOperaciones_Result)" />
+          <EntitySet Name="NotiPreventivoes" EntityType="COBRANZA_CBModel.NotiPreventivo" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1346,6 +1360,18 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Type="String" Name="NombreTipoGestion" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="Periodo" Nullable="true" MaxLength="10" />
         </ComplexType>
+        <EntityType Name="NotiPreventivo">
+          <Key>
+            <PropertyRef Name="NotificacionID" />
+          </Key>
+          <Property Name="NotificacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Periodo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TipoAccion" Type="Int32" />
+          <Property Name="FechaReg" Type="DateTime" Precision="3" />
+          <Property Name="UsrCre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1708,6 +1734,19 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="NotiPreventivoes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.NotiPreventivo">
+              <MappingFragment StoreEntitySet="NotiPreventivo">
+                <ScalarProperty Name="UsrCre" ColumnName="UsrCre" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+                <ScalarProperty Name="TipoAccion" ColumnName="TipoAccion" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NotificacionID" ColumnName="NotificacionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -42,6 +42,7 @@
         <AssociationConnector Association="COBRANZA_CBModel.JoinPerfilToUsuario" ManuallyRouted="false" />
         <AssociationConnector Association="COBRANZA_CBModel.JoinPermisoToPerfil" ManuallyRouted="false" />
         <AssociationConnector Association="COBRANZA_CBModel.JoinPermisoToUsuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="COBRANZA_CBModel.NotiPreventivo" Width="1.5" PointX="0.75" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

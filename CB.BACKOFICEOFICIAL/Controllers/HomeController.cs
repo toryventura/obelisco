@@ -10,6 +10,8 @@ using System.Net.Mail;
 using System.Web;
 using System.Net;
 using System.Linq;
+using CB.BACKOFICEOFICIAL.Models;
+using CB.BACKOFICEOFICIAL.Clases;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
@@ -43,7 +45,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		}
 		public ActionResult FaseDetalle(int id)
 		{
-			
+
 			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
 			list = pl.GetClienteMoraDetalleXFase(id);
@@ -80,6 +82,21 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			return PartialView("_Coreo");
 		}
 		[HttpPost]
+		public ActionResult Getdatos(string id = "")
+		{
+			List<DetalleFase> list = (List<DetalleFase>)Session["Notificaciones"];
+			var op = list.Where(s => s.CodCliente == id).FirstOrDefault();
+			MNotificacion n = new MNotificacion()
+			{
+				CodCliente = op.CodCliente,
+				Nombre = op.NombreCompleto,
+				Telefono = op.Telefono
+
+			};
+			ViewBag.Tipo = Util.GetTipos();
+			return PartialView("_Coreo", n);
+		}
+		[HttpPost]
 		public ActionResult BuscarFecha(DateTime fecha)
 		{
 			List<DetalleFase> list = new List<DetalleFase>();
@@ -93,6 +110,39 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		{
 			List<DetalleFase> list = (List<DetalleFase>)Session["Notificaciones"];
 			return Json(list);
+		}
+		[HttpPost]
+		public ActionResult AddAcition(MNotificacion o)
+		{
+			LNotiPreventiva nt = new LNotiPreventiva();
+			Usuario us = Util.Usuario;
+			var mensaje = new List<KeyValuePair<string, string>>();
+			if (o != null)
+			{
+				DateTime an = DateTime.Now;
+				string mes = Convert.ToString(an.Month).Length == 1 ? "0" + Convert.ToString(an.Month) : Convert.ToString(an.Month);
+				string per = mes + "/" + Convert.ToString(an.Year);
+				NotiPreventivo notiPreventivo = new NotiPreventivo()
+				{
+					CodCliente = o.CodCliente,
+					FechaReg = DateTime.Now,
+					Mensaje = o.Massage,
+					Periodo = per,
+					TipoAccion = o.Tipo,
+					UsrCre = us.Login
+				};
+
+				if (nt.Add(notiPreventivo))
+				{
+					mensaje.Add(Util.mensaje(Util.OK, Util.OKMENSAJE));
+
+				}
+				else
+					mensaje.Add(Util.mensaje(Util.ERROR, Util.ERRORMENSAJE));
+			}
+			else
+				mensaje.Add(Util.mensaje(Util.ERROR, Util.ERRORMENSAJE));
+			return Json(mensaje);
 		}
 		[HttpPost]
 		public ActionResult EnviarCoreo(string para = "", string asunto = "", string mensaje = "", HttpPostedFileBase httpPostedFileBase = null)
