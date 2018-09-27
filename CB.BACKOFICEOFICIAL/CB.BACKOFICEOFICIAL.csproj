@@ -8062,6 +8062,7 @@
     <Content Include="bower_components\ag-grid-enterprise-master\src\styles\_theme-common.scss" />
     <Content Include="bower_components\ag-grid-enterprise-master\SUPPORT_AND_MAINTENANCE.md" />
     <Content Include="bower_components\ag-grid-enterprise-master\tsconfig-exports.json" />
+    <Content Include="libman.json" />
     <None Include="Properties\PublishProfiles\Obelisco.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\date.format.js" />
@@ -8188,6 +8189,8 @@
     <Content Include="Views\Reporte\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutPageDevexpres.cshtml" />
     <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Home\Notificaciones.cshtml" />
+    <Content Include="Views\Home\_ListNotificaciones.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -8198,6 +8201,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bower_components\bootstrap-datepicker\build\" />
+    <Folder Include="Reporte\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />

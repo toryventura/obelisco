@@ -69,13 +69,38 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			list = pl.GetClientesAlDia();
 			return Json(list);
 		}
+		public ActionResult Notificaciones()
+		{
+			List<DetalleFase> list = new List<DetalleFase>();
+			LPersonaCasas pl = new LPersonaCasas();
+			list = pl.GetClienteMoraDetalleXFase(5);
+			Session["Notificaciones"] = list;
+			List<DetalleFase> distinctPeople = list.OrderByDescending(p=>p.Fecha)
+			.GroupBy(p => p.CodCliente)
+			 .Select(g => g.FirstOrDefault())
+			   .ToList();
+			distinctPeople.ToList().ForEach(emp =>
+			   {
+				   emp.CantidadCouta = list.Where(x => x.CodCliente == emp.CodCliente).Count();
+			   });
+			ViewBag.lista = distinctPeople;
+			return View();
+		}
 		public ActionResult ListNPreventiva()
 		{
 			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
-			list = pl.GetNotiPreventivas(5);
+			list = pl.GetClienteMoraDetalleXFase(5);
 			Session["Notificaciones"] = list;
-			return Json(list);
+			List<DetalleFase> distinctPeople = list.OrderByDescending(p=>p.Fecha)
+			.GroupBy(p => p.CodCliente)
+			 .Select(g => g.FirstOrDefault())
+			   .ToList();
+			distinctPeople.ToList().ForEach(emp =>
+			{
+				emp.CantidadCouta = list.Where(x => x.CodCliente == emp.CodCliente).Count();
+			});
+			return Json(distinctPeople);
 		}
 		public ActionResult Email()
 		{
@@ -96,6 +121,14 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			ViewBag.Tipo = Util.GetTipos();
 			return PartialView("_Coreo", n);
 		}
+		[HttpPost]
+		public ActionResult GetdatosLista(string id = "")
+		{
+			List<DetalleFase> list = (List<DetalleFase>)Session["Notificaciones"];
+			var op = list.Where(s => s.CodCliente == id).ToList();
+			return Json(op);
+		}
+
 		[HttpPost]
 		public ActionResult BuscarFecha(DateTime fecha)
 		{

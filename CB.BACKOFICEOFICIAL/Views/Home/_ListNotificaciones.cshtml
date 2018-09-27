@@ -1,0 +1,51 @@
+﻿@model List<CB.ENTIDADES.DetalleFase>
+
+
+<table id="example1" class="table  table-bordered table-hover dataTable">
+    <tr>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Fecha
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderBy(x=>x.Fecha))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+
+            <td>
+                <button type="button" data-id="@item.CodCliente" onclick="sms(@item.CodCliente);" class="btn btn-xs btn-default"><i class="fa fa-comment"></i> &nbsp;</button>
+                <button type="button" data-id="@item.CodCliente" onclick="email(@item.CodCliente);" class="btn btn-xs btn-warning"><i class="fa fa-envelope-o"></i>&nbsp;</button>
+                <button type="button" data-id="@item.CodCliente" onclick="call(@item.CodCliente);" class="btn btn-xs btn-danger"><i class="fa fa-tty"></i>&nbsp;</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>

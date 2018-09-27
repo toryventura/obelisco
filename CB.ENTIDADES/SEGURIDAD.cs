@@ -59,6 +59,7 @@ namespace CB.ENTIDADES
 
 			// Convert the input string to a byte array and compute the hash.
 			byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
+			
 
 			// Create a new Stringbuilder to collect the bytes
 			// and create a string.

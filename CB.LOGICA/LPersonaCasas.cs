@@ -89,7 +89,7 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					var list = (from x in db.spt_NotificacionPreventiva(dias)
+					var list = (from x in db.(dias)
 								select new DetalleFase()
 								{
 									CantidadCouta = x.CantidadCouta.Value,
