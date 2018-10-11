@@ -1,51 +1,118 @@
-﻿@model List<CB.ENTIDADES.DetalleFase>
+﻿@using CB.ENTIDADES
 
+@model List<DetalleFase>
 
 <table id="example1" class="table  table-bordered table-hover dataTable">
-    <tr>
-        <th>
-            Codigo
-        </th>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Telefono
-        </th>
-        <th>
-            Fecha
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model.OrderBy(x=>x.Fecha))
-    {
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCompleto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
+            <th>
+                Codigo
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Cantidad couta
 
-            <td>
-                <button type="button" data-id="@item.CodCliente" onclick="sms(@item.CodCliente);" class="btn btn-xs btn-default"><i class="fa fa-comment"></i> &nbsp;</button>
-                <button type="button" data-id="@item.CodCliente" onclick="email(@item.CodCliente);" class="btn btn-xs btn-warning"><i class="fa fa-envelope-o"></i>&nbsp;</button>
-                <button type="button" data-id="@item.CodCliente" onclick="call(@item.CodCliente);" class="btn btn-xs btn-danger"><i class="fa fa-tty"></i>&nbsp;</button>
-            </td>
+            </th>
+
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var cods = item.CodCliente.Split(':');
+            var act = cods[1];
+            var cod = cods[0];
+            if (item.CantidadCouta == 1)
+            {
+                <tr style="background-color:green">
+                    <td>
+                        @cod
+                    </td>
+                    <td>
+                        @item.NombreCompleto
+                    </td>
+                    <td>
+                        @item.Telefono
+                    </td>
+                    <td>
+                        @item.Fecha
+                    </td>
+                    <td>
+                        @item.CantidadCouta
+                    </td>
 
+                    <td>
+                        @if (act != "0")
+                        {
+                            @*<button type="button" data-id="@cod" onclick="sms(@cod);" class="btn btn-xs btn-default"><i class="fa fa-comment"></i> &nbsp;</button>*@
+                            <button type="button" data-id="@cod" onclick="email(@cod);" class="btn btn-xs btn-default"><samp class="glyphicon glyphicon-eye-open" /> &nbsp;</button>
+                            @*<button type="button" data-id="@cod" onclick="call(@cod);" class="btn btn-xs btn-danger"><i class="fa fa-tty"></i>&nbsp;</button>*@
+                        }
+                        else
+                        {
+                            <button type="button" data-id="@cod" onclick="sms(@cod);" class="btn btn-xs btn-default"><i class="fa fa-comment"></i> &nbsp;</button>
+                            @*<button type="button" data-id="@cod" onclick="email(@cod);" class="btn btn-xs btn-warning"><i class="fa fa-envelope-o"></i>&nbsp;</button>*@
+                            <button type="button" data-id="@cod" onclick="email(@cod);" class="btn btn-xs btn-default"><samp class="glyphicon glyphicon-eye-open" /> &nbsp;</button>
+                            @*<button type="button" data-id="@cod" onclick="call(@cod);" class="btn btn-xs btn-danger"><i class="fa fa-tty"></i>&nbsp;</button>*@
+                        }
+
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @cod
+                    </td>
+                    <td>
+                        @item.NombreCompleto
+                    </td>
+                    <td>
+                        @item.Telefono
+                    </td>
+                    <td>
+                        @item.Fecha
+                    </td>
+                    <td>
+                        @item.CantidadCouta
+                    </td>
+
+                    <td>
+                        @if (act != "0")
+                        {
+                            @*<button type="button" data-id="@cod" onclick="sms(@cod);" class="btn btn-xs btn-default"><i class="fa fa-comment"></i> &nbsp;</button>*@
+                            <button type="button" data-id="@cod" onclick="email(@cod);" class="btn btn-xs btn-default"><samp class="glyphicon glyphicon-eye-open" /> &nbsp;</button>
+                            @*<button type="button" data-id="@cod" onclick="call(@cod);" class="btn btn-xs btn-danger"><i class="fa fa-tty"></i>&nbsp;</button>*@
+                        }
+                        else
+                        {
+                            <button type="button" data-id="@cod" onclick="sms(@cod);" class="btn btn-xs btn-default"><i class="fa fa-comment"></i> &nbsp;</button>
+                            @*<button type="button" data-id="@cod" onclick="email(@cod);" class="btn btn-xs btn-warning"><i class="fa fa-envelope-o"></i>&nbsp;</button>*@
+                            <button type="button" data-id="@cod" onclick="email(@cod);" class="btn btn-xs btn-default"><samp class="glyphicon glyphicon-eye-open" /> &nbsp;</button>
+                            @*<button type="button" data-id="@cod" onclick="call(@cod);" class="btn btn-xs btn-danger"><i class="fa fa-tty"></i>&nbsp;</button>*@
+                        }
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
 </table>
 <script>
-    $(function () {
-        $('#example1').DataTable()
-    })
+
+    $(document).ready(function (e) {
+        $('#example1').DataTable({
+            "order": [[4, "asc"]]
+        })
+    });
 </script>

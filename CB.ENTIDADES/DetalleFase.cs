@@ -13,7 +13,7 @@ namespace CB.ENTIDADES
 		public double MontoCuota { get; set; }
 		public string NroCuota { get; set; }
 		public double SaldoCuota { get; set; }
-		public string Fecha { get; set; }
+		public DateTime Fecha { get; set; }
 		public int CantidadCouta { get; set; }
 		public string Telefono { get; set; }
 		public string Codigo { get; set; }

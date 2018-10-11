@@ -18,7 +18,7 @@ namespace CB.ENTIDADES
 		public int CausalMoraID { get; set; }
 		public string NombreCausal { get; set; }
 		public int CompromisoPagoID { get; set; }
-
+		public bool activo { get; set; }
 		public string compromisoPago { get; set; }
 		public int parametroID { get; set; }
 

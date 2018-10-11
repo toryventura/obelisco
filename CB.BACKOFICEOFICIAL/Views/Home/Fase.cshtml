@@ -40,6 +40,8 @@
                         <h3 class="box-title">Cliente de Fase @ViewBag.fase</h3>
                         <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
                         <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
+
+                        <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="Exportar excel" onclick="Expot();" />
                     </div>
                     <div class="box-body" id="ListaContenidosContainer">
                         <div id="gridDetalle" style="height: 450px;" class="ag-theme-balham"></div>
@@ -77,12 +79,13 @@
         { headerName: 'Fecha Pago', field: 'Fecha' },
         { field: 'NombreCompleto', rowGroup: true, hide: true }
     ];
-
+    var rowData;
     var gridOptionsDetalle = {
         columnDefs: columnDefsDetalle,
         defaultColDef: {
             width: 150
         },
+        rowData: rowData,
         enableRangeSelection: true,
         enableSorting: true,
         enableFilter: true,
@@ -92,12 +95,21 @@
             width: 300,
             field: 'CodCliente'
         },
+        
         groupIncludeFooter: true,
         groupIncludeTotalFooter: true,
         animateRows: true,
         paginate: true
 
     };
+    function Expot() {
+        debugger;
+      //  var date = "\/Date(1297246301973)\/";
+        //var nowDate = new Date(parseInt(date.substr(6)));
+
+        var ints = toDateFromAspNet("/Date(1445054400000)/");
+        alert(ints);
+    }
     function currencyNroCuota(params) {
         var s1 = "" + formatToString(params.data.NroCuota);
         var s2 = "" + formatToString( params.data.NroCuotas);
@@ -111,17 +123,37 @@
         var s = params.data.MontoCuota + params.data.SaldoCuota;
         return s * params.data.Tc;
     }
+    function currencyFormatter(params) {
+        if (params != null) {
+            return toDateFromAspNet(params.data.Fecha);
+        } else {
+            return "";
+        }
+        
+    }
     function toDateFromAspNet (dt) {
         var dte = eval("new " + dt.replace(/\//g, '') + ";");
         dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
-        return dte;
+
+        var today = new Date(dte);
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        return today;
     }
     $(document).ready(function () {
         ListarDetalle();
     });
     function ListarDetalle() {
-        var gridDiv = document.querySelector('#gridDetalle');
-        createGlobal(gridOptionsDetalle, gridDiv);
+        
         var idf=@fase;
         $.ajax({
             url: "@Url.Action("FaseDetalle", "Home")",
@@ -131,8 +163,15 @@
             },
             type: "POST"
         }).done(function (html) {
-            setDataSource(html, gridOptionsDetalle);
-            // gridOptionsAsignadas.api.setRowData(html);
+            var gridDiv = document.querySelector('#gridDetalle');
+            rowData = html;
+            createGlobal(gridOptionsDetalle, gridDiv);
+            //setDataSource(html, gridOptionsDetalle);
+            //rowData = html;
+            rowData.forEach(function (item) {
+                item.Fecha = toDateFromAspNet(item.Fecha);
+            });
+            gridOptionsDetalle.api.setRowData(rowData);
         }).fail(function (resp) {
             console.log(resp.responseText);
         }).always(function () {

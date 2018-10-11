@@ -12,6 +12,7 @@ using System.Net;
 using System.Linq;
 using CB.BACKOFICEOFICIAL.Models;
 using CB.BACKOFICEOFICIAL.Clases;
+using Newtonsoft.Json;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
@@ -51,11 +52,7 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			list = pl.GetClienteMoraDetalleXFase(id);
 			return Json(list);
 		}
-		public ActionResult Notificacion()
-		{
 
-			return View();
-		}
 		public ActionResult CoutaPagada()
 		{
 
@@ -73,53 +70,114 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 		{
 			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
-			list = pl.GetClienteMoraDetalleXFase(5);
+			list = pl.GetNotiPreventivas(5);
 			Session["Notificaciones"] = list;
-			List<DetalleFase> distinctPeople = list.OrderByDescending(p=>p.Fecha)
-			.GroupBy(p => p.CodCliente)
-			 .Select(g => g.FirstOrDefault())
-			   .ToList();
+
+
+			var listdif = list.Select(x => x.Codigo).Distinct().ToList();
+			List<DetalleFase> distinctPeople = new List<DetalleFase>();
+			//list.GroupBy(p => p.CodCliente)
+			//.Select(g => g.FirstOrDefault())
+			//  .ToList();
+			foreach (var j in listdif)
+			{
+				distinctPeople.Add(list.Where(s => s.Codigo == j).OrderByDescending(r => r.Fecha).FirstOrDefault());
+			}
+
+
 			distinctPeople.ToList().ForEach(emp =>
 			   {
-				   emp.CantidadCouta = list.Where(x => x.CodCliente == emp.CodCliente).Count();
+				   emp.CodCliente = emp.CodCliente + ":" + list.Where(s => s.Codigo == emp.Codigo).Select(p => p.CantidadCouta).FirstOrDefault();
+				   emp.CantidadCouta = list.Where(x => x.Codigo == emp.Codigo).Count();
 			   });
 			ViewBag.lista = distinctPeople;
 			return View();
 		}
-		public ActionResult ListNPreventiva()
+		public ActionResult ListNotificaciones()
 		{
 			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
-			list = pl.GetClienteMoraDetalleXFase(5);
+			list = pl.GetNotiPreventivas(5);
 			Session["Notificaciones"] = list;
-			List<DetalleFase> distinctPeople = list.OrderByDescending(p=>p.Fecha)
-			.GroupBy(p => p.CodCliente)
-			 .Select(g => g.FirstOrDefault())
-			   .ToList();
+
+
+			var listdif = list.Select(x => x.Codigo).Distinct().ToList();
+			List<DetalleFase> distinctPeople = new List<DetalleFase>();
+			//list.GroupBy(p => p.CodCliente)
+			//.Select(g => g.FirstOrDefault())
+			//  .ToList();
+			foreach (var j in listdif)
+			{
+				distinctPeople.Add(list.Where(s => s.Codigo == j).OrderByDescending(r => r.Fecha).FirstOrDefault());
+			}
+
+
 			distinctPeople.ToList().ForEach(emp =>
 			{
-				emp.CantidadCouta = list.Where(x => x.CodCliente == emp.CodCliente).Count();
+				emp.CodCliente = emp.CodCliente + ":" + list.Where(s => s.Codigo == emp.Codigo).Select(p => p.CantidadCouta).FirstOrDefault();
+				emp.CantidadCouta = list.Where(x => x.Codigo == emp.Codigo).Count();
 			});
-			return Json(distinctPeople);
+
+			return PartialView("_ListNotificaciones", distinctPeople);
 		}
+		//public ActionResult ListNPreventiva()
+		//{
+		//	List<DetalleFase> list = new List<DetalleFase>();
+		//	LPersonaCasas pl = new LPersonaCasas();
+		//	list = pl.GetClienteMoraDetalleXFase(5);
+		//	Session["Notificaciones"] = list;
+		//	List<DetalleFase> distinctPeople = list.OrderByDescending(p => p.Fecha)
+		//	.GroupBy(p => p.CodCliente)
+		//	 .Select(g => g.FirstOrDefault())
+		//	   .ToList();
+		//	distinctPeople.ToList().ForEach(emp =>
+		//	{
+		//		emp.CantidadCouta = list.Where(x => x.CodCliente == emp.CodCliente).Count();
+		//	});
+		//	return Json(distinctPeople);
+		//}
 		public ActionResult Email()
 		{
 			return PartialView("_Coreo");
 		}
+		//[HttpPost]
+		//public ActionResult Getdatos1(string id = "")
+		//{
+		//	List<DetalleFase> list = (List<DetalleFase>)Session["Notificaciones"];
+		//	var op = list.Where(s => s.CodCliente == id).FirstOrDefault();
+		//	var detalles = list.Where(p => p.CodCliente == id).ToList();
+		//	MNotificacion n = new MNotificacion()
+		//	{
+		//		CodCliente = op.CodCliente,
+		//		Nombre = op.NombreCompleto,
+		//		Telefono = op.Telefono,
+		//		Detalles = detalles
+
+		//	};
+		//	ViewBag.Tipo = Util.GetTipos();
+		//	//ViewBag.details = detalles;
+		//	return PartialView("_Coreo", n);
+		//}
+
 		[HttpPost]
 		public ActionResult Getdatos(string id = "")
 		{
-			List<DetalleFase> list = (List<DetalleFase>)Session["Notificaciones"];
-			var op = list.Where(s => s.CodCliente == id).FirstOrDefault();
+			List<DetalleFase> lists = new List<DetalleFase>();
+			LPersonaCasas pl = new LPersonaCasas();
+			lists = pl.GetNotiPreventivas(5);
+			var op = lists.Where(s => s.CodCliente == id).FirstOrDefault();
+			var detalles = lists.Where(p => p.CodCliente == id).ToList();
 			MNotificacion n = new MNotificacion()
 			{
 				CodCliente = op.CodCliente,
 				Nombre = op.NombreCompleto,
-				Telefono = op.Telefono
+				Telefono = op.Telefono,
+				Detalles = detalles,
+				Tipos = Util.GetTipos()
 
 			};
-			ViewBag.Tipo = Util.GetTipos();
-			return PartialView("_Coreo", n);
+
+			return Json(n);
 		}
 		[HttpPost]
 		public ActionResult GetdatosLista(string id = "")
@@ -128,6 +186,17 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			var op = list.Where(s => s.CodCliente == id).ToList();
 			return Json(op);
 		}
+		[HttpPost]
+		public ActionResult GetAlertas()
+		{
+			List<Alertas> list = new List<Alertas>();
+			LPersonaCasas pl = new LPersonaCasas();
+			DateTime datetimeFrom = DateTime.Now.Date;
+			DateTime datetimeTo = datetimeFrom.AddDays(1);
+			list = pl.GetAlertas(datetimeFrom, datetimeTo);
+			return Json(list);
+		}
+
 
 		[HttpPost]
 		public ActionResult BuscarFecha(DateTime fecha)
@@ -145,23 +214,24 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			return Json(list);
 		}
 		[HttpPost]
-		public ActionResult AddAcition(MNotificacion o)
+		public ActionResult AddAcition(string CodCliente = "", string Tipo = "", string Mensaje = "")
 		{
 			LNotiPreventiva nt = new LNotiPreventiva();
 			Usuario us = Util.Usuario;
 			var mensaje = new List<KeyValuePair<string, string>>();
-			if (o != null)
+			if (CodCliente != null)
 			{
 				DateTime an = DateTime.Now;
 				string mes = Convert.ToString(an.Month).Length == 1 ? "0" + Convert.ToString(an.Month) : Convert.ToString(an.Month);
 				string per = mes + "/" + Convert.ToString(an.Year);
+				int tip = Tipo != "" ? Convert.ToInt32(Tipo) : 0;
 				NotiPreventivo notiPreventivo = new NotiPreventivo()
 				{
-					CodCliente = o.CodCliente,
+					CodCliente = CodCliente,
 					FechaReg = DateTime.Now,
-					Mensaje = o.Massage,
+					Mensaje = Mensaje,
 					Periodo = per,
-					TipoAccion = o.Tipo,
+					TipoAccion = tip,
 					UsrCre = us.Login
 				};
 

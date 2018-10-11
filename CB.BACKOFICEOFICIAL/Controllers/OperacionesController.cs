@@ -106,12 +106,17 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			};
 			return View(imp);
 		}
-		public ActionResult Create(ENTIDADES.OperacionCobranza collection, string probalidadpago = "", string compromisopago = "", string casualmora = "", string parametro = "")
+		public ActionResult Create(ENTIDADES.OperacionCobranza collection, string probalidadpago = "", string compromisopago = "", string casualmora = "", string parametro = "",string txtHora = "")
 		{
 			var mensajes = new List<KeyValuePair<string, string>>();
 			try
 			{
-
+				if (txtHora!="")
+				{
+					var dt = collection.FechaCompromiso + " " + txtHora;
+					collection.FechaCompromiso = dt;
+				}
+				
 				Usuario us = Util.Usuario;
 				collection.FeCre = DateTime.Now;
 				collection.FeMod = DateTime.Now;

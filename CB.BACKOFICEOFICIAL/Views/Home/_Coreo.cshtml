@@ -1,89 +1,118 @@
 ﻿@model CB.BACKOFICEOFICIAL.Models.MNotificacion
 @{
     var tipo = (List<KeyValuePair<int, string>>)ViewBag.Tipo;
+    //List<CB.ENTIDADES.DetalleFase> details = (List<CB.ENTIDADES.DetalleFase>)ViewBag.details;
 }
-@using (Ajax.BeginForm("AddAcition", "Home", null, new AjaxOptions()
+
+@if (Model != null)
 {
-    HttpMethod = "POST",
-    OnSuccess = "SuccessEdit",
-    OnFailure = "FailEdit",
-    OnBegin = "return Validation();"
-}))
-{
-   if (Model != null)
-    {
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Nuevo Email</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Nuevo Email</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
 
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="form-group" style="display:none">
-                            @Html.LabelFor(model => model.CodCliente, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.CodCliente, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("Tipo", new SelectList(tipo.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Massage, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Massage, new { htmlAttributes = new { @class = "form-control", @sytle = "height: 200px" } })
-
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <div class="pull-right">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Guardar</button>
-                        </div>
-                        <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Descartar</button>
-                    </div>
-                    <!-- /.box-footer -->
                 </div>
-                <!-- /. box -->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.CodCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.CodCliente, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("Tipo", new SelectList(tipo.ToList(), "Key", "Value"), "---Select List---", new { @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Massage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Massage, new { htmlAttributes = new { @class = "form-control", @sytle = "height: 200px" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div id="gridDetalle" style="height: 450px;" class="ag-theme-balham"></div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Guardar</button>
+                    </div>
+                    <button type="reset" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Descartar</button>
+                </div>
+                <!-- /.box-footer -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /. box -->
+
         </div>
-    }
+        <!-- /.modal-content -->
+    </div>
 }
+
 
 <script>
+    var list;
+    var columnDefsDetalle = [
+        { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
+        { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'CantidadCouta', field: 'CantidadCouta', aggFunc: 'count', hide: true, sort: 'asc' },
+        { headerName: 'Total Sus', field: 'TotalSus', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Total Bs', field: 'TotalBs', valueGetter: '(data.MontoCuota + data.SaldoCuota)*data.Tc', aggFunc: 'sum' },
+        { headerName: 'Nro Cuota', field: 'NroCuota' },
+        { headerName: 'Telefono', field: 'Telefono' },
+        { headerName: 'Fecha Pago', field: 'Fecha' },
+        { field: 'NombreCompleto', rowGroup: true, hide: true }
+    ];
+    var gridOptionsDetalle = {
+        columnDefs: columnDefsDetalle,
+        defaultColDef: {
+            width: 150
+        },
+
+        enableRangeSelection: true,
+        enableSorting: true,
+        enableFilter: true,
+        enableColResize: true,
+        autoGroupColumnDef: {
+            headerName: 'Cod Cliente',
+            width: 300,
+            field: 'CodCliente'
+        },
+        groupIncludeFooter: true,
+        groupIncludeTotalFooter: true,
+        animateRows: true,
+        paginate: true
+
+    };
     $(function () {
+
         //Enable iCheck plugin for checkboxes
         //iCheck for checkbox and radio inputs
         $('.mailbox-messages input[type="checkbox"]').iCheck({
@@ -144,4 +173,9 @@
         return true;
     }
 
+
+    function Listar() {
+      @*//  list =@Html.Raw(Json.Encode(details));*@
+
+    }
 </script>

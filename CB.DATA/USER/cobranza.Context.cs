@@ -35,6 +35,7 @@ namespace CB.DATA.USER
         public virtual DbSet<Fase> Fases { get; set; }
         public virtual DbSet<FaseUsuario> FaseUsuarios { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<NotiPreventivo> NotiPreventivoes { get; set; }
         public virtual DbSet<OperacionCobranza> OperacionCobranzas { get; set; }
         public virtual DbSet<Parametro> Parametros { get; set; }
         public virtual DbSet<Perfil> Perfils { get; set; }
@@ -48,7 +49,6 @@ namespace CB.DATA.USER
         public virtual DbSet<Vwt_PersonaInv> Vwt_PersonaInv { get; set; }
         public virtual DbSet<Vwt_TipoGetio_Parametro> Vwt_TipoGetio_Parametro { get; set; }
         public virtual DbSet<Vwt_vistaoperacion> Vwt_vistaoperacion { get; set; }
-        public virtual DbSet<NotiPreventivo> NotiPreventivoes { get; set; }
     
         [DbFunction("COBRANZA_CBEntities", "fn_NotificacionPreventiva")]
         public virtual IQueryable<fn_NotificacionPreventiva_Result> fn_NotificacionPreventiva(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo)
@@ -190,14 +190,14 @@ namespace CB.DATA.USER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
     
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
         public virtual ObjectResult<sp_ReporteOperaciones_Result> sp_ReporteOperaciones()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteOperaciones_Result>("sp_ReporteOperaciones");
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

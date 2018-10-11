@@ -52,7 +52,7 @@
     </Reference>
     <Reference Include="CB.ENTIDADES, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CB.LOGICA\bin\Debug\CB.ENTIDADES.dll</HintPath>
+      <HintPath>..\CB.ENTIDADES\bin\Debug\CB.ENTIDADES.dll</HintPath>
     </Reference>
     <Reference Include="CB.LOGICA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -62,6 +62,9 @@
       <HintPath>..\packages\ClosedXML.0.92.1\lib\net40\ClosedXML.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -103,6 +106,24 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -6281,6 +6302,37 @@
     <Content Include="bower_components\jvectormap\tests\markers.html" />
     <Content Include="bower_components\jvectormap\tests\memory.html" />
     <Content Include="bower_components\jvectormap\tests\reverse-projection.html" />
+    <Content Include="bower_components\lobibox-master\.gitignore" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="bower_components\lobibox-master\css\lobibox.css" />
+    <Content Include="bower_components\lobibox-master\demo\animate.css" />
+    <Content Include="bower_components\lobibox-master\demo\demo.css" />
+    <Content Include="bower_components\lobibox-master\demo\demo.js" />
+    <Content Include="bower_components\lobibox-master\demo\img\1.jpg" />
+    <Content Include="bower_components\lobibox-master\demo\img\2.jpg" />
+    <Content Include="bower_components\lobibox-master\demo\img\3.jpg" />
+    <Content Include="bower_components\lobibox-master\demo\img\4.jpg" />
+    <Content Include="bower_components\lobibox-master\demo\img\5.jpg" />
+    <Content Include="bower_components\lobibox-master\demo\img\6.jpg" />
+    <Content Include="bower_components\lobibox-master\dist\css\lobibox.css" />
+    <Content Include="bower_components\lobibox-master\dist\css\lobibox.min.css" />
+    <Content Include="bower_components\lobibox-master\dist\js\lobibox.js" />
+    <Content Include="bower_components\lobibox-master\dist\js\lobibox.min.js" />
+    <Content Include="bower_components\lobibox-master\dist\js\messageboxes.js" />
+    <Content Include="bower_components\lobibox-master\dist\js\messageboxes.min.js" />
+    <Content Include="bower_components\lobibox-master\dist\js\notifications.js" />
+    <Content Include="bower_components\lobibox-master\dist\js\notifications.min.js" />
+    <Content Include="bower_components\lobibox-master\font-awesome\css\font-awesome.min.css" />
+    <Content Include="bower_components\lobibox-master\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="bower_components\lobibox-master\gruntfile.js" />
+    <Content Include="bower_components\lobibox-master\index.html" />
+    <Content Include="bower_components\lobibox-master\js\lobibox.js" />
+    <Content Include="bower_components\lobibox-master\js\messageboxes.js" />
+    <Content Include="bower_components\lobibox-master\js\notifications.js" />
+    <Content Include="bower_components\lobibox-master\lib\jquery.1.11.js" />
+    <Content Include="bower_components\lobibox-master\lib\jquery.1.11.min.js" />
     <Content Include="bower_components\mocha\media\logo.svg" />
     <Content Include="bower_components\mocha\mocha.css" />
     <Content Include="bower_components\mocha\mocha.js" />
@@ -8063,7 +8115,126 @@
     <Content Include="bower_components\ag-grid-enterprise-master\SUPPORT_AND_MAINTENANCE.md" />
     <Content Include="bower_components\ag-grid-enterprise-master\tsconfig-exports.json" />
     <Content Include="libman.json" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bower_components\lobibox-master\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\.csscomb.json" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\.csslintrc" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\alerts.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\badges.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\bootstrap.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\breadcrumbs.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\button-groups.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\buttons.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\carousel.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\close.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\code.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\component-animations.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\dropdowns.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\forms.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\glyphicons.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\grid.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\input-groups.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\jumbotron.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\labels.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\list-group.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\media.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\alerts.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\buttons.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\center-block.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\forms.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\gradients.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\grid.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\image.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\labels.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\list-group.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\opacity.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\pagination.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\panels.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\resize.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\size.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\table-row.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\modals.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\navbar.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\navs.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\normalize.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\pager.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\pagination.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\panels.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\popovers.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\print.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\progress-bars.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\responsive-embed.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\responsive-utilities.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\scaffolding.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\tables.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\theme.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\thumbnails.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\tooltip.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\type.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\utilities.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\variables.less" />
+    <Content Include="bower_components\lobibox-master\bootstrap\less\wells.less" />
+    <Content Include="bower_components\lobibox-master\bower.json" />
+    <Content Include="bower_components\lobibox-master\dist\sounds\sound1.ogg" />
+    <Content Include="bower_components\lobibox-master\dist\sounds\sound2.ogg" />
+    <Content Include="bower_components\lobibox-master\dist\sounds\sound3.ogg" />
+    <Content Include="bower_components\lobibox-master\dist\sounds\sound4.ogg" />
+    <Content Include="bower_components\lobibox-master\dist\sounds\sound5.ogg" />
+    <Content Include="bower_components\lobibox-master\dist\sounds\sound6.ogg" />
+    <Content Include="bower_components\lobibox-master\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="bower_components\lobibox-master\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="bower_components\lobibox-master\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="bower_components\lobibox-master\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="bower_components\lobibox-master\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="bower_components\lobibox-master\less\animations.less" />
+    <Content Include="bower_components\lobibox-master\less\lobibox.less" />
+    <Content Include="bower_components\lobibox-master\less\messageboxes.less" />
+    <Content Include="bower_components\lobibox-master\less\mixins.less" />
+    <Content Include="bower_components\lobibox-master\less\notifications.less" />
+    <Content Include="bower_components\lobibox-master\less\variables.less" />
+    <Content Include="bower_components\lobibox-master\LICENSE" />
+    <Content Include="bower_components\lobibox-master\package.json" />
+    <Content Include="bower_components\lobibox-master\README.md" />
+    <Content Include="bower_components\lobibox-master\sounds\sound1.ogg" />
+    <Content Include="bower_components\lobibox-master\sounds\sound2.ogg" />
+    <Content Include="bower_components\lobibox-master\sounds\sound3.ogg" />
+    <Content Include="bower_components\lobibox-master\sounds\sound4.ogg" />
+    <Content Include="bower_components\lobibox-master\sounds\sound5.ogg" />
+    <Content Include="bower_components\lobibox-master\sounds\sound6.ogg" />
+    <Content Include="Dataset\DatasetReporteFase.xsc">
+      <DependentUpon>DatasetReporteFase.xsd</DependentUpon>
+    </Content>
+    <None Include="Dataset\DatasetReporteFase.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatasetReporteFase.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Dataset\DatasetReporteFase.xss">
+      <DependentUpon>DatasetReporteFase.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Obelisco.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\DMOS.js" />
@@ -8083,6 +8254,19 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -8108,18 +8292,35 @@
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoGestionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Dataset\DatasetReporteFase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatasetReporteFase.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MNotificacion.cs" />
     <Compile Include="Models\UsuarioSesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ReporteView\ReporteCobradores.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReporteView\ReporteCobradores.Designer.cs">
       <DependentUpon>ReporteCobradores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reporte\ReporteXFase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteXFase.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -8201,13 +8402,19 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bower_components\bootstrap-datepicker\build\" />
-    <Folder Include="Reporte\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReporteView\ReporteCobradores.resx">
       <DependentUpon>ReporteCobradores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\ReporteXFase.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteXFase.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

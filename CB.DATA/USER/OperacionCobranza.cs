@@ -29,6 +29,7 @@ namespace CB.DATA.USER
         public Nullable<int> parametroID { get; set; }
         public Nullable<int> presenciaClienteID { get; set; }
         public Nullable<int> probalidadPagoID { get; set; }
+        public Nullable<bool> activo { get; set; }
     
         public virtual AsignacionCliente AsignacionCliente { get; set; }
         public virtual CausalMora CausalMora { get; set; }

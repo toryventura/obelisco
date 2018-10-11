@@ -236,7 +236,8 @@
     </div>
     <!-- /.row (main row) -->
 </section>
-<script>
+<div>
+    <script>
     var randomScalingFactor = function () { return Math.round(Math.random() * 1000) };
 
     var barChartData = {
@@ -290,6 +291,60 @@
             responsive: true
         });
     }
+    $(document).ready(function () {
+        sessionStorage.setItem("noti", 0);
+        var nf = sessionStorage.getItem("noti");
+        if (nf==0) {
+            getAlertas();
+        }
 
-</script>
+    });
+    function getAlertas() {
+        $.ajax({
+            url: "@Url.Action("GetAlertas","Home")",
+            cache: false,
+            data: {},
+            type:"POST"
+        }).done(function (html) {
+            // si alertas pendiente inflar la alertas;
+              if (html!==null)
+               {
+                  var list = html;
+                  list.forEach(function (item) {
+                      item.FechaCompromiso = toDateFromAspNet(item.FechaCompromiso);
+                      var ms = item.Nombre + " " + item.FechaCompromiso;
+                      sessionStorage.setItem("noti", 1);
+                      lobibox_success("Alertas Pedientes", ms);
+
+                  });
+               } else {
+                  lobibox_error("Alertas", "NO EXISTEN NOTIFICIACIONES PENDIENTES");
+               }
+
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("se ha completado existosamente");
+        });
+    }
+        function toDateFromAspNet(dt) {
+            var dte = eval("new " + dt.replace(/\//g, '') + ";");
+            dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
+
+            var today = new Date(dte);
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            var today = dd + '/' + mm + '/' + yyyy;
+            return today;
+        }
+    </script>
+</div>
 <!-- /.content -->

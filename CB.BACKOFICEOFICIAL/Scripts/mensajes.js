@@ -41,6 +41,43 @@ function suma() {
     return "gols";
 }
 
+function lobibox_default(title,mensaje) {
+    Lobibox.notify('default', {
+        title: title,
+        delay: 15000,
+        msg: mensaje
+    });
+}
+function lobibox_info(title, mensaje) {
+    Lobibox.notify('info', {
+        title: title,
+        delay: 15000,
+        msg: mensaje
+    });
+}
+function lobibox_warning(title, mensaje) {
+    Lobibox.notify('warning', {
+        title: title,
+        delay: 15000,
+        msg: mensaje
+    });
+}
+function lobibox_error(title, mensaje) {
+    Lobibox.notify('error', {
+        title: title,
+        delay: 15000,
+        msg: mensaje
+    });
+}
+function lobibox_success(title, mensaje) {
+    Lobibox.notify('success', {
+        title: title,
+        delay: 15000,
+        msg: mensaje
+    });
+}
+
+
 //$("#confirm").on('click', function () {
 //    reset();
 //    alertify.confirm("This is a confirm dialog", function (e) {

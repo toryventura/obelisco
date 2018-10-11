@@ -32,6 +32,44 @@ namespace CB.LOGICA
 			}
 
 		}
+
+		public List<Alertas> GetAlertas(DateTime dateTime1, DateTime dateTime2)
+		{
+
+			List<Alertas> alertas = new List<Alertas>();
+			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
+			var db1 = new DATA.USER.COBRANZA_CBEntities();
+			try
+			{
+				var list = (from a in db1.AsignacionClientes
+							join b in db1.OperacionCobranzas on a.asignacionClienteID equals b.asignacionClienteID
+							//where b.FechaCompromiso >= dateTime1 && b.FechaCompromiso < dateTime2 && b.activo==true
+							select new Alertas()
+							{
+								AsignacionClienteId = a.asignacionClienteID,
+								CodCliente = a.CodCliente,
+								Descripcion = b.Comentario,
+								FechaCompromiso = b.FechaCompromiso.Value
+							}).ToList();
+				var list2 = db.Personas.ToList();
+				string cod = "";
+				foreach (var item in list)
+				{
+					cod = item.CodCliente;
+					var tr = list2.Where(s => s.CodCliente == cod).FirstOrDefault();
+					string nm = tr.NombreP != null ? tr.NombreP : "" + " " + tr.Apellido != null ? tr.Apellido : "" + " " + tr.Seg_Apellido != null ? tr.Seg_Apellido : "";
+					item.Nombre = nm;
+				}
+				alertas = list;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica getAlertas", ex);
+			}
+			return alertas;
+		}
+
 		public List<DetalleFase> GetClientesAlDia()
 		{
 			try
@@ -45,7 +83,7 @@ namespace CB.LOGICA
 									CodCliente = x.CodCliente,
 									Codigo = x.Codigo,
 									CodMora = x.CodMora,
-									Fecha = x.Fecha.ToString("dd/MM/yyyy"),
+									Fecha = x.Fecha,
 									MontoCuota = x.MontoCuota.Value,
 									NombreCompleto = x.NombreCompleto,
 									NroCuota = x.NroCuota + "/" + x.NroCuotas,
@@ -89,18 +127,18 @@ namespace CB.LOGICA
 			{
 				using (var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
 				{
-					var list = (from x in db.(dias)
+					var list = (from x in db.spt_NotificacionPreventiva(dias)
 								select new DetalleFase()
 								{
 									CantidadCouta = x.CantidadCouta.Value,
 									CodCliente = x.CodCliente,
 									Codigo = x.Codigo,
 									CodMora = x.CodMora,
-									Fecha = x.Fecha.Value.ToString("dd/MM/yyyy"),
+									Fecha = x.Fecha.Value,
 									MontoCuota = x.MontoCuota.Value,
 									NombreCompleto = x.NombreCompleto,
 									NroCuota = x.NroCuota.Value + "/" + x.NroCuotas.Value,
-									SaldoCuota =Math.Round( x.SaldoCuota.Value,2),
+									SaldoCuota = Math.Round(x.SaldoCuota.Value, 2),
 									Telefono = x.Telefono,
 									NroCuotas = x.NroCuotas.Value,
 									Tc = x.Tc.Value
@@ -129,11 +167,11 @@ namespace CB.LOGICA
 									CodCliente = x.CodCliente,
 									Codigo = x.Codigo,
 									CodMora = x.CodMora,
-									Fecha = x.Fecha.Value.ToString("dd/MM/yyyy"),
+									Fecha = x.Fecha.Value,
 									MontoCuota = x.MontoCuota.Value,
 									NombreCompleto = x.NombreCompleto,
 									NroCuota = x.NroCuota.Value + "/" + x.NroCuotas.Value,
-									SaldoCuota = Math.Round( x.SaldoCuota.Value,2),
+									SaldoCuota = Math.Round(x.SaldoCuota.Value, 2),
 									Telefono = x.Telefono,
 									NroCuotas = x.NroCuotas.Value,
 									Tc = x.Tc.Value
@@ -350,11 +388,11 @@ namespace CB.LOGICA
 						CodCliente = item.CodCliente,
 						Codigo = item.Codigo,
 						CodMora = item.CodMora,
-						Fecha = item.Fecha.ToString("dd/MM/yyyy"),
+						Fecha = item.Fecha,
 						MontoCuota = item.MontoCuota,
 						NombreCompleto = item.NombreCompleto,
 						NroCuota = item.NroCuota + "/" + item.NroCuotas,
-						SaldoCuota = Math.Round( item.SaldoCuota.Value,2),
+						SaldoCuota = Math.Round(item.SaldoCuota.Value, 2),
 						Telefono = item.Telefono,
 						NroCuotas = item.NroCuotas,
 						Tc = item.Tc.Value
@@ -422,9 +460,10 @@ namespace CB.LOGICA
 					obj = ToEntides(p, item.Codigo, cm);
 					if (cm < 5)
 					{
-						obj.NombreFase = db1.Fases.Where(j => j.ID == cm+1).Select(j => j.Descripcion).FirstOrDefault();
+						obj.NombreFase = db1.Fases.Where(j => j.ID == cm + 1).Select(j => j.Descripcion).FirstOrDefault();
 					}
-					else {
+					else
+					{
 						obj.NombreFase = "Fase 5";
 					}
 					//obj.IdFase = db1.FaseUsuarios.Where(x => x.Idusuario == obj.CI).Select(x => x.Idfase.Value).FirstOrDefault();
@@ -432,7 +471,7 @@ namespace CB.LOGICA
 					listasfinal.Add(obj);
 				}
 				return listasfinal;
-				
+
 			}
 			catch (Exception ex)
 			{

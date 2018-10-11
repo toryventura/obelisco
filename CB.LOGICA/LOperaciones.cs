@@ -84,6 +84,7 @@ namespace CB.LOGICA
 						presenciaClienteID = pres,
 						probalidadPagoID = o.probalidadPagoID,
 						TelefonoAlternativo = o.TelefonoAlternativo,
+						activo=o.activo,
 						UsrCre = o.UsrCre,
 						UsrMod = o.UsrMod,
 						parametroID = o.parametroID
@@ -119,6 +120,7 @@ namespace CB.LOGICA
 				nombreparametro = getTipogestion(o.parametroID.Value),
 				operacionCobranzaID = o.operacionCobranzaID,
 				presenciaClienteID = o.presenciaClienteID.Value,
+				activo=o.activo.Value,
 				probalidadPagoID = o.probalidadPagoID.Value,
 				TelefonoAlternativo = o.TelefonoAlternativo == null ? "" : o.TelefonoAlternativo,
 				parametroID = o.parametroID.Value,

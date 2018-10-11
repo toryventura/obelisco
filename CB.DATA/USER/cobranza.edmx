@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="COBRANZA_CBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccionPreventiva">
           <Key>
             <PropertyRef Name="AccionID" />
@@ -138,6 +138,7 @@
           <Property Name="parametroID" Type="int" />
           <Property Name="presenciaClienteID" Type="int" />
           <Property Name="probalidadPagoID" Type="int" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
         <EntityType Name="Parametros">
           <Key>
@@ -737,7 +738,8 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <End Role="UsuaruoIPRestringido" EntitySet="UsuaruoIPRestringido" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="COBRANZA_CBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -838,6 +840,18 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Name="MenuID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Permisoes" Relationship="Self.FK_Permiso_Menu" FromRole="Menu" ToRole="Permiso" />
         </EntityType>
+        <EntityType Name="NotiPreventivo">
+          <Key>
+            <PropertyRef Name="NotificacionID" />
+          </Key>
+          <Property Name="NotificacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Periodo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TipoAccion" Type="Int32" />
+          <Property Name="FechaReg" Type="DateTime" Precision="3" />
+          <Property Name="UsrCre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="OperacionCobranza">
           <Key>
             <PropertyRef Name="operacionCobranzaID" />
@@ -857,6 +871,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Name="parametroID" Type="Int32" />
           <Property Name="presenciaClienteID" Type="Int32" />
           <Property Name="probalidadPagoID" Type="Int32" />
+          <Property Name="activo" Type="Boolean" />
           <NavigationProperty Name="AsignacionCliente" Relationship="Self.FK_OperacionCobranza_AsignacionCliente" FromRole="OperacionCobranza" ToRole="AsignacionCliente" />
           <NavigationProperty Name="CausalMora" Relationship="Self.FK_OperacionCobranza_CausalMora" FromRole="OperacionCobranza" ToRole="CausalMora" />
           <NavigationProperty Name="CompromisoPago" Relationship="Self.FK_OperacionCobranza_CompromisoPago" FromRole="OperacionCobranza" ToRole="CompromisoPago" />
@@ -1196,6 +1211,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <EntitySet Name="Fases" EntityType="Self.Fase" />
           <EntitySet Name="FaseUsuarios" EntityType="Self.FaseUsuario" />
           <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="NotiPreventivoes" EntityType="Self.NotiPreventivo" />
           <EntitySet Name="OperacionCobranzas" EntityType="Self.OperacionCobranza" />
           <EntitySet Name="Parametros" EntityType="Self.Parametro" />
           <EntitySet Name="Perfils" EntityType="Self.Perfil" />
@@ -1278,7 +1294,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <Parameter Name="DateTo" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="AsignarClienteMora">
-          <Parameter Name="periodo" Mode="In" Type="String" />
+            <Parameter Name="periodo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BAJACLIENTESASIGNADOS" />
           <FunctionImport Name="sp_alterdiagram">
@@ -1307,16 +1323,15 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_NotificacionPreventiva" ReturnType="Collection(COBRANZA_CBModel.sp_NotificacionPreventiva_Result)">
-          <Parameter Name="dias" Mode="In" Type="Int32" />
+            <Parameter Name="dias" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_ReporteOperaciones" ReturnType="Collection(COBRANZA_CBModel.sp_ReporteOperaciones_Result)" />
-          <EntitySet Name="NotiPreventivoes" EntityType="COBRANZA_CBModel.NotiPreventivo" />
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1360,18 +1375,6 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Property Type="String" Name="NombreTipoGestion" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="Periodo" Nullable="true" MaxLength="10" />
         </ComplexType>
-        <EntityType Name="NotiPreventivo">
-          <Key>
-            <PropertyRef Name="NotificacionID" />
-          </Key>
-          <Property Name="NotificacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Periodo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Mensaje" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TipoAccion" Type="Int32" />
-          <Property Name="FechaReg" Type="DateTime" Precision="3" />
-          <Property Name="UsrCre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1464,6 +1467,19 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NotiPreventivoes">
+            <EntityTypeMapping TypeName="COBRANZA_CBModel.NotiPreventivo">
+              <MappingFragment StoreEntitySet="NotiPreventivo">
+                <ScalarProperty Name="NotificacionID" ColumnName="NotificacionID" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="TipoAccion" ColumnName="TipoAccion" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+                <ScalarProperty Name="UsrCre" ColumnName="UsrCre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="OperacionCobranzas">
             <EntityTypeMapping TypeName="COBRANZA_CBModel.OperacionCobranza">
               <MappingFragment StoreEntitySet="OperacionCobranza">
@@ -1482,6 +1498,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
                 <ScalarProperty Name="parametroID" ColumnName="parametroID" />
                 <ScalarProperty Name="presenciaClienteID" ColumnName="presenciaClienteID" />
                 <ScalarProperty Name="probalidadPagoID" ColumnName="probalidadPagoID" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1608,7 +1625,6 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <EntitySetMapping Name="Vwt_vistaoperacion">
             <EntityTypeMapping TypeName="COBRANZA_CBModel.Vwt_vistaoperacion">
               <MappingFragment StoreEntitySet="Vwt_vistaoperacion">
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="asignacionClienteID" ColumnName="asignacionClienteID" />
                 <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
@@ -1628,6 +1644,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
                 <ScalarProperty Name="NombreProbalidadPago" ColumnName="NombreProbalidadPago" />
                 <ScalarProperty Name="NombreParametro" ColumnName="NombreParametro" />
                 <ScalarProperty Name="NombreTipoGestion" ColumnName="NombreTipoGestion" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1707,7 +1724,6 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="COBRANZA_CBModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COBRANZA_CBModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="sp_ReporteOperaciones" FunctionName="COBRANZA_CBModel.Store.sp_ReporteOperaciones">
             <ResultMapping>
               <ComplexTypeMapping TypeName="COBRANZA_CBModel.sp_ReporteOperaciones_Result">
@@ -1734,19 +1750,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="NotiPreventivoes">
-            <EntityTypeMapping TypeName="COBRANZA_CBModel.NotiPreventivo">
-              <MappingFragment StoreEntitySet="NotiPreventivo">
-                <ScalarProperty Name="UsrCre" ColumnName="UsrCre" />
-                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
-                <ScalarProperty Name="TipoAccion" ColumnName="TipoAccion" />
-                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
-                <ScalarProperty Name="NotificacionID" ColumnName="NotificacionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COBRANZA_CBModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

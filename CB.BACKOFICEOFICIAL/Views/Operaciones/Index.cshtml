@@ -385,7 +385,7 @@
             createGlobal(gridOptionsOperaciones, gridDiv);
             sw = 1;
         } else {
-            destroyGlobal(gridOptionsOperaciones)
+            destroyGlobal(gridOptionsOperaciones);
             var gridDiv = document.querySelector('#gridOperaciones');
             createGlobal(gridOptionsOperaciones, gridDiv);
         }
@@ -463,6 +463,7 @@
             console.log("the process en exit")
         });
     }
+    
     function Operacion() {
         var id = $("#dll option:selected").text();
         var vall = $("#dll option:selected").val();
@@ -519,7 +520,7 @@
     }
 
     function Imprimir() {
-
+        
             $.ajax({
                 url: "@Url.Action("Imprimir", "Operaciones")",
                 cache: false,

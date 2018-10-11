@@ -75,28 +75,7 @@
                                 </div>
 
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="@Model.FechaCompromiso">Fecha Compromiso</label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        @Html.EditorFor(model => model.FechaCompromiso, new { htmlAttributes = new { @class = "form-control", data_inputmask = "'alias': 'dd/mm/yyyy'", data_mask = "", } })
 
-                                    </div>
-
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <input type="text" id="txtHora" class="form-control timepicker">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-clock-o"></i>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="@Model.CausalMoraAnt">Causal Mora Anterior </label>
                                 <div class="col-sm-8">
@@ -126,6 +105,30 @@
                                 <label class="col-sm-4 control-label" for="correo">Correo</label>
                                 <div class="col-sm-8">
                                     @Html.Editor("correo", new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="@Model.FechaCompromiso">Fecha Compromiso</label>
+                                <div class="col-sm-1">
+                                    @Html.CheckBoxFor(model => model.activo, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-sm-4" id="FechaCompromiso1">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.EditorFor(model => model.FechaCompromiso, new { htmlAttributes = new { @class = "form-control", data_inputmask = "'alias': 'dd/mm/yyyy'", data_mask = "" } })
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" id="hora1">
+                                    <div class="input-group">
+                                        @Html.Editor("txtHora", new { htmlAttributes = new { @class = "form-control timepicker" } })
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -160,10 +163,10 @@
         if (e[0].Key == "OK") {
             var mensaje = e[0].Value;
             var resp = mensaje.split("|");
-             
-            selectedOperacion = parseInt(resp[1]);;
-            success(resp[0].Value);
-            Imprimir();
+            var idop = parseInt(resp[1]);
+            selectedOperacion = idop;
+            success(resp[0]);
+            Imprimir(idop);
         } else {
             error(e[0].Value);
         }
@@ -172,8 +175,19 @@
         BloquearPantalla();
 
     }
-    
 
+    $(document).ready(function () {
+        $('#activo').change(function () {
+
+            if (this.checked != true) {
+                $('#FechaCompromiso1').hide();
+                $('#hora1').hide();
+            } else {
+                $('#FechaCompromiso1').show();
+                $('#hora1').show();
+            }
+        });
+    });
     $(function () {
         // Replace the <textarea id="editor1"> with a CKEditor
         // instance, using default configuration.
@@ -181,6 +195,8 @@
         ////bootstrap WYSIHTML5 - text editor
         //$('.textarea').wysihtml5()
         //Datemask dd/mm/yyyy
+        $('#FechaCompromiso1').hide();
+        $('#hora1').hide();
         $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
         //Datemask2 mm/dd/yyyy
         $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
@@ -190,28 +206,28 @@
         $('.timepicker').timepicker({
             showInputs: false
         })
-        
+
         //Date range picker
         $('#reservation').daterangepicker()
         //Date range picker with time picker
         $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
         //Date range as a button
         $('#daterange-btn').daterangepicker(
-          {
-              ranges: {
-                  'Today': [moment(), moment()],
-                  'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                  'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                  'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                  'This Month': [moment().startOf('month'), moment().endOf('month')],
-                  'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
-          },
-          function (start, end) {
-              $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-          }
+            {
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+            },
+            function (start, end) {
+                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
         )
 
         //Date picker
@@ -241,6 +257,6 @@
         //color picker with addon
         $('.my-colorpicker2').colorpicker()
 
-        
+
     })
 </script>

@@ -1,10 +1,27 @@
 ﻿
 @{
-    ViewBag.Title = "Notificaciones";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var lista = (List<CB.ENTIDADES.DetalleFase>)ViewBag.lista;
-}
+                /**/
 
+
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var lista = (List<CB.ENTIDADES.DetalleFase>)ViewBag.lista;
+}
+<style>
+
+    .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    .example-modal .modal {
+        background: transparent !important;
+    }
+</style>
 
 <section class="content-header">
     <h1>
@@ -23,272 +40,457 @@
                 <div class="box-header">
                     <h3 class="box-title">Notoficacion Preventiva</h3>
                     <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
-                                        <!-- /.input group -->
+                    <!-- /.input group -->
 
                     <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
                 </div>
                 <div class="box-body" id="ListaContenidosContainer">
 
-                    @Html.Partial("_listNotificaciones",lista)
+                    @Html.Partial("_listNotificaciones", lista)
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="emailmodal" class="modal fade in">
-        @Html.Partial("_Coreo")
+
+    <div id="modal-email" class="modal fade in">
+        @*@Html.Partial("_Coreo")*@
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Nuevo Email</h4>
+                </div>
+
+                <!-- /.box-header -->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group" style="display:none">
+                                @Html.Label("CodCliente", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("CodCliente", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.Editor("Nombre", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Telefono", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.Editor("Telefono", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("Tipo", new SelectList(string.Empty, "Key", "Value"), "---Select List---", new { @id = "Tipo", @class = "form-control", @style = "padding-top: 3px; padding-bottom: 3px;" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Massage", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextArea("Massage", new { htmlAttributes = new { @class = "form-control", @sytle = "height: 200px" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class="form-group">
+                                <div id="gridDetalle" style="height: 200px;" class="ag-theme-balham"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="modal-footer">
+
+                    @*<button type="reset" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Descartar</button>*@
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Descartar</button>
+                    <button type="button" class="btn btn-primary" onclick="SendAction();"><i class="fa fa-envelope-o"></i> Guardar</button>
+                    @*<input class="btn btn-primary" type="submit" value="Guardar" onclick="ExportToExcel();" />*@
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /. box -->
+
+        </div>
+        <!-- /.modal-content -->
     </div>
+
+    <div id="modal-sms" class="modal fade in">
+        @*@Html.Partial("_Coreo")*@
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Detalle</h4>
+                </div>
+
+                <!-- /.box-header -->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group" style="display:none">
+                                @Html.Label("CodClientes", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBox("CodClientes", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Nombres", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.Editor("Nombres", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Telefonos", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.Editor("Telefonos", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" row">
+                            <div class="form-group">
+                                <div id="gridDetalles" style="height: 200px;" class="ag-theme-balham"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="modal-footer">
+
+                    @*<button type="reset" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Descartar</button>*@
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Descartar</button>
+
+                    @*<input class="btn btn-primary" type="submit" value="Guardar" onclick="ExportToExcel();" />*@
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /. box -->
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
+
 </section>
 <script>
-
-    function email(id) {
-        $.ajax({
-            url: "@Url.Action("Email","Home")",
-            cahe: false,
-            data: {},
-            type: "GET"
-        }).done(function (html) {
-            $("#emailmodal").html(html);
-            $('#emailmodal').modal('show');
-        }).fail(function (resp) {
-            console.log(resp.responseText);
-        }).always(function () {
-            console.log("complete the operation")
-        });
-
-    }
-    function sms(id) {
-
-    }
-    function call(id) {
-
-    }
-    function showMadalAsiganar() {
-        $('#emailmodal').modal('show');
-       // CagarDatos();
-    }
+    var list;
     var sw = 0;
-    function filtro() {
-        var dt = $('#datepicker').val();
-        var f = new Date(dt);
-        if (typeof dt != 'undefined' || dt != "") {
-            if (sw == 0) {
-                var gridDiv = document.querySelector('#gridDetalle');
-                createGlobal(gridOptionsDetalle, gridDiv);
-                sw = 1;
-            } else {
-                destroyGlobal(gridOptionsDetalle)
-                var gridDiv = document.querySelector('#gridDetalle');
-                createGlobal(gridOptionsDetalle, gridDiv);
-            }
-            var ft = JSON.stringify({ fecha: f.toISOString() });
-            $.ajax({
-                url: "@Url.Action("BuscarFecha", "Home")",
-                cache: false,
-                data: ft,
-                type: "POST"
-            }).done(function (html) {
-                setDataSource(html, gridOptionsDetalle);
-                // gridOptionsAsignadas.api.setRowData(html);
-            }).fail(function (resp) {
-                console.log(resp.responseText);
-            }).always(function () {
-                console.log(" se ha completado");
-            });
-        } else {
-            $('#datepicker').focus();
-            Error("selecione fecha o campo fecha esta vacio");
-        }
-    }
-    function ViewAll() {
-        if (sw == 0) {
-            var gridDiv = document.querySelector('#gridDetalle');
-            createGlobal(gridOptionsDetalle, gridDiv);
-            sw = 1;
-        } else {
-            destroyGlobal(gridOptionsDetalle)
-            var gridDiv = document.querySelector('#gridDetalle');
-            createGlobal(gridOptionsDetalle, gridDiv);
-        }
-        $.ajax({
-            url: "@Url.Action("All", "Home")",
-            cache: false,
-            data: {
-            },
-            type: "POST"
-        }).done(function (html) {
-            setDataSource(html, gridOptionsDetalle);
-            // gridOptionsAsignadas.api.setRowData(html);
-        }).fail(function (resp) {
-            console.log(resp.responseText);
-        }).always(function () {
-            console.log(" se ha completado");
-        });
-    }
-
+    var sw1 = 0;
     var columnDefsDetalle = [
         { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
         { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
         { headerName: 'CantidadCouta', field: 'CantidadCouta', aggFunc: 'count', hide: true, sort: 'asc' },
-        { headerName: 'Total', field: 'total', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Total Sus', field: 'TotalSus', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Total Bs', field: 'TotalBs', valueGetter: '(data.MontoCuota + data.SaldoCuota)*data.Tc', aggFunc: 'sum' },
         { headerName: 'Nro Cuota', field: 'NroCuota' },
         { headerName: 'Telefono', field: 'Telefono' },
-        { headerName: 'Fecha Pago', field: 'Fecha'},
-
-        { field: 'NombreCompleto', cellRenderer: 'stateCellRenderer', rowGroup: true, hide: true }
+        { headerName: 'Fecha Pago', field: 'Fecha' },
+        { field: 'NombreCompleto', rowGroup: true, hide: true }
     ];
+
     var gridOptionsDetalle = {
-        components: {
-            //cityCellRenderer: cityCellRenderer,
-            //countryCellRenderer: countryCellRenderer,
-            stateCellRenderer: stateCellRenderer
-        },
         columnDefs: columnDefsDetalle,
         defaultColDef: {
             width: 150
         },
-
+        rowData: list,
         enableRangeSelection: true,
         enableSorting: true,
-        enableColResize: true,
         enableFilter: true,
-        onRowSelected: onRowSelected,
-
-        //onSelectionChanged: onSelectionChanged,
-       // suppressRowClickSelection: true,
+        enableColResize: true,
         autoGroupColumnDef: {
             headerName: 'Cod Cliente',
             width: 300,
-            field: 'CodCliente',
-            cellRenderer: 'agGroupCellRenderer',
-            cellRendererParams: {
-               checkbox: true
-            }
+            field: 'CodCliente'
         },
-       // getRowStyle: getRowStyleScheduled,
+
         groupIncludeFooter: true,
         groupIncludeTotalFooter: true,
-        animateRows: true
+        animateRows: true,
+        groupDefaultExpanded: -1,
+        paginate: true
 
     };
-    function stateCellRenderer(params) {
-        debugger;
-        if (params.value === undefined || params.value === null) {
-            return '';
-        } else {
-            var cant = params.value;
-            if (cant != 0) {
-                var flag = '<img border="0" width="15" height="10" src="https://www.ag-grid.com/images/goldStar.png">';
-                return flag + ' ' + params.value;
-            }
-            else
-                return params.value;
+    ///detalles
+    var columnDefsDetalles = [
+        { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
+        { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'CantidadCouta', field: 'CantidadCouta', aggFunc: 'count', hide: true, sort: 'asc' },
+        { headerName: 'Total Sus', field: 'TotalSus', valueGetter: 'data.MontoCuota + data.SaldoCuota', aggFunc: 'sum' },
+        { headerName: 'Total Bs', field: 'TotalBs', valueGetter: '(data.MontoCuota + data.SaldoCuota)*data.Tc', aggFunc: 'sum' },
+        { headerName: 'Nro Cuota', field: 'NroCuota' },
+        { headerName: 'Telefono', field: 'Telefono' },
+        { headerName: 'Fecha Pago', field: 'Fecha' },
+        { field: 'NombreCompleto', rowGroup: true, hide: true }
+    ];
 
-        }
+    var gridOptionsDetalles = {
+        columnDefs: columnDefsDetalles,
+        defaultColDef: {
+            width: 150
+        },
+        rowData: list,
+        enableRangeSelection: true,
+        enableSorting: true,
+        enableFilter: true,
+        enableColResize: true,
+        autoGroupColumnDef: {
+            headerName: 'Cod Cliente',
+            width: 300,
+            field: 'CodCliente'
+        },
 
-    }
-    function onRowSelected(event) {
-        var id = event.node.data.CodCliente;
-      GetCliente(id);
-      //  window.alert("row " + event.node.data.CodCliente + " selected = " + event.node.selected);
-       // showMadalAsiganar();
-    }
-    function GetCliente(id) {
-           $.ajax({
-            url: "@Url.Action("Getdatos", "Home")",
-            cache: false,
-            data: {id: id},
-            type: "POST"
-        }).done(function (html) {
-            $("#emailmodal").html(html);
-            $('#emailmodal').modal('show');
+        groupIncludeFooter: true,
+        groupIncludeTotalFooter: true,
+        animateRows: true,
+        groupDefaultExpanded: -1,
+        paginate: true
 
-            //setDataSource(html, gridOptionsDetalle);
-            // gridOptionsAsignadas.api.setRowData(html);
-        }).fail(function (resp) {
-            console.log(resp.responseText);
-        }).always(function () {
-            console.log(" se ha completado");
-        });
-    }
+    };
 
-    function onSelectionChanged(event) {
-        var rowCount = event.api.getSelectedNodes().length;
-       // showMadalAsiganar();
-        window.alert('selection changed, ' + rowCount + ' rows selected' + event.node.data.CodCliente+'');
-    }
-    function getRowStyleScheduled(params) {
-        debugger;
-         var br;
-         switch (params.data.CantidadCouta) {
-             case 1:
-                 br = { background: 'lightgreen' }
-                break;
-             case 2:
-                 br = { background: 'green' }
-                break;
-             case 3:
-                br = { background: 'yellow' }
-                break;
-             case 4:
-                br = { background: 'gold' }
-                break;
-             default:
-                br = { background: 'red' }
-                break;
-        }
-        return br;
-    }
-    function currencyFormatter(params) {
-        var dt = params.Fecha;
-        if (typeof dt == 'undefined') {
-            return '';
-        } else {
-            return toDateFromAspNet(dt);
-        }
-
-    }
-
-    function toDateFromAspNet (dt) {
-        var dte = eval("new " + dt.replace(/\//g, '') + ";");
-        dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
-        return dte;
-    }
-    $(document).ready(function () {
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true
-        })
-        ListarDetalle();
-    });
-
-    function ListarDetalle() {
-
-        if (sw == 0) {
-            var gridDiv = document.querySelector('#gridDetalle');
-            createGlobal(gridOptionsDetalle, gridDiv);
-            sw = 1;
-        } else {
-            destroyGlobal(gridOptionsDetalle)
-            var gridDiv = document.querySelector('#gridDetalle');
-            createGlobal(gridOptionsDetalle, gridDiv);
-        }
+    function sms(idf) {
 
         $.ajax({
-            url: "@Url.Action("ListNPreventiva", "Home")",
+            url: "@Url.Action("Getdatos", "Home")",
             cache: false,
             data: {
+                id: idf
             },
             type: "POST"
         }).done(function (html) {
-            setDataSource(html, gridOptionsDetalle);
-            // gridOptionsAsignadas.api.setRowData(html);
+          //  getDatos1(idf);
+
+            var objs = html;
+
+            var lists = objs.Tipos;
+            if (sw==0) {
+                lists.forEach(function (item) {
+
+                    $("#Tipo").append('<option value="' + item.Key + '">' +
+                        item.Value + '</option>');
+                });
+            }
+
+            list = objs.Detalles;
+            if (sw==1) {
+                destroyGlobal(gridOptionsDetalle);
+            }
+            $('#CodCliente').val(objs.CodCliente);
+            $('#Nombre').val(objs.Nombre);
+            $('#Telefono').val(objs.Telefono);
+             var gridDiv = document.querySelector('#gridDetalle');
+            createGlobal(gridOptionsDetalle, gridDiv);
+            list.forEach(function (item) {
+                item.Fecha = toDateFromAspNet(item.Fecha);
+            });
+            gridOptionsDetalle.api.setRowData(list);
+            //onPinnedRowBottomCount(gridOptionsDetalle);
+            //$("#modal-default").html(html);
+            sw = 1;
+            $('#modal-email').modal('show');
         }).fail(function (resp) {
             console.log(resp.responseText);
         }).always(function () {
             console.log(" se ha completado");
         });
     }
+
+    function email(idf) {
+
+        $.ajax({
+            url: "@Url.Action("Getdatos", "Home")",
+            cache: false,
+            data: {
+                id: idf
+            },
+            type: "POST"
+        }).done(function (html) {
+          //  getDatos1(idf);
+
+            var objs = html;
+
+            list = objs.Detalles;
+            if (sw1==1) {
+                destroyGlobal(gridOptionsDetalles);
+            }
+            $('#CodClientes').val(objs.CodCliente);
+            $('#Nombres').val(objs.Nombre);
+            $('#Telefonos').val(objs.Telefono);
+             var gridDiv = document.querySelector('#gridDetalles');
+            createGlobal(gridOptionsDetalles, gridDiv);
+            list.forEach(function (item) {
+                item.Fecha = toDateFromAspNet(item.Fecha);
+            });
+            gridOptionsDetalles.api.setRowData(list);
+            //onPinnedRowBottomCount(gridOptionsDetalle);
+            //$("#modal-default").html(html);
+            sw1 = 1;
+            $('#modal-sms').modal('show');
+        }).fail(function (resp) {
+            console.log(resp.responseText);
+        }).always(function () {
+            console.log(" se ha completado");
+        });
+    }
+
+
+    function ListarNotificaciones() {
+        $.ajax({
+            url: "@Url.Action("ListNotificaciones", "Home")",
+            cache: false,
+            data: {
+            },
+            type:"POST"
+        }).done(function (html) {
+            $('#ListaContenidosContainer').html(html);
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("Se ha Completado corectemente");
+        });
+
+    }
+
+    function SendAction() {
+        var codcliente = $('#CodCliente').val();
+        var tipo = $('#Tipo option:selected').val();
+        var mensaje = $('#Massage').val();
+        if (tipo != "") {
+            if (mensaje != "") {
+                $.ajax({
+                    url: "@Url.Action("AddAcition", "Home")",
+                    cache: false,
+                    data:{ CodCliente: codcliente, Tipo: tipo, Mensaje: mensaje },
+                    type: "POST"
+
+                }).done(function (html) {
+                    if (html[0].Key == "OK") {
+                        $('#modal-email').modal('hide');
+                        lobibox_success("titulo reservado",html[0].Value);
+                        $('#Massage').val("");
+                        ListarNotificaciones();
+                    } else {
+                        error(html[0].Value);
+                    }
+                    }).fail(function (resp) {
+                        console.log(resp.responseText);
+                    }).always(function () {
+                        console.log("Se ha completado la operacion corectamente");
+                });
+
+            } else {
+                $('#Massage').focus();
+                error('Elejir tipo de Mensaje');
+            }
+
+        } else {
+            $('#Tipos').focus();
+            error('Elejir tipo de Accion');
+        }
+
+    }
+    function toDateFromAspNet(dt) {
+        var dte = eval("new " + dt.replace(/\//g, '') + ";");
+        dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
+
+        var today = new Date(dte);
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        return today;
+    }
+
+
+    /// sumas de todas las filas rowssss
+
+
+    function call() {
+        alert("call");
+    }
+
+
+    $('#Tipo').on('change', function () {
+        var ddlvalue = $(this).value;
+
+    });
+    $(function () {
+
+        //Enable iCheck plugin for checkboxes
+        //iCheck for checkbox and radio inputs
+        $('.mailbox-messages input[type="checkbox"]').iCheck({
+            checkboxClass: 'icheckbox_flat-blue',
+            radioClass: 'iradio_flat-blue'
+        });
+
+        //Enable check and uncheck all functionality
+        $(".checkbox-toggle").click(function () {
+            var clicks = $(this).data('clicks');
+            if (clicks) {
+                //Uncheck all checkboxes
+                $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+                $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+            } else {
+                //Check all checkboxes
+                $(".mailbox-messages input[type='checkbox']").iCheck("check");
+                $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+            }
+            $(this).data("clicks", !clicks);
+        });
+
+        //Handle starring for glyphicon and font awesome
+        $(".mailbox-star").click(function (e) {
+            e.preventDefault();
+            //detect type
+            var $this = $(this).find("a > i");
+            var glyph = $this.hasClass("glyphicon");
+            var fa = $this.hasClass("fa");
+
+            //Switch states
+            if (glyph) {
+                $this.toggleClass("glyphicon-star");
+                $this.toggleClass("glyphicon-star-empty");
+            }
+
+            if (fa) {
+                $this.toggleClass("fa-star");
+                $this.toggleClass("fa-star-o");
+            }
+        });
+    });
+
 </script>
 
 
