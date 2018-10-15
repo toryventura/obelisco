@@ -1,0 +1,70 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lista = (List<CB.ENTIDADES.Alertas>)ViewBag.Alert;
+}
+
+<section class="content-header">
+    <h1>
+        Gestionar Alertas
+        <small>En Mora</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Alertas</h3>
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
+                </div>
+                <div class="box-body" id="ListaContenidosContainer">
+
+                    @Html.Partial("_listAletas", lista)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function Change(idf) {
+        $.ajax({
+            url: "@Url.Action("Change", "Reporte")",
+            cache: false,
+            data: { id:idf},
+            type:"POST"
+        }).done(function (html) {
+            if (html[0].Key == "OK") {
+                success(html[0].Value);
+                listar();
+            } else {
+                error(html[0].Value);
+            }
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("se ha completatdo exitosotamente");
+        });
+    }
+    function listar() {
+        $.ajax({
+            url: "@Url.Action("GetAlertas", "Reporte")",
+            cache: false,
+            data: {},
+            type:"POST"
+        }).done(function (html) {
+            $("#ListaContenidosContainer").html(html);
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("se ha completatdo exitosotamente");
+        });
+    }
+</script>
+

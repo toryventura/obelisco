@@ -984,6 +984,8 @@
     <Content Include="bower_components\chart.js\src\Chart.Line.js" />
     <Content Include="bower_components\chart.js\src\Chart.PolarArea.js" />
     <Content Include="bower_components\chart.js\src\Chart.Radar.js" />
+    <Content Include="bower_components\chatpopup\css\chat.css" />
+    <Content Include="bower_components\chatpopup\js\chat.js" />
     <Content Include="bower_components\ckeditor\adapters\jquery.js" />
     <Content Include="bower_components\ckeditor\ckeditor.js" />
     <Content Include="bower_components\ckeditor\config.js" />
@@ -3807,9 +3809,76 @@
     <Content Include="bower_components\datatables.net-bs\js\dataTables.bootstrap.js" />
     <Content Include="bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js" />
     <Content Include="bower_components\datatables.net-bs\License.txt" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.bootstrap.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.bootstrap.min.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.bootstrap4.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.bootstrap4.min.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.dataTables.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.dataTables.min.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.foundation.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.foundation.min.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.jqueryui.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.jqueryui.min.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.semanticui.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\buttons.semanticui.min.css" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.bootstrap.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.bootstrap.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.bootstrap4.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.bootstrap4.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.colVis.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.colVis.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.flash.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.flash.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.foundation.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.foundation.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.html5.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.html5.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.jqueryui.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.jqueryui.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.print.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.print.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.semanticui.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\buttons.semanticui.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\dataTables.buttons.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\js\dataTables.buttons.min.js" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\swf\flashExport.swf" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.foundation.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\jquery.dataTables.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="bower_components\datatables.net\1.10.18\images\sort_asc.png" />
+    <Content Include="bower_components\datatables.net\1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="bower_components\datatables.net\1.10.18\images\sort_both.png" />
+    <Content Include="bower_components\datatables.net\1.10.18\images\sort_desc.png" />
+    <Content Include="bower_components\datatables.net\1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.foundation.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\jquery.dataTables.js" />
+    <Content Include="bower_components\datatables.net\1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="bower_components\datatables.net\jszip\2.5.0\jszip.js" />
+    <Content Include="bower_components\datatables.net\jszip\2.5.0\jszip.min.js" />
     <Content Include="bower_components\datatables.net\js\jquery.dataTables.js" />
     <Content Include="bower_components\datatables.net\js\jquery.dataTables.min.js" />
     <Content Include="bower_components\datatables.net\License.txt" />
+    <Content Include="bower_components\datatables.net\pdfmake\0.1.36\pdfmake.js" />
+    <Content Include="bower_components\datatables.net\pdfmake\0.1.36\pdfmake.min.js" />
+    <Content Include="bower_components\datatables.net\pdfmake\0.1.36\vfs_fonts.js" />
     <Content Include="bower_components\eve-raphael\e.html" />
     <Content Include="bower_components\eve-raphael\eve.js" />
     <Content Include="bower_components\fastclick\lib\fastclick.js" />
@@ -8222,6 +8291,8 @@
     <Content Include="Dataset\DatasetReporteFase.xsc">
       <DependentUpon>DatasetReporteFase.xsd</DependentUpon>
     </Content>
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\common.scss" />
+    <Content Include="bower_components\datatables.net\buttons\1.5.4\css\mixins.scss" />
     <None Include="Dataset\DatasetReporteFase.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -8283,6 +8354,7 @@
     <Compile Include="Controllers\CompromisoPagoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotiPreventivoController.cs" />
     <Compile Include="Controllers\OperacionesController.cs" />
     <Compile Include="Controllers\ParametroController.cs" />
     <Compile Include="Controllers\PersonasCasasController.cs" />
@@ -8392,6 +8464,10 @@
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Home\Notificaciones.cshtml" />
     <Content Include="Views\Home\_ListNotificaciones.cshtml" />
+    <Content Include="Views\Reporte\Alertas.cshtml" />
+    <Content Include="Views\Reporte\_listAletas.cshtml" />
+    <Content Include="Views\NotiPreventivo\Index.cshtml" />
+    <Content Include="Views\NotiPreventivo\_listPreventivo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

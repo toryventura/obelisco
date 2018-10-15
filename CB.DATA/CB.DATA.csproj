@@ -692,6 +692,9 @@
     <Compile Include="INVENTARIO\Vwt_DetelleFijaMora.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>
+    <Compile Include="INVENTARIO\Vwt_Persona.cs">
+      <DependentUpon>obelisco.tt</DependentUpon>
+    </Compile>
     <Compile Include="INVENTARIO\Vwt_TotalClienteMora.cs">
       <DependentUpon>obelisco.tt</DependentUpon>
     </Compile>

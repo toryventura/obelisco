@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CB.BACKOFICEOFICIAL.Clases;
 using CB.ENTIDADES;
 using CB.LOGICA;
 
@@ -51,6 +52,59 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 				return View();
 			}
 		}
+		/// <summary>
+		/// alertas que se muestran el dia, por defecto 
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult Alertas()
+		{
+			List<Alertas> list = new List<Alertas>();
+			LPersonaCasas pl = new LPersonaCasas();
+			DateTime datetimeFrom = DateTime.Now.Date;
+			DateTime datetimeTo = datetimeFrom.AddDays(1);
+			list = pl.GetAlertas(datetimeFrom, datetimeTo);
+			//return Json(list);
+			ViewBag.Alert = list;
+			return View();
+		}
+
+		public ActionResult GetAlertas()
+		{
+			List<Alertas> list = new List<Alertas>();
+			LPersonaCasas pl = new LPersonaCasas();
+			DateTime datetimeFrom = DateTime.Now.Date;
+			DateTime datetimeTo = datetimeFrom.AddDays(1);
+			list = pl.GetAlertas(datetimeFrom, datetimeTo);
+			//return Json(list);
+			
+			return PartialView("_listAletas",list);
+		}
+		/// <summary>
+		/// cambiar de estado a alerta que se ha gnerado
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public ActionResult Change(int id = 0)
+		{
+			var mensaje = new List<KeyValuePair<string, string>>();
+			try
+			{
+				LOperaciones op = new LOperaciones();
+				if (!op.change(id,false))
+					mensaje.Add(Util.mensaje(Util.ERROR, Util.ERRORMENSAJE));else
+				{
+					mensaje.Add(Util.mensaje(Util.OK, Util.OKMENSAJE));
+				}
+			}
+			catch (Exception ex)
+			{
+
+				mensaje.Clear();
+				mensaje.Add(Util.mensaje("ERROR", ex.Message));
+			}
+ 			return Json(mensaje);
+		}
+
 
 		// GET: Reporte/Edit/5
 		public ActionResult Edit(int id)

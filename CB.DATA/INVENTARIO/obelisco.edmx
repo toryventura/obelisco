@@ -3666,6 +3666,27 @@ advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Det
           <Property Name="NroCuotas" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_Persona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vwt_Persona">
+          <Key>
+            <PropertyRef Name="CodCliente" />
+            <PropertyRef Name="NIT" />
+            <PropertyRef Name="CI" />
+            <PropertyRef Name="Telefono" />
+            <PropertyRef Name="Fax" />
+            <PropertyRef Name="Correo" />
+            <PropertyRef Name="Sexo" />
+          </Key>
+          <Property Name="CodCliente" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="352" />
+          <Property Name="NIT" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'INVENTARIO_CONSTRUCTORA_OBELISCO.dbo.Vwt_TotalClienteMora' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vwt_TotalClienteMora">
           <Key>
@@ -5245,6 +5266,18 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
     [Vwt_DetelleFijaMora].[Fecha] AS [Fecha], 
     [Vwt_DetelleFijaMora].[NroCuotas] AS [NroCuotas]
     FROM [dbo].[Vwt_DetelleFijaMora] AS [Vwt_DetelleFijaMora]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Vwt_Persona" EntityType="Self.Vwt_Persona" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vwt_Persona].[CodCliente] AS [CodCliente], 
+    [Vwt_Persona].[NombreCompleto] AS [NombreCompleto], 
+    [Vwt_Persona].[NIT] AS [NIT], 
+    [Vwt_Persona].[CI] AS [CI], 
+    [Vwt_Persona].[Telefono] AS [Telefono], 
+    [Vwt_Persona].[Fax] AS [Fax], 
+    [Vwt_Persona].[Correo] AS [Correo], 
+    [Vwt_Persona].[Sexo] AS [Sexo]
+    FROM [dbo].[Vwt_Persona] AS [Vwt_Persona]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vwt_TotalClienteMora" EntityType="Self.Vwt_TotalClienteMora" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -8799,6 +8832,25 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NroCuotas" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Vwt_Persona">
+          <Key>
+            <PropertyRef Name="CodCliente" />
+            <PropertyRef Name="NIT" />
+            <PropertyRef Name="CI" />
+            <PropertyRef Name="Telefono" />
+            <PropertyRef Name="Fax" />
+            <PropertyRef Name="Correo" />
+            <PropertyRef Name="Sexo" />
+          </Key>
+          <Property Name="CodCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="352" FixedLength="false" Unicode="true" />
+          <Property Name="NIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="Vwt_TotalClienteMora">
           <Key>
             <PropertyRef Name="CodCliente" />
@@ -9689,6 +9741,7 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
           <EntitySet Name="Vwt_DetalleClienteMora" EntityType="Self.Vwt_DetalleClienteMora" />
           <EntitySet Name="Vwt_DetalleFijaMoraFinal" EntityType="Self.Vwt_DetalleFijaMoraFinal" />
           <EntitySet Name="Vwt_DetelleFijaMora" EntityType="Self.Vwt_DetelleFijaMora" />
+          <EntitySet Name="Vwt_Persona" EntityType="Self.Vwt_Persona" />
           <EntitySet Name="Vwt_TotalClienteMora" EntityType="Self.Vwt_TotalClienteMora" />
           <AssociationSet Name="FK_AlmacenMovimiento_Almacen" Association="Self.FK_AlmacenMovimiento_Almacen">
             <End Role="Almacen" EntitySet="Almacens" />
@@ -13505,6 +13558,20 @@ advertencia 6035: La relación 'PlanPagoProf_FK00' tiene columnas que no forman 
                 <ScalarProperty Name="SaldoCuota" ColumnName="SaldoCuota" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="NroCuotas" ColumnName="NroCuotas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vwt_Persona">
+            <EntityTypeMapping TypeName="INVENTARIO_CONSTRUCTORA_OBELISCOModel.Vwt_Persona">
+              <MappingFragment StoreEntitySet="Vwt_Persona">
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="CI" ColumnName="CI" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

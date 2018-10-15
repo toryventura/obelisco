@@ -84,7 +84,7 @@ namespace CB.LOGICA
 						presenciaClienteID = pres,
 						probalidadPagoID = o.probalidadPagoID,
 						TelefonoAlternativo = o.TelefonoAlternativo,
-						activo=o.activo,
+						activo = o.activo,
 						UsrCre = o.UsrCre,
 						UsrMod = o.UsrMod,
 						parametroID = o.parametroID
@@ -101,6 +101,31 @@ namespace CB.LOGICA
 				}
 			}
 		}
+
+		public bool change(int id, bool v)
+		{
+			try
+			{
+				using (var db = new DATA.USER.COBRANZA_CBEntities())
+				{
+					var op = db.OperacionCobranzas.Where(s => s.operacionCobranzaID == id).FirstOrDefault();
+					if (op != null)
+					{
+						op.activo = v;
+						db.SaveChanges();
+						return true;
+					}
+					else
+						return false;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica :change", ex);
+			}
+		}
+
 		public OperacionCobranza ToEntidades(DATA.USER.OperacionCobranza o)
 		{
 			return new OperacionCobranza()
@@ -120,7 +145,7 @@ namespace CB.LOGICA
 				nombreparametro = getTipogestion(o.parametroID.Value),
 				operacionCobranzaID = o.operacionCobranzaID,
 				presenciaClienteID = o.presenciaClienteID.Value,
-				activo=o.activo.Value,
+				activo = o.activo.Value,
 				probalidadPagoID = o.probalidadPagoID.Value,
 				TelefonoAlternativo = o.TelefonoAlternativo == null ? "" : o.TelefonoAlternativo,
 				parametroID = o.parametroID.Value,

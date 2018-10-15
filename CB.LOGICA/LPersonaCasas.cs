@@ -32,7 +32,12 @@ namespace CB.LOGICA
 			}
 
 		}
-
+		/// <summary>
+		/// Generando las alertas para mostrar en la pantalla principal del dia que se encuentra, esta notficacion siempre le saldra asta que ha ga una gestion de  alertas;
+		/// </summary>
+		/// <param name="dateTime1"></param>
+		/// <param name="dateTime2"></param>
+		/// <returns></returns>
 		public List<Alertas> GetAlertas(DateTime dateTime1, DateTime dateTime2)
 		{
 
@@ -46,10 +51,101 @@ namespace CB.LOGICA
 							//where b.FechaCompromiso >= dateTime1 && b.FechaCompromiso < dateTime2 && b.activo==true
 							select new Alertas()
 							{
-								AsignacionClienteId = a.asignacionClienteID,
+								AsignacionClienteId = b.operacionCobranzaID,
 								CodCliente = a.CodCliente,
 								Descripcion = b.Comentario,
-								FechaCompromiso = b.FechaCompromiso.Value
+								FechaCompromiso = b.FechaCompromiso.Value,
+								activo=b.activo.Value
+					
+
+							}).ToList();
+				var list2 = db.Personas.ToList();
+				string cod = "";
+				foreach (var item in list)
+				{
+					cod = item.CodCliente;
+					var tr = list2.Where(s => s.CodCliente == cod).FirstOrDefault();
+					string nm = tr.NombreP != null ? tr.NombreP : "" + " " + tr.Apellido != null ? tr.Apellido : "" + " " + tr.Seg_Apellido != null ? tr.Seg_Apellido : "";
+					item.Nombre = nm;
+				}
+				alertas = list;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica getAlertas", ex);
+			}
+			return alertas;
+		}
+		/// <summary>
+		/// este mostra en la gestion de alertas, mostrando el dia que se encuentra, pero si quiere ver por fecha que se encuentran la fecha disponibles para la busqueda 
+		/// </summary>
+		/// <param name="dateTime1"></param>
+		/// <param name="dateTime2"></param>
+		/// <returns></returns>
+		public List<Alertas> GetAlertasDetalleFechas(DateTime dateTime1, DateTime dateTime2)
+		{
+
+			List<Alertas> alertas = new List<Alertas>();
+			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
+			var db1 = new DATA.USER.COBRANZA_CBEntities();
+			try
+			{
+				var list = (from a in db1.AsignacionClientes
+							join b in db1.OperacionCobranzas on a.asignacionClienteID equals b.asignacionClienteID
+							where b.FechaCompromiso >= dateTime1 && b.FechaCompromiso < dateTime2
+							select new Alertas()
+							{
+								AsignacionClienteId = b.operacionCobranzaID,
+								CodCliente = a.CodCliente,
+								Descripcion = b.Comentario,
+								FechaCompromiso = b.FechaCompromiso.Value,
+								activo = b.activo.Value
+
+
+							}).ToList();
+				var list2 = db.Personas.ToList();
+				string cod = "";
+				foreach (var item in list)
+				{
+					cod = item.CodCliente;
+					var tr = list2.Where(s => s.CodCliente == cod).FirstOrDefault();
+					string nm = tr.NombreP != null ? tr.NombreP : "" + " " + tr.Apellido != null ? tr.Apellido : "" + " " + tr.Seg_Apellido != null ? tr.Seg_Apellido : "";
+					item.Nombre = nm;
+				}
+				alertas = list;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica getAlertas", ex);
+			}
+			return alertas;
+		}
+		/// <summary>
+		/// mostrar todas las alerta que hean generado. desde un  inicio.
+		/// </summary>
+		/// <returns></returns>
+		public List<Alertas> GetAlertasDetalleAll()
+		{
+
+			List<Alertas> alertas = new List<Alertas>();
+			var db = new DATA.INVENTARIO.INVENTARIO_CONSTRUCTORA_OBELISCOEntities();
+			var db1 = new DATA.USER.COBRANZA_CBEntities();
+			try
+			{
+				var list = (from a in db1.AsignacionClientes
+							join b in db1.OperacionCobranzas on a.asignacionClienteID equals b.asignacionClienteID
+							where b.FechaCompromiso !=null
+							select new Alertas()
+							{
+								AsignacionClienteId = b.operacionCobranzaID,
+								CodCliente = a.CodCliente,
+								Descripcion = b.Comentario,
+								FechaCompromiso = b.FechaCompromiso.Value,
+								activo = b.activo.Value
+
+
 							}).ToList();
 				var list2 = db.Personas.ToList();
 				string cod = "";

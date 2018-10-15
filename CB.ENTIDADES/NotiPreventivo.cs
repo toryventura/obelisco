@@ -13,6 +13,7 @@ namespace CB.ENTIDADES
 		public string Periodo { get; set; }
 		public string Mensaje { get; set; }
 		public int TipoAccion { get; set; }
+		public string Nombre { get; set; }
 		public DateTime FechaReg { get; set; }
 		public string UsrCre { get; set; }
 	}

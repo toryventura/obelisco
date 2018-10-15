@@ -44,6 +44,11 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			ViewBag.fase = id;
 			return View();
 		}
+		/// <summary>
+		/// mostrar datos por fase
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		public ActionResult FaseDetalle(int id)
 		{
 
@@ -66,6 +71,10 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			list = pl.GetClientesAlDia();
 			return Json(list);
 		}
+		/// <summary>
+		/// notificaciones preventivas 
+		/// </summary>
+		/// <returns></returns>
 		public ActionResult Notificaciones()
 		{
 			List<DetalleFase> list = new List<DetalleFase>();
@@ -186,6 +195,11 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 			var op = list.Where(s => s.CodCliente == id).ToList();
 			return Json(op);
 		}
+
+		/// <summary>
+		/// getalertas para mostrar las alertas o notficaciones que van a mostrar 
+		/// </summary>
+		/// <returns></returns>
 		[HttpPost]
 		public ActionResult GetAlertas()
 		{

@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lista = (List<CB.ENTIDADES.NotiPreventivo>)ViewBag.Noti;
+}
+
+<section class="content-header">
+    <h1>
+        Acciones 
+        <small>Preventivas </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">UI</a></li>
+        <li class="active">Buttons</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Detalle Preventivas</h3>
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
+                </div>
+                <div class="box-body" id="ListaContenidosContainer">
+
+                    @Html.Partial("_listPreventivo", lista)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

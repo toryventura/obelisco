@@ -13,5 +13,6 @@ namespace CB.ENTIDADES
 		public int AsignacionClienteId { get; set; }
 		public string Descripcion { get; set; }
 		public DateTime FechaCompromiso { get; set; }
+		public bool activo { get; set; }
 	}
 }

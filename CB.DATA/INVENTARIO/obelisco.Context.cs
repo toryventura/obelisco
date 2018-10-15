@@ -225,6 +225,7 @@ namespace CB.DATA.INVENTARIO
         public virtual DbSet<Vwt_DetalleClienteMora> Vwt_DetalleClienteMora { get; set; }
         public virtual DbSet<Vwt_DetalleFijaMoraFinal> Vwt_DetalleFijaMoraFinal { get; set; }
         public virtual DbSet<Vwt_DetelleFijaMora> Vwt_DetelleFijaMora { get; set; }
+        public virtual DbSet<Vwt_Persona> Vwt_Persona { get; set; }
         public virtual DbSet<Vwt_TotalClienteMora> Vwt_TotalClienteMora { get; set; }
     
         [DbFunction("INVENTARIO_CONSTRUCTORA_OBELISCOEntities", "fn_MoviemtoXcliente")]
