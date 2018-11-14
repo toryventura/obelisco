@@ -1,12 +1,14 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var lista = (List<CB.ENTIDADES.NotiPreventivo>)ViewBag.Noti;
+                /**/
+
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var lista = (List<CB.ENTIDADES.NotiPreventivo>)ViewBag.Noti;
 }
 
 <section class="content-header">
     <h1>
-        Acciones 
+        Acciones
         <small>Preventivas </small>
     </h1>
     <ol class="breadcrumb">
@@ -24,7 +26,6 @@
                     <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
                 </div>
                 <div class="box-body" id="ListaContenidosContainer">
-
                     @Html.Partial("_listPreventivo", lista)
                 </div>
             </div>

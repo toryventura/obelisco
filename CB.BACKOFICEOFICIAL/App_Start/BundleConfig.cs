@@ -53,6 +53,7 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						"~/Scripts/respond.min.js",
 						"~/bower_components/ag-grid-enterprise-master/dist/ag-grid-enterprise.js",
 						"~/bower_components/lobibox-master/js/Lobibox.js",
+						"~/bower_components/chat-popup/js/chat.js",
 						"~/Scripts/jquery.blockUI.js",
 						"~/Scripts/blckUI.js",
 						"~/plugins/alertify/alertify.min.js",
@@ -74,7 +75,8 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 				"~/plugins/timepicker/bootstrap-timepicker.min.css",
 				"~/bower_components/ag-grid-enterprise-master/dist/styles/ag-theme-balham.css",
 				"~/plugins/alertify/alertify.core.css",
-				"~/plugins/alertify/alertify.default.css"
+				"~/plugins/alertify/alertify.default.css",
+				"~/bower_components/chat-popup/css/chat.css"
 				));
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));

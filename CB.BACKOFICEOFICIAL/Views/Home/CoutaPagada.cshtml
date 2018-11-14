@@ -102,10 +102,23 @@
 
     }
 
-    function toDateFromAspNet (dt) {
+    function toDateFromAspNet(dt) {
         var dte = eval("new " + dt.replace(/\//g, '') + ";");
         dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
-        return dte;
+
+        var today = new Date(dte);
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        return today;
     }
     $(document).ready(function () {
         ListarDetalle();
@@ -121,6 +134,9 @@
             },
             type: "POST"
         }).done(function (html) {
+            html.forEach(function (item) {
+                item.Fecha = toDateFromAspNet(item.Fecha);
+            });
             setDataSource(html, gridOptionsDetalle);
             // gridOptionsAsignadas.api.setRowData(html);
         }).fail(function (resp) {

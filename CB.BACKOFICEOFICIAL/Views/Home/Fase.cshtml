@@ -1,11 +1,8 @@
-﻿
-
-@{
+﻿@{
     ViewBag.Title = "Fase";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var fase = @ViewBag.fase;
 }
-
 <style>
 
     .dataTables_scrollBody thead {
@@ -18,7 +15,38 @@
         color: #fff !important;
         opacity: 0.7;
     }
+
+    .groupTitle {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .medal {
+        margin-left: 10px;
+        background-color: black;
+        padding: 2px;
+        border-radius: 2px;
+    }
+
+    .gold {
+        color: gold;
+    }
+
+    .silver {
+        color: silver;
+    }
+
+    .bronze {
+        color: lightsalmon;
+    }
+
+    .flag {
+        margin-left: 4px;
+        position: relative;
+        top: 2px;
+    }
 </style>
+<script src="~/Scripts/GroupRowInnerRenderer.js"></script>
 <section class="content-header">
     <h1>
         Listado de Clientes
@@ -29,28 +57,28 @@
         <li class="active">General Elements</li>
     </ol>
 </section>
-@using (Html.BeginForm("ExportToExcel", "Home", FormMethod.Post))
-{
+@*@using (Html.BeginForm("ExportToExcel", "Home", FormMethod.Post))
+    {*@
 
-    <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Cliente de Fase @ViewBag.fase</h3>
-                        <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
-                        <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Cliente de Fase @ViewBag.fase</h3>
+                    <input type="hidden" id="fase" name="fase" value="@ViewBag.fase" />
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="submit" value="Exportar excel" onclick="ExportToExcel();" />
 
-                        <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="Exportar excel" onclick="Expot();" />
-                    </div>
-                    <div class="box-body" id="ListaContenidosContainer">
-                        <div id="gridDetalle" style="height: 450px;" class="ag-theme-balham"></div>
-                    </div>
+                    <input class="btn btn-primary   pull-right   margin-r-5" type="button" value="Exportar excel" onclick="Expot();" />
+                </div>
+                <div class="box-body" id="ListaContenidosContainer">
+                    <div id="gridDetalle" style="height: 450px;" class="ag-theme-balham"></div>
                 </div>
             </div>
         </div>
-    </section>
-}
+    </div>
+</section>
+@*}*@
 
 <script>
     //$(function () {
@@ -69,6 +97,7 @@
       //   public int NroCuotas { get; set; }
 		//public double Tc { get; set; }
     var columnDefsDetalle = [
+        { headerName: 'Cod Cliente', field: 'CodCliente' },
         { headerName: 'Couta fija', field: 'MontoCuota', aggFunc: 'sum' },
         { headerName: 'Interes Mora', field: 'SaldoCuota', aggFunc: 'sum' },
         { headerName: 'CantidadCouta', field: 'CantidadCouta', aggFunc: 'count', hide: true, sort: 'asc' },
@@ -77,39 +106,79 @@
         { headerName: 'Nro Cuota', field: 'NroCuota'},
         { headerName: 'Telefono', field: 'Telefono' },
         { headerName: 'Fecha Pago', field: 'Fecha' },
-        { field: 'NombreCompleto', rowGroup: true, hide: true }
+        {
+            field: 'NombreCompleto',
+            rowGroup: true,
+            hide: true,
+            valueGetter: countryValueGetter,
+            keyCreator: countryKeyCreator
+        }
     ];
     var rowData;
     var gridOptionsDetalle = {
+
         columnDefs: columnDefsDetalle,
         defaultColDef: {
             width: 150
         },
         rowData: rowData,
+        groupUseEntireRow: true,
         enableRangeSelection: true,
         enableSorting: true,
         enableFilter: true,
         enableColResize: true,
-        autoGroupColumnDef: {
-            headerName: 'Cod Cliente',
-            width: 300,
-            field: 'CodCliente'
+
+        //autoGroupColumnDef: {
+        //    headerName: 'Cod Cliente',
+        //    width: 300,
+        //    field: 'CodCliente',
+        //},
+        components: {
+            groupRowInnerRenderer: GroupRowInnerRenderer
         },
-        
-        groupIncludeFooter: true,
-        groupIncludeTotalFooter: true,
-        animateRows: true,
-        paginate: true
-
+        groupRowInnerRenderer: 'groupRowInnerRenderer',
+       // groupIncludeFooter: true,
+        //groupIncludeTotalFooter: true,
+        animateRows: true
     };
-    function Expot() {
-        debugger;
-      //  var date = "\/Date(1297246301973)\/";
-        //var nowDate = new Date(parseInt(date.substr(6)));
+    //var gridOptionsDetalle = {
+    //    columnDefs: columnDefsDetalle,
+    //    rowData: null,
+    //    enableRangeSelection: true,
+    //    enableSorting: true,
+    //    enableFilter: true,
+    //    enableColResize: true,
+    //    groupUseEntireRow: true,
+    //    autoGroupColumnDef: {
+    //        headerName: 'Cod Cliente',
+    //        width: 300,
+    //        field: 'CodCliente',
+    //    },
+    //    components: {
+    //        groupRowInnerRenderer: GroupRowInnerRenderer
+    //    },
+    //    groupRowInnerRenderer: 'groupRowInnerRenderer',
+    //        groupIncludeFooter: true,
+    //    groupIncludeTotalFooter: true
+    //};
 
-        var ints = toDateFromAspNet("/Date(1445054400000)/");
-        alert(ints);
+    function countryKeyCreator(params) {
+        var countryObject = params.value;
+        return countryObject.name;
     }
+    function countryValueGetter(params) {
+        // hack the data  - replace the country with an object of country name and code
+        var countryName = params.data.NombreCompleto;
+        var countryCode = params.data.Codigo;
+        return {
+            name: countryName,
+            code: countryCode
+        };
+    }
+    function myFunction(id) {
+        alert(id);
+    };
+
     function currencyNroCuota(params) {
         var s1 = "" + formatToString(params.data.NroCuota);
         var s2 = "" + formatToString( params.data.NroCuotas);
@@ -129,8 +198,10 @@
         } else {
             return "";
         }
-        
+
     }
+
+
     function toDateFromAspNet (dt) {
         var dte = eval("new " + dt.replace(/\//g, '') + ";");
         dte.setMinutes(dte.getMinutes() - dte.getTimezoneOffset());
@@ -153,7 +224,7 @@
         ListarDetalle();
     });
     function ListarDetalle() {
-        
+
         var idf=@fase;
         $.ajax({
             url: "@Url.Action("FaseDetalle", "Home")",
