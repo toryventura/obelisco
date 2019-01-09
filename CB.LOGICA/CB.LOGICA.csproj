@@ -30,10 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CB.DATA">
+    <Reference Include="CB.DATA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CB.DATA\bin\Debug\CB.DATA.dll</HintPath>
     </Reference>
-    <Reference Include="CB.ENTIDADES">
+    <Reference Include="CB.ENTIDADES, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CB.ENTIDADES\bin\Debug\CB.ENTIDADES.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
@@ -44,7 +46,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

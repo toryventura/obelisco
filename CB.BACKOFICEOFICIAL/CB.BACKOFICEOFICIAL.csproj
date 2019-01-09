@@ -48,14 +48,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="CB.DATA">
-      <HintPath>..\CB.DATA\bin\Debug\CB.DATA.dll</HintPath>
+      <HintPath>..\CB.LOGICA\bin\Debug\CB.DATA.dll</HintPath>
     </Reference>
-    <Reference Include="CB.ENTIDADES, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CB.ENTIDADES\bin\Debug\CB.ENTIDADES.dll</HintPath>
+    <Reference Include="CB.ENTIDADES">
+      <HintPath>..\CB.LOGICA\bin\Debug\CB.ENTIDADES.dll</HintPath>
     </Reference>
-    <Reference Include="CB.LOGICA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CB.LOGICA">
       <HintPath>..\CB.LOGICA\bin\Debug\CB.LOGICA.dll</HintPath>
     </Reference>
     <Reference Include="ClosedXML, Version=0.92.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
@@ -3879,6 +3877,30 @@
     <Content Include="bower_components\datatables.net\pdfmake\0.1.36\pdfmake.js" />
     <Content Include="bower_components\datatables.net\pdfmake\0.1.36\pdfmake.min.js" />
     <Content Include="bower_components\datatables.net\pdfmake\0.1.36\vfs_fonts.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.bootstrap.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.bootstrap.min.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.bootstrap4.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.bootstrap4.min.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.dataTables.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.dataTables.min.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.foundation.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.foundation.min.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.jqueryui.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.jqueryui.min.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.semanticui.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\css\responsive.semanticui.min.css" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\dataTables.responsive.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\dataTables.responsive.min.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.bootstrap.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.bootstrap.min.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.bootstrap4.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.bootstrap4.min.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.foundation.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.foundation.min.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.jqueryui.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.jqueryui.min.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.semanticui.js" />
+    <Content Include="bower_components\datatables.net\Responsive-2.2.2\js\responsive.semanticui.min.js" />
     <Content Include="bower_components\eve-raphael\e.html" />
     <Content Include="bower_components\eve-raphael\eve.js" />
     <Content Include="bower_components\fastclick\lib\fastclick.js" />
@@ -8469,6 +8491,7 @@
     <Content Include="Views\Reporte\_listAletas.cshtml" />
     <Content Include="Views\NotiPreventivo\Index.cshtml" />
     <Content Include="Views\NotiPreventivo\_listPreventivo.cshtml" />
+    <Content Include="Views\Home\GetNextPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

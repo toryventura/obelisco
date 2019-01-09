@@ -13,6 +13,7 @@ using System.Linq;
 using CB.BACKOFICEOFICIAL.Models;
 using CB.BACKOFICEOFICIAL.Clases;
 using Newtonsoft.Json;
+using System.IO.Compression;
 
 namespace CB.BACKOFICEOFICIAL.Controllers
 {
@@ -63,13 +64,25 @@ namespace CB.BACKOFICEOFICIAL.Controllers
 
 			return View();
 		}
+		public ActionResult GetCliente(string nombre = "")
+		{
+			LPersonaCasas pl = new LPersonaCasas();
+			var list = pl.Getlotes(nombre);
+			return Json(list);
+		}
+		public ActionResult GetNextPage(string id)
+		{
+			return View();
+		}
 		public ActionResult DetalleCoutaPagada()
 		{
 
 			List<DetalleFase> list = new List<DetalleFase>();
 			LPersonaCasas pl = new LPersonaCasas();
 			list = pl.GetClientesAlDia();
-			return Json(list);
+			var jsonResult = Json(list, JsonRequestBehavior.AllowGet);
+			jsonResult.MaxJsonLength = int.MaxValue;
+			return jsonResult;
 		}
 		/// <summary>
 		/// notificaciones preventivas 

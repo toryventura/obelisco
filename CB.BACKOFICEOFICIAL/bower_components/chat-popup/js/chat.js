@@ -28,7 +28,7 @@ function close_popup(id) {
 
 //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
 function display_popups() {
-    var right = 220;
+    var right = 10;
 
     var iii = 0;
     for (iii; iii < total_popups; iii++) {
@@ -67,7 +67,7 @@ function register_popup(id, name) {
     element = element + '<div class="popup-head">';
     element = element + '<div class="popup-head-left">' + name + '</div>';
     element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\'' + id + '\');">&#10005;</a></div>';
-    element = element + '<div style="clear: both"></div></div><div class="popup-messages"></div></div>';
+    element = element + '<div style="clear: both"></div></div><div class="popup-messages">'+'esta es una prueba'+'</div></div>';
 
     document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
 

@@ -123,7 +123,7 @@
           <Key>
             <PropertyRef Name="operacionCobranzaID" />
           </Key>
-          <Property Name="operacionCobranzaID" Type="int" Nullable="false" />
+          <Property Name="operacionCobranzaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Comentario" Type="nvarchar" MaxLength="1000" />
           <Property Name="TelefonoAlternativo" Type="nvarchar" MaxLength="20" />
           <Property Name="FechaCompromiso" Type="datetime" />
@@ -856,7 +856,7 @@ advertencia 6002: La tabla o vista 'COBRANZA_CB.dbo.Vwt_vistaoperacion' no tiene
           <Key>
             <PropertyRef Name="operacionCobranzaID" />
           </Key>
-          <Property Name="operacionCobranzaID" Type="Int32" Nullable="false" />
+          <Property Name="operacionCobranzaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Comentario" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="TelefonoAlternativo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="FechaCompromiso" Type="DateTime" Precision="3" />

@@ -33,6 +33,37 @@ namespace CB.LOGICA
 
 		}
 		/// <summary>
+		//// "getlotes" sacamos una lista de lotes  disponibles
+		/// </summary>
+		/// <param name="nombre"> es el parametro donde entra </param>
+		/// <returns></returns>
+		public List<KeyValuePair<string, string>> Getlotes(string nombre) {
+			try
+			{
+				using (var db= new INVENTARIO_CONSTRUCTORA_OBELISCOEntities())
+				{
+					var persona = db.Vwt_Persona.Where(s =>s.NombreCompleto == nombre).FirstOrDefault();
+					if (persona!=null)
+					{
+						var listaMoras = db.CtaPorCobrars.Where(x => x.CodCliente == persona.CodCliente && x.TipoCtaPorCobrar == 5 && x.Estado == "VIGENTE").ToList();
+						var listfinal = new List<KeyValuePair<string, string>>();
+						foreach (var item in listaMoras)
+						{
+							listfinal.Add(new KeyValuePair<string, string>(item.Codigo, item.Doc));
+						}
+						return listfinal;
+					}
+					return null;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica",ex);
+			}
+		}
+
+		/// <summary>
 		/// Generando las alertas para mostrar en la pantalla principal del dia que se encuentra, esta notficacion siempre le saldra asta que ha ga una gestion de  alertas;
 		/// </summary>
 		/// <param name="dateTime1"></param>

@@ -68,10 +68,11 @@ namespace CB.LOGICA
 			{
 				try
 				{
-					var count = db.OperacionCobranzas.Count() + 1;
+					
 					var pres = db.Parametros.Where(x => x.ID == o.parametroID).Select(x => x.TipoGestionId.Value).FirstOrDefault();
 					var uss = new DATA.USER.OperacionCobranza()
 					{
+
 						asignacionClienteID = o.AsignacionClienteID,
 						causalMoraID = o.CausalMoraID,
 						CausalMoraAnt = o.CausalMoraAnt,
@@ -80,7 +81,6 @@ namespace CB.LOGICA
 						FechaCompromiso = Convert.ToDateTime(o.FechaCompromiso),
 						FeCre = o.FeCre,
 						FeMod = o.FeMod,
-						operacionCobranzaID = count,
 						presenciaClienteID = pres,
 						probalidadPagoID = o.probalidadPagoID,
 						TelefonoAlternativo = o.TelefonoAlternativo,
@@ -91,7 +91,7 @@ namespace CB.LOGICA
 					};
 					db.OperacionCobranzas.Add(uss);
 					db.SaveChanges();
-					return count;
+					return uss.operacionCobranzaID;
 
 				}
 				catch (System.Exception ex)

@@ -46,7 +46,9 @@
         top: 2px;
     }
 </style>
+<link href="~/bower_components/chat-popup/css/chat.css" rel="stylesheet" />
 <script src="~/Scripts/GroupRowInnerRenderer.js"></script>
+<script src="~/bower_components/chat-popup/js/chat.js"></script>
 <section class="content-header">
     <h1>
         Listado de Clientes
@@ -176,9 +178,54 @@
         };
     }
     function myFunction(id) {
+
+        //register_popup("22", id);
+        getCodCliente(id)
         alert(id);
     };
+    function getCodCliente(id) {
+        $.ajax({
+            url: "@Url.Action("GetCliente", "Home")",
+            cache: false,
+            data: {
+                nombre: id
+            },
+            type: "POST"
+            }).done(function (html) {
+                var lista = html;
+                if (lista.length==1) {
 
+                    lista.forEach(function (itm) {
+                        SendUrl(itm.Key);
+                        console.log(itm.Key);
+
+                    }
+                    );
+
+                    }else {
+                 if (lista.length == 0) {
+                    error("No Elementos para mostrar");
+            }else {
+
+            }
+
+              }
+            }).fail(function (resp) {
+                console.log(resp.responseText);
+            }).always(function () {
+                console.log("Se completo la operacon exito");
+            });
+    }
+    function SendUrl(codigo) {
+        var url = "@Url.Action("GetNextPage","Home")" + "?id=" + codigo;
+
+        window.open(url, "_blank");
+    }
+    function SendUrl(codigo) {
+        var url = "@Url.Action("GetNextPage","Home")" + "?id=" + codigo;
+
+        window.open(url, "_blank");
+    }
     function currencyNroCuota(params) {
         var s1 = "" + formatToString(params.data.NroCuota);
         var s2 = "" + formatToString( params.data.NroCuotas);

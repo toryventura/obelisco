@@ -39,6 +39,7 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						"~/bower_components/datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js",
 						"~/bower_components/datatables.net/buttons/1.5.4/js/buttons.flash.min.js",
 						"~/bower_components/datatables.net/jszip/2.5.0/jszip.min.js",
+						"~/bower_components/datatables.net/Responsive-2.2.2/js/dataTables.responsive.min.js",
 						"~/bower_components/datatables.net/pdfmake/0.1.36/pdfmake.min.js",
 						"~/bower_components/datatables.net/pdfmake/0.1.36/vfs_fonts.js",
 						"~/bower_components/datatables.net/buttons/1.5.4/js/buttons.html5.min.js",
@@ -53,7 +54,6 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 						"~/Scripts/respond.min.js",
 						"~/bower_components/ag-grid-enterprise-master/dist/ag-grid-enterprise.js",
 						"~/bower_components/lobibox-master/js/Lobibox.js",
-						"~/bower_components/chat-popup/js/chat.js",
 						"~/Scripts/jquery.blockUI.js",
 						"~/Scripts/blckUI.js",
 						"~/plugins/alertify/alertify.min.js",
@@ -69,14 +69,14 @@ namespace CB.BACKOFICEOFICIAL.App_Start
 				"~/bower_components/Ionicons/css/ionicons.min.css",
 				"~/bower_components/lobibox-master/dist/css/Lobibox.min.css",
 				"~/bower_components/datatables.net/1.10.18/css/jquery.dataTables.min.css",
+				"~/bower_components/datatables.net/Responsive-2.2.2/css/dataTables.responsive.min.css",
 				"~/bower_components/datatables.net/buttons/1.5.4/css/buttons.dataTables.min.css",
 				"~/dist/css/AdminLTE.min.css",
 				"~/dist/css/skins/_all-skins.min.css",
 				"~/plugins/timepicker/bootstrap-timepicker.min.css",
 				"~/bower_components/ag-grid-enterprise-master/dist/styles/ag-theme-balham.css",
 				"~/plugins/alertify/alertify.core.css",
-				"~/plugins/alertify/alertify.default.css",
-				"~/bower_components/chat-popup/css/chat.css"
+				"~/plugins/alertify/alertify.default.css"
 				));
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));

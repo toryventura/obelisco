@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="494ff5e07bf34e079773abac4a010356" Name="Diagram1">
+      <Diagram DiagramId="6e69e14b37094e0b82ff13aff98a747a" Name="Diagram1">
         <EntityTypeShape EntityType="COBRANZA_CBModel.AccionPreventiva" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="COBRANZA_CBModel.AsignacionCliente" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="COBRANZA_CBModel.CausalMora" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
